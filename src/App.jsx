@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import Hero from './components/Hero';
 import Destinations from './components/Destinations';
@@ -19,7 +20,6 @@ function App() {
         <Footer />
       </main>
     </div>
-
   );
 }
 
