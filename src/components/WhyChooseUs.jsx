@@ -10,7 +10,7 @@ function WhyChooseUs() {
             WHY CHOOSE US?
           </h2>
           <p className="self-center mt-8 text-2xl text-white max-md:max-w-full">
-            A Brand name you can trust and rely on
+            A Brand name You can Trust And rely on
           </p>
           <div className="flex  ml-8 justify-between gap-10 items-center mt-7 max-md:max-w-full">
             <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ab42847af8ca220686e9916a9ce7128f82eeb5ab10498a9d21e3c5665b631aa9?placeholderIfAbsent=true&apiKey=6e51f2aa35694a21b29ab869757ebe28" alt="Feature 1" className="object-contain shrink-0 self-stretch my-auto w-36 aspect-square ml-6" />
