@@ -2,7 +2,7 @@ import * as React from "react";
 
 function About() {
   return (
-    <div className="flex overflow-hidden flex-col items-center pb-96 bg-stone-50 bg-opacity-50 max-md:pb-24">
+    <div className="flex overflow-hidden flex-col items-center  bg-stone-50 bg-opacity-50 max-md:pb-24">
       <div className="flex relative flex-col self-stretch w-full text-4xl font-semibold text-white min-h-[490px] max-md:max-w-full">
         <img
           loading="lazy"
@@ -21,7 +21,7 @@ function About() {
             <div className="flex flex-col w-full max-md:max-w-full">
               <div className="self-start ml-8 text-3xl font-semibold max-md:max-w-full">
                 <span className="text-4xl font-bold text-sky-500">“</span>{" "}
-                <span className="">
+                <span className="text-2xl">
                   OLD Fox Company offers faith-based global travel experiences,
                   connecting people through  meaningful religious journeys
                 </span>{" "}
@@ -56,7 +56,7 @@ function About() {
               />
               <div className="self-end mt-6 max-md:max-w-full">
                 <span className="text-4xl font-bold text-sky-500">“</span>
-                <span className="">
+                <span className="text-2xl">
                   {" "}
                   We provides spiritually-focused travel services worldwide,
                   uniting people through enriching religious adventures
@@ -69,8 +69,8 @@ function About() {
         </div>
       </div>
      
-      <div className="shrink-0 mt-4 mr-32 h-1 border-4 border-sky-500 border-solid w-[62px]" />
-      <div className="mt-6  text-3xl font-bold text-sky-500 max-md:text-4xl">
+      <div className="shrink-0 mt-2 mr-32 h-1 border-4 border-sky-500 border-solid w-[62px]" />
+      <div className="mt-6  text-2xl font-bold text-sky-500 max-md:text-3xl">
         Our Team
       </div>
       <div className="shrink-0 mt-4 ml-28 h-1 border-4 border-sky-500 border-solid w-[62px]" />
@@ -79,7 +79,7 @@ function About() {
         srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/4870b734b0f9cf58ac339c1438f2ecdaef768164e4946c48bc073492c23539d7?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/4870b734b0f9cf58ac339c1438f2ecdaef768164e4946c48bc073492c23539d7?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/4870b734b0f9cf58ac339c1438f2ecdaef768164e4946c48bc073492c23539d7?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/4870b734b0f9cf58ac339c1438f2ecdaef768164e4946c48bc073492c23539d7?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/4870b734b0f9cf58ac339c1438f2ecdaef768164e4946c48bc073492c23539d7?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/4870b734b0f9cf58ac339c1438f2ecdaef768164e4946c48bc073492c23539d7?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/4870b734b0f9cf58ac339c1438f2ecdaef768164e4946c48bc073492c23539d7?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/4870b734b0f9cf58ac339c1438f2ecdaef768164e4946c48bc073492c23539d7?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497"
         className="object-contain mt-5 ml-5 max-w-full aspect-[0.78] shadow-[0px_100px_80px_rgba(0,0,0,0.07)] w-[285px]"
       />
-      <div className="mt-5 text-3xl font-bold text-sky-500 max-md:text-4xl">
+      <div className="mt-5 text-2xl mb-10 font-bold text-sky-500 max-md:text-4xl">
         Ceo of Oldfox
       </div>
     </div>
