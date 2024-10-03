@@ -4,7 +4,7 @@ import ContactInfo from './ContactInfo';
 
 function Footer() {
   return (
-    <footer className="flex flex-col pt-8 mt-12 w-full bg-sky-600 text-white max-md:mt-8 max-md:max-w-full">
+    <footer className="flex flex-col pt-8 w-full bg-sky-600 text-white max-md:mt-8 max-md:max-w-full">
       {/* Upper section of the footer */}
       <div className="flex flex-wrap gap-20 items-start px-8 w-full max-w-[1133px] max-md:px-5 max-md:max-w-full">
         {/* Logo and company description */}
