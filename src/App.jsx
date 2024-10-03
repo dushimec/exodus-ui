@@ -18,6 +18,7 @@ function App() {
         <PopularTourPackages />
         <HowItWorks />
         <Footer />
+    
       </main>
     </div>
   );
