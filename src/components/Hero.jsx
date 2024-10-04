@@ -40,11 +40,13 @@ function Hero() {
           <p className="mt-11 ml-28 text-xl max-md:mt-10 max-md:max-w-full">
             Discover the world with Exodus: Your trusted travel adventure partner!
           </p>
-          <button className="flex flex-col justify-center p-1.5 mt-12 mb-0 ml-28 max-w-full text-base font-semibold border-2 border-sky-500 border-solid bg-white bg-opacity-0 rounded-[30px] w-[205px] hover:bg-white hover:text-sky-500 transition duration-300 ease-in-out max-md:mt-10 max-md:mb-2.5 max-md:ml-2.5">
-            <span className="px-10 py-6 bg-sky-500 text-white rounded-[30px] hover:bg-white hover:text-sky-500 max-md:px-5 transition duration-300 ease-in-out">
-              Explore here
-            </span>
-          </button>
+          <button className="relative p-2 mt-12 ml-28 max-w-full text-base font-semibold border-2 border-sky-500 rounded-full w-[205px] hover:bg-white hover:text-sky-500 transition duration-300 ease-in-out max-md:mt-10 max-md:mb-2.5 max-md:ml-2.5">
+  <span className="bg-sky-500 text-white rounded-full w-full h-full flex items-center justify-center py-4 hover:bg-white hover:text-sky-500 transition duration-300 ease-in-out">
+    Explore here
+  </span>
+</button>
+
+
         </section>
       </div>
 

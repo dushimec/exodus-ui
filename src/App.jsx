@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Hero from './components/Hero';
@@ -17,6 +18,7 @@ import Signup from './components/signup';
 
 function App() {
   return (
+
     <Router>
       <div className="min-h-screen flex flex-col">
         {/* Fixed Navbar */}
