@@ -1,4 +1,5 @@
 import React from 'react';
+import product from '../IMAGE/product.png';
 
 function Products() {
   const productImages = [
@@ -32,7 +33,7 @@ function Products() {
     <header className="relative">
   <img
     loading="lazy"
-    src={Product}
+    src={product}
     className="w-full h-[320px] object-cover"
     alt="hero-img"
   />

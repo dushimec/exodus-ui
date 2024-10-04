@@ -102,10 +102,7 @@ function Signup() {
             Register
           </button>
 
-          {/* Forgot Password Link */}
-          <a href="/forgot-password" className="self-center mt-5 text-white max-md:mt-5 hover:underline">
-            Forgot password?
-          </a>
+        
 
           {/* Already have an account? */}
           <div className="flex justify-between items-center ml-10 mt-6 max-w-full w-[200px] max-md:mt-5 text-xs">
