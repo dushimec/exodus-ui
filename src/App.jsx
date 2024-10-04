@@ -14,7 +14,7 @@ import Service from './components/Service';
 import Products from './components/Products';
 
 import Login from './components/Login';
-import Signup from './components/signup';
+import Signup from './components/Signup';
 
 function App() {
   return (
