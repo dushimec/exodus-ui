@@ -7,7 +7,7 @@ function WhyChooseUs() {
       <div className="flex relative flex-col items-center px-20 pt-4 pb-24 w-full bg-neutral-900 bg-opacity-50 max-md:px-5 max-md:max-w-full">
         <div className="flex flex-col max-w-full w-[950px]">
           <h2 className="self-center text-3xl font-bold text-white">WHY CHOOSE US?</h2>
-          <p className="self-center mt-8 text-2xl text-white max-md:max-w-full">A brand name you can trust and rely on</p>
+          <p className="self-center mt-8 text-2xl text-white max-md:max-w-full font-[inria-serif]">A brand name you can trust and rely on</p>
           <div className="flex flex-wrap gap-5 justify-between mt-7 max-md:max-w-full">
             <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ab42847af8ca220686e9916a9ce7128f82eeb5ab10498a9d21e3c5665b631aa9?placeholderIfAbsent=true&apiKey=6e51f2aa35694a21b29ab869757ebe28" alt="Affordable price guarantee" className="object-contain shrink-0 self-stretch my-auto w-36 aspect-square ml-14" />
             <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d393d690b820b385444fa81c312cabcbc100e2cfc05ba174d5c218e992479f9?placeholderIfAbsent=true&apiKey=6e51f2aa35694a21b29ab869757ebe28" alt="Wide variety of destinations" className="object-contain shrink-0 self-stretch my-auto w-36 aspect-square" />

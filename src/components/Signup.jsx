@@ -16,7 +16,7 @@ function Signup() {
   };
 
   return (
-    <div className="flex overflow-hidden flex-col justify-center items-center px-10 py-20 text-sm bg-stone-50 max-md:px-3 max-md:py-12 bg-[url('./IMAGE/back.png')] bg-cover bg-center bg-no-repeat h-screen">
+    <div className="flex overflow-hidden flex-col justify-center items-center px-10 py-20 text-sm bg-stone-50 max-md:px-3 max-md:py-12 bg-[url('./IMAGE/back.png')] bg-cover bg-center bg-no-repeat h-screen pt-40">
       <div className="flex flex-col justify-center items-center px-10 py-8 max-w-full bg-black bg-opacity-90 w-[400px] max-md:px-3">
         <form className="flex flex-col max-w-full w-[300px]" onSubmit={handleSubmit}>
           <div className="self-center text-2xl font-bold text-white">REGISTER</div>

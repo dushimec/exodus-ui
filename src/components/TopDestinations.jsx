@@ -38,18 +38,26 @@ function TopDestinations() {
           {destinations.map((destination, index) => (
             <div
               key={index}
-              className="flex relative flex-col self-start px-2.5 pt-10 pb-2.5 aspect-[0.984]"
+              className="relative group flex-col self-start px-2.5 pt-10 pb-2.5 aspect-[0.984]"
             >
+              {/* Image */}
               <img
                 loading="lazy"
                 src={destination.image}
                 alt={destination.name}
-                className="object-cover absolute inset-0 size-full"
+                className="object-cover absolute inset-0 w-full h-full rounded-md transition-transform duration-300 ease-in-out transform group-hover:scale-105"
               />
-              {destination.name}
+
+              {/* Overlay with destination name, visible on hover */}
+              <div className="absolute inset-0 bg-black bg-opacity-50  rounded-full flex  justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="text-white text-xs font-extralight">
+                  {destination.name}
+                </span>
+              </div>
             </div>
           ))}
         </div>
+
         <div className="flex gap-4 mt-6">
           {/* Social media icons with background circles */}
           <div className="bg-white p-2 rounded-full hover:bg-blue-500 transition duration-300 ease-in-out">
@@ -71,4 +79,3 @@ function TopDestinations() {
 }
 
 export default TopDestinations;
-

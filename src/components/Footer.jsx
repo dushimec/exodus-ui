@@ -18,7 +18,7 @@ function Footer() {
                   alt="Company logo"
                   className="object-contain rounded-full w-[120px] max-md:w-[100px]"
                 />
-                <p className="mt-12 text-sm leading-5 max-md:mt-6">
+                <p className="mt-12 text-md leading-5 max-md:mt-6">
                   Discover the world with Exodus: Your trusted travel 
                   <br></br>adventure partner!
                 </p>
