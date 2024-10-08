@@ -35,8 +35,8 @@ function Destinations() {
   ];
 
   return (
-    <section className="container mx-auto px-64 py-10">
-      <div className="flex flex-wrap">
+    <section className="container mx-auto px-4 md:px-12 lg:px-20 py-10">
+      <div className="flex flex-wrap justify-center gap-8">
         {destinations.map((destination, index) => (
           <DestinationCard key={index} {...destination} />
         ))}
@@ -59,12 +59,12 @@ function DestinationCard({ name, country, price, likes, image }) {
   };
 
   return (
-    <article className="flex flex-col w-full md:w-1/2 p-5">
+    <article className="flex flex-col w-full sm:w-1/2 md:w-2/3 lg:w-2/3 xl:w-1/3 p-4">
       <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105 duration-300">
         <img
           src={image}
           alt={`${name} destination`}
-          className="w-full h-56 object-cover"
+          className="w-full h-64 object-cover"
           loading="lazy"
         />
         <div className="p-5">
@@ -80,9 +80,7 @@ function DestinationCard({ name, country, price, likes, image }) {
             </div>
             <div className="flex items-center">
               <FaHeart
-                className={`w-5 h-5 mr-1 cursor-pointer ${
-                  isLiked ? "text-red-500" : "text-gray-500"
-                }`}
+                className={`w-5 h-5 mr-1 cursor-pointer ${isLiked ? "text-red-500" : "text-gray-500"}`}
                 onClick={handleLikeClick}
               />
               <span>{likeCount} Likes</span>
@@ -100,7 +98,7 @@ function DestinationCard({ name, country, price, likes, image }) {
             </div>
 
             <div className="flex justify-end mt-2">
-              <button className="ml-7 px-2 py-2 text-sm text-sky-500 border border-sky-500 rounded-full hover:bg-sky-500 hover:text-white transition-colors">
+              <button className="px-3 py-2 text-sm text-sky-500 border border-sky-500 rounded-full hover:bg-sky-500 hover:text-white transition-colors">
                 View Details
               </button>
             </div>

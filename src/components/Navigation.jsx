@@ -44,12 +44,12 @@ function Navigation() {
 
         {/* Links (Desktop View) */}
         <div className="hidden md:flex md:items-center md:gap-4 lg:gap-6 xl:gap-8">
-          <Link to="/" className="text-xs md:text-sm lg:text-base xl:text-lg sm:text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem] text-[0.75rem] sm:text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem]">Home</Link>
-          <Link to="/about" className="text-xs md:text-sm lg:text-base xl:text-lg sm:text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem] text-[0.75rem] sm:text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem]">About </Link>
-          <Link to="/destiny" className="text-xs md:text-sm lg:text-base xl:text-lg sm:text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem] text-[0.75rem] sm:text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem]">Destination</Link>
-          <Link to="/service" className="text-xs md:text-sm lg:text-base xl:text-lg sm:text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem] text-[0.75rem] sm:text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem]">Service</Link>
-          <Link to="/products" className="text-xs md:text-sm lg:text-base xl:text-lg sm:text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem] text-[0.75rem] sm:text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem]">Products</Link>
-          <Link to="/contact" className="text-xs md:text-sm lg:text-base xl:text-lg sm:text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem] text-[0.75rem] sm:text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem]">Contact </Link>
+          <Link to="/" className="text-xs md:text-sm lg:text-base xl:text-lg sm:text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem] text-[0.75rem] ">Home</Link>
+          <Link to="/about" className="text-xs md:text-sm lg:text-base xl:text-lg sm:text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem] text-[0.75rem] ">About </Link>
+          <Link to="/destiny" className="text-xs md:text-sm lg:text-base xl:text-lg sm:text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem] text-[0.75rem] ">Destination</Link>
+          <Link to="/service" className="text-xs md:text-sm lg:text-base xl:text-lg sm:text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem] text-[0.75rem] ">Service</Link>
+          <Link to="/products" className="text-xs md:text-sm lg:text-base xl:text-lg sm:text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem] text-[0.75rem] ">Products</Link>
+          <Link to="/contact" className="text-xs md:text-sm lg:text-base xl:text-lg sm:text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem] text-[0.75rem]">Contact </Link>
         </div>
 
         {/* User Actions */}
