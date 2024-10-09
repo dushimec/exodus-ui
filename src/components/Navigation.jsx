@@ -212,12 +212,12 @@ function Navigation() {
         </div>
 
         <div className="hidden md:flex md:items-center md:gap-4 lg:gap-6 xl:gap-8">
-          <Link to="/" className="text-xs md:text-sm lg:text-base xl:text-lg">{t('navigation.home')}</Link>
-          <Link to="/about" className="text-xs md:text-sm lg:text-base xl:text-lg">{t('navigation.about')}</Link>
-          <Link to="/destiny" className="text-xs md:text-sm lg:text-base xl:text-lg">{t('navigation.destination')}</Link>
-          <Link to="/service" className="text-xs md:text-sm lg:text-base xl:text-lg">{t('navigation.service')}</Link>
-          <Link to="/products" className="text-xs md:text-sm lg:text-base xl:text-lg">{t('navigation.products')}</Link>
-          <Link to="/contact" className="text-xs md:text-sm lg:text-base xl:text-lg">{t('navigation.contact')}</Link>
+          <Link to="/" className="text-[10px] md:text-[13px] lg:text-base xl:text-[15px] hover:underline">{t('navigation.home')}</Link>
+          <Link to="/about" className="text-[10px] md:text-[13px] lg:text-base xl:text-[15px] hover:underline">{t('navigation.about')}</Link>
+          <Link to="/destiny" className="text-[10px] md:text-[13px] lg:text-base xl:text-[15px] hover:underline">{t('navigation.destination')}</Link>
+          <Link to="/service" className="text-[10px] md:text-[13px]lg:text-base xl:text-[15px] hover:underline">{t('navigation.service')}</Link>
+          <Link to="/products" className="text-[10px] md:text-[13px] lg:text-base xl:text-[15px] hover:underline">{t('navigation.products')}</Link>
+          <Link to="/contact" className="text-[10px] md:text-[13px] lg:text-base xl:text-[15px] hover:underline">{t('navigation.contact')}</Link>
         </div>
 
         <div className="hidden md:flex gap-2 items-center text-white lg:gap-3 xl:gap-4">
@@ -228,9 +228,9 @@ function Navigation() {
               alt="Login icon"
               className="object-contain shrink-0 aspect-square w-[18px] md:w-[20px] lg:w-[22px] xl:w-[25px]"
             />
-            <Link to="/login" className="text-xs md:text-sm lg:text-base xl:text-lg">{t('navigation.login')}</Link>
+            <Link to="/login" className="text-[10px] md:text-[13px] lg:text-base xl:text-[15px] hover:underline">{t('navigation.login')}</Link>
             <span>|</span>
-            <Link to="/signup" className="text-xs md:text-sm lg:text-base xl:text-lg">{t('navigation.signup')}</Link>
+            <Link to="/signup" className="text-[10px] md:text-[13px] lg:text-base xl:text-[15px] hover:underline">{t('navigation.signup')}</Link>
           </div>
 
           <div className="relative flex gap-1 items-center">

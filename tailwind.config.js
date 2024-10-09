@@ -25,6 +25,9 @@ export default {
         'md': '769px',        // Existing custom medium breakpoint
         'md-custom': '770px', // New custom breakpoint for 770px
       },
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'], // Add Poppins font
+      },
     },
   },
   plugins: [],

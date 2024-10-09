@@ -1,6 +1,6 @@
 {
   "navigation": {
-    "home": "Urugo",
+    "home": "Ahabanza",
     "about": "Aho dukorera",
     "destination": "Ahantu",
     "service": "Serivisi",
@@ -14,7 +14,7 @@
     }
   },
   "hero": {
-    "title": "Inzira yawe ku byishimo bitazibagirana ku isi!",
+    "title": "Irembo rikugeza ku byishimo bitibagirana k'isi",
     "subtitle": "Menya isi hamwe na Exodus: Umufatanyabikorwa wawe mu ngendo!",
     "exploreButton": "Sura hano",
     "findTour": "Shaka urugendo hakurikijwe ahantu",
@@ -25,14 +25,14 @@
     }
   },
   "whyChooseUs": {
-    "title": "KUKI UDUHITAMO?",
-    "description": "Izina ry'ikimenyetso ushobora kwizera no kuzariraho",
-    "guarantee": "Icyizere cy'ibiciro bihendutse",
-    "destinations": "Ubwoko bwinshi bw'ahantu",
-    "service": "Serivisi zifite ubumenyi buhanitse"
+    "title": "KUKI WADUHITAMO?",
+    "description": "Turi abo kwizerwa, kuduhitamo n'icyemezo utakwicuza ",
+    "guarantee": "Ibiciro byiza kandi binogeye buri wese",
+    "destinations": "Ahantu heza kandi henshi wasura",
+    "service": "Serivisi nziza niyo ntego yacu"
   },
   "popularTourPackages": {
-    "title": "Ibipaki by'ingendo bikundwa"
+    "title": "Ahantu hasurwa cyane"
   },
   "about": {
     "title": "Ibyerekeye Old Fox Company",
@@ -76,5 +76,52 @@
   "footer": {
     "description": "Sura isi hamwe na Exodus: Umufatanyabikorwa wawe wizewe mu ngendo!",
     "copyright": "©2024 Exodus. Uburenganzira bwose burabitswe."
+  },
+  "login": {
+    "title": "INJIRA",
+    "subtitle": "Injira muri konti yawe",
+    "email_label": "Imeli",
+    "password_label": "Ijambo ry'ibanga",
+    "login_button": "Injira",
+    "forgot_password": "Wibagiwe ijambo ry'ibanga?",
+    "new_user": "Uracyari mushya?",
+    "create_account": "Kora konti"
+  },
+  "products": {
+    "header": "Ibicuruzwa",
+    "images": {
+      "product1": "Igicuruzwa cya 1",
+      "product2": "Igicuruzwa cya 2",
+      "product3": "Igicuruzwa cya 3",
+      "product4": "Igicuruzwa cya 4",
+      "product5": "Igicuruzwa cya 5",
+      "product6": "Igicuruzwa cya 6",
+      "product7": "Igicuruzwa cya 7",
+      "product8": "Igicuruzwa cya 8",
+      "product9": "Igicuruzwa cya 9",
+      "product10": "Igicuruzwa cya 10"
+    }
+  },
+  "searchBar": {
+    "placeholder": "Shakisha Urugendo hano ........",
+    "label": "Shakisha Urugendo"
+  },
+  "service": {
+    "title": "Serivisi",
+    "ourServices": "Serivisi zacu",
+    "joinAdventures": "Twifatanye mu bumenyi n'inkuru",
+    "exploreDiverse": "\"Menya ahantu hatandukanye hahagaze ku muco no kwizera,\nbigaragaza umuco n'ubusabane.\"",
+    "customDestinations": "Aho ushobora kwihitiramo",
+    "selfGuide": "Kwigenera inzira"
+  },
+  "signup": {
+    "register": "KWANDIKA",
+    "createAccount": "Kora konti yawe",
+    "names": "Amazina",
+    "email": "Imeli",
+    "password": "Ijambo ry'ibanga",
+    "uploadPhoto": "Ohereza ifoto",
+    "registerButton": "Andika",
+    "alreadyHaveAccount": "Urakoze konti?"
   }
 }

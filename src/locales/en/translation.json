@@ -77,7 +77,53 @@
   "footer": {
     "description": "Discover the world with Exodus: Your trusted travel adventure partner!",
     "copyright": "©2024 Exodus. All rights reserved."
+  },
+  "login": {
+    "title": "LOGIN",
+    "subtitle": "Log into your account",
+    "email_label": "Email",
+    "password_label": "Password",
+    "login_button": "Login",
+    "forgot_password": "Forgot password?",
+    "new_user": "New user?",
+    "create_account": "Create account"
+  },
+  "products": {
+    "header": "Products",
+    "images": {
+      "product1": "Product 1",
+      "product2": "Product 2",
+      "product3": "Product 3",
+      "product4": "Product 4",
+      "product5": "Product 5",
+      "product6": "Product 6",
+      "product7": "Product 7",
+      "product8": "Product 8",
+      "product9": "Product 9",
+      "product10": "Product 10"
+    }
+  },
+  "searchBar": {
+    "placeholder": "Search Trip here ........",
+    "label": "Search Trip"
+  },
+  "service": {
+    "title": "Services",
+    "ourServices": "Our services",
+    "joinAdventures": "Join the adventures\nwith stories",
+    "exploreDiverse": "\"Explore diverse religious landmarks and spiritual experiences,\nshowcasing rich cultural heritage and traditions.\"",
+    "customDestinations": "Custom destinations",
+    "selfGuide": "Self guide"
+  },
+  "signup": {
+    "register": "REGISTER",
+    "createAccount": "create your account",
+    "names": "Names",
+    "email": "Email",
+    "password": "Password",
+    "uploadPhoto": "Upload Photo",
+    "registerButton": "Register",
+    "alreadyHaveAccount": "Already have an account?"
   }
-  
   
 }
