@@ -11,8 +11,8 @@ function Destiny() {
             className="object-cover absolute inset-0 size-full"
           />
           <div className="flex relative flex-col max-w-full w-[416px]">
-            <div className="self-center text-4xl font-bold">DESTINATIONS</div>
-            <div className="mt-10 text-3xl max-md:mt-10">
+            <div className="self-center text-4xl font-bold px-16 py-6 -mb-9  max-w-full border-white border-solid bg-zinc-300 bg-opacity-0 border-[10px] w-[496px] max-md:px-5 max-md:mb-2.5">DESTINATIONS</div>
+            <div className="mt-20 flex flex-row justify-center  max-md:mt-10">
               Explore tour by destinations
             </div>
           </div>
@@ -30,19 +30,29 @@ function Destiny() {
         <div className="flex relative shrink-0 h-[288px] max-md:max-w-full" />
       </div>
     </div>
-    <div className="flex flex-col ml-5 w-5/12 max-md:ml-0 max-md:w-full"> {/* Changed from w-6/12 to w-5/12 */}
-      <img
-        loading="lazy"
-        srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/a6f3480c81274d3fc5b27e53fa8ba11235679978c2d207afcb03ef43152f0183?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/a6f3480c81274d3fc5b27e53fa8ba11235679978c2d207afcb03ef43152f0183?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/a6f3480c81274d3fc5b27e53fa8ba11235679978c2d207afcb03ef43152f0183?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/a6f3480c81274d3fc5b27e53fa8ba11235679978c2d207afcb03ef43152f0183?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=600 600w"
-        className="object-contain grow w-full max-md:mt-10 max-md:max-w-full" // Limited width and kept aspect ratio
-      />
-    </div>
+    <div className="relative group w-5/12 max-md:ml-0 max-md:w-full h-96 overflow-hidden bg-cover bg-center transition-all duration-300"
+     style={{
+       backgroundImage: "url('https://cdn.builder.io/api/v1/image/assets/TEMP/a6f3480c81274d3fc5b27e53fa8ba11235679978c2d207afcb03ef43152f0183?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497')"
+     }}>
+  {/* Overlay */}
+  <div className="absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 bg-black bg-opacity-0 group-hover:bg-opacity-70">
+    {/* Text description */}
+    <h3 className="text-white text-2xl transform scale-100 transition-transform duration-300 opacity-0 group-hover:opacity-100 group-hover:scale-125 mb-4">
+      Tel Aviv’s unique charm
+    </h3>
+
+    {/* Button */}
+    <a href="/details"
+       className="text-white bg-blue-500 py-2 px-4 rounded-full opacity-0 transform transition-transform duration-300 scale-100 group-hover:opacity-100 group-hover:scale-125">
+      View Details
+    </a>
   </div>
 </div>
 
 
-
-        <div className="mt-28 ml-5 w-full max-w-[1097px] max-md:mt-10 max-md:max-w-full">
+</div>
+</div>
+ <div className="mt-28 ml-5 w-full max-w-[1097px] max-md:mt-10 max-md:max-w-full">
           <div className="flex gap-28 max-md:flex-col">
             <div className="flex flex-col  w-5/12 max-md:ml-0 max-md:w-full">
               <div className="flex relative flex-col grow px-px mt-1.5 min-h-[288px] max-md:mt-10 max-md:max-w-full">

@@ -15,6 +15,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 
 import Destiny from './components/Destiny';
+import Details from './components/Details';
 
 
 
@@ -47,6 +48,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/destiny" element={<Destiny />} />
+            <Route path="/detail" element={<Details />} />
           </Routes>
         </div>
 
