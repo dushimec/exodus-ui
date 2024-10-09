@@ -101,7 +101,7 @@ function DestinationCard({ name, country, price, likes, image }) {
             <div className="flex justify-end mt-2">
 
               {/* <button className="px-3 py-2 text-sm text-sky-500 border border-sky-500 rounded-full hover:bg-sky-500 hover:text-white transition-colors"> */}
-=======
+
               <Link to='/detail'><button className="ml-7 px-2 py-2 text-sm text-sky-500 border border-sky-500 rounded-full hover:bg-sky-500 hover:text-white transition-colors">
 
                 View Details
