@@ -2,7 +2,7 @@ import React from 'react';
 
 function HowItWorks() {
   return (
-    <section className="flex flex-col lg:flex-row items-center justify-center w-full mt-12 mx-auto mb-12 px-4">
+    <section className="flex flex-row items-center  ml-32 w-full mt-20 mx-auto mb-14 px-4">
       {/* Header section */}
       <div className="text-center mb-6 lg:mb-0 lg:mr-8">
         <h2 className="text-2xl md:text-3xl font-bold text-black">How it works?</h2>
