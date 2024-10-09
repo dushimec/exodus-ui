@@ -1,0 +1,83 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About us",
+    "destination": "Destination",
+    "service": "Service",
+    "products": "Products",
+    "contact": "Contact us",
+    "login": "Login",
+    "signup": "SignUp",
+    "language": {
+      "english": "English",
+      "kinyarwanda": "Kinyarwanda"
+    }
+  },
+  "hero": {
+    "title": "Your global gateway to unforgettable adventures!",
+    "subtitle": "Discover the world with Exodus: Your trusted travel adventure partner!",
+    "exploreButton": "Explore here",
+    "findTour": "Find a tour by destination",
+    "destinations": {
+      "israel": "Israel",
+      "rwanda": "Rwanda",
+      "turkey": "Turkey"
+    }
+  },
+  "whyChooseUs": {
+    "title": "WHY CHOOSE US?",
+    "description": "A brand name you can trust and rely on",
+    "guarantee": "Affordable price guarantee",
+    "destinations": "Wide variety of destinations",
+    "service": "High qualified service"
+  },
+  "popularTourPackages": {
+    "title": "Popular tour packages"
+  },
+  "about": {
+    "title": "About Old Fox Company",
+    "quote": "Adventure awaits!",
+    "experience_title": "Experience Adventure with Old Fox Company",
+    "experience_description_1": "Join us for a journey that promises not only breathtaking views but also spiritual growth. Our faith-based travel experiences cater to individuals, families, and groups seeking a deeper connection with their faith.",
+    "experience_description_2": "With years of experience, we understand the needs of our travelers, offering personalized itineraries that inspire and uplift. Our dedicated team is here to support you every step of the way, ensuring a seamless travel experience filled with joy and enlightenment."
+  },
+  "howItWorks": {
+    "title": "How it works?",
+    "subtitle": "Search, select, book",
+    "search": {
+      "title": "Search",
+      "description": "Find your Dream trip",
+      "alt": "Search Icon"
+    },
+    "select": {
+      "title": "Select",
+      "description": "Select trip packages",
+      "alt": "Select Icon"
+    },
+    "book": {
+      "title": "Book",
+      "description": "Booking and pay",
+      "alt": "Book Icon"
+    }
+  },
+  "contact": {
+    "header": "CONTACT US",
+    "subheader": "Get in touch with us",
+    "phone": "Phone",
+    "phoneLabel": "Phone:",
+    "phoneNumber": "+250788726181",
+    "address": "Address",
+    "addressValue": "Rwanda, Kigali, Kicukiro-Ramera"
+  },
+
+  "destinations": {
+    "title": "Destinations",
+    "explore": "Explore Our Amazing Destinations"
+  },
+  "footer": {
+    "description": "Discover the world with Exodus: Your trusted travel adventure partner!",
+    "copyright": "©2024 Exodus. All rights reserved."
+  }
+  
+  
+}

@@ -1,0 +1,80 @@
+{
+  "navigation": {
+    "home": "Urugo",
+    "about": "Aho dukorera",
+    "destination": "Ahantu",
+    "service": "Serivisi",
+    "products": "Ibicuruzwa",
+    "contact": "Twandikire",
+    "login": "Injira",
+    "signup": "Iyandikishe",
+    "language": {
+      "english": "Icyongereza",
+      "kinyarwanda": "Ikinyarwanda"
+    }
+  },
+  "hero": {
+    "title": "Inzira yawe ku byishimo bitazibagirana ku isi!",
+    "subtitle": "Menya isi hamwe na Exodus: Umufatanyabikorwa wawe mu ngendo!",
+    "exploreButton": "Sura hano",
+    "findTour": "Shaka urugendo hakurikijwe ahantu",
+    "destinations": {
+      "israel": "Israeli",
+      "rwanda": "U Rwanda",
+      "turkey": "Turikiya"
+    }
+  },
+  "whyChooseUs": {
+    "title": "KUKI UDUHITAMO?",
+    "description": "Izina ry'ikimenyetso ushobora kwizera no kuzariraho",
+    "guarantee": "Icyizere cy'ibiciro bihendutse",
+    "destinations": "Ubwoko bwinshi bw'ahantu",
+    "service": "Serivisi zifite ubumenyi buhanitse"
+  },
+  "popularTourPackages": {
+    "title": "Ibipaki by'ingendo bikundwa"
+  },
+  "about": {
+    "title": "Ibyerekeye Old Fox Company",
+    "quote": "Abakunzi b'urugendo bategereje!",
+    "experience_title": "Igisubizo cy'Urugendo na Old Fox Company",
+    "experience_description_1": "Twifatanye mu rugendo rutazibagirana ruzana ibitekerezo byiza ndetse no gukura mu mwuka. Ubufasha bwacu bw'ingendo bwita ku bantu, imiryango, n'amatsinda agashaka umubano urenze usanzwe n'ukwemera kwabo.",
+    "experience_description_2": "Tumaze imyaka myinshi, tuzi ibyo abagenzi bacu bakeneye, duha abakiriya bacu ibihe byihariye by'ingenzi bigezweho. Ikipe yacu ifite umwete ikaba ari hano kugira ngo ikurikirane intambwe zawe zose, ikaguha ubufasha mu rugendo rwuzuye ibyishimo n'ubwenge."
+  },
+  "howItWorks": {
+    "title": "Uko bikorwa?",
+    "subtitle": "Shakisha, hitamo, andika",
+    "search": {
+      "title": "Shakisha",
+      "description": "Shaka urugendo rwawe rw'inzozi",
+      "alt": "Ikoni yo gushakisha"
+    },
+    "select": {
+      "title": "Hitamo",
+      "description": "Hitamo paket yo kugenda",
+      "alt": "Ikoni yo guhitamo"
+    },
+    "book": {
+      "title": "Andika",
+      "description": "Andika no kwishyura",
+      "alt": "Ikoni yo kwandika"
+    }
+  },
+  "contact": {
+    "header": "TWANDIKIRE",
+    "subheader": "Tugane",
+    "phone": "Telefoni",
+    "phoneLabel": "Telefoni:",
+    "phoneNumber": "+250788726181",
+    "address": "Aho turi",
+    "addressValue": "Rwanda, Kigali, Kicukiro-Ramera"
+  },
+  "destinations": {
+    "title": "Ahantu Hameze Neza",
+    "explore": "Sura Ahantu Hameze Neza"
+  },
+  "footer": {
+    "description": "Sura isi hamwe na Exodus: Umufatanyabikorwa wawe wizewe mu ngendo!",
+    "copyright": "©2024 Exodus. Uburenganzira bwose burabitswe."
+  }
+}
