@@ -17,6 +17,8 @@
 
 // export default SearchBar;
 
+
+
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -38,7 +40,7 @@ function SearchBar() {
         id="searchInput"
         type="text"
         placeholder={t('searchBar.placeholder')}
-        className="flex-auto my-auto w-[440px] max-md:max-w-full bg-transparent border-none focus:outline-none"
+        className="flex-auto my-auto w-[440px] max-md:max-w-full bg-transparent border-none focus:outline-none placeholder-gray-300 "
       />
     </form>
   );

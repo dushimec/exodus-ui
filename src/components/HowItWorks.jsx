@@ -74,23 +74,23 @@ function HowItWorks() {
     <section className="flex flex-col lg:flex-row items-center w-full mt-20 mx-auto mb-14 px-4">
       {/* Header section */}
       <div className="text-center mb-4">
-        <h2 className="text-3xl font-bold text-black">{t("howItWorks.title")}</h2>
-        <p className="text-xl text-sky-500">{t("howItWorks.subtitle")}</p>
+        <h2 className="text-lg font-bold text-black">{t("howItWorks.title")}</h2>
+        <p className="text-lg text-center text-sky-500 font-[jim-nightshade]">{t("howItWorks.subtitle")}</p>
       </div>
 
       {/* Steps Section */}
       <div className="flex flex-col lg:flex-row justify-around w-full max-w-6xl">
         {/* Search Section */}
-        <div className="flex flex-row items-center mb-6 lg:mb-0">
+        <div className="flex flex-row items-center  mb-6 lg:mb-0">
           <div className="flex justify-center items-center w-20 h-20 bg-gradient-to-b from-sky-200 to-sky-500 rounded-full mb-4 lg:mb-0">
             <img
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/cbfadebe9d3ad07dd4d5a60b2e12ca344fcc09037b155c51cd713d436f8587d4?placeholderIfAbsent=true&apiKey=6e51f2aa35694a21b29ab869757ebe28"
               alt={t("howItWorks.search.alt")}
-              className="w-10 h-10"
+              className="w-10 h-10 "
             />
           </div>
           <div className='flex flex-col'>
-            <h3 className="text-2xl font-bold text-black">{t("howItWorks.search.title")}</h3>
+            <h3 className="text-xl font-bold text-black">{t("howItWorks.search.title")}</h3>
             <p className="text-lg text-sky-500 font-[inria-serif]">{t("howItWorks.search.description")}</p>
           </div>
         </div>
@@ -105,7 +105,7 @@ function HowItWorks() {
             />
           </div>
           <div className='flex flex-col'>
-            <h3 className="text-2xl font-bold text-black">{t("howItWorks.select.title")}</h3>
+            <h3 className="text-2xl font-bold text-black ">{t("howItWorks.select.title")}</h3>
             <p className="text-lg text-sky-500 font-[inria-serif]">{t("howItWorks.select.description")}</p>
           </div>
         </div>

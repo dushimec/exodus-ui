@@ -129,18 +129,18 @@ function Hero() {
           loading="lazy"
           src={images[currentImage]} // Use the current image
           alt="Background"
-          className="object-cover absolute inset-0 w-full h-full transition-opacity duration-1000" // Ensures the image covers the full container
+          className=" object-cover absolute inset-0 w-full h-full transition-opacity duration-1000" // Ensures the image covers the full container
           style={{ objectFit: 'cover' }} // Ensures the image maintains aspect ratio and fits the container
         />
         <section className="flex relative flex-col items-start px-20 pt-3.5 pb-48 w-full bg-black bg-opacity-30 shadow-[0px_4px_4px_rgba(0,0,0,0.25)] max-md:px-5 max-md:pb-24 max-md:max-w-full">
           <SearchBar />
-          <h1 className="mt-16 ml-24 text-6xl font-semibold max-md:mt-10 max-md:ml-5 max-md:text-4xl">
+          <h1 className="mt-16 ml-24 text-6xl font-semibold max-md:mt-10 max-md:ml-5 max-md:text-4xl text-center">
             {t('hero.title')} {/* Use translation */}
           </h1>
-          <p className="mt-11 ml-28 text-xl max-md:mt-5 max-md:ml-5 max-md:text-lg">
+          <p className="mt-8 ml-[290px] text-gray-100 text-[15px] max-md:mt-5 max-md:ml-5 max-md:text-lg ">
             {t('hero.subtitle')} {/* Use translation */}
           </p>
-          <button className="relative p-2 mt-12 ml-28 max-w-full text-base font-semibold border-2 border-sky-500 rounded-full w-[205px] hover:bg-white hover:text-sky-500 transition duration-300 ease-in-out max-md:mt-10 max-md:mb-2.5 max-md:ml-2.5">
+          <button className="relative p-2 mt-8 ml-[460px]  max-w-full text-base font-semibold border-2 border-sky-500 rounded-full w-[205px] hover:bg-white hover:text-sky-500 transition duration-300 ease-in-out max-md:mt-10 max-md:mb-2.5 max-md:ml-2.5">
             <span className="bg-sky-500 text-white rounded-full w-full h-full flex items-center justify-center py-4 hover:bg-white hover:text-sky-500 transition duration-300 ease-in-out">
               {t('hero.exploreButton')} {/* Use translation */}
             </span>

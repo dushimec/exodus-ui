@@ -240,7 +240,7 @@ function Navigation() {
               alt="Language flag"
               className="w-4 lg:w-5 xl:w-6"
             />
-            <span className="my-auto text-xs md:text-sm lg:text-base xl:text-lg">{selectedLanguage}</span>
+            <span className="my-auto text-[10px] md:text-[13px] lg:text-base xl:text-[14px] ">{selectedLanguage}</span>
             <button onClick={toggleLanguageDropdown}>
               <img
                 loading="lazy"

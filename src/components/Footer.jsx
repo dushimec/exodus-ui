@@ -55,11 +55,11 @@ function Footer() {
   return (
     <footer className="flex flex-col pt-8 w-full bg-sky-600 text-white max-md:mt-8 max-md:max-w-full">
       {/* Upper section of the footer */}
-      <div className="flex flex-wrap gap-20 items-start px-8 w-full max-w-[1133px] max-md:px-5 max-md:max-w-full">
+      <div className="flex flex-col-3 gap-20 items-start px-8 w-full max-w-[1133px] max-md:px-5 max-md:max-w-full">
         {/* Logo and company description */}
         <div className="flex-auto max-md:max-w-full">
           <div className="flex gap-4 max-md:flex-col">
-            <div className="flex flex-col w-[60%] max-md:w-full">
+            <div className="flex flex-col w-[50%] max-md:w-full">
               <div className="flex flex-col text-lg font-semibold max-md:mt-8 max-md:max-w-full">
                 <img
                   loading="lazy"
@@ -67,7 +67,7 @@ function Footer() {
                   alt="Company logo"
                   className="object-contain rounded-full w-[120px] max-md:w-[100px]"
                 />
-                <p className="mt-12 text-md leading-5 max-md:mt-6">
+                <p className="mt-12 text-[13px] leading- max-md:mt-6">
                   {t('footer.description')} {/* Translate this string */}
                 </p>
               </div>

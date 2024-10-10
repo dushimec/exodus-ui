@@ -109,13 +109,13 @@ function PopularTourPackages() {
 
   return (
     <section className="flex flex-col px-14 mt-14 w-full max-md:px-5 max-md:mt-10 max-md:max-w-full">
-      <h2 className="self-start ml-28 text-4xl text-black max-md:ml-2.5 font-[inria-serif]">
+      <h2 className="self-center font-bold text-4xl text-blue-500 max-md:ml-2.5 font-[inria-serif]  ">
         {t('popularTourPackages.title')}
       </h2>
 
-      <div className="relative mt-20 w-full max-md:mt-10 max-md:max-w-full">
+      <div className="relative mt-2 w-full max-md:mt-10 max-md:max-w-full">
         {/* Adjust margin-top based on your navbar height */}
-        <div className="flex justify-center items-center max-md:flex-col mt-16">
+        <div className="flex justify-center items-center max-md:flex-col mt-6">
           {/* Left Arrow */}
           <button
             onClick={prevSlide}
@@ -126,14 +126,14 @@ function PopularTourPackages() {
           </button>
 
           {/* Image Container */}
-          <div className="flex justify-between w-full">
+          <div className="flex justify-between w-full ">
             {images.slice(currentIndex, currentIndex + 3).map((image, index) => (
               <div key={index} className="flex flex-col bg-white shadow-[0px_100px_80px_rgba(0,0,0,0.07)] w-[30%] mx-2">
-                <img
+                <img 
                   loading="lazy"
                   src={image}
                   alt={`Popular tour package ${currentIndex + index + 1}`}
-                  className="object-contain w-full h-[400px] aspect-[1.37]"
+                  className="object-contain w-full h-[400px] aspect-[1.37] "
                 />
               </div>
             ))}
