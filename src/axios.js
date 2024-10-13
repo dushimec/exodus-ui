@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 
 const instance = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
+  withCredentials: true, 
 });
 
 instance.interceptors.request.use(
@@ -14,7 +15,7 @@ instance.interceptors.request.use(
     return config;
   },
   (error) => {
-    return Promise.reject(error);
+    return Promise.reject(error); 
   }
 );
 
