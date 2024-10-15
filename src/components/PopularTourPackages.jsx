@@ -14,11 +14,11 @@ function PopularTourPackages() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 3 : prevIndex - 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
   };
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === images.length - 3 ? 0 : prevIndex + 1));
+    setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
   };
 
   useEffect(() => {
@@ -29,42 +29,42 @@ function PopularTourPackages() {
   }, [currentIndex]);
 
   return (
-    <section className="flex flex-col px-14 mt-14 w-full max-md:px-5 max-md:mt-10 max-md:max-w-full">
-      <h2 className="self-start ml-28 text-4xl text-black max-md:ml-2.5 font-[inria-serif]">Popular tour packages</h2>
+    <section className="flex flex-col px-10 mt-12 w-full max-md:px-5 max-md:mt-8">
+      <h2 className="self-start ml-24 text-3xl text-black font-[inria-serif] max-md:ml-2.5 max-md:text-2xl">
+        Popular tour packages
+      </h2>
 
-      <div className="relative mt-20 w-full max-md:mt-10 max-md:max-w-full">
-        {/* Adjust margin-top based on your navbar height */}
-        <div className="flex justify-center items-center max-md:flex-col mt-16">
+      <div className="relative mt-14 w-full max-md:mt-8">
+        <div className="flex justify-center items-center">
           {/* Left Arrow */}
           <button
             onClick={prevSlide}
-            className="absolute left-4 z-30 bg-blue-500 p-2 rounded-full shadow-lg focus:outline-none hover:bg-blue-700"
-            style={{ top: '50%', transform: 'translateY(-50%)' }} // Center the button vertically
+            className="absolute left-2 z-30 bg-blue-500 p-1.5 rounded-full shadow-lg focus:outline-none hover:bg-blue-700 max-md:left-1 max-md:p-1"
+            style={{ top: '50%', transform: 'translateY(-50%)' }}
           >
-            <FiChevronLeft className="text-white text-3xl" />
+            <FiChevronLeft className="text-white text-2xl max-md:text-xl" />
           </button>
 
           {/* Image Container */}
-          <div className="flex justify-between w-full">
-            {images.slice(currentIndex, currentIndex + 3).map((image, index) => (
-              <div key={index} className="flex flex-col bg-white shadow-[0px_100px_80px_rgba(0,0,0,0.07)] w-[30%] mx-2">
-                <img
-                  loading="lazy"
-                  src={image}
-                  alt={`Popular tour package ${currentIndex + index + 1}`}
-                  className="object-contain w-full h-[400px] aspect-[1.37]"
-                />
-              </div>
-            ))}
+          <div className="w-full flex justify-center items-center">
+            <div className="flex flex-col bg-white shadow-md w-[80%] max-md:w-[90%] max-md:mx-auto max-md:mb-4">
+              {/* Display only one image on small devices */}
+              <img
+                loading="lazy"
+                src={images[currentIndex]}
+                alt={`Popular tour package ${currentIndex + 1}`}
+                className="object-cover w-full h-[350px] max-md:h-[250px]"
+              />
+            </div>
           </div>
 
           {/* Right Arrow */}
           <button
             onClick={nextSlide}
-            className="absolute right-4 z-30 bg-blue-500 p-2 rounded-full shadow-lg focus:outline-none hover:bg-blue-700"
-            style={{ top: '50%', transform: 'translateY(-50%)' }} // Center the button vertically
+            className="absolute right-2 z-30 bg-blue-500 p-1.5 rounded-full shadow-lg focus:outline-none hover:bg-blue-700 max-md:right-1 max-md:p-1"
+            style={{ top: '50%', transform: 'translateY(-50%)' }}
           >
-            <FiChevronRight className="text-white text-3xl" />
+            <FiChevronRight className="text-white text-2xl max-md:text-xl" />
           </button>
         </div>
       </div>

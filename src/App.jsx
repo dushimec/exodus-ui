@@ -13,10 +13,13 @@ import Service from './components/Service';
 import Products from './components/Products';
 import Login from './components/Login';
 import Signup from './components/Signup';
-
-import Destiny from './components/Destiny';
-import Details from './components/Details';
-
+import Destiny from './components/Destiny';  
+import TurkeyDetails from './components/TurkeyDetails';
+import RwandaDetails from './components/RwandaDetails';
+import EgyptDetails from './components/EgyptDetails';
+import JerusalemDetails from './components/JerusalemDetails';
+import Admin from './components/admin';
+import Dashboard from './components/Dashbord';
 
 
 function App() {
@@ -46,9 +49,14 @@ function App() {
             <Route path="/service" element={<Service />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/admin" element={<Admin />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/destiny" element={<Destiny />} />
-            <Route path="/detail" element={<Details />} />
+            <Route path="/dashbord" element={<Dashboard />} />
+            <Route path="/TurkeyDetails" element={<TurkeyDetails />} />
+            <Route path="/RwandaDetails" element={<RwandaDetails />} />
+            <Route path="/EgyptDetails" element={<EgyptDetails />} />
+            <Route path="/JerusalemDetails" element={<JerusalemDetails />} />
           </Routes>
         </div>
 
