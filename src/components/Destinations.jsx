@@ -2,7 +2,6 @@ import { useState } from "react";
 import { FaHeart, FaDollarSign, FaGlobe, FaComment } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-
 function Destinations() {
   const destinations = [
     {
@@ -64,7 +63,8 @@ function DestinationCard({ name, country, price, likes, image, link }) {
   };
 
   return (
-    <article className="flex flex-col w-full sm:w-1/2 md:w-2/3 lg:w-2/3 xl:w-1/3 p-4">
+    // Increase card size for 640px-768px using sm:w-2/3
+    <article className="flex flex-col w-full sm:w-2/3 md:w-2/3 lg:w-2/3 xl:w-1/3 p-4">
       <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105 duration-300">
         <img
           src={image}
