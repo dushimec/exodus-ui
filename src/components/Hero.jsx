@@ -29,16 +29,17 @@ function Hero() {
         />
         <section className="flex relative flex-col items-start px-20 pt-3.5 pb-48 w-full bg-black bg-opacity-30 shadow-[0px_4px_4px_rgba(0,0,0,0.25)] max-md:px-5 max-md:pb-24">
           {/* Search Bar */}
-          <form className="flex items-center gap-2 self-center px-4 py-7 mt-48 ml-0 max-w-full text-base bg-sky-500 rounded-[42px] shadow-[0px_100px_80px_rgba(0,0,0,0.07)] text-white w-[544px] max-md:w-[220px] max-md:gap-1 max-md:px-1 max-md:py-1 max-md:mt-8">
-            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ea35eaf051f9ad399b72b79aaf651b9da381c7d1199841db6349f9a5aa1fbeb6?placeholderIfAbsent=true&apiKey=6e51f2aa35694a21b29ab869757ebe28" alt="search icon" className="object-contain w-[20px] h-[20px]" />
-            <label htmlFor="searchInput" className="sr-only">Search Trip</label>
-            <input
-              id="searchInput"
-              type="text"
-              placeholder="Search Trip here ........ "
-              className="flex-auto my-auto w-full  text-white bg-transparent border-none focus:outline-none text-sm max-md:text-xs"
-            />
-          </form>
+          <form className="flex items-center gap-2 self-center px-4 py-7 mt-48 ml-0 max-w-full text-base bg-sky-500 rounded-[42px] shadow-[0px_100px_80px_rgba(0,0,0,0.07)] text-white w-[544px] max-md:w-[220px] max-md:gap-1 max-md:px-1 max-md:py-1 max-md:mt-12 max-sm:self-start max-sm:ml-4">
+  <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ea35eaf051f9ad399b72b79aaf651b9da381c7d1199841db6349f9a5aa1fbeb6?placeholderIfAbsent=true&apiKey=6e51f2aa35694a21b29ab869757ebe28" alt="search icon" className="object-contain w-[20px] h-[20px]" />
+  <label htmlFor="searchInput" className="sr-only">Search Trip</label>
+  <input
+    id="searchInput"
+    type="text"
+    placeholder="Search Trip here ........ "
+    className="flex-auto my-auto w-full text-white bg-transparent border-none focus:outline-none text-sm max-md:text-xs"
+  />
+</form>
+
 
           <h1 className="mt-16 ml-24 text-6xl font-semibold max-md:mt-10 max-md:ml-5 max-md:text-4xl">
             Your global gateway to unforgettable adventures!
@@ -53,10 +54,11 @@ function Hero() {
           </button>
         </section>
       </div>
+
       <section className="flex flex-col items-center text-center mt-10">
-  <div className="flex items-center justify-center w-full flex-wrap">
+  <div className="flex flex-col sm:flex-row items-center justify-center w-full">
     <div className="mt-4 w-48 border-4 border-sky-500 border-solid min-h-[4px] max-md:w-32" />
-    <h2 className="text-4xl font-[jim-nightshade] text-black mx-2 max-md:text-3xl">
+    <h2 className="text-4xl font-[jim-nightshade] text-black mx-2 max-md:text-2xl mt-4 sm:mt-0">
       Find a tour by destination
     </h2>
     <div className="mt-4 w-48 border-4 border-sky-500 border-solid min-h-[4px] max-md:w-32" />
@@ -81,7 +83,7 @@ function Hero() {
       label: "Turkey"
     }
   ].map(({ src, alt, label }, index) => (
-    <div key={index} className="relative w-[200px] h-[200px] max-md:w-[120px] max-md:h-[120px] max-md:mb-5">
+    <div key={index} className="relative w-[200px] h-[200px] max-md:w-[150px] max-md:h-[150px] max-sm:w-[180px] max-sm:h-[180px] max-md:mb-5">
       <img
         loading="lazy"
         src={src}
