@@ -1,8 +1,10 @@
+
 import { useState, useEffect, useRef } from "react";
 import { Search, ChevronLeft, ChevronRight } from "lucide-react";
 import KigaliImage from "../IMAGE/kgl.jpg";
 import Havan from "../IMAGE/havana.jpg";
 import Turkey from "../IMAGE/tukey.jpg";
+
 
 const upcomingTrips = [
   { id: 1, title: "Kings Palace Museum", image: KigaliImage },
@@ -61,9 +63,12 @@ export default function TravelHero() {
           <h1
             ref={titleRef}
             className={`text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-6 lg:mb-10 leading-tight text-center lg:text-left transition-opacity duration-1000 ${
+
+
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10"
+
             }`}
           >
             Your global gateway to unforgettable adventures!
@@ -152,3 +157,4 @@ export default function TravelHero() {
     </div>
   );
 }
+
