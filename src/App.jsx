@@ -19,6 +19,10 @@ import TurkeyDetails from './components/TurkeyDetails';
 import RwandaDetails from './components/RwandaDetails';
 import EgyptDetails from './components/EgyptDetails';
 import JerusalemDetails from './components/JerusalemDetails';
+import ForgotPassword from './components/ForgotPassword';
+import ResetPassword from './components/ResetPasword';
+import AdminDashboard from './components/AdminDashboard';
+import AddNewTrip from './components/AddNewTrip';
 
 
 
@@ -55,6 +59,12 @@ function App() {
             <Route path="/RwandaDetails" element={<RwandaDetails />} />
             <Route path="/EgyptDetails" element={<EgyptDetails />} />
             <Route path="/JerusalemDetails" element={<JerusalemDetails />} />
+
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
+            <Route path="/dashboard" element={<AdminDashboard />} />
+            <Route path="/new-trip" element={<AddNewTrip />} />
+
           </Routes>
         </div>
 
