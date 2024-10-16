@@ -23,6 +23,7 @@ import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPasword';
 import Admin from './components/Admin';
 import AdminDashboard from './components/Dashboard';
+import Tour from './components/Tour';
 
 
 
@@ -42,6 +43,7 @@ function App() {
             <Route path="/" element={
               <>
                 <Hero />
+                <Tour/>
                 <Destinations />
                 <WhyChooseUs />
                 <PopularTourPackages />

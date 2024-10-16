@@ -118,6 +118,9 @@ export default function TravelHero() {
           </div>
         </div>
       </div>
+      
     </div>
+
+    
   );
 }
