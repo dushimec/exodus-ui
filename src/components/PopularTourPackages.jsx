@@ -12,13 +12,34 @@ function PopularTourPackages() {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [displayCount, setDisplayCount] = useState(1); // Controls the number of images to display
+
+  // Handle window resize to update display count
+  useEffect(() => {
+    const updateDisplayCount = () => {
+      if (window.innerWidth >= 1024) {
+        setDisplayCount(3); // Show 3 images on large devices
+      } else if (window.innerWidth >= 768) {
+        setDisplayCount(2); // Show 2 images on medium devices
+      } else {
+        setDisplayCount(1); // Show 1 image on small devices
+      }
+    };
+    updateDisplayCount();
+    window.addEventListener('resize', updateDisplayCount);
+    return () => window.removeEventListener('resize', updateDisplayCount);
+  }, []);
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - displayCount : prevIndex - 1
+    );
   };
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+    setCurrentIndex((prevIndex) =>
+      prevIndex + displayCount >= images.length ? 0 : prevIndex + 1
+    );
   };
 
   useEffect(() => {
@@ -26,7 +47,7 @@ function PopularTourPackages() {
       nextSlide();
     }, 3000);
     return () => clearInterval(intervalId);
-  }, [currentIndex]);
+  }, [currentIndex, displayCount]);
 
   return (
     <section className="flex flex-col px-10 mt-12 w-full max-md:px-5 max-md:mt-8">
@@ -47,14 +68,17 @@ function PopularTourPackages() {
 
           {/* Image Container */}
           <div className="w-full flex justify-center items-center">
-            <div className="flex flex-col bg-white shadow-md w-[80%] max-md:w-[90%] max-md:mx-auto max-md:mb-4">
-              {/* Display only one image on small devices */}
-              <img
-                loading="lazy"
-                src={images[currentIndex]}
-                alt={`Popular tour package ${currentIndex + 1}`}
-                className="object-cover w-full h-[350px] max-md:h-[250px]"
-              />
+            <div className="grid grid-cols-1 gap-4 max-md:w-[90%] md:grid-cols-2 lg:grid-cols-3">
+              {/* Show the required number of images based on displayCount */}
+              {images.slice(currentIndex, currentIndex + displayCount).map((image, index) => (
+                <img
+                  key={index}
+                  loading="lazy"
+                  src={image}
+                  alt={`Popular tour package ${currentIndex + index + 1}`}
+                  className="object-cover w-full h-[350px] max-md:h-[250px]"
+                />
+              ))}
             </div>
           </div>
 
