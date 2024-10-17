@@ -22,12 +22,14 @@ import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPasword';
 
 
+
 import Admin from './components/Admin';
 import AdminDashboard from './components/Dashboard';
 
 
 import { AuthProvider } from './context/authContext'; // Adjust path
 import PrivateRoute from './components/PrivateRoute'; // Adjust path
+
 import Tour from './components/Tour';
 import 'aos/dist/aos.css';
 
