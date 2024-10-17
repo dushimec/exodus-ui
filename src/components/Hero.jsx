@@ -119,6 +119,7 @@ export default function TravelHero() {
         </div>
       </div>
 
+
       {/* <div className='bg-white'>
       <section className="flex flex-col items-center text-center mt-10">
   <div className="flex flex-col sm:flex-row items-center justify-center w-full">
@@ -164,6 +165,9 @@ export default function TravelHero() {
 
       <div className="mt-16 w-full border-4 border-sky-500 border-solid min-h-[4px] max-md:mt-10 max-md:max-w-full" />
 </div> */}
+
     </div>
+
+    
   );
 }

@@ -21,6 +21,10 @@ import EgyptDetails from './components/EgyptDetails';
 import JerusalemDetails from './components/JerusalemDetails';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPasword';
+
+import Admin from './components/Admin';
+import AdminDashboard from './components/Dashboard';
+
 import Tour from './components/Tour';
 
 
@@ -61,6 +65,8 @@ function App() {
             <Route path="/JerusalemDetails" element={<JerusalemDetails />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<ResetPassword />} />
+            <Route path="/admin-login" element={<Admin />} />
+            <Route path="/admin-dashboard" element={<AdminDashboard />} />
           </Routes>
         </div>
 
