@@ -1,8 +1,12 @@
+
+
+
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../slices/authSlice"; // Import login action
+import { useTranslation } from "react-i18next";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -11,6 +15,7 @@ function Login() {
   const [notification, setNotification] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -20,7 +25,7 @@ function Login() {
 
     try {
       await dispatch(login({ email, password })).unwrap(); // Dispatch login action
-      setNotification("Login successful!");
+      setNotification(t("login.successMessage")); // "Login successful!" message
       navigate("/"); // Redirect on successful login
     } catch (err) {
       if (err.response && err.response.data && err.response.data.message) {
@@ -40,10 +45,12 @@ function Login() {
           className="flex flex-col max-w-full w-[300px]"
           onSubmit={handleSubmit}
         >
-          <div className="self-center text-2xl font-bold text-white">LOGIN</div>
+          <div className="self-center text-2xl font-bold text-white">
+            {t("login.title")} {/* "LOGIN" */}
+          </div>
           <div className="shrink-0 self-center mt-1 border-sky-500 border-solid border-[1px] h-[3px] w-[70px]" />
           <div className="self-center mt-5 text-sm font-semibold text-white max-md:mt-5">
-            Log into your account
+            {t("login.subtitle")} {/* "Log into your account" */}
           </div>
           {/* Email Input */}
           <div className="flex flex-col mt-10 relative">
@@ -56,7 +63,7 @@ function Login() {
               required
             />
             <label className="absolute text-gray-300 text-sm transition-all duration-200 origin-left">
-              Email
+              {t("login.emailLabel")} {/* "Email" */}
             </label>
           </div>
           {/* Password Input */}
@@ -70,7 +77,7 @@ function Login() {
               required
             />
             <label className="absolute text-gray-300 text-sm transition-all duration-200 origin-left">
-              Password
+              {t("login.passwordLabel")} {/* "Password" */}
             </label>
             <div
               className="absolute right-0 transform -translate-y-1/2 cursor-pointer"
@@ -91,24 +98,24 @@ function Login() {
             }`}
             disabled={loading}
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading ? t("login.loggingIn") : t("login.loginButton")}
+            {/* "Logging in..." : "Login" */}
           </button>
           {/* Display Notification */}
           {notification && (
             <div className="text-red-500 mt-4">{notification}</div>
-          )}{" "}
-          {/* Fixed error state */}
+          )}
           {/* Forgot Password Link */}
           <div className="text-white text-xs text-center mt-4">
             <Link to="/forgot-password" className="text-sky-500 cursor-pointer">
-              Forgot Password?
+              {t("login.forgotPassword")} {/* "Forgot Password?" */}
             </Link>
           </div>
           {/* Don't have an account yet? */}
           <div className="flex justify-between items-center ml-10 mt-6 max-w-full w-[200px] max-md:mt-5 text-xs">
-            <div className="text-white">Don't have an account?</div>
+            <div className="text-white">{t("login.noAccount")}</div>
             <Link to="/signup" className="text-sky-500 cursor-pointer">
-              Sign Up
+              {t("login.signupLink")} {/* "Sign Up" */}
             </Link>
           </div>
         </form>

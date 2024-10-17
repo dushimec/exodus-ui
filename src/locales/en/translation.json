@@ -1,0 +1,107 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "destination": "Destination",
+    "service": "Service",
+    "products": "Products",
+    "contact": "Contact",
+    "login": "Login",
+    "signup": "Sign Up",
+    "profile": "Profile",
+    "logout": "Logout",
+    "languages": {
+      "en": "EN",
+      "kiny": "Kiny"
+    }
+  },
+  "travelHero": {
+    "heading": "Your global gateway to unforgettable adventures!",
+    "exploreButton": "Explore here",
+    "searchPlaceholder": "Search Trip here ...",
+    "upcomingTrip": "Upcoming Trip",
+    "upcomingTrips": {
+      "trip1": "Kings Palace Museum",
+      "trip2": "Mountain Expedition",
+      "trip3": "Turkey"
+    }
+  },
+  "whyChooseUs": {
+    "title": "WHY CHOOSE US?",
+    "subtitle": "A brand name you can trust and rely on",
+    "features": {
+      "affordablePrice": "Affordable price guarantee",
+      "varietyDestinations": "Wide variety of destinations",
+      "qualifiedService": "High qualified service"
+    }
+  },
+  "footer": {
+    "company_description": "Discover the world with Exodus: Your trusted travel adventure partner!",
+    "top_destinations": "Top destinations",
+    "contact_info": "Contact info",
+    "address": "Address: Kigali, Rwanda",
+    "phone": "Phone: 0788888888",
+    "email": "Email: Exodus@gmail.com",
+    "copyright": "All rights reserved."
+  },
+  "popularTourPackages": {
+    "title": "Popular Tour Packages",
+    "alt": "Popular tour package {{index}}"
+  },
+  "howItWorks": {
+    "title": "How it works?",
+    "subtitle": "Search, select, book",
+    "search": {
+      "title": "Search",
+      "description": "Find your Dream trip"
+    },
+    "select": {
+      "title": "Select",
+      "description": "Select trip packages"
+    },
+    "book": {
+      "title": "Book",
+      "description": "Booking and pay"
+    }
+  },
+  "tour": {
+    "findTour": "Find a tour by destination",
+    "israel": "Israel",
+    "rwanda": "Rwanda",
+    "turkey": "Turkey"
+  },
+  "signup": {
+    "register": "REGISTER",
+    "create_account": "Create your account",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "upload_photo": "Upload Photo",
+    "register_button": "Register",
+    "registering": "Registering...",
+    "already_have_account": "Already have an account?",
+    "login": "Login",
+    "signup_successful": "Signup successful!"
+  },
+  "login": {
+    "title": "LOGIN",
+    "subtitle": "Log into your account",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "loggingIn": "Logging in...",
+    "loginButton": "Login",
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don't have an account?",
+    "signupLink": "Sign Up",
+    "successMessage": "Login successful!"
+  },
+  "forgotPassword": {
+    "title": "Forgot Password?",
+    "helpMessage": "Don't worry. We can help.",
+    "instructions": "Please fill in your email address",
+    "emailPlaceholder": "Enter your email",
+    "sending": "Sending...",
+    "continue": "Continue"
+  }
+  
+}

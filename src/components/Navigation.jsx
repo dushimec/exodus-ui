@@ -1,8 +1,18 @@
+
+
+
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+
+import { useTranslation } from 'react-i18next'; // Import useTranslation hook
+import i18next from 'i18next'; // To change language
+
 import Flag from 'react-flagkit'; // Correct import for Flag
 
+
+
 function Navigation() {
+  const { t, i18n } = useTranslation(); // Destructure useTranslation
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -43,6 +53,11 @@ function Navigation() {
     setIsDropdownOpen(false);
   };
 
+
+  // Function to change language and update flag
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+
   const toggleLanguageDropdown = () => {
     setIsLanguageDropdownOpen(!isLanguageDropdownOpen);
   };
@@ -54,6 +69,7 @@ function Navigation() {
       setSelectedLanguage({ code: 'RW', name: 'Kiny' }); // Use 'RW' for Kinyarwanda
     }
     setIsLanguageDropdownOpen(false);
+
   };
 
   return (
@@ -96,37 +112,37 @@ function Navigation() {
         {/* Links (Desktop View) */}
         <div className="hidden md:flex md:items-center md:gap-4 lg:gap-6 xl:gap-8">
           <Link to="/" className="text-xs md:text-sm lg:text-base xl:text-lg">
-            Home
+            {t('navigation.home')}
           </Link>
           <Link
             to="/about"
             className="text-xs md:text-sm lg:text-base xl:text-lg"
           >
-            About
+            {t('navigation.about')}
           </Link>
           <Link
             to="/destiny"
             className="text-xs md:text-sm lg:text-base xl:text-lg"
           >
-            Destination
+            {t('navigation.destination')}
           </Link>
           <Link
             to="/service"
             className="text-xs md:text-sm lg:text-base xl:text-lg"
           >
-            Service
+            {t('navigation.service')}
           </Link>
           <Link
             to="/products"
             className="text-xs md:text-sm lg:text-base xl:text-lg"
           >
-            Products
+            {t('navigation.products')}
           </Link>
           <Link
             to="/contact"
             className="text-xs md:text-sm lg:text-base xl:text-lg"
           >
-            Contact
+            {t('navigation.contact')}
           </Link>
         </div>
 
@@ -145,14 +161,14 @@ function Navigation() {
                 to="/login"
                 className="text-xs md:text-sm lg:text-base xl:text-lg"
               >
-                Login
+                {t('navigation.login')}
               </Link>
               <span>|</span>
               <Link
                 to="/signup"
                 className="text-xs md:text-sm lg:text-base xl:text-lg"
               >
-                SignUp
+                {t('navigation.signup')}
               </Link>
             </div>
           ) : (
@@ -174,18 +190,30 @@ function Navigation() {
                     className="block px-4 py-2 hover:bg-gray-100"
                     onClick={() => setIsDropdownOpen(false)}
                   >
-                    Profile
+                    {t('navigation.profile')}
                   </Link>
                   <button
                     onClick={handleLogout}
                     className="block w-full text-left px-4 py-2 hover:bg-gray-100"
                   >
-                    Logout
+                    {t('navigation.logout')}
                   </button>
                 </div>
               )}
             </div>
           )}
+
+          {/* Translation */}
+          <div className="flex gap-1.5 items-center">
+            <div className="dropdown">
+              <select
+                onChange={(e) => changeLanguage(e.target.value)}
+                className="focus:outline-none bg-white text-black rounded-lg text-xs md:text-sm lg:text-base xl:text-lg"
+              >
+                <option value="en">{t('navigation.languages.en')}</option>
+                <option value="rw">{t('navigation.languages.kiny')}</option>
+              </select>
+            </div>
 
           {/* Translation Dropdown */}
           <div className="relative flex gap-1 items-center">
@@ -217,12 +245,61 @@ function Navigation() {
                 </button>
               </div>
             )}
+
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
+
+        <div className="md:hidden w-full bg-gray-700 text-white">
+          <ul className="flex flex-col p-4 gap-2">
+            <li>
+              <Link to="/" className="text-base" onClick={toggleMenu}>
+                {t('navigation.home')}
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" className="text-base" onClick={toggleMenu}>
+                {t('navigation.about')}
+              </Link>
+            </li>
+            <li>
+              <Link to="/destiny" className="text-base" onClick={toggleMenu}>
+                {t('navigation.destination')}
+              </Link>
+            </li>
+            <li>
+              <Link to="/service" className="text-base" onClick={toggleMenu}>
+                {t('navigation.service')}
+              </Link>
+            </li>
+            <li>
+              <Link to="/products" className="text-base" onClick={toggleMenu}>
+                {t('navigation.products')}
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" className="text-base" onClick={toggleMenu}>
+                {t('navigation.contact')}
+              </Link>
+            </li>
+
+            {/* Mobile translation switcher */}
+            <li>
+              <div className="dropdown">
+                <select
+                  onChange={(e) => changeLanguage(e.target.value)}
+                  className="focus:outline-none bg-white text-black rounded-lg text-base"
+                >
+                  <option value="en">{t('navigation.languages.en')}</option>
+                  <option value="rw">{t('navigation.languages.kiny')}</option>
+                </select>
+              </div>
+            </li>
+          </ul>
+
         <div className="w-full flex flex-col justify-center items-center space-y-4 bg-black text-white py-6 md:hidden">
           <Link to="/" className="text-xs md:text-sm lg:text-base xl:text-lg">
             Home
@@ -251,6 +328,7 @@ function Navigation() {
           >
             Contact
           </Link>
+
         </div>
       )}
     </nav>
@@ -258,3 +336,5 @@ function Navigation() {
 }
 
 export default Navigation;
+
+

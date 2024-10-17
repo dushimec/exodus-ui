@@ -1,3 +1,5 @@
+
+
 import React from "react";
 import {
   FaFacebookF,
@@ -5,6 +7,7 @@ import {
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const destinations = [
   {
@@ -30,13 +33,15 @@ const destinations = [
 ];
 
 function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="flex flex-col pt-8 w-full bg-sky-600 text-white">
       {/* Upper section of the footer */}
       <div className="flex justify-between items-center flex-wrap gap-10 lg:gap-20 w-full max-w-[1133px] mx-auto px-4 md:px-6 lg:px-0">
         {/* Logo and company description */}
         <div className="flex-auto w-full lg:w-auto">
-          <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex flex-col-3 md:flex-row gap-">
             <div className="flex flex-col w-full md:w-[50%]">
               <div className="text-sm font-semibold">
                 <img
@@ -46,16 +51,14 @@ function Footer() {
                   className="object-contain rounded-full w-[100px] md:w-[80px]"
                 />
                 <p className="mt-5 text-sm leading-5 md:mt-5">
-                  Discover the world with Exodus: Your trusted travel
-                  <br className="hidden md:block" />
-                  adventure partner!
+                  {t('footer.company_description')}
                 </p>
               </div>
             </div>
 
             {/* Top Destinations */}
             <div className="flex flex-col w-full md:w-[50%] lg:ml-5 mt-8 md:mt-0">
-              <h3 className="text-xl font-extrabold">Top destinations</h3>
+              <h3 className="text-xl font-extrabold">{t('footer.top_destinations')}</h3>
               <div className="flex gap-4 flex-wrap mt-6">
                 {destinations.map((destination, index) => (
                   <div
@@ -98,18 +101,18 @@ function Footer() {
 
         {/* Contact Info Section */}
         <div className="flex flex-col w-full lg:w-auto text-white mt-8 lg:mt-0">
-          <h3 className="text-xl font-extrabold">Contact info</h3>
+          <h3 className="text-xl font-extrabold">{t('footer.contact_info')}</h3>
           <div className="flex flex-col mt-6 text-sm font-semibold">
-            <p>Address: Kigali, Rwanda</p>
-            <p className="mt-5">Phone: 0788888888</p>
-            <p className="mt-5">Email: Exodus@gmail.com</p>
+            <p>{t('footer.address')}</p>
+            <p className="mt-5">{t('footer.phone')}</p>
+            <p className="mt-5">{t('footer.email')}</p>
           </div>
         </div>
       </div>
 
       {/* Lower section: copyright */}
       <div className="py-3 px-4 mt-8 w-full text-xs font-semibold bg-sky-600 text-center border-t-2 border-white">
-        ©2024 Exodus. All rights reserved.
+        ©2024 Exodus. {t('footer.copyright')}
       </div>
     </footer>
   );
