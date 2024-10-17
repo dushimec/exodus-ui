@@ -3,7 +3,6 @@ import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import kigali from "../IMAGE/kigali.jpg";
 
-
 // RelatedTours Component
 function RelatedTours() {
   // State to track likes for each tour
@@ -111,12 +110,12 @@ function RwandaDetails() {
           alt="City Background"
         />
         <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute left-16 top-[70%] transform -translate-y-1/2 text-white text-5xl font-bold">
+        <div className="absolute left-8 md:left-16 top-[70%] transform -translate-y-1/2 text-white text-4xl md:text-5xl font-bold">
           RWANDA
         </div>
       </div>
 
-      <div className="max-w-7xl mx-16 flex flex-col lg:flex-row gap-8 py-8 px-4">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 py-8 px-4">
         {/* Left Side: Description, Recently Visited Trip, and Related Tours */}
         <div className="w-full lg:w-2/3 space-y-8">
           {/* Description Section */}
@@ -125,22 +124,21 @@ function RwandaDetails() {
               Kibeho (Rwanda):
             </div>
             <p className="text-black text-lg mb-6">
-            Kibeho, located in Nyaruguru District, Rwanda, is a holy land famous for Marian apparitions, attracting pilgrims seeking spiritual renewal amidst beautiful mountainous landscapes and rich culture.
+              Kibeho, located in Nyaruguru District, Rwanda, is a holy land famous for Marian apparitions, attracting pilgrims seeking spiritual renewal amidst beautiful mountainous landscapes and rich culture.
             </p>
             <div className="text-sky-500 text-2xl font-bold mb-4">
               Tour details:
             </div>
             <p className="text-black text-lg">
-            
-Experience a transformative spiritual journey in Rwanda by visiting its significant religious sites. Begin your pilgrimage in Kibeho, known for the reported apparitions of the Virgin Mary, which attract thousands of pilgrims each year. The serene atmosphere and stunning landscapes provide a perfect backdrop for reflection and prayer.
+              Experience a transformative spiritual journey in Rwanda by visiting its significant religious sites. Begin your pilgrimage in Kibeho, known for the reported apparitions of the Virgin Mary, which attract thousands of pilgrims each year. The serene atmosphere and stunning landscapes provide a perfect backdrop for reflection and prayer.
 
-Next, travel to Musanze, where early missionaries laid the groundwork for Christianity in the region. Explore local churches and immerse yourself in the rich history of faith in this area.
+              Next, travel to Musanze, where early missionaries laid the groundwork for Christianity in the region. Explore local churches and immerse yourself in the rich history of faith in this area.
 
-Don’t miss Lake Kivu, a beautiful setting for contemplation, where you can enjoy the tranquility of its shores.
+              Don’t miss Lake Kivu, a beautiful setting for contemplation, where you can enjoy the tranquility of its shores.
 
-Lastly, visit the Kigali Genocide Memorial, a poignant site that offers insights into Rwanda's history, emphasizing themes of forgiveness and reconciliation central to Christian teachings.
+              Lastly, visit the Kigali Genocide Memorial, a poignant site that offers insights into Rwanda's history, emphasizing themes of forgiveness and reconciliation central to Christian teachings.
 
-Throughout your journey, engage with the welcoming Rwandan culture, savor traditional dishes, and enjoy breathtaking landscapes, making your religious tour both enriching and unforgettable.
+              Throughout your journey, engage with the welcoming Rwandan culture, savor traditional dishes, and enjoy breathtaking landscapes, making your religious tour both enriching and unforgettable.
             </p>
           </div>
 
@@ -149,13 +147,12 @@ Throughout your journey, engage with the welcoming Rwandan culture, savor tradit
             <div className="text-black text-xl font-bold mb-4">
               Recently Visited Trip
             </div>
-           
             <img
               className="w-full h-auto"
               src={kigali}
               alt="Recently Visited Trip"
             />
-             <div className="text-blue-500 text-lg mb-4">
+            <div className="text-blue-500 text-lg mb-4">
               Click Use map to track the place
             </div>
           </div>
@@ -165,7 +162,7 @@ Throughout your journey, engage with the welcoming Rwandan culture, savor tradit
         </div>
 
         {/* Right Side: Price and Booking Form */}
-        <div className="w-full lg:w-1/3 h-auto mb-48 ml-40 pb-20  ">
+        <div className="w-full lg:w-1/3 h-auto mb-12 lg:mb-48 lg:ml-0 pb-20">
           {/* Price Box */} 
           <div className="bg-blue-500 text-white flex justify-between items-center px-6 py-4">
             <div className="text-lg font-semibold">Price</div>
@@ -187,41 +184,22 @@ Throughout your journey, engage with the welcoming Rwandan culture, savor tradit
                 className="w-full h-12 border border-gray-300 px-2"
               />
 
-              <label className="block text-sm text-gray-500">Guests</label>
+              <label className="block text-sm text-gray-500">Number of Adults</label>
               <select className="w-full h-12 border border-gray-300 px-2">
-                <option>Adults 1</option>
-                <option>Adults 2</option>
-                <option>Adults 3</option>
+                <option>1 Adult</option>
+                <option>2 Adults</option>
+                <option>3 Adults</option>
               </select>
 
-              <label className="block text-sm text-gray-500">
-                Option for Tour
-              </label>
+              <label className="block text-sm text-gray-500">Number of Children</label>
               <select className="w-full h-12 border border-gray-300 px-2">
-                <option>Standard Tour</option>
-                <option>Premium Tour</option>
+                <option>0 Children</option>
+                <option>1 Child</option>
+                <option>2 Children</option>
               </select>
-
-              <label className="block text-sm text-gray-500">
-                Guest Information
-              </label>
-              <input
-                type="text"
-                className="w-full h-12 border border-gray-300 px-2"
-                placeholder="Full Name"
-              />
-              <input
-                type="email"
-                className="w-full h-12 border border-gray-300 px-2"
-                placeholder="Email Address"
-              />
-              <textarea
-                className="w-full h-24 border border-gray-300 px-2"
-                placeholder="Special Requests (Optional)"
-              ></textarea>
 
               {/* Book Now Button */}
-              <button className="w-full h-12 bg-sky-500 text-white text-lg font-semibold">
+              <button className="bg-blue-500 w-full py-3 text-white font-semibold">
                 Book Now
               </button>
             </div>

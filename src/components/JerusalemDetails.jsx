@@ -3,7 +3,6 @@ import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import israel from "../IMAGE/israel.jpg";
 
-
 // RelatedTours Component
 function RelatedTours() {
   // State to track likes for each tour
@@ -116,7 +115,7 @@ function JerusalemDetails() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-16 flex flex-col lg:flex-row gap-8 py-8 px-4">
+      <div className="max-w-7xl mx-auto lg:flex lg:justify-between gap-8 py-8 px-4">
         {/* Left Side: Description, Recently Visited Trip, and Related Tours */}
         <div className="w-full lg:w-2/3 space-y-8">
           {/* Description Section */}
@@ -125,21 +124,21 @@ function JerusalemDetails() {
               ISRAEL (Telaviv):
             </div>
             <p className="text-black text-lg mb-6">
-            Visit Israel to explore its rich history: Jerusalem's sacred sites, the Dead Sea's unique landscapes, and vibrant cities like Tel Aviv and Haifa await you.
+              Visit Israel to explore its rich history: Jerusalem's sacred sites, the Dead Sea's unique landscapes, and vibrant cities like Tel Aviv and Haifa await you.
             </p>
             <div className="text-sky-500 text-2xl font-bold mb-4">
               Israel:
             </div>
             <p className="text-black text-lg">
-            Embark on a spiritual journey to Israel, the heart of three major world religions. Start in **Jerusalem**, visiting the **Western Wall**, the last remnant of the Second Temple, and the **Dome of the Rock**, an iconic Islamic shrine. Explore the **Church of the Holy Sepulchre**, believed to be the site of Jesus’ crucifixion and resurrection.
+              Embark on a spiritual journey to Israel, the heart of three major world religions. Start in Jerusalem, visiting the Western Wall, the last remnant of the Second Temple, and the Dome of the Rock, an iconic Islamic shrine. Explore the Church of the Holy Sepulchre, believed to be the site of Jesus’ crucifixion and resurrection.
 
-Next, head to **Bethlehem**, where you can visit the **Church of the Nativity**, marking the birthplace of Jesus. 
+              Next, head to Bethlehem, where you can visit the Church of the Nativity, marking the birthplace of Jesus.
 
-Travel to **Nazareth** to see the **Basilica of the Annunciation**, an important Christian pilgrimage site. 
+              Travel to Nazareth to see the Basilica of the Annunciation, an important Christian pilgrimage site.
 
-Don’t miss the serene beauty of the **Sea of Galilee**, where you can reflect on biblical stories. 
+              Don’t miss the serene beauty of the Sea of Galilee, where you can reflect on biblical stories.
 
-Lastly, relax at the **Dead Sea**, the lowest point on Earth, known for its healing properties. Experience local cuisine and vibrant culture, making your spiritual tour of Israel both enriching and unforgettable.
+              Lastly, relax at the Dead Sea, the lowest point on Earth, known for its healing properties. Experience local cuisine and vibrant culture, making your spiritual tour of Israel both enriching and unforgettable.
             </p>
           </div>
 
@@ -154,7 +153,7 @@ Lastly, relax at the **Dead Sea**, the lowest point on Earth, known for its heal
               src={israel}
               alt="Recently Visited Trip"
             />
-             <div className="text-blue-500 text-lg mb-4">
+            <div className="text-blue-500 text-lg mb-4">
               Click Use map to track the place
             </div>
           </div>
@@ -164,8 +163,8 @@ Lastly, relax at the **Dead Sea**, the lowest point on Earth, known for its heal
         </div>
 
         {/* Right Side: Price and Booking Form */}
-        <div className="w-full lg:w-1/3 h-auto mb-48 ml-40 pb-20  ">
-          {/* Price Box */} 
+        <div className="w-full lg:w-1/3 h-auto mb-8 lg:mb-0 pb-20">
+          {/* Price Box */}
           <div className="bg-blue-500 text-white flex justify-between items-center px-6 py-4">
             <div className="text-lg font-semibold">Price</div>
             <div className="text-3xl font-bold">$120</div>
@@ -193,34 +192,7 @@ Lastly, relax at the **Dead Sea**, the lowest point on Earth, known for its heal
                 <option>Adults 3</option>
               </select>
 
-              <label className="block text-sm text-gray-500">
-                Option for Tour
-              </label>
-              <select className="w-full h-12 border border-gray-300 px-2">
-                <option>Standard Tour</option>
-                <option>Premium Tour</option>
-              </select>
-
-              <label className="block text-sm text-gray-500">
-                Guest Information
-              </label>
-              <input
-                type="text"
-                className="w-full h-12 border border-gray-300 px-2"
-                placeholder="Full Name"
-              />
-              <input
-                type="email"
-                className="w-full h-12 border border-gray-300 px-2"
-                placeholder="Email Address"
-              />
-              <textarea
-                className="w-full h-24 border border-gray-300 px-2"
-                placeholder="Special Requests (Optional)"
-              ></textarea>
-
-              {/* Book Now Button */}
-              <button className="w-full h-12 bg-sky-500 text-white text-lg font-semibold">
+              <button className="w-full h-12 bg-blue-500 text-white rounded-md">
                 Book Now
               </button>
             </div>

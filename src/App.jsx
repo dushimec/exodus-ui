@@ -20,11 +20,13 @@ import EgyptDetails from './components/EgyptDetails';
 import JerusalemDetails from './components/JerusalemDetails';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPasword';
-import AdminDashboard from './components/AdminDashboard';
 import AddNewTrip from './components/AddNewTrip';
 import AdminLogin from './components/AdmingLogin';
 import { AuthProvider } from './context/authContext'; // Adjust path
 import PrivateRoute from './components/PrivateRoute'; // Adjust path
+import Admin from './components/Admin';
+import AdminDashboard from './components/Dashboard';
+import Tour from './components/Tour';
 
 function App() {
   const location = useLocation();
@@ -81,11 +83,28 @@ function App() {
         } />
       </Routes>
 
+
       {/* Conditionally render Footer */}
       {shouldShowFooter && <Footer />}
     </>
   );
 }
+
+        {/* Add padding to the top to avoid content being hidden behind the navbar */}
+        
+          <Routes>
+            {/* Home page */}
+            <Route path="/" element={
+              <>
+                <Hero />
+                <Tour/>
+                <Destinations />
+                <WhyChooseUs />
+                <PopularTourPackages />
+                <HowItWorks />
+              </>
+            } />
+
 
 function AppWrapper() {
   return (
