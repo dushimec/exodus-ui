@@ -21,6 +21,7 @@ import EgyptDetails from './components/EgyptDetails';
 import JerusalemDetails from './components/JerusalemDetails';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPasword';
+import Tour from './components/Tour';
 
 
 
@@ -40,6 +41,7 @@ function App() {
             <Route path="/" element={
               <>
                 <Hero />
+                <Tour/>
                 <Destinations />
                 <WhyChooseUs />
                 <PopularTourPackages />
