@@ -1,6 +1,9 @@
 import React from 'react'
 
+
+
 function Tour() {
+
   return (
     <div>
       
@@ -54,4 +57,5 @@ function Tour() {
   )
 }
 
-export default Tour
+export default tour;
+

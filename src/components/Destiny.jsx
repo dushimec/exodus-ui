@@ -3,7 +3,7 @@ import * as React from "react";
 function Destiny() {
   return (
     <>
-      <div className="flex overflow-hidden flex-col items-center pb-40 bg-stone-50 bg-opacity-30 max-md:pb-24 ">
+      <div className="flex overflow-hidden flex-col items-center pb-4 bg-stone-50 bg-opacity-30 max-md:pb-24 ">
         <div className="flex relative flex-col items-center self-stretch px-20 pt-40 pb-12 w-full text-white min-h-[400px] max-md:px-5 max-md:pt-24 max-md:max-w-full">
           <img
             loading="lazy"
@@ -18,7 +18,7 @@ function Destiny() {
           </div>
         </div>
 
-        <div className="mt-40 ml-5 w-full max-w-[1104px] max-md:mt-10 max-md:max-w-full">
+        <div className="mt-40 ml-5 w-full max-w-[1104px] 0  max-md:mt-10 max-md:max-w-full">
   <div className="flex gap-28 max-md:flex-col">
     <div className="flex flex-col w-5/12 max-md:ml-0 max-md:w-full"> {/* Changed from w-6/12 to w-5/12 */}
       <div className="flex relative flex-col grow px-px min-h-[288px] max-md:mt-10 max-md:max-w-full"> {/* Reduced min-height */}
