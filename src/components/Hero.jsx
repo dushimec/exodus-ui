@@ -53,6 +53,7 @@ export default function TravelHero() {
   };
 
   const handleExplore = () => {
+
     alert("Exploring adventures!");
   };
 
@@ -63,8 +64,6 @@ export default function TravelHero() {
           <h1
             ref={titleRef}
             className={`text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-6 lg:mb-10 leading-tight text-center lg:text-left transition-opacity duration-1000 ${
-
-
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10"
@@ -157,4 +156,6 @@ export default function TravelHero() {
     </div>
   );
 }
+
+
 
