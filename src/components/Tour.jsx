@@ -57,5 +57,5 @@ function Tour() {
   )
 }
 
-export default tour;
+export default Tour;
 
