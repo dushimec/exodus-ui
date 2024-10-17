@@ -3,15 +3,23 @@
 
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import { useTranslation } from 'react-i18next'; // Import useTranslation hook
 import i18next from 'i18next'; // To change language
+
+import Flag from 'react-flagkit'; // Correct import for Flag
+
+
 
 function Navigation() {
   const { t, i18n } = useTranslation(); // Destructure useTranslation
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [userProfileImage, setUserProfileImage] = useState(null); // Profile image state
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false); 
+  const [userProfileImage, setUserProfileImage] = useState(null); 
+
+  const [selectedLanguage, setSelectedLanguage] = useState({ code: 'GB', name: 'Eng' }); // Default to 'GB' (Great Britain) for English
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,10 +33,9 @@ function Navigation() {
   }, []);
 
   useEffect(() => {
-    // Simulate fetching the user profile image from localStorage or global state
-    const savedImage = localStorage.getItem('profileImage'); // Fetch profile image from localStorage
+    const savedImage = localStorage.getItem('profileImage');
     if (savedImage) {
-      setUserProfileImage(savedImage); // Set the profile image
+      setUserProfileImage(savedImage); 
     }
   }, []);
 
@@ -41,15 +48,28 @@ function Navigation() {
   };
 
   const handleLogout = () => {
-    // Handle logout logic here
-    localStorage.removeItem('profileImage'); // Clear the profile image upon logout
-    setUserProfileImage(null); // Clear the image state
+    localStorage.removeItem('profileImage');
+    setUserProfileImage(null); 
     setIsDropdownOpen(false);
   };
+
 
   // Function to change language and update flag
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
+
+  const toggleLanguageDropdown = () => {
+    setIsLanguageDropdownOpen(!isLanguageDropdownOpen);
+  };
+
+  const changeLanguage = (language) => {
+    if (language === 'EN') {
+      setSelectedLanguage({ code: 'GB', name: 'Eng' }); // Use 'GB' for English
+    } else if (language === 'RW') {
+      setSelectedLanguage({ code: 'RW', name: 'Kiny' }); // Use 'RW' for Kinyarwanda
+    }
+    setIsLanguageDropdownOpen(false);
+
   };
 
   return (
@@ -194,12 +214,45 @@ function Navigation() {
                 <option value="rw">{t('navigation.languages.kiny')}</option>
               </select>
             </div>
+
+          {/* Translation Dropdown */}
+          <div className="relative flex gap-1 items-center">
+            <button onClick={toggleLanguageDropdown} className="flex items-center 1`m-1">
+              <Flag country={selectedLanguage.code} size={24} /> {/* Display flag */}
+              <span className="my-auto text-xs md:text-sm lg:text-base xl:text-lg">
+                {selectedLanguage.name} {/* Use selected language name */}
+              </span>
+              {/* <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/a576e7d30c74cb3d5e59bde55cbfc1b73f1836945d66b64116e7eaf91cbd8f8e?placeholderIfAbsent=true&apiKey=6e51f2aa35694a21b29ab869757ebe28"
+                alt="Language toggle icon"
+                className="w-4 lg:w-5 xl:w-6"
+              /> */}
+            </button>
+            {isLanguageDropdownOpen && (
+              <div className="absolute mt-32 left-1 w-24 bg-white text-black rounded-lg shadow-lg py-2 z-10">
+                <button
+                  onClick={() => changeLanguage('EN')}
+                  className=" flex w-full text-left px-4 py-2    hover:bg-blue-200  hover:text-white"
+                >
+                  <Flag country="GB" size={18} className='m-1' /> Eng
+                </button>
+                <button
+                  onClick={() => changeLanguage('RW')}
+                  className=" flex   w-full text-left px-4 py-2 hover:bg-blue-200  hover:text-white"
+                >
+                  <Flag country="RW" size={18} className='m-1' />   Kiny
+                </button>
+              </div>
+            )}
+
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
+
         <div className="md:hidden w-full bg-gray-700 text-white">
           <ul className="flex flex-col p-4 gap-2">
             <li>
@@ -246,6 +299,36 @@ function Navigation() {
               </div>
             </li>
           </ul>
+
+        <div className="w-full flex flex-col justify-center items-center space-y-4 bg-black text-white py-6 md:hidden">
+          <Link to="/" className="text-xs md:text-sm lg:text-base xl:text-lg">
+            Home
+          </Link>
+          <Link to="/about" className="text-xs md:text-sm lg:text-base xl:text-lg">
+            About
+          </Link>
+          <Link
+            to="/destiny"
+            className="text-xs md:text-sm lg:text-base xl:text-lg"
+          >
+            Destination
+          </Link>
+          <Link to="/service" className="text-xs md:text-sm lg:text-base xl:text-lg">
+            Service
+          </Link>
+          <Link
+            to="/products"
+            className="text-xs md:text-sm lg:text-base xl:text-lg"
+          >
+            Products
+          </Link>
+          <Link
+            to="/contact"
+            className="text-xs md:text-sm lg:text-base xl:text-lg"
+          >
+            Contact
+          </Link>
+
         </div>
       )}
     </nav>

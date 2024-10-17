@@ -21,8 +21,10 @@ import EgyptDetails from './components/EgyptDetails';
 import JerusalemDetails from './components/JerusalemDetails';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPasword';
+
 import Admin from './components/Admin';
 import AdminDashboard from './components/Dashboard';
+
 import Tour from './components/Tour';
 
 

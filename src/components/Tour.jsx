@@ -4,8 +4,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+
+
 function Tour() {
+
   const { t } = useTranslation();
+
 
   return (
     <div>
@@ -59,3 +63,4 @@ function Tour() {
 }
 
 export default Tour;
+
