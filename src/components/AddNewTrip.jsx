@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import { CalendarIcon, ChevronDownIcon } from 'lucide-react'
 
@@ -112,3 +113,4 @@ export default function AddNewTrip() {
     </div>
   )
 }
+
