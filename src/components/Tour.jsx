@@ -71,4 +71,3 @@ function Tour() {
 }
 
 export default Tour;
-dd (animations in scroll)
