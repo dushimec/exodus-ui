@@ -1,4 +1,7 @@
+
+
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // Import images manually
@@ -7,12 +10,13 @@ import Havan from '../IMAGE/havana.jpg';
 import Turkey from '../IMAGE/tukey.jpg';
 
 const upcomingTrips = [
-  { id: 1, title: 'Kings Palace Museum', image: KigaliImage },
-  { id: 2, title: 'Mountain Expedition', image: Havan },
-  { id: 3, title: 'Turkey', image: Turkey },
+  { id: 1, title: 'travelHero.upcomingTrips.trip1', image: KigaliImage },
+  { id: 2, title: 'travelHero.upcomingTrips.trip2', image: Havan },
+  { id: 3, title: 'travelHero.upcomingTrips.trip3', image: Turkey },
 ];
 
 export default function TravelHero() {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [currentTripIndex, setCurrentTripIndex] = useState(0);
 
@@ -39,7 +43,7 @@ export default function TravelHero() {
       <div className="container mx-auto px-4 py-12 flex flex-col lg:flex-row items-center justify-between">
         <div className="lg:w-1/2 mt-10 lg:mt-0 lg:mb-0">
           <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-6 lg:mb-10 leading-tight text-center lg:text-left">
-            Your global gateway to unforgettable adventures!
+            {t('travelHero.heading')}
           </h1>
 
           <button
@@ -47,7 +51,7 @@ export default function TravelHero() {
             className="relative p-2 mt-6 lg:mt-10 mx-auto lg:mx-0 text-base font-semibold border-2 border-sky-500 rounded-full w-[200px] hover:bg-white hover:text-sky-500 transition duration-300 ease-in-out"
           >
             <span className="bg-sky-500 text-white rounded-full w-full h-full flex items-center justify-center py-3 hover:bg-white hover:text-sky-500 transition duration-300 ease-in-out">
-              Explore here
+              {t('travelHero.exploreButton')}
             </span>
           </button>
         </div>
@@ -56,7 +60,7 @@ export default function TravelHero() {
           <form onSubmit={handleSearch} className="relative">
             <input
               type="text"
-              placeholder="Search Trip here ..."
+              placeholder={t('travelHero.searchPlaceholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full bg-white bg-opacity-90 rounded-full py-3 px-6 pl-12 text-lg focus:outline-none focus:ring-2 focus:ring-sky-300 shadow-lg"
@@ -70,7 +74,7 @@ export default function TravelHero() {
 
           <div className="bg-white bg-opacity-90 rounded-lg p-4 shadow-lg relative overflow-hidden">
             <h2 className="text-xl sm:text-2xl font-semibold text-sky-500 mb-2">
-              Upcoming Trip
+              {t('travelHero.upcomingTrip')}
             </h2>
             <div className="relative h-56 sm:h-64">
               {upcomingTrips.map((trip, index) => (
@@ -84,11 +88,11 @@ export default function TravelHero() {
                 >
                   <img
                     src={trip.image}
-                    alt={trip.title}
+                    alt={t(trip.title)}
                     className="rounded object-cover w-full h-full"
                   />
                   <p className="absolute bottom-2 left-2 bg-sky-500 text-white px-2 py-1 rounded text-sm sm:text-base">
-                    {trip.title}
+                    {t(trip.title)}
                   </p>
                 </div>
               ))}
@@ -118,9 +122,6 @@ export default function TravelHero() {
           </div>
         </div>
       </div>
-      
     </div>
-
-    
   );
 }

@@ -1,0 +1,108 @@
+{
+  "navigation": {
+    "home": "Ahabanza",
+    "about": "Ibyerekeye",
+    "destination": "Aho Ujya",
+    "service": "Serivisi",
+    "products": "Ibicuruzwa",
+    "contact": "Tuvugishe",
+    "login": "Injira",
+    "signup": "Iyandikishe",
+    "profile": "Umwirondoro",
+    "logout": "Gusohoka",
+    "languages": {
+      "en": "EN",
+      "kiny": "Kiny"
+    }
+  },
+  "travelHero": {
+    "heading": "Urugi rwawe rw'isi ku ngendo zidasanzwe!",
+    "exploreButton": "Sura hano",
+    "searchPlaceholder": "Shakisha urugendo hano ...",
+    "upcomingTrip": "Urugendo rw'ejo hazaza",
+    "upcomingTrips": {
+      "trip1": "Ingoro y'Abami",
+      "trip2": "Ubukerarugendo bw'imisozi",
+      "trip3": "Turukiya"
+    }
+  },
+  "whyChooseUs": {
+    "title": "IMPAMVU ZO KUTWITORERA",
+    "subtitle": "Izina ry'ikinyamakuru ushobora kwizerwa no kwishingikirizaho",
+    "features": {
+      "affordablePrice": "Ubwishingizi ku giciro cyiza",
+      "varietyDestinations": "Aho ujya henshi hatandukanye",
+      "qualifiedService": "Serivisi y'ubuziranenge buhanitse"
+    }
+  },
+  "footer": {
+    "company_description": " Exodus: Umufatanyabikorwa wawe wizewe mu rugendo!",
+    "top_destinations": "Ahantu heza dusura",
+    "contact_info": "Amakuru y'itumanaho",
+    "address": "Aderesi: Kigali, Rwanda",
+    "phone": "Terefone: 0788888888",
+    "email": "Email: Exodus@gmail.com",
+    "copyright": "Uburenganzira bwose burabitswe."
+  },
+  "popularTourPackages": {
+    "title": "Impano ziri mu rugendo",
+    "alt": "Impano ziri mu rugendo {{index}}"
+  },
+  "howItWorks": {
+    "title": "Uko bikora?",
+    "subtitle": "Shakisha, hitamo, ongera",
+    "search": {
+      "title": "Shakisha",
+      "description": "Shaka urugendo rwawe rw'ikibabaza"
+    },
+    "select": {
+      "title": "Hitamo",
+      "description": "Hitamo ibipaki by'urugendo"
+    },
+    "book": {
+      "title": "Ongeza",
+      "description": "Ongeraho no kwishyura"
+    }
+  },
+  "tour": {
+    "findTour": "Shaka urugendo hakurikijwe ahantu",
+    "israel": "Israeli",
+    "rwanda": "U Rwanda",
+    "turkey": "Turukiya"
+  },
+  "signup": {
+    "register": "KWANDIKISHA",
+    "create_account": "Shyiramo konti yawe",
+    "name": "Izina",
+    "email": "Imeri",
+    "password": "Ijambobanga",
+    "upload_photo": "Ohereza Ifoto",
+    "register_button": "Iyandikishe",
+    "registering": "Birimo kwandikisha...",
+    "already_have_account": "Ufitanye konti?",
+    "login": "Injira",
+    "signup_successful": "Kwiyandikisha byagenze neza!"
+  },
+  "login": {
+    "title": "INJIRA",
+    "subtitle": "Injira muri konti yawe",
+    "emailLabel": "Imeri",
+    "passwordLabel": "Ijambo ry'ibanga",
+    "loggingIn": "Birimo kwinjira...",
+    "loginButton": "Injira",
+    "forgotPassword": "Wibagiwe ijambo ry'ibanga?",
+    "noAccount": "Nta konti ufite?",
+    "signupLink": "Iyandikishe",
+    "successMessage": "Injira irakunzwe!"
+  },
+  "forgotPassword": {
+    "title": "Wibagiwe Ijambobanga?",
+    "helpMessage": "Ntidukuke. Turagufasha.",
+    "instructions": "Shyiramo aderesi yawe ya email",
+    "emailPlaceholder": "Injizamo email yawe",
+    "sending": "Kohereza...",
+    "continue": "Komeza"
+  }
+  
+
+}

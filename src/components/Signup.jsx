@@ -1,17 +1,21 @@
+
+
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { Link, useNavigate } from "react-router-dom";
-import { signup } from "../slices/authSlice"; // Import signup action
+import { signup } from "../slices/authSlice";
+import { useTranslation } from "react-i18next";
 
 function Signup() {
+  const { t } = useTranslation(); // Hook for translation
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [photo, setPhoto] = useState(null);
-  const [notification, setNotification] = useState(""); // State for error/success messages
-  const [loading, setLoading] = useState(false); // Loading state
+  const [notification, setNotification] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,19 +23,19 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const formData = new FormData(); // For file uploads
+    const formData = new FormData();
     formData.append("name", name);
     formData.append("email", email);
     formData.append("password", password);
     if (photo) formData.append("photo", photo);
 
     try {
-      await dispatch(signup(formData)).unwrap(); // Dispatch signup action
-      setNotification("Signup successful!");
-      navigate("/login"); // Redirect to login on success
+      await dispatch(signup(formData)).unwrap();
+      setNotification(t("signup.signup_successful"));
+      navigate("/login");
     } catch (err) {
       if (err.response && err.response.data && err.response.data.message) {
-        setNotification(err.response.data.message); // Display error message
+        setNotification(err.response.data.message);
       } else {
         setNotification(err.toString());
       }
@@ -48,16 +52,16 @@ function Signup() {
           onSubmit={handleSubmit}
         >
           <div className="self-center text-2xl font-bold text-white">
-            REGISTER
+            {t("signup.register")}
           </div>
           <div className="shrink-0 self-center mt-1 border-sky-500 border-solid border-[1px] h-[2px] w-[120px]" />
           <div className="self-center mt-5 text-sm font-semibold text-white max-md:mt-5">
-            Create your account
+            {t("signup.create_account")}
           </div>
-          {/* Display Notification */}
           {notification && (
             <div className="text-red-500 mt-4">{notification}</div>
           )}
+
           {/* Username Input */}
           <div className="flex flex-col mt-10 relative">
             <input
@@ -69,7 +73,7 @@ function Signup() {
               required
             />
             <label className="absolute text-gray-300 text-sm transition-all duration-200 origin-left">
-              Name
+              {t("signup.name")}
             </label>
           </div>
 
@@ -84,7 +88,7 @@ function Signup() {
               required
             />
             <label className="absolute text-gray-300 text-sm transition-all duration-200 origin-left">
-              Email
+              {t("signup.email")}
             </label>
           </div>
 
@@ -99,7 +103,7 @@ function Signup() {
               required
             />
             <label className="absolute text-gray-300 text-sm transition-all duration-200 origin-left">
-              Password
+              {t("signup.password")}
             </label>
             <div
               className="absolute right-0 transform -translate-y-1/2 cursor-pointer"
@@ -122,7 +126,7 @@ function Signup() {
               className="mt-6 text-white bg-transparent border-b-2 border-sky-500 focus:outline-none placeholder-transparent"
             />
             <label className="absolute text-gray-300 text-sm transition-all duration-200 origin-left">
-              Upload Photo
+              {t("signup.upload_photo")}
             </label>
           </div>
 
@@ -134,14 +138,14 @@ function Signup() {
             }`}
             disabled={loading}
           >
-            {loading ? "Registering..." : "Register"}
+            {loading ? t("signup.registering") : t("signup.register_button")}
           </button>
 
           {/* Already have an account? */}
           <div className="flex justify-between items-center ml-10 mt-6 max-w-full w-[200px] max-md:mt-5 text-xs">
-            <div className="text-white">Already have an account?</div>
+            <div className="text-white">{t("signup.already_have_account")}</div>
             <Link to="/login" className="text-sky-500 cursor-pointer">
-              Login
+              {t("signup.login")}
             </Link>
           </div>
         </form>

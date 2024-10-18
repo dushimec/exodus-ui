@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'; // Import the Provider
 import store from './store'; // Import your Redux store
 import App from './App'; 
 import './index.css';
-
+import './i18n';  // Import the i18n config
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 

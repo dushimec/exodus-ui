@@ -1,7 +1,13 @@
+
+
+
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'; // Import useTranslation hook
+import i18next from 'i18next'; // To change language
 
 function Navigation() {
+  const { t, i18n } = useTranslation(); // Destructure useTranslation
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -39,6 +45,11 @@ function Navigation() {
     localStorage.removeItem('profileImage'); // Clear the profile image upon logout
     setUserProfileImage(null); // Clear the image state
     setIsDropdownOpen(false);
+  };
+
+  // Function to change language and update flag
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
   };
 
   return (
@@ -81,37 +92,37 @@ function Navigation() {
         {/* Links (Desktop View) */}
         <div className="hidden md:flex md:items-center md:gap-4 lg:gap-6 xl:gap-8">
           <Link to="/" className="text-xs md:text-sm lg:text-base xl:text-lg">
-            Home
+            {t('navigation.home')}
           </Link>
           <Link
             to="/about"
             className="text-xs md:text-sm lg:text-base xl:text-lg"
           >
-            About
+            {t('navigation.about')}
           </Link>
           <Link
             to="/destiny"
             className="text-xs md:text-sm lg:text-base xl:text-lg"
           >
-            Destination
+            {t('navigation.destination')}
           </Link>
           <Link
             to="/service"
             className="text-xs md:text-sm lg:text-base xl:text-lg"
           >
-            Service
+            {t('navigation.service')}
           </Link>
           <Link
             to="/products"
             className="text-xs md:text-sm lg:text-base xl:text-lg"
           >
-            Products
+            {t('navigation.products')}
           </Link>
           <Link
             to="/contact"
             className="text-xs md:text-sm lg:text-base xl:text-lg"
           >
-            Contact
+            {t('navigation.contact')}
           </Link>
         </div>
 
@@ -130,14 +141,14 @@ function Navigation() {
                 to="/login"
                 className="text-xs md:text-sm lg:text-base xl:text-lg"
               >
-                Login
+                {t('navigation.login')}
               </Link>
               <span>|</span>
               <Link
                 to="/signup"
                 className="text-xs md:text-sm lg:text-base xl:text-lg"
               >
-                SignUp
+                {t('navigation.signup')}
               </Link>
             </div>
           ) : (
@@ -159,13 +170,13 @@ function Navigation() {
                     className="block px-4 py-2 hover:bg-gray-100"
                     onClick={() => setIsDropdownOpen(false)}
                   >
-                    Profile
+                    {t('navigation.profile')}
                   </Link>
                   <button
                     onClick={handleLogout}
                     className="block w-full text-left px-4 py-2 hover:bg-gray-100"
                   >
-                    Logout
+                    {t('navigation.logout')}
                   </button>
                 </div>
               )}
@@ -173,68 +184,68 @@ function Navigation() {
           )}
 
           {/* Translation */}
-          <div className="flex gap-1 items-center">
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/64918f4a7ad39388b8769ffbe23ec38bf6c245df8411c7da7ede851708d40554?placeholderIfAbsent=true&apiKey=6e51f2aa35694a21b29ab869757ebe28"
-              alt="Language icon"
-              className="w-4 lg:w-5 xl:w-6"
-            />
-            <span className="my-auto text-xs md:text-sm lg:text-base xl:text-lg">
-              EN
-            </span>
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/b42ab03485f2d97fd3f9c9184ee7df164d7b51a1337080ada7a7d92c546fd3c4?placeholderIfAbsent=true&apiKey=6e51f2aa35694a21b29ab869757ebe28"
-              alt="Dropdown arrow"
-              className="w-3 lg:w-4 xl:w-5"
-            />
+          <div className="flex gap-1.5 items-center">
+            <div className="dropdown">
+              <select
+                onChange={(e) => changeLanguage(e.target.value)}
+                className="focus:outline-none bg-white text-black rounded-lg text-xs md:text-sm lg:text-base xl:text-lg"
+              >
+                <option value="en">{t('navigation.languages.en')}</option>
+                <option value="rw">{t('navigation.languages.kiny')}</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="flex flex-col mt-2 md:hidden text-white bg-gray-700 p-5 rounded-md">
-          <Link to="/" className="mb-2" onClick={toggleMenu}>
-            Home
-          </Link>
-          <Link to="/about" className="mb-2" onClick={toggleMenu}>
-            About us
-          </Link>
-          <Link to="/destiny" className="mb-2" onClick={toggleMenu}>
-            Destination
-          </Link>
-          <Link to="/service" className="mb-2" onClick={toggleMenu}>
-            Service
-          </Link>
-          <Link to="/products" className="mb-2" onClick={toggleMenu}>
-            Products
-          </Link>
-          <Link to="/contact" className="mb-2" onClick={toggleMenu}>
-            Contact
-          </Link>
-          {userProfileImage ? (
-            <div className="flex gap-2 items-center mt-4">
-              <img
-                src={userProfileImage}
-                alt="User Profile"
-                className="w-8 h-8 rounded-full object-cover"
-              />
-              <button onClick={handleLogout} className="text-white">
-                Logout
-              </button>
-            </div>
-          ) : (
-            <div className="flex flex-col mt-4">
-              <Link to="/login" className="mb-2" onClick={toggleMenu}>
-                Login
+        <div className="md:hidden w-full bg-gray-700 text-white">
+          <ul className="flex flex-col p-4 gap-2">
+            <li>
+              <Link to="/" className="text-base" onClick={toggleMenu}>
+                {t('navigation.home')}
               </Link>
-              <Link to="/signup" className="mb-2" onClick={toggleMenu}>
-                Sign Up
+            </li>
+            <li>
+              <Link to="/about" className="text-base" onClick={toggleMenu}>
+                {t('navigation.about')}
               </Link>
-            </div>
-          )}
+            </li>
+            <li>
+              <Link to="/destiny" className="text-base" onClick={toggleMenu}>
+                {t('navigation.destination')}
+              </Link>
+            </li>
+            <li>
+              <Link to="/service" className="text-base" onClick={toggleMenu}>
+                {t('navigation.service')}
+              </Link>
+            </li>
+            <li>
+              <Link to="/products" className="text-base" onClick={toggleMenu}>
+                {t('navigation.products')}
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" className="text-base" onClick={toggleMenu}>
+                {t('navigation.contact')}
+              </Link>
+            </li>
+
+            {/* Mobile translation switcher */}
+            <li>
+              <div className="dropdown">
+                <select
+                  onChange={(e) => changeLanguage(e.target.value)}
+                  className="focus:outline-none bg-white text-black rounded-lg text-base"
+                >
+                  <option value="en">{t('navigation.languages.en')}</option>
+                  <option value="rw">{t('navigation.languages.kiny')}</option>
+                </select>
+              </div>
+            </li>
+          </ul>
         </div>
       )}
     </nav>
@@ -242,3 +253,5 @@ function Navigation() {
 }
 
 export default Navigation;
+
+
