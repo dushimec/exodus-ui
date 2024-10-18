@@ -4,10 +4,12 @@ import "aos/dist/aos.css";
 
 function About() {
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-sine",
-    });
+
+   AOS.init({
+  duration: 1000, 
+  easing: "ease-in-sine", // Sine wave-like start
+});
+
   }, []);
 
   return (
