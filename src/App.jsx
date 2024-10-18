@@ -26,6 +26,7 @@ import Admin from './components/Admin';
 import AdminDashboard from './components/Dashboard';
 
 import Tour from './components/Tour';
+import 'aos/dist/aos.css';
 
 
 
