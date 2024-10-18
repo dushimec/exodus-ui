@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
-
-// Import images manually
 import KigaliImage from '../IMAGE/kgl.jpg';
 import Havan from '../IMAGE/havana.jpg';
 import Turkey from '../IMAGE/tukey.jpg';
@@ -15,6 +13,28 @@ const upcomingTrips = [
 export default function TravelHero() {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentTripIndex, setCurrentTripIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.5 }
+    );
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    return () => {
+      if (titleRef.current) {
+        observer.unobserve(titleRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -26,19 +46,22 @@ export default function TravelHero() {
   const handleSearch = (e) => {
     e.preventDefault();
     alert(`Searching for: ${searchTerm}`);
-    // Implement actual search functionality here
   };
 
   const handleExplore = () => {
     alert('Exploring adventures!');
-    // Implement navigation or modal opening here
   };
 
   return (
     <div className="relative pt-32 min-h-screen bg-gradient-to-br from-sky-600 to-white overflow-hidden flex flex-col justify-center items-center px-4">
       <div className="container mx-auto px-4 py-12 flex flex-col lg:flex-row items-center justify-between">
         <div className="lg:w-1/2 mt-10 lg:mt-0 lg:mb-0">
-          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-6 lg:mb-10 leading-tight text-center lg:text-left">
+          <h1
+            ref={titleRef}
+            className={`text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-6 lg:mb-10 leading-tight text-center lg:text-left transition-opacity duration-1000 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
             Your global gateway to unforgettable adventures!
           </h1>
 
@@ -118,56 +141,5 @@ export default function TravelHero() {
           </div>
         </div>
       </div>
-
-
-      {/* <div className='bg-white'>
-      <section className="flex flex-col items-center text-center mt-10">
-  <div className="flex flex-col sm:flex-row items-center justify-center w-full">
-    <div className="mt-4 w-48 border-4 border-sky-500 border-solid min-h-[4px] max-md:w-32" />
-    <h2 className="text-4xl font-[jim-nightshade] text-black mx-2 max-md:text-2xl mt-4 sm:mt-0">
-      Find a tour by destination
-    </h2>
-    <div className="mt-4 w-48 border-4 border-sky-500 border-solid min-h-[4px] max-md:w-32" />
-  </div>
-</section>
-
-<div className="flex justify-evenly gap-5 mt-10 flex-wrap max-md:justify-center max-md:flex-col max-md:items-center">
-  {[
-    {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/0202a9382b195489e964f71ea596c66b39a218e18bbb23c0298aaef14f8fa97d?placeholderIfAbsent=true&apiKey=6e51f2aa35694a21b29ab869757ebe28",
-      alt: "Destination 1",
-      label: "Israel"
-    },
-    {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/78c2289638a6c00227af70d39357a77a3d1a0e6a882b044880038c091dde1a27?placeholderIfAbsent=true&apiKey=6e51f2aa35694a21b29ab869757ebe28",
-      alt: "Destination 2",
-      label: "Rwanda"
-    },
-    {
-      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/dee3af1493f79e0aaa929a033c4ce039cc93865345d7fb1946cb09379b196696?placeholderIfAbsent=true&apiKey=6e51f2aa35694a21b29ab869757ebe28",
-      alt: "Destination 3",
-      label: "Turkey"
-    }
-  ].map(({ src, alt, label }, index) => (
-    <div key={index} className="relative w-[200px] h-[200px] max-md:w-[150px] max-md:h-[150px] max-sm:w-[180px] max-sm:h-[180px] max-md:mb-5">
-      <img
-        loading="lazy"
-        src={src}
-        alt={alt}
-        className="object-cover rounded-full w-full h-full hover:opacity-45 transition duration-300 ease-in-out"
-      />
-      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-lg font-bold rounded-full opacity-0 hover:opacity-100 transition-opacity duration-300">
-        {label}
       </div>
-    </div>
-  ))}
-</div>
-
-      <div className="mt-16 w-full border-4 border-sky-500 border-solid min-h-[4px] max-md:mt-10 max-md:max-w-full" />
-</div> */}
-
-    </div>
-
-    
-  );
-}
+)};
