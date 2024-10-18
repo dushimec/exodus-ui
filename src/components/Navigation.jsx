@@ -154,7 +154,7 @@ function Navigation() {
             </div>
           ) : (
             <div className="relative">
-              <button onClick={toggleDropdown} className="flex items-center">
+              <button onClick={toggleDropdown} className="flex items-center ">
                 <img
                   loading="lazy"
                   src={user.profile.url} 
@@ -194,13 +194,12 @@ function Navigation() {
 
           {/* Translation Dropdown */}
           <div className="relative flex gap-1 items-center">
-            <button
-              onClick={toggleLanguageDropdown}
-              className="flex items-center"
-            >
-              <Flag country={selectedLanguage.code} size={24} className="mr-1" />
-              <span className="my-auto text-xs md:text-sm lg:text-base xl:text-lg">
-                {selectedLanguage.name}
+
+            <button onClick={toggleLanguageDropdown} className="flex items-center 1`m-1">
+              <Flag country={selectedLanguage.code} size={24} /> {/* Display flag */}
+              <span className="my-auto text-xs  md:text-sm lg:text-base xl:text-lg">
+                {selectedLanguage.name} {/* Use selected language name */}
+
               </span>
             </button>
             {isLanguageDropdownOpen && (
