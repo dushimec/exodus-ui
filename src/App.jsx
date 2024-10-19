@@ -21,8 +21,6 @@ import JerusalemDetails from './components/JerusalemDetails';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPasword';
 
-
-
 import Admin from './components/Admin';
 import AdminDashboard from './components/Dashboard';
 
