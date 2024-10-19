@@ -1,14 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FaHeart, FaDollarSign, FaGlobe, FaComment } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // Import the AOS styles
 
 function Destinations() {
-  useEffect(() => {
-    AOS.init({ duration: 1200 }); // Initialize AOS with a 1200ms duration
-  }, []);
-
   const destinations = [
     {
       name: 'Istanbul', 
@@ -69,19 +63,16 @@ function DestinationCard({ name, country, price, likes, image, link }) {
   };
 
   return (
-    <article
-      className="flex flex-col w-full sm:w-2/3 md:w-2/3 lg:w-2/3 xl:w-1/3 p-4"
-      data-aos="fade-up" // AOS animation for the card
-    >
+    // Increase card size for 640px-768px using sm:w-2/3
+    <article className="flex flex-col w-full sm:w-2/3 md:w-2/3 lg:w-2/3 xl:w-1/3 p-4">
       <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105 duration-300">
         <img
           src={image}
           alt={`${name} destination`}
           className="w-full h-64 object-cover"
           loading="lazy"
-          data-aos="zoom-in" // AOS animation for the image
         />
-        <div className="p-5" data-aos="fade-in"> {/* AOS animation for the text */}
+        <div className="p-5">
           <h3 className="text-2xl font-semibold mb-2">{name}</h3>
           <div className="flex justify-between items-center text-sm text-gray-500 mt-2">
             <div className="flex items-center">
@@ -96,7 +87,6 @@ function DestinationCard({ name, country, price, likes, image, link }) {
               <FaHeart
                 className={`w-5 h-5 mr-1 cursor-pointer ${isLiked ? "text-red-500" : "text-gray-500"}`}
                 onClick={handleLikeClick}
-                data-aos="zoom-in" // AOS animation for the heart icon
               />
               <span>{likeCount} Likes</span>
             </div>
@@ -112,12 +102,9 @@ function DestinationCard({ name, country, price, likes, image, link }) {
               <span className="text-xl">{price}$</span>
             </div>
 
-            <div className="flex justify-end">
+            <div className="flex justify-end ">
               <Link to={link}>
-                <button
-                  className="ml-5 px-1 py-2 text-xs text-sky-500 border border-sky-500 rounded-full hover:bg-sky-500 hover:text-white transition-colors"
-                  data-aos="fade-up" // AOS animation for the button
-                >
+                <button className="ml-5 px-1 py-2 text-xs text-sky-500 border border-sky-500 rounded-full hover:bg-sky-500 hover:text-white transition-colors">
                   View Details
                 </button>
               </Link>

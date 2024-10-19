@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Flag from 'react-flagkit'; // Correct import for Flag
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../slices/authSlice'; // Import the logout action
+import Flag from 'react-flagkit'; // Flag for language selection
 
 function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false); 
-  const [userProfileImage, setUserProfileImage] = useState(null); 
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
 
-  const [selectedLanguage, setSelectedLanguage] = useState({ code: 'GB', name: 'Eng' }); // Default to 'GB' (Great Britain) for English
+  const dispatch = useDispatch();
+
+  // Get auth state from Redux store
+  const { isAuthenticated, user } = useSelector((state) => state.auth); // Assuming `auth` slice contains `isAuthenticated` and `user`
+
+  const [selectedLanguage, setSelectedLanguage] = useState({ code: 'GB', name: 'Eng' });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,13 +28,6 @@ function Navigation() {
     };
   }, []);
 
-  useEffect(() => {
-    const savedImage = localStorage.getItem('profileImage');
-    if (savedImage) {
-      setUserProfileImage(savedImage); 
-    }
-  }, []);
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -38,8 +37,7 @@ function Navigation() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('profileImage');
-    setUserProfileImage(null); 
+    dispatch(logout()); // Dispatch the logout action from authSlice
     setIsDropdownOpen(false);
   };
 
@@ -49,16 +47,16 @@ function Navigation() {
 
   const changeLanguage = (language) => {
     if (language === 'EN') {
-      setSelectedLanguage({ code: 'GB', name: 'Eng' }); // Use 'GB' for English
+      setSelectedLanguage({ code: 'GB', name: 'Eng' });
     } else if (language === 'RW') {
-      setSelectedLanguage({ code: 'RW', name: 'Kiny' }); // Use 'RW' for Kinyarwanda
+      setSelectedLanguage({ code: 'RW', name: 'Kiny' });
     }
     setIsLanguageDropdownOpen(false);
   };
 
   return (
     <nav
-      className={`fixed top-0 left-0 flex flex-wrap items-center w-full z-[9999] transition-all duration-300 ${
+      className={`fixed top-0 left-0 flex flex-wrap items-center w-full z-50 transition-all duration-300 ${
         isScrolled ? 'bg-gray-700 opacity-80' : 'bg-transparent'
       } p-2`}
     >
@@ -132,15 +130,9 @@ function Navigation() {
 
         {/* User Actions and Profile */}
         <div className="hidden md:flex gap-2 items-center text-white lg:gap-3 xl:gap-4">
-          {!userProfileImage ? (
-            // If user is not logged in, show login/signup
+          {!isAuthenticated ? (
+            // Show login/signup if not logged in
             <div className="flex gap-1.5 items-center">
-              <img
-                loading="lazy"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/bedd0d954d21ce96ad322acbd0b4d921d581a1bd0b25cb8bf71eaa1f8c67e901?placeholderIfAbsent=true&apiKey=6e51f2aa35694a21b29ab869757ebe28"
-                alt="Login icon"
-                className="object-contain shrink-0 aspect-square w-[18px] md:w-[20px] lg:w-[22px] xl:w-[25px]"
-              />
               <Link
                 to="/login"
                 className="text-xs md:text-sm lg:text-base xl:text-lg"
@@ -156,12 +148,12 @@ function Navigation() {
               </Link>
             </div>
           ) : (
-            // If user is logged in, show profile image and dropdown
+            // Show profile image and dropdown if logged in
             <div className="relative">
               <button onClick={toggleDropdown} className="flex items-center">
                 <img
                   loading="lazy"
-                  src={userProfileImage} // Display the uploaded profile image
+                  src={user?.profileImage} // Display user's profile image from Redux store
                   alt="User Profile"
                   className="object-cover w-8 h-8 rounded-full"
                 />
@@ -189,31 +181,28 @@ function Navigation() {
 
           {/* Translation Dropdown */}
           <div className="relative flex gap-1 items-center">
-            <button onClick={toggleLanguageDropdown} className="flex items-center 1`m-1">
-              <Flag country={selectedLanguage.code} size={24} /> {/* Display flag */}
+            <button
+              onClick={toggleLanguageDropdown}
+              className="flex items-center"
+            >
+              <Flag country={selectedLanguage.code} size={24} />
               <span className="my-auto text-xs md:text-sm lg:text-base xl:text-lg">
-                {selectedLanguage.name} {/* Use selected language name */}
+                {selectedLanguage.name}
               </span>
-              {/* <img
-                loading="lazy"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/a576e7d30c74cb3d5e59bde55cbfc1b73f1836945d66b64116e7eaf91cbd8f8e?placeholderIfAbsent=true&apiKey=6e51f2aa35694a21b29ab869757ebe28"
-                alt="Language toggle icon"
-                className="w-4 lg:w-5 xl:w-6"
-              /> */}
             </button>
             {isLanguageDropdownOpen && (
               <div className="absolute mt-32 left-1 w-24 bg-white text-black rounded-lg shadow-lg py-2 z-10">
                 <button
                   onClick={() => changeLanguage('EN')}
-                  className=" flex w-full text-left px-4 py-2    hover:bg-blue-200  hover:text-white"
+                  className="flex w-full text-left px-4 py-2 hover:bg-sky-300 hover:text-white"
                 >
-                  <Flag country="GB" size={18} className='m-1' /> Eng
+                  <Flag country="GB" size={18} className="m-1" /> Eng
                 </button>
                 <button
                   onClick={() => changeLanguage('RW')}
-                  className=" flex   w-full text-left px-4 py-2 hover:bg-blue-200  hover:text-white"
+                  className="flex w-full text-left px-4 py-2 hover:bg-sky-300 hover:text-white"
                 >
-                  <Flag country="RW" size={18} className='m-1' />   Kiny
+                  <Flag country="RW" size={18} className="m-1" /> Kiny
                 </button>
               </div>
             )}
@@ -245,12 +234,46 @@ function Navigation() {
           >
             Products
           </Link>
-          <Link
-            to="/contact"
-            className="text-xs md:text-sm lg:text-base xl:text-lg"
-          >
+          <Link to="/contact" className="text-xs md:text-sm lg:text-base xl:text-lg">
             Contact
           </Link>
+
+          {!isAuthenticated ? (
+            // Show login/signup if not logged in (mobile view)
+            <div className="flex flex-col space-y-4 items-center text-sm">
+              <Link to="/login">Login</Link>
+              <Link to="/signup">SignUp</Link>
+            </div>
+          ) : (
+            // Show profile image and dropdown if logged in (mobile view)
+            <div className="relative">
+              <button onClick={toggleDropdown}>
+                <img
+                  loading="lazy"
+                  src={user?.profileImage}
+                  alt="User Profile"
+                  className="object-cover w-8 h-8 rounded-full"
+                />
+              </button>
+              {isDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-40 bg-white text-black rounded-lg shadow-lg py-2">
+                  <Link
+                    to="/profile"
+                    className="block px-4 py-2 hover:bg-gray-100"
+                    onClick={() => setIsDropdownOpen(false)}
+                  >
+                    Profile
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
     </nav>
