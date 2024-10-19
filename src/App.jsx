@@ -20,18 +20,13 @@ import EgyptDetails from './components/EgyptDetails';
 import JerusalemDetails from './components/JerusalemDetails';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPasword';
-
-
-
 import Admin from './components/Admin';
 import AdminDashboard from './components/Dashboard';
-
-
-import { AuthProvider } from './context/authContext'; // Adjust path
-import PrivateRoute from './components/PrivateRoute'; // Adjust path
-
+import { AuthProvider } from './context/authContext';
+import PrivateRoute from './components/PrivateRoute';
 import Tour from './components/Tour';
 import 'aos/dist/aos.css';
+
 
 function App() {
   const location = useLocation();
@@ -39,13 +34,14 @@ function App() {
   // Logic to conditionally show/hide Navbar and Footer
   const isAdminRoute = location.pathname.startsWith('/admin');
   const isAdminLoginPage = location.pathname === '/admin-login';
-  const isDashboardPage = location.pathname === '/admin/dashboard';
+  const isDashboardPage = location.pathname === '/admin-dashboard';
+  
   const shouldShowNavbar = !isAdminRoute && !isAdminLoginPage && !isDashboardPage;
   const shouldShowFooter = !isAdminRoute && !isDashboardPage;
 
   return (
     <>
-      {/* Conditionally render Navbar */}
+    <AuthProvider>
       {shouldShowNavbar && <Navigation />}
 
       <Routes>
@@ -74,28 +70,27 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
 
-        {/* Admin Routes */}
-        <Route path="/admin-login" element={<Admin />} />
-        <Route path="/admin-dashboard" element={
-          <PrivateRoute adminOnly>
-            <AdminDashboard />
-          </PrivateRoute>
-        } />
-      </Routes>
+        {/* Admin and Protected Routes */}
+        <Route element={<PrivateRoute isAdminRoute />}>
+            <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          </Route>
+          <Route path="/admin-login" element={<Admin />} />
+        </Routes>
+      
 
-      {/* Conditionally render Footer */}
       {shouldShowFooter && <Footer />}
+      </AuthProvider>
     </>
+    
   );
+  
 }
 
 function AppWrapper() {
   return (
-    <AuthProvider>
-      <Router>
-        <App />
-      </Router>
-    </AuthProvider>
+    <Router>
+      <App />
+    </Router>
   );
 }
 
