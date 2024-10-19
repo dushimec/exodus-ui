@@ -2,6 +2,7 @@ import React from 'react';
 
 function HowItWorks() {
   return (
+
     <section className="flex flex-col lg:flex-row items-center justify-center w-full mt-12 mx-auto mb-12 px-4">
       {/* Header section */}
       <div className="text-center mb-6 lg:mb-0 lg:mr-8">

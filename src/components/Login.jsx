@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../slices/authSlice"; // Import login action
+import backgroundVideo from "../IMAGE/Back.mp4";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -34,8 +35,23 @@ function Login() {
   };
 
   return (
-    <div className="flex overflow-hidden flex-col justify-center items-center px-10 py-0 text-sm bg-stone-50 max-md:px-3 max-md:py-12 bg-[url('./IMAGE/back.png')] bg-cover bg-center bg-no-repeat h-screen pt-16">
-      <div className="flex flex-col justify-center items-center px-10 py-8 max-w-full bg-black bg-opacity-90 w-[400px] max-md:px-3">
+    <div className="relative flex overflow-hidden flex-col justify-center items-center px-10 py-0 text-sm h-screen pt-16">
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src={backgroundVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Black Overlay */}
+      <div className="absolute inset-0 bg-black opacity-60 z-5" />
+      
+      {/* Login Form Container */}
+      <div className="relative flex flex-col justify-center items-center px-10 py-8 max-w-full bg-black bg-opacity-90 w-[400px] max-md:px-3 z-10 backdrop-blur-sm mt-16">
         <form
           className="flex flex-col max-w-full w-[300px]"
           onSubmit={handleSubmit}
@@ -45,6 +61,7 @@ function Login() {
           <div className="self-center mt-5 text-sm font-semibold text-white max-md:mt-5">
             Log into your account
           </div>
+          
           {/* Email Input */}
           <div className="flex flex-col mt-10 relative">
             <input
@@ -59,6 +76,7 @@ function Login() {
               Email
             </label>
           </div>
+
           {/* Password Input */}
           <div className="flex flex-col mt-10 relative">
             <input
@@ -83,6 +101,7 @@ function Login() {
               )}
             </div>
           </div>
+
           {/* Login Button */}
           <button
             type="submit"
@@ -93,17 +112,19 @@ function Login() {
           >
             {loading ? "Logging in..." : "Login"}
           </button>
+
           {/* Display Notification */}
           {notification && (
             <div className="text-red-500 mt-4">{notification}</div>
-          )}{" "}
-          {/* Fixed error state */}
+          )}
+
           {/* Forgot Password Link */}
           <div className="text-white text-xs text-center mt-4">
             <Link to="/forgot-password" className="text-sky-500 cursor-pointer">
               Forgot Password?
             </Link>
           </div>
+
           {/* Don't have an account yet? */}
           <div className="flex justify-between items-center ml-10 mt-6 max-w-full w-[200px] max-md:mt-5 text-xs">
             <div className="text-white">Don't have an account?</div>

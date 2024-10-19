@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import product from '../IMAGE/product.png';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 function Products() {
+  useEffect(() => {
+    AOS.init({ duration: 1000, easing: 'ease-out' });
+  }, []);
   const productImages = [
     { src: "https://cdn.builder.io/api/v1/image/assets/TEMP/c5b17956ea7e7d5b7f13492beb1487a3851f8866b158364fba423bf3822dd81c?placeholderIfAbsent=true&apiKey=1e6eb9ecd3e84e559264893c09c12b4f", alt: "Product 1" },
     { src: "https://cdn.builder.io/api/v1/image/assets/TEMP/5460f161ef75e2537bf128369dbc2ceab3d346f0a8f20be9af61d4767c616f74?placeholderIfAbsent=true&apiKey=1e6eb9ecd3e84e559264893c09c12b4f", alt: "Product 2" },
@@ -30,19 +36,26 @@ function Products() {
 
   return (
     <section className="min-h-screen bg-[#F8F8F8]">
-    <header className="relative">
-  <img
-    loading="lazy"
-    src={product}
-    className="w-full h-[320px] object-cover"
-    alt="hero-img"
-  />
-  <div className="absolute inset-0 bg-black opacity-50"></div>
-  <h2 className="absolute inset-0 flex justify-center items-center text-white text-4xl font-bold">
-    Products
-  </h2>
-</header>
-
+           <div className="flex relative flex-col items-center self-stretch px-5 sm:px-10 lg:px-20 pt-24 sm:pt-32 lg:pt-10 pb-12 w-full text-white min-h-[400px]"
+        data-aos="zoom-out">
+        <img
+          loading="lazy"
+          src={product}
+          className="object-cover absolute inset-0 size-full"
+          alt="hero-img"
+        />
+        <div className="absolute inset-0 bg-black opacity-60"></div>
+        <div className="flex relative flex-col justify-start items-center px-2 w-full sm:px-2 sm:pt-10 md:px-20 md:pt-24">
+          <div className="px-2 py-4 text-2xl mt-10 sm:px-8 sm:py-6 md:px-12 md:py-9 mb-0 text-center bg-transparent border-white border-solid bg-opacity-0 border-4 sm:border-8 md:border-[10px] w-[80%] max-w-[496px]">
+            Product
+          </div>
+          <div className="mt-12 sm:mt-15 flex flex-row justify-center">
+             Historical Products
+          </div>
+        </div>
+      </div>
+    
+ 
 
       <div className='bg-sky-500 text-white py-4 px-8 rounded-full text-center mx-auto max-w-xs mt-10' >
   "Visit our office to buy high-quality religious products in person"
