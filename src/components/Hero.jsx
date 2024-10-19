@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
-
-// Import images manually
 import KigaliImage from '../IMAGE/kgl.jpg';
 import Havan from '../IMAGE/havana.jpg';
 import Turkey from '../IMAGE/tukey.jpg';
@@ -15,6 +13,28 @@ const upcomingTrips = [
 export default function TravelHero() {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentTripIndex, setCurrentTripIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.5 }
+    );
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    return () => {
+      if (titleRef.current) {
+        observer.unobserve(titleRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -26,19 +46,22 @@ export default function TravelHero() {
   const handleSearch = (e) => {
     e.preventDefault();
     alert(`Searching for: ${searchTerm}`);
-    // Implement actual search functionality here
   };
 
   const handleExplore = () => {
     alert('Exploring adventures!');
-    // Implement navigation or modal opening here
   };
 
   return (
     <div className="relative pt-32 min-h-screen bg-gradient-to-br from-sky-600 to-white overflow-hidden flex flex-col justify-center items-center px-4">
       <div className="container mx-auto px-4 py-12 flex flex-col lg:flex-row items-center justify-between">
         <div className="lg:w-1/2 mt-10 lg:mt-0 lg:mb-0">
-          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-6 lg:mb-10 leading-tight text-center lg:text-left">
+          <h1
+            ref={titleRef}
+            className={`text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-6 lg:mb-10 leading-tight text-center lg:text-left transition-opacity duration-1000 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
             Your global gateway to unforgettable adventures!
           </h1>
 
@@ -118,9 +141,5 @@ export default function TravelHero() {
           </div>
         </div>
       </div>
-      
-    </div>
-
-    
-  );
-}
+      </div>
+)};

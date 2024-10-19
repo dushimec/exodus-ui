@@ -20,12 +20,14 @@ import EgyptDetails from './components/EgyptDetails';
 import JerusalemDetails from './components/JerusalemDetails';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPasword';
-import AddNewTrip from './components/AddNewTrip';
-import AdminLogin from './components/AdmingLogin';
-import { AuthProvider } from './context/authContext'; // Adjust path
-import PrivateRoute from './components/PrivateRoute'; // Adjust path
+
+
 import Admin from './components/Admin';
 import AdminDashboard from './components/Dashboard';
+
+
+import { AuthProvider } from './context/authContext'; // Adjust path
+import PrivateRoute from './components/PrivateRoute'; // Adjust path
 import Tour from './components/Tour';
 
 function App() {
@@ -43,12 +45,12 @@ function App() {
       {/* Conditionally render Navbar */}
       {shouldShowNavbar && <Navigation />}
 
-      {/* Route management */}
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={
           <>
             <Hero />
+            <Tour />
             <Destinations />
             <WhyChooseUs />
             <PopularTourPackages />
@@ -70,41 +72,19 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
 
         {/* Admin Routes */}
-        <Route path="/admin-login" element={<AdminLogin />} />
-        <Route path="/admin/dashboard" element={
+        <Route path="/admin-login" element={<Admin />} />
+        <Route path="/admin-dashboard" element={
           <PrivateRoute adminOnly>
             <AdminDashboard />
           </PrivateRoute>
         } />
-        <Route path="/admin/new-trip" element={
-          <PrivateRoute adminOnly>
-            <AddNewTrip />
-          </PrivateRoute>
-        } />
       </Routes>
-
 
       {/* Conditionally render Footer */}
       {shouldShowFooter && <Footer />}
     </>
   );
 }
-
-        {/* Add padding to the top to avoid content being hidden behind the navbar */}
-        
-          <Routes>
-            {/* Home page */}
-            <Route path="/" element={
-              <>
-                <Hero />
-                <Tour/>
-                <Destinations />
-                <WhyChooseUs />
-                <PopularTourPackages />
-                <HowItWorks />
-              </>
-            } />
-
 
 function AppWrapper() {
   return (
@@ -117,5 +97,3 @@ function AppWrapper() {
 }
 
 export default AppWrapper;
-
-
