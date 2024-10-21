@@ -2,27 +2,22 @@ import React from "react";
 
 function About() {
   return (
+
     <div className="flex overflow-hidden flex-col items-center bg-stone-50 bg-opacity-50">
-           <div className="flex relative flex-col items-center self-stretch px-5 sm:px-10 lg:px-20 pt-24 sm:pt-32 lg:pt-10 pb-12 w-full text-white min-h-[400px]" data-aos="zoom-out">
-           <img
+      <div className="flex relative flex-col self-stretch w-full text-4xl font-semibold text-white min-h-[300px] sm:min-h-[400px] md:min-h-[490px]">
+        <img
           loading="lazy"
           srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/daa3fd74395d0306601657a9c8c5a5e15532b170c14c185a02e3905b98b13927?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/daa3fd74395d0306601657a9c8c5a5e15532b170c14c185a02e3905b98b13927?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/daa3fd74395d0306601657a9c8c5a5e15532b170c14c185a02e3905b98b13927?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/daa3fd74395d0306601657a9c8c5a5e15532b170c14c185a02e3905b98b13927?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/daa3fd74395d0306601657a9c8c5a5e15532b170c14c185a02e3905b98b13927?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=1200 1200w"
           className="object-cover absolute inset-0 w-full h-full"
           alt="Background"
         />
-
         <div className="absolute inset-0 bg-black opacity-60"></div>
-         <div className="flex relative flex-col justify-start items-center px-2 w-full sm:px-2 sm:pt-10 md:px-20 md:pt-24">
-          <div className="px-2 py-4  text-2xl  mt-10 sm:px-8 sm:py-6 md:px-12 md:py-9 mb-0 text-center bg-transparent border-white border-solid bg-opacity-0 border-4 sm:border-8 md:border-[10px] w-[80%] max-w-[496px]">
-          About Us
+        <div className="flex relative flex-col justify-start items-center px-4 pt-16 w-full sm:px-8 sm:pt-20 md:px-20 md:pt-24">
+          <div className="px-4 py-4  mt-16 sm:px-8 sm:py-6 md:px-12 md:py-9 mb-0 text-center bg-transparent border-white border-solid bg-opacity-0 border-4 sm:border-8 md:border-[10px] w-[80%] max-w-[496px]">
+            About Us
           </div>
-          <div className="mt-12  sm:mt-15 flex flex-row justify-center">
-            Learn More About Us
-          </div>
-
         </div>
       </div>
- 
       <div className="mt-8 sm:mt-12 md:mt-20 px-4 sm:px-6 md:px-8 w-full max-w-[1232px]">
         <div className="flex flex-col md:flex-row gap-5">
           <div className="flex flex-col w-full md:w-6/12">
@@ -77,6 +72,7 @@ function About() {
         <div className="h-1 w-16 border-4 border-sky-500 border-solid mt-4 mb-8" />
       </div>
 
+
       <div className="flex flex-col items-center mb-12">
         <img
           loading="lazy"
@@ -91,5 +87,6 @@ function About() {
     </div>
   );
 }
+
 
 export default About;

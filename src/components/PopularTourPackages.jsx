@@ -60,7 +60,7 @@ function PopularTourPackages() {
           {/* Left Arrow */}
           <button
             onClick={prevSlide}
-            className="absolute left-2 z-30 bg-blue-500 p-1.5 rounded-full shadow-lg focus:outline-none hover:bg-blue-700 max-md:left-1 max-md:p-1"
+            className="absolute left-2 z-30 bg-sky-500 p-1.5 rounded-full shadow-lg focus:outline-none hover:bg-sky-400 max-md:left-1 max-md:p-1"
             style={{ top: '50%', transform: 'translateY(-50%)' }}
           >
             <FiChevronLeft className="text-white text-2xl max-md:text-xl" />
@@ -85,7 +85,7 @@ function PopularTourPackages() {
           {/* Right Arrow */}
           <button
             onClick={nextSlide}
-            className="absolute right-2 z-30 bg-blue-500 p-1.5 rounded-full shadow-lg focus:outline-none hover:bg-blue-700 max-md:right-1 max-md:p-1"
+            className="absolute right-2 z-30 bg-sky-500 p-1.5 rounded-full shadow-lg focus:outline-none hover:bg-sky-400 max-md:right-1 max-md:p-1"
             style={{ top: '50%', transform: 'translateY(-50%)' }}
           >
             <FiChevronRight className="text-white text-2xl max-md:text-xl" />
