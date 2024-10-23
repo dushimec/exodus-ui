@@ -1,17 +1,17 @@
-import { useState, useEffect, useRef } from 'react';
-import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
-import KigaliImage from '../IMAGE/kgl.jpg';
-import Havan from '../IMAGE/havana.jpg';
-import Turkey from '../IMAGE/tukey.jpg';
+import { useState, useEffect, useRef } from "react";
+import { Search, ChevronLeft, ChevronRight } from "lucide-react";
+import KigaliImage from "../IMAGE/kgl.jpg";
+import Havan from "../IMAGE/havana.jpg";
+import Turkey from "../IMAGE/tukey.jpg";
 
 const upcomingTrips = [
-  { id: 1, title: 'Kings Palace Museum', image: KigaliImage },
-  { id: 2, title: 'Mountain Expedition', image: Havan },
-  { id: 3, title: 'Turkey', image: Turkey },
+  { id: 1, title: "Kings Palace Museum", image: KigaliImage },
+  { id: 2, title: "Mountain Expedition", image: Havan },
+  { id: 3, title: "Turkey", image: Turkey },
 ];
 
 export default function TravelHero() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [currentTripIndex, setCurrentTripIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const titleRef = useRef(null);
@@ -38,7 +38,9 @@ export default function TravelHero() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTripIndex((prevIndex) => (prevIndex + 1) % upcomingTrips.length);
+      setCurrentTripIndex(
+        (prevIndex) => (prevIndex + 1) % upcomingTrips.length
+      );
     }, 5000);
     return () => clearInterval(interval);
   }, []);
@@ -49,7 +51,7 @@ export default function TravelHero() {
   };
 
   const handleExplore = () => {
-    alert('Exploring adventures!');
+    alert("Exploring adventures!");
   };
 
   return (
@@ -59,7 +61,9 @@ export default function TravelHero() {
           <h1
             ref={titleRef}
             className={`text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-6 lg:mb-10 leading-tight text-center lg:text-left transition-opacity duration-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
             }`}
           >
             Your global gateway to unforgettable adventures!
@@ -101,8 +105,8 @@ export default function TravelHero() {
                   key={trip.id}
                   className={`absolute top-0 left-0 w-full h-full transition-all duration-500 ease-in-out ${
                     index === currentTripIndex
-                      ? 'opacity-100 translate-x-0'
-                      : 'opacity-0 translate-x-full'
+                      ? "opacity-100 translate-x-0"
+                      : "opacity-0 translate-x-full"
                   }`}
                 >
                   <img
@@ -120,7 +124,9 @@ export default function TravelHero() {
               <button
                 onClick={() =>
                   setCurrentTripIndex(
-                    (prevIndex) => (prevIndex - 1 + upcomingTrips.length) % upcomingTrips.length
+                    (prevIndex) =>
+                      (prevIndex - 1 + upcomingTrips.length) %
+                      upcomingTrips.length
                   )
                 }
                 className="p-1 bg-sky-500 text-white rounded-full hover:bg-sky-600 transition"
@@ -130,7 +136,9 @@ export default function TravelHero() {
               </button>
               <button
                 onClick={() =>
-                  setCurrentTripIndex((prevIndex) => (prevIndex + 1) % upcomingTrips.length)
+                  setCurrentTripIndex(
+                    (prevIndex) => (prevIndex + 1) % upcomingTrips.length
+                  )
                 }
                 className="p-1 bg-sky-500 text-white rounded-full hover:bg-sky-600 transition"
                 aria-label="Next trip"
@@ -141,7 +149,7 @@ export default function TravelHero() {
           </div>
         </div>
       </div>
-
-      </div>
-)};
+    </div>
+  );
+}
 
