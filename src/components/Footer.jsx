@@ -30,6 +30,8 @@ const destinations = [
 ];
 
 function Footer() {
+  const currentYear = new Date().getFullYear(); // Get the current year
+
   return (
     <footer className="flex flex-col pt-8 w-full bg-sky-600 text-white">
       {/* Upper section of the footer */}
@@ -100,19 +102,22 @@ function Footer() {
         <div className="flex flex-col w-full lg:w-auto text-white mt-8 lg:mt-0">
           <h3 className="text-xl font-extrabold">Contact info</h3>
           <div className="flex flex-col mt-6 text-sm font-semibold">
-            <p>Address: Kigali, Rwanda</p>
-            <p className="mt-5">Phone: 0788888888</p>
-            <p className="mt-5">Email: Exodus@gmail.com</p>
+            <p>Address: Remera Gisimenti(Ikaze House)</p>
+            <p className="mt-5">Phone: 0788726181</p>
+            <p className="mt-5">Email: Oldfoxcoltd@gmail.com</p>
           </div>
         </div>
       </div>
 
       {/* Lower section: copyright */}
       <div className="py-3 px-4 mt-8 w-full text-xs font-semibold bg-sky-600 text-center border-t-2 border-white">
-        ©2024 Exodus. All rights reserved.
+        ©{currentYear} Exodus. All rights reserved.
       </div>
     </footer>
   );
 }
+
+
+
 
 export default Footer;
