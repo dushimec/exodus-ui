@@ -1,8 +1,11 @@
+
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, getProfile } from "../slices/authSlice"; // Import the logout and getProfile actions
 import Flag from "react-flagkit"; // Flag for language selection
+import logo from "../IMAGE/logo.png"
+
 
 function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -71,9 +74,9 @@ function Navigation() {
         <div className="flex-shrink-0">
           <img
             loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/44e4e2e4f0bb31f30bc1493108073e6e5e5823645bfe75f9dfee19deb334bf75?placeholderIfAbsent=true&apiKey=6e51f2aa35694a21b29ab869757ebe28"
+            src={logo}
             alt="Company logo"
-            className="object-contain w-[80px] md:w-[90px] lg:w-[120px] xl:w-[140px]"
+            className="object-contain  w-[140px] md:w-[90px] lg:w-[180px] xl:w-[140px]"
           />
         </div>
 
@@ -98,7 +101,7 @@ function Navigation() {
         </div>
 
         {/* Links (Desktop View) */}
-        <div className="hidden md:flex md:items-center md:gap-4 lg:gap-6 xl:gap-8">
+        <div className="hidden md:flex text-xs md:items-center md:gap-4 lg:gap-6 xl:gap-8">
           <Link to="/" className="text-xs md:text-sm lg:text-base xl:text-lg">
             Home
           </Link>
