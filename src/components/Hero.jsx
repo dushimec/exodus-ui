@@ -1,3 +1,18 @@
+import { useState, useEffect, useRef } from 'react';
+import { FaSearch } from 'react-icons/fa'; // Import the search icon
+import { IoChevronBack, IoChevronForward } from 'react-icons/io5'; // Import Chevron icons for carousel navigation
+import video from "../IMAGE/video.mp4"; // Assuming video is located in your IMAGE folder
+import KigaliImage from '../IMAGE/kgl.jpg';
+import Havan from '../IMAGE/havana.jpg';
+import Turkey from '../IMAGE/tukey.jpg';
+
+
+const upcomingTrips = [
+  { id: 1, title: "Trip to Bali", image: KigaliImage },
+  { id: 2, title: "Explore Iceland", image: Havan },
+  { id: 3, title: "Adventure in Morocco", image: Turkey }
+];
+
 export default function TravelHero() {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentTripIndex, setCurrentTripIndex] = useState(0);
@@ -90,7 +105,7 @@ export default function TravelHero() {
               className="w-full bg-white bg-opacity-90 rounded-full py-2 sm:py-3 px-6 pl-12 text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-sky-300 shadow-lg"
               aria-label="Search for a trip"
             />
-            <Search
+            <FaSearch
               className="absolute left-4 top-1/2 transform -translate-y-1/2 text-sky-500"
               aria-hidden="true"
             />
@@ -134,7 +149,7 @@ export default function TravelHero() {
                 className="p-1 bg-sky-500 text-white rounded-full hover:bg-sky-600 transition"
                 aria-label="Previous trip"
               >
-                <ChevronLeft size={20} />
+                <IoChevronBack size={20} /> {/* Updated icon */}
               </button>
               <button
                 onClick={() =>
@@ -143,7 +158,7 @@ export default function TravelHero() {
                 className="p-1 bg-sky-500 text-white rounded-full hover:bg-sky-600 transition"
                 aria-label="Next trip"
               >
-                <ChevronRight size={20} />
+                <IoChevronForward size={20} /> {/* Updated icon */}
               </button>
             </div>
           </div>
