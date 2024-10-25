@@ -90,7 +90,6 @@ function About() {
         <div className="mt-4 text-xl sm:text-2xl font-[inria-serif] text-sky-500">
           CEO of Oldfox
         </div>
-
     <div className="flex overflow-hidden flex-col items-center  bg-stone-50 bg-opacity-50 max-md:pb-24">
       <div className="flex relative flex-col self-stretch w-full text-4xl font-semibold text-white min-h-[490px] max-md:max-w-full">
         <img
@@ -179,13 +178,11 @@ function About() {
       <div className="mt-5 text-2xl mb-10 font-[inria-serif] text-sky-500 max-md:text-4xl">
         Ceo of Oldfox
 
-
-
       </div>
     </div>
     </div>
     </div>
-    
+
   )};
 
 
