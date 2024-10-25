@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,7 +12,7 @@ export default function Contact() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
+    setFormData((prevState) => ({
       ...prevState,
       [name]: value
     }));
@@ -18,45 +20,46 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log('Form submitted:', formData);
   };
 
   return (
     <div className="flex flex-col items-center bg-stone-50 bg-opacity-50 overflow-hidden">
       <header className="relative w-full bg-black bg-opacity-30 text-white py-0.5">
-        <div className="relative flex flex-col items-center px-4 sm:px-6 lg:px-20 pt-7 pb-24 sm:pb-32 lg:pb-52 min-h-[300px] sm:min-h-[400px] lg:min-h-[482px]">
+        <div className="relative flex flex-col items-center px-4 sm:px-6 lg:px-20 pt-7 pb-10 sm:pb-32 lg:pb-20 min-h-[300px] sm:min-h-[400px] lg:min-h-[482px]">
           <img
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/f93c0c151d2456604e78e6fd64e05bbe07b681d348b7c4a62bf319aeb9c8c617?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497"
             alt="Background"
             className="absolute inset-0 object-cover w-full h-full"
           />
-          <div className="relative z-10 flex flex-col items-center w-full max-w-4xl mt-16 sm:mt-20 lg:mt-28">
-            <h1 className="px-8 py-4 text-3xl font-semibold border-4 border-white bg-zinc-300 bg-opacity-0">
-              CONTACT US
-            </h1>
+          <div className="absolute inset-0 bg-black opacity-60"></div>
+          <div className="flex relative flex-col justify-start items-center px-2 w-full sm:px-2 sm:pt-20 md:px-20 md:pt-24">
+            <div className="px-2 py-4 text-2xl mt-10 sm:px-8 sm:py-6 md:px-12 md:py-9 mb-0 text-center bg-transparent border-white border-solid bg-opacity-0 border-4 sm:border-8 md:border-[10px] w-[80%] max-w-[496px]">
+              Contact 
+            </div>
           </div>
         </div>
       </header>
 
       <main className="flex flex-col items-center w-full max-w-4xl px-4 sm:px-6 lg:px-8">
-        <h2 className="mt-6 text-3xl font-semibold text-sky-500">Get in touch with us</h2>
+        <h2 className="mt-10 text-3xl font-semibold text-sky-500">Get in touch with us</h2>
 
-        <div className="flex flex-wrap justify-center gap-8 mt-12 sm:mt-16 lg:mt-24 w-full">
+        {/* Contact Info Section */}
+        <div className="flex flex-col sm:flex-row justify-center gap-6 sm:gap-8 sm:mt-16 lg:mt-24 w-full">
           <ContactInfo
-            icon="/phone-icon.png"
+            icon={faPhone}
             title="Phone"
             content="+250788726181"
           />
           <ContactInfo
-            icon="/address-icon.png"
+            icon={faMapMarkerAlt}
             title="Address"
-            content="Rwanda, Kigali, Kicukiro-remera"
+            content="Remera Gisimenti(Ikaze House)"
           />
           <ContactInfo
-            icon="/email-icon.png"
+            icon={faEnvelope}
             title="Email"
-            content="Exodus@gmail.com"
+            content="Oldfoxcoltd@gmail.com"
           />
         </div>
 
@@ -64,6 +67,7 @@ export default function Contact() {
           IF YOU GOT ANY QUESTION PLEASE DO NOT HESITATE TO SEND US MESSAGE.
         </p>
 
+        {/* Form Section */}
         <form onSubmit={handleSubmit} className="w-full max-w-lg mt-8 sm:mt-12 space-y-6">
           <FormInput
             name="name"
@@ -96,12 +100,14 @@ export default function Contact() {
             />
             <label htmlFor="message" className="sr-only">Message</label>
           </div>
-          <button
-            type="submit"
-            className="flex justify-center items-center px-6 py-3 w-full sm:w-auto text-sm font-medium text-sky-500 bg-white border-2 border-sky-500 transition-all duration-300 ease-in-out hover:bg-sky-500 hover:text-white"
-          >
-            SEND MESSAGE
-          </button>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="flex justify-center items-center px-6 py-3 w-full sm:w-auto text-sm font-medium text-sky-500 bg-white border-2 border-sky-500 transition-all duration-300 ease-in-out hover:bg-sky-500 hover:text-white"
+            >
+              SEND MESSAGE
+            </button>
+          </div>
         </form>
       </main>
 
@@ -120,10 +126,10 @@ export default function Contact() {
 
 function ContactInfo({ icon, title, content }) {
   return (
-    <div className="flex flex-col items-center">
-      <img src={icon} alt={title} className="w-[55px] h-[55px]" />
-      <h3 className="mt-2 text-xl text-sky-500">{title}</h3>
-      <p className="mt-2 text-xs font-medium text-black text-opacity-80 text-center">{content}</p>
+    <div className="flex flex-col items-center sm:w-1/3 w-full text-center">
+      <FontAwesomeIcon icon={icon} className="w-[30px] h-[30px] text-sky-500" />
+      <h3 className="mt-2 text-lg sm:text-xl text-sky-500">{title}</h3>
+      <p className="mt-2 text-sm sm:text-base font-medium text-black text-opacity-80">{content}</p>
     </div>
   );
 }
