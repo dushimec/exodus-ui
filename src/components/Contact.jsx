@@ -111,15 +111,21 @@ export default function Contact() {
         </form>
       </main>
 
-      <footer className="relative w-full mt-12 mb-7">
-        <div className="relative flex justify-center items-center py-24 sm:py-32 lg:py-40 min-h-[300px] sm:min-h-[386px]">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/fdb3deeba424020f688b6234b39e89db4d7448f38d6f16a6282d024b44f5911b?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497"
-            alt="Footer background"
-            className="absolute inset-0 object-cover w-full h-full"
-          />
-        </div>
-      </footer>
+      
+      <div className="map-container relative w-full mt-12 ">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d463.7831045563438!2d30.110356751752505!3d-1.9587686177832764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMcKwNTcnMzEuNSJTIDMwwrAwNiczOC41IkU!5e1!3m2!1sen!2srw!4v1729872315005!5m2!1sen!2srw"
+                width="100%"
+                height="250"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+              
+             
+            </div>
+      
     </div>
   );
 }
