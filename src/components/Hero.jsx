@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { FaSearch } from 'react-icons/fa'; // Import the search icon
 import { IoChevronBack, IoChevronForward } from 'react-icons/io5'; // Import Chevron icons for carousel navigation
@@ -12,6 +13,7 @@ const upcomingTrips = [
   { id: 2, title: "Explore Iceland", image: Havan },
   { id: 3, title: "Adventure in Morocco", image: Turkey }
 ];
+
 
 export default function TravelHero() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -167,5 +169,7 @@ export default function TravelHero() {
     </div>
   );
 
+
 }
+
 

@@ -7,6 +7,7 @@ import Flag from "react-flagkit"; // Flag for language selection
 import logo from "../IMAGE/logo.png"
 
 
+
 function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
