@@ -86,7 +86,7 @@ function Navigation() {
           <button onClick={toggleMenu} className="focus:outline-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-white"
+              className="h-9 w-9 bg-white rounded-md text-sky-700"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

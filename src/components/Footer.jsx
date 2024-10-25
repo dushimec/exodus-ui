@@ -52,6 +52,20 @@ function Footer() {
                   <br className="hidden md:block" />
                   adventure partner!
                 </p>
+                <div className="map-container relative w-full  ">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d463.7831045563438!2d30.110356751752505!3d-1.9587686177832764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMcKwNTcnMzEuNSJTIDMwwrAwNiczOC41IkU!5e1!3m2!1sen!2srw!4v1729872315005!5m2!1sen!2srw"
+                width="50%"
+                height="100"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+               
+              ></iframe>
+              
+             
+            </div>
               </div>
             </div>
 
