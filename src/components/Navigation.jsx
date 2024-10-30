@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, getProfile } from "../slices/authSlice";
 import Flag from "react-flagkit";
-import logo from "../IMAGE/logo.jpg";
+// import logo from "../IMAGE/logo.jpg";
 
 function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -70,12 +70,12 @@ function Navigation() {
   <div className="flex justify-between items-center w-full px-4 md:px-6 lg:px-10 xl:px-12 text-white">
   {/* Logo */}
   <div className="flex-shrink-0">
-    <img
+    {/* <img
       loading="lazy"
       src={logo}
       alt="Company logo"
       className="object-contain w-[100px] md:w-[70px] lg:w-[120px] xl:w-[100px] rounded-3xl"
-    />
+    /> */}
   </div>
 
 
@@ -87,7 +87,7 @@ function Navigation() {
             onClick={toggleMenu}
             className="focus:outline-none w-10 h-10 relative text-white"
             aria-label="Toggle Menu"
-          >
+          />
             <div
               className={`absolute w-6 h-0.5 bg-current transform transition duration-300 ease-in-out ${
                 isMenuOpen ? "rotate-45 translate-y-0" : "-translate-y-2"

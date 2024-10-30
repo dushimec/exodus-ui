@@ -1,10 +1,4 @@
 
-import React, { useState } from 'react';
-import { Bell, Mail, Search, Settings, ChevronDown, MoreVertical } from 'lucide-react';
-import AddNewTrip from './AddNewTrip'; // Ensure to import the AddNewTrip component
-import logo from '../IMAGE/logo.jpg'
-import picture from '../IMAGE/profile.jpg'
-
 import React, { useState, useContext, useEffect } from "react";
 import {
   Bell,
@@ -17,6 +11,7 @@ import {
 import AddNewTrip from "./AddNewTrip"; // Ensure to import the AddNewTrip component
 import { AuthContext } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
+// import logo from '../IMAGE/logo.jpg'
 
 
 export default function AdminDashboard() {
@@ -69,7 +64,7 @@ export default function AdminDashboard() {
       <nav className="bg-gray-800 text-white p-4">
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-4">
-            <img src={logo} alt="TripManager Logo" />
+            {/* <img src={logo} alt="TripManager Logo" /> */}
             <h1 className="text-xl font-bold">Admin DashBoard</h1>
           </div>
           <div className="flex space-x-4">
