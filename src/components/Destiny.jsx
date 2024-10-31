@@ -40,9 +40,7 @@ export default function Destiny() {
           <div className="mt-20  sm:mt-15 flex flex-row justify-center">
             Explore tour by destinations
           </div>
-          <div className="mt-12  sm:mt-15 flex flex-row justify-center">
-            Explore tour by destinations
-          </div>
+        
 
         </div>
       </div>
@@ -52,14 +50,14 @@ export default function Destiny() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-28">
           <DestinationCard
             imageSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/33fae0df8bf179790c2123d2aba2911ebe9447d3273945edf5a1e32b89677d6a"
-            location="Paris"
+            location="  Rwanda"
             description="Experience the romance and charm of the City of Light."
             showTutor={!hasVisited}
             aosAnimation="zoom-in"
           />
           <DestinationCard
             imageSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/a6f3480c81274d3fc5b27e53fa8ba11235679978c2d207afcb03ef43152f0183"
-            location="Tel Aviv"
+            location="Israel"
             description="Discover the vibrant culture and beautiful beaches of this Mediterranean gem."
             aosAnimation="zoom-in"
           />
@@ -70,13 +68,13 @@ export default function Destiny() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-28">
           <DestinationCard
             imageSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/1313d8b1bfaed5a882ed7c53af9b1ab46acdb10791f71d2039f72bba19ff2180"
-            location="New York"
+            location="Turkey"
             description="Explore the bustling streets and iconic landmarks of the Big Apple."
             aosAnimation="zoom-in"
           />
           <DestinationCard
             imageSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/2ce0e3cedfb6319b662aa74d29e7ddb053f294b6be2ce29fc5d7fcbf9b45e233"
-            location="Tokyo"
+            location="Egypt"
             description="Immerse yourself in the unique blend of tradition and modernity in Japan's capital."
             aosAnimation="zoom-in"
           />

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Bell, Mail, Search, Settings, ChevronDown, MoreVertical } from 'lucide-react';
 import AddNewTrip from './AddNewTrip'; // Ensure to import the AddNewTrip component
-import logo from '../IMAGE/logo.png'
+import logo from '../IMAGE/logo.jpg'
 import picture from '../IMAGE/profile.jpg'
 
 export default function AdminDashboard() {
