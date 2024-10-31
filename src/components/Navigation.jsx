@@ -1,12 +1,9 @@
-
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logout, getProfile } from "../slices/authSlice"; // Import the logout and getProfile actions
-import Flag from "react-flagkit"; // Flag for language selection
-import logo from "../IMAGE/logo.png"
-
-
+import { logout, getProfile } from "../slices/authSlice";
+import Flag from "react-flagkit";
+import logo from "../IMAGE/logo.jpg";
 
 function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,7 +16,7 @@ function Navigation() {
   });
 
   const dispatch = useDispatch();
-  const { user, token } = useSelector((state) => state.auth); // Remove isAuthenticated and use user directly
+  const { user, token } = useSelector((state) => state.auth);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,7 +31,7 @@ function Navigation() {
 
   useEffect(() => {
     if (token) {
-      dispatch(getProfile()); // Fetch profile when token exists
+      dispatch(getProfile());
     }
   }, [token, dispatch]);
 
@@ -57,7 +54,7 @@ function Navigation() {
 
   const changeLanguage = (language) => {
     if (language === "EN") {
-      setSelectedLanguage({ code: "GB", name: "Eng" });
+      setSelectedLanguage({ code: "GB", name: " Eng", className: "mr-10" });
     } else if (language === "RW") {
       setSelectedLanguage({ code: "RW", name: "Kiny" });
     }
@@ -70,19 +67,43 @@ function Navigation() {
         isScrolled ? "bg-gray-700 opacity-80" : "bg-transparent"
       } p-2`}
     >
-      <div className="flex justify-between items-center w-full px-4 md:px-6 lg:px-10 xl:px-12 text-white">
-        {/* Logo */}
-        <div className="flex-shrink-0">
-          <img
-            loading="lazy"
-            src={logo}
-            alt="Company logo"
-            className="object-contain  w-[140px] md:w-[90px] lg:w-[180px] xl:w-[140px]"
-          />
-        </div>
+  <div className="flex justify-between items-center w-full px-4 md:px-6 lg:px-10 xl:px-12 text-white">
+  {/* Logo */}
+  <div className="flex-shrink-0">
+    <img
+      loading="lazy"
+      src={logo}
+      alt="Company logo"
+      className="object-contain w-[100px] md:w-[70px] lg:w-[120px] xl:w-[100px] rounded-3xl"
+    />
+  </div>
 
-        {/* Hamburger Menu Icon */}
+
+
+        {/* Enhanced Hamburger Menu Icon */}
         <div className="md:hidden">
+
+          <button
+            onClick={toggleMenu}
+            className="focus:outline-none w-10 h-10 relative text-white"
+            aria-label="Toggle Menu"
+          >
+            <div
+              className={`absolute w-6 h-0.5 bg-current transform transition duration-300 ease-in-out ${
+                isMenuOpen ? "rotate-45 translate-y-0" : "-translate-y-2"
+              }`}
+            ></div>
+            <div
+              className={`absolute w-6 h-0.5 bg-current transform transition duration-300 ease-in-out ${
+                isMenuOpen ? "opacity-0" : "opacity-100"
+              }`}
+            ></div>
+            <div
+              className={`absolute w-6 h-0.5 bg-current transform transition duration-300 ease-in-out ${
+                isMenuOpen ? "-rotate-45 translate-y-0" : "translate-y-2"
+              }`}
+            ></div>
+
           <button onClick={toggleMenu} className="focus:outline-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -139,7 +160,33 @@ function Navigation() {
         </div>
 
         {/* User Actions and Profile */}
-        <div className="hidden md:flex gap-2 items-center text-white lg:gap-3 xl:gap-4">
+        <div className="hidden md:flex mr-16 items-center text-white lg:gap-3 xl:gap-4">
+          {/* Translation Dropdown */}
+          <div className="relative flex gap-20 mr-6 items-center">
+            <button onClick={toggleLanguageDropdown} className="flex items-center 1`m-1">
+              <Flag country={selectedLanguage.code} className="mr-1" size={24} />
+              <span className="my-auto text-xs md:text-sm lg:text-base xl:text-lg">
+                {selectedLanguage.name}
+              </span>
+            </button>
+
+            {isLanguageDropdownOpen && (
+              <div className="absolute mt-32 left-0 w-24 bg-white text-black rounded-lg shadow-lg py-2 z-10">
+                <button
+                  onClick={() => changeLanguage("EN")}
+                  className="flex w-full text-left px-4 py-2 hover:bg-sky-300 hover:text-white"
+                >
+                  <Flag country="GB" size={18} className="m-1" /> Eng
+                </button>
+                <button
+                  onClick={() => changeLanguage("RW")}
+                  className="flex w-full text-left px-4 py-2 hover:bg-sky-300 hover:text-white"
+                >
+                  <Flag country="RW" size={18} className="m-1" /> Kiny
+                </button>
+              </div>
+            )}
+          </div>
           {!user ? (
             <div className="flex gap-1.5 items-center">
               <Link
@@ -158,19 +205,18 @@ function Navigation() {
             </div>
           ) : (
             <div className="relative">
-              <button onClick={toggleDropdown} className="flex items-center ">
+              <button onClick={toggleDropdown} className="flex items-center">
                 <img
                   loading="lazy"
-                  src={user.profile.url} 
+                  src={user.profile.url}
                   alt="User Profile"
                   className="object-cover w-10 h-10 rounded-full"
                 />
               </button>
 
               {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg py-2">
-                  <span className="block px-4 py-2">{user?.name}</span>{" "}
-                  {/* Display user's name */}
+                <div className="absolute left-2 mt-2 w-36 bg-white text-black rounded-lg shadow-lg py-2">
+                  <span className="block px-4 py-2">{user?.name}</span>
                   <Link
                     to="/profile"
                     className="block px-4 py-2 hover:bg-gray-100"
@@ -195,75 +241,91 @@ function Navigation() {
               )}
             </div>
           )}
-
-          {/* Translation Dropdown */}
-          <div className="relative flex gap-1 items-center">
-
-            <button onClick={toggleLanguageDropdown} className="flex items-center 1`m-1">
-              <Flag country={selectedLanguage.code} size={24} /> {/* Display flag */}
-              <span className="my-auto text-xs  md:text-sm lg:text-base xl:text-lg">
-                {selectedLanguage.name} {/* Use selected language name */}
-
-              </span>
-            </button>
-            {isLanguageDropdownOpen && (
-              <div className="absolute mt-2 left-1 w-24 bg-white text-black rounded-lg shadow-lg py-2 z-10">
-                <button
-                  onClick={() => changeLanguage("EN")}
-                  className="flex w-full text-left px-4 py-2 hover:bg-sky-300 hover:text-white"
-                >
-                  <Flag country="GB" size={18} className="m-1" /> Eng
-                </button>
-                <button
-                  onClick={() => changeLanguage("RW")}
-                  className="flex w-full text-left px-4 py-2 hover:bg-sky-300 hover:text-white"
-                >
-                  <Flag country="RW" size={18} className="m-1" /> Kiny
-                </button>
-              </div>
-            )}
-          </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="w-full flex flex-col justify-center items-center space-y-4 bg-black text-white py-6 md:hidden">
-          <Link to="/" className="text-xs md:text-sm lg:text-base xl:text-lg">
+      {/* Enhanced Mobile Menu */}
+      <div
+        className={`w-full md:hidden bg-sky-950 text-white overflow-hidden transition-all duration-500 ease-in-out transform ${
+          isMenuOpen ? "max-h-screen opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-full"
+        }`}
+      >
+        <div className="flex flex-col items-center space-y-6 py-8 animate-slideDown">
+          <Link
+            to="/"
+            className="text-xs font-medium hover:text-sky-300 transition-colors duration-200 transform hover:scale-105"
+          >
             Home
           </Link>
           <Link
             to="/about"
-            className="text-xs md:text-sm lg:text-base xl:text-lg"
+            className="text-xs font-medium hover:text-sky-300 transition-colors duration-200 transform hover:scale-105"
           >
             About
           </Link>
           <Link
             to="/destiny"
-            className="text-xs md:text-sm lg:text-base xl:text-lg"
+            className="text-xs font-medium hover:text-sky-300 transition-colors duration-200 transform hover:scale-105"
           >
             Destination
           </Link>
           <Link
             to="/service"
-            className="text-xs md:text-sm lg:text-base xl:text-lg"
+            className="text-xs font-medium hover:text-sky-300 transition-colors duration-200 transform hover:scale-105"
           >
             Service
           </Link>
           <Link
             to="/products"
-            className="text-xs md:text-sm lg:text-base xl:text-lg"
+            className="text-xs font-medium hover:text-sky-300 transition-colors duration-200 transform hover:scale-105"
           >
             Products
           </Link>
           <Link
             to="/contact"
-            className="text-xs md:text-sm lg:text-base xl:text-lg"
+            className="text-xs font-medium hover:text-sky-300 transition-colors duration-200 transform hover:scale-105"
           >
             Contact
           </Link>
+          {!user ? (
+            <>
+              <Link
+                to="/login"
+                className="text-xs font-medium hover:text-sky-300 transition-colors duration-200 transform hover:scale-105"
+              >
+                Login
+              </Link>
+              <Link
+                to="/signup"
+                className="text-xs font-medium hover:text-sky-300 transition-colors duration-200 transform hover:scale-105"
+              >
+                SignUp
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/profile"
+                className="text-xs font-medium hover:text-sky-300 transition-colors duration-200 transform hover:scale-105"
+              >
+                Profile
+              </Link>
+              <Link
+                to="/my-booking"
+                className="text-xs font-medium hover:text-sky-300 transition-colors duration-200 transform hover:scale-105"
+              >
+                My Booking
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="text-xs font-medium hover:text-sky-300 transition-colors duration-200 transform hover:scale-105"
+              >
+                Logout
+              </button>
+            </>
+          )}
         </div>
-      )}
+      </div>
     </nav>
   );
 }

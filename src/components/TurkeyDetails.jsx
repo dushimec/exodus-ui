@@ -2,6 +2,11 @@ import * as React from "react";
 import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import city from "../IMAGE/city.jpg";
+import tukey from "../IMAGE/tukey.jpg";
+// import city3 from "../IMAGE/city3.jpg";
+
+// Array of Recently Visited Images
+const recentlyVisitedImages = [city, tukey ];
 
 // RelatedTours Component
 function RelatedTours() {
@@ -13,8 +18,8 @@ function RelatedTours() {
   const toggleLike = (id) => {
     setTours(
       tours.map((tour) =>
-      tour.id === id ? { ...tour, liked: !tour.liked, likes: tour.liked ? tour.likes - 1 : tour.likes + 1 } : tour
-    )
+        tour.id === id ? { ...tour, liked: !tour.liked, likes: tour.liked ? tour.likes - 1 : tour.likes + 1 } : tour
+      )
     );
   };
 
@@ -92,8 +97,22 @@ function RelatedTours() {
   );
 }
 
-// Main Details Component
+// Main Details Component with Booking Form
 function TurkeyDetails() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === recentlyVisitedImages.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? recentlyVisitedImages.length - 1 : prevIndex - 1
+    );
+  };
+
   return (
     <div className="w-full h-auto bg-stone-50 relative">
       {/* Background Image and Title Overlay */}
@@ -139,7 +158,25 @@ function TurkeyDetails() {
             <div className="text-black text-xl font-bold mb-4">
               Recently Visited Trip
             </div>
-            <img className="w-full h-auto" src={city} alt="Recently Visited Trip" />
+            <div className="relative">
+              <img
+                className="w-full h-auto"
+                src={recentlyVisitedImages[currentImageIndex]}
+                alt="Recently Visited Trip"
+              />
+              <button
+                onClick={prevImage}
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white bg-black/50 px-2 py-1"
+              >
+                Prev
+              </button>
+              <button
+                onClick={nextImage}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white bg-black/50 px-2 py-1"
+              >
+                Next
+              </button>
+            </div>
             <div className="text-blue-500 text-lg mb-4">
               Click Use map to track the place
             </div>
@@ -152,57 +189,34 @@ function TurkeyDetails() {
         {/* Right Side: Price and Booking Form */}
         <div className="w-full lg:w-1/3 h-auto mb-12 lg:mb-48 pb-20">
           {/* Price Box */}
-          <div className="bg-blue-500 text-white flex justify-between items-center px-6 py-4">
-            <div className="text-lg font-semibold">Price</div>
-            <div className="text-3xl font-bold">$120</div>
+          <div className="bg-blue-500 text-white px-6 py-8">
+            <div className="text-4xl font-bold">$120</div>
+            <p className="text-white">Per Person</p>
           </div>
 
           {/* Booking Form */}
-          <div className="bg-white shadow-lg p-6">
-            <div className="bg-sky-500 text-white text-center py-3 mb-6">
-              <span className="text-base font-semibold">Booking Form</span>
-            </div>
+          <div className="bg-white shadow-lg p-6 mt-8 rounded-md">
+            <h2 className="text-2xl font-semibold mb-4 text-blue-500">Book Your Trip</h2>
+            <form>
+              <label className="block mb-2 text-sm font-bold text-gray-700">Name</label>
+              <input type="text" className="w-full p-2 border border-gray-300 rounded-md mb-4" placeholder="Your Name" />
 
-            {/* Booking Form with Date and Number of People */}
-            <div className="flex flex-col space-y-4">
-              <label className="text-gray-700 font-medium">Name:</label>
-              <input type="text" className="border border-gray-300 rounded-lg p-2" placeholder="Your name" />
-              
-              <label className="text-gray-700 font-medium">Email:</label>
-              <input type="email" className="border border-gray-300 rounded-lg p-2" placeholder="Your email" />
-              
-              <label className="text-gray-700 font-medium">Phone:</label>
-              <input type="tel" className="border border-gray-300 rounded-lg p-2" placeholder="Your phone number" />
+              <label className="block mb-2 text-sm font-bold text-gray-700">Email</label>
+              <input type="email" className="w-full p-2 border border-gray-300 rounded-md mb-4" placeholder="Your Email" />
 
-              {/* New Booking Date Field */}
-              <label className="text-gray-700 font-medium">Booking Date:</label>
-              <input type="date" className="border border-gray-300 rounded-lg p-2" />
+              <label className="block mb-2 text-sm font-bold text-gray-700">Number of Travelers</label>
+              <input type="number" className="w-full p-2 border border-gray-300 rounded-md mb-4" placeholder="1" min="1" />
 
-              {/* New Number of People Field */}
-              <label className="text-gray-700 font-medium">Number of People:</label>
-              <select className="border border-gray-300 rounded-lg p-2">
-                <option value="">Select number of people</option>
-                <option value="1">1 Person</option>
-                <option value="2">2 People</option>
-                <option value="3">3 People</option>
-                <option value="4">4 People</option>
-                <option value="5">5 People</option>
-                <option value="6">6 People</option>
-                <option value="7">7 People</option>
-                <option value="8">8 People</option>
-                <option value="9">9 People</option>
-                <option value="10">10 People</option>
-              </select>
+              <label className="block mb-2 text-sm font-bold text-gray-700">Date</label>
+              <input type="date" className="w-full p-2 border border-gray-300 rounded-md mb-4" />
 
-              <label className="text-gray-700 font-medium">Special Requests:</label>
-              <textarea className="border border-gray-300 rounded-lg p-2 h-24" placeholder="Any special requests..."></textarea>
-            </div>
-
-            {/* Confirm Booking Button */}
-            <button className="w-full bg-sky-500 text-white py-2 mt-4 hover:bg-sky-600 transition duration-300">
-              Confirm Booking
-            </button>
+              <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded-md font-bold mt-4">
+                Book Now
+              </button>
+            </form>
           </div>
+
+
         </div>
       </div>
     </div>

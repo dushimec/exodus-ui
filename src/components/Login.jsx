@@ -69,7 +69,7 @@ function Login() {
               placeholder=" "
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-2 text-white bg-transparent border-b-2 border-sky-500 focus:outline-none placeholder-transparent"
+              className="mt-5 text-white bg-transparent border-b-2 border-sky-500 focus:outline-none placeholder-transparent"
               required
             />
             <label className="absolute text-gray-300 text-sm transition-all duration-200 origin-left">
@@ -84,14 +84,14 @@ function Login() {
               placeholder=" "
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-2 text-white bg-transparent border-b-2 border-sky-500 focus:outline-none placeholder-transparent"
+              className="mt-5 text-white bg-transparent border-b-2 border-sky-500 focus:outline-none placeholder-transparent"
               required
             />
             <label className="absolute text-gray-300 text-sm transition-all duration-200 origin-left">
               Password
             </label>
             <div
-              className="absolute right-0 transform -translate-y-1/2 cursor-pointer"
+              className="absolute right-0 mt-3 transform -translate-y-1/2 cursor-pointer"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? (
