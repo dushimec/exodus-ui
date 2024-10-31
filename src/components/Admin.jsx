@@ -1,40 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useAuth } from "../context/authContext";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css"; // Import CSS
+import { AuthContext } from "../context/authContext"; // Adjust the import path as necessary
 
-function Admin() {
-  const [email, setEmail] = useState("");
+function AdminLogin() {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [isemailFocused, setIsemailFocused] = useState(false);
-  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [notification, setNotification] = useState("");
-
-  const { loginUser, loading, error } = useAuth();
   const navigate = useNavigate();
+  const { handleLogin } = useContext(AuthContext); // Use AuthContext for login
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+    setPasswordVisible((prev) => !prev);
   };
 
-  const handleLogin = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setNotification("");
 
     try {
-      await loginUser({ email, password }).unwrap();
-      setNotification("Login successful!");
-      navigate("/admin-dashboard");
+      await handleLogin({ email: username, password }); // Use the login function from AuthContext
+      toast.success("Login successful!"); // Show success notification
+      navigate("/dashboard"); // Redirect after successful login
     } catch (err) {
-      if (error) {
-        setNotification(error);
-      } else if (err.response && err.response.data && err.response.data.message) {
-        setNotification(err.response.data.message);
-      } else {
-        setNotification(err.toString());
-        console.error("Login failed:", err);
-      }
-    }
+      const errorMessage =
+        err.response && err.response.data && err.response.data.message
+          ? err.response.data.message
+          : err.toString();
+      setNotification(errorMessage);
+      toast.error(errorMessage); // Show error notification
+    } 
   };
 
   return (
@@ -44,54 +44,32 @@ function Admin() {
         <div className="shrink-0 self-center mt-5 border-sky-500 border-solid border-[2px] h-[1px] w-[90px]" />
 
         <div className="mt-10 w-full">
-          {isemailFocused ? (
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              onBlur={() => setIsemailFocused(false)}
-              autoFocus
-              className="w-full p-3 bg-transparent border-b-2 border-sky-500 focus:outline-none text-white"
-              placeholder="Enter your  email"
-            />
-          ) : (
-            <div
-              onClick={() => setIsemailFocused(true)}
-              className="cursor-pointer border-b-2 border-sky-500 h-10"
-            >
-              <span className="text-xl">{email ? email : "Email"}</span>
-            </div>
-          )}
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="w-full p-3 bg-transparent border-b-2 border-sky-500 focus:outline-none text-white"
+            placeholder="Enter your email"
+            autoFocus
+          />
         </div>
 
         <div className="mt-10 w-full relative">
-          {isPasswordFocused ? (
-            <div className="relative">
-              <input
-                type={showPassword ? "text" : "password"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                onBlur={() => setIsPasswordFocused(false)}
-                autoFocus
-                className="w-full p-3 bg-transparent border-b-2 border-sky-500 focus:outline-none text-white"
-                placeholder="Enter your password"
-              />
-              <div
-                className="absolute inset-y-0 right-3 flex items-center cursor-pointer"
-                onClick={togglePasswordVisibility}
-              >
-                {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
-              </div>
-            </div>
-          ) : (
+          <div className="relative">
+            <input
+              type={passwordVisible ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-3 bg-transparent border-b-2 border-sky-500 focus:outline-none text-white"
+              placeholder="Enter your password"
+            />
             <div
-              onClick={() => setIsPasswordFocused(true)}
-              className="cursor-pointer border-b-2 border-sky-500 h-10 flex justify-between items-center"
+              className="absolute inset-y-0 right-3 flex items-center cursor-pointer"
+              onClick={togglePasswordVisibility}
             >
-              <span className="text-xl">{password ? "●●●●●●●●" : "password"}</span>
-              <FaEye size={20} />
+              {passwordVisible ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
             </div>
-          )}
+          </div>
         </div>
 
         <div className="mt-6 text-sm text-white hover:underline cursor-pointer">
@@ -100,7 +78,7 @@ function Admin() {
 
         <div className="flex justify-between items-center mt-8">
           <button
-            onClick={handleLogin}
+            onClick={handleSubmit}
             disabled={loading}
             className="px-10 py-3 bg-sky-500 rounded-3xl hover:bg-sky-600 transition duration-300"
           >
@@ -109,8 +87,8 @@ function Admin() {
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/3f614a04fbfe4f67d436bd4efc208d2a163c82c08b63b15cd7be4629863e29bc?placeholderIfAbsent=true&apiKey=1e6eb9ecd3e84e559264893c09c12b4f"
-            className="w-[190px]  object-contain"
-            alt="login image"
+            className="w-[190px] object-contain"
+            alt="login"
           />
         </div>
 
@@ -120,4 +98,4 @@ function Admin() {
   );
 }
 
-export default Admin;
+export default AdminLogin;

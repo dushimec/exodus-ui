@@ -82,6 +82,7 @@ function Navigation() {
 
         {/* Enhanced Hamburger Menu Icon */}
         <div className="md:hidden">
+
           <button
             onClick={toggleMenu}
             className="focus:outline-none w-10 h-10 relative text-white"
@@ -102,6 +103,22 @@ function Navigation() {
                 isMenuOpen ? "-rotate-45 translate-y-0" : "translate-y-2"
               }`}
             ></div>
+
+          <button onClick={toggleMenu} className="focus:outline-none">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-9 w-9 bg-white rounded-md text-sky-700"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              />
+            </svg>
           </button>
         </div>
 

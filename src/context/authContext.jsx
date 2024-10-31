@@ -1,63 +1,49 @@
-
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProfile, login, logout, signup } from '../slices/authSlice';
+import { login, logout, getProfile } from '../slices/authSlice';
 
-
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const dispatch = useDispatch();
-  const { user, isLoggedIn, loading, error } = useSelector((state) => state.auth);
-  const [getProfileAfterLogin, setgetProfileAfterLogin] = useState(false);
+  const { user, token } = useSelector((state) => state.auth);
+
+  const [isAdmin, setIsAdmin] = useState(() => {
+    const storedAdminStatus = localStorage.getItem('isAdmin');
+    return storedAdminStatus === 'true';
+  });
 
   useEffect(() => {
-    if (isLoggedIn && getProfileAfterLogin) {
-      dispatch(getProfile())
-        .unwrap()
-        .catch((error) => {
-          console.error('Failed to fetch profile:', error.message || error);
-        });
-      setgetProfileAfterLogin(false); // Reset flag after fetching profile
+    if (token) {
+      dispatch(getProfile());
     }
-  }, [isLoggedIn, dispatch, getProfileAfterLogin]);
+  }, [token, dispatch]);
 
-  const signupUser = async (userData) => {
-    await dispatch(signup(userData));
-    // Do not fetch profile after registration
+  useEffect(() => {
+    if (user) {
+      setIsAdmin(user.isAdmin);
+      localStorage.setItem('isAdmin', user.isAdmin);
+    }
+  }, [user]);
+
+  const handleLogin = async (credentials) => {
+    const result = await dispatch(login(credentials));
+    if (result.payload && result.payload.isAdmin) {
+      setIsAdmin(true);
+      localStorage.setItem('isAdmin', 'true');
+    }
+    return result;
   };
 
-  const loginUser = (credentials) => {
-    setgetProfileAfterLogin(true); // Set flag to fetch profile after login
-    return dispatch(login(credentials));
-  };
-
-  const logoutUser = () => {
-    setgetProfileAfterLogin(false); // Reset flag on logout
-    return dispatch(logout());
+  const handleLogout = () => {
+    dispatch(logout());
+    setIsAdmin(false);
+    localStorage.removeItem('isAdmin');
   };
 
   return (
-    <AuthContext.Provider 
-      value={{ 
-        user, 
-        isLoggedIn, 
-        loading, 
-        error, 
-        isAdmin: user ? user.isAdmin : false, // Ensure user is not null
-        signupUser, 
-        loginUser, 
-        logoutUser 
-      }}
-    >
-
+    <AuthContext.Provider value={{ isAdmin, user, getProfile, handleLogin, handleLogout }}>
       {children}
     </AuthContext.Provider>
   );
 };
-
-
-export const useAuth = () => useContext(AuthContext);
-
-
-

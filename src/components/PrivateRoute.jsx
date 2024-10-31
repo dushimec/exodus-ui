@@ -1,19 +1,13 @@
-import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
-import { useAuth } from '../context/authContext';
+// components/PrivateRoute.js
+import React, { useContext } from 'react';
+import { Navigate } from 'react-router-dom';
+import { AuthContext } from '../context/authContext';
 
-const PrivateRoute = ({ isAdminRoute }) => {
-  const { isLoggedIn, isAdmin } = useAuth();
+const PrivateRoute = ({ element }) => {
+  const { isAdmin } = useContext(AuthContext);
 
-  if (!isLoggedIn) {
-    return <Navigate to="/admin-login" />;
-  }
-
-  if (isAdminRoute && !isAdmin) {
-    return <Navigate to="/login" />;
-  }
-
-  return <Outlet />;
+  // Redirect to login if not an admin
+  return isAdmin ? element : <Navigate to="/admin-login" />;
 };
 
 export default PrivateRoute;
