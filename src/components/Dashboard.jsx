@@ -1,10 +1,11 @@
 
-
-
+import React, { useState } from 'react';
+import { Bell, Mail, Search, Settings, ChevronDown, MoreVertical } from 'lucide-react';
+import AddNewTrip from './AddNewTrip'; // Ensure to import the AddNewTrip component
 import logo from '../IMAGE/logo.jpg'
+import picture from '../IMAGE/profile.jpg'
 
-
-import React,  { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   Bell,
   Mail,
@@ -16,6 +17,7 @@ import {
 import AddNewTrip from "./AddNewTrip"; // Ensure to import the AddNewTrip component
 import { AuthContext } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
+import logo from '../IMAGE/logo.jpg'
 
 
 export default function AdminDashboard() {
