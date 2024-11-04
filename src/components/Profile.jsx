@@ -52,7 +52,7 @@ export default function UserProfileDashboard() {
   };
 
   const renderPersonalInfo = () => (
-    <div className="bg-primary/10 rounded-lg shadow-md p-6 mb-6">
+    <div className="bg-primary/10 rounded-lg shadow-md p-6 mb-6 " >
       <h2 className="text-2xl font-bold text-primary mb-4">Personal Information</h2>
       <div className="flex flex-col items-center mb-6">
         <div className="relative group">
@@ -163,7 +163,7 @@ export default function UserProfileDashboard() {
   );
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
+    <div className="max-w-4xl mx-auto p-4 mt-16">
       <header className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold text-primary">User Profile</h1>
        
