@@ -27,22 +27,25 @@ export default function Destiny() {
 
 
   return (
-    <div className="flex overflow-hidden flex-col items-center pb-4 bg-stone-50 bg-opacity-30">
-      <div className="flex relative flex-col items-center self-stretch px-5 sm:px-10 lg:px-20 pt-24 sm:pt-32 lg:pt-40 pb-12 w-full text-white min-h-[400px]">
+    <div className="flex overflow-hidden flex-col items-center pb-4 bg-stone-50 bg-opacity-30" >
+      <div className="flex relative flex-col items-center self-stretch px-5 sm:px-10 lg:px-20 pt-24 sm:pt-32 lg:pt-40 pb-12 w-full text-white min-h-[400px]"  data-aos="zoom-out">
         <img
           loading="lazy"
           srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/088997ce7ceb1872cdd23f020fa61a21e9d406941f1c5e79d3e1cb275d67fd00?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/088997ce7ceb1872cdd23f020fa61a21e9d406941f1c5e79d3e1cb275d67fd00?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/088997ce7ceb1872cdd23f020fa61a21e9d406941f1c5e79d3e1cb275d67fd00?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/088997ce7ceb1872cdd23f020fa61a21e9d406941f1c5e79d3e1cb275d67fd00?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/088997ce7ceb1872cdd23f020fa61a21e9d406941f1c5e79d3e1cb275d67fd00?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/088997ce7ceb1872cdd23f020fa61a21e9d406941f1c5e79d3e1cb275d67fd00?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/088997ce7ceb1872cdd23f020fa61a21e9d406941f1c5e79d3e1cb275d67fd00?placeholderIfAbsent=true&apiKey=ad4b702f1041452291688c39b1990497&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/088997ce7ceb1872cdd23f020fa61a21e9d406941f1c5e79d3e1cb275d67fd00"
-          className="object-cover absolute inset-0 size-full"
+          className="object-cover absolute inset-0 size-full blur-sm"
           alt="Background image of various travel destinations"
         />
-        <div className="flex relative flex-col max-w-full w-full sm:w-[416px] ">
-          <div className="self-center text-2xl sm:text-3xl lg:text-4xl font-bold sm:px-8 lg:px-16 py-4 sm:py-3  mb-4 sm:-mb-9 max-w-full border-white border-solid bg-zinc-300 bg-opacity-0 border-[5px] sm:border-[5px] w-full sm:w-[496px] pl-20">DESTINATIONS</div>
-          <div className="mt-20  sm:mt-15 flex flex-row justify-center">
-            Explore tour by destinations
+         <div className="absolute inset-0 bg-black opacity-30"></div>
+         <div className="flex relative flex-col justify-start items-center px-2 w-full sm:px-2 sm:pt-5 md:px-20 ">
+          <div className="px-2 py-4  text-2xl  sm:px-8 sm:py-6 md:px-12 md:py-9 mb-0 text-center bg-transparent border-white border-solid bg-opacity-0 border-4 sm:border-8 md:border-[10px] w-[80%] max-w-[496px]">
+          DESTINATION
           </div>
-        
+          <div className="mt-12  sm:mt-15 flex flex-row justify-center">
+            Our Destination
+          </div>
 
         </div>
+
       </div>
 
 

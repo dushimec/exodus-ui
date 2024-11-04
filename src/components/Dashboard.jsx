@@ -1,11 +1,10 @@
 
 
+// import { Bell, Mail, Search, Settings, ChevronDown, MoreVertical } from 'lucide-react';
 
+import picture from '../IMAGE/profile.jpg'
 
-
-
-
-import React,  { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   Bell,
   Mail,
