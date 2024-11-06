@@ -6,7 +6,7 @@ import 'aos/dist/aos.css'; // Import the AOS styles
 
 function Destinations() {
   useEffect(() => {
-    AOS.init({ duration: 1200 }); // Initialize AOS with a 1200ms duration
+    AOS.init({ duration: 1000 }); // Initialize AOS with a 1200ms duration
   }, []);
 
   const destinations = [
@@ -45,8 +45,8 @@ function Destinations() {
   ];
 
   return (
-    <section className="container mx-auto px-4 md:px-12 lg:px-20 py-10">
-      <div className="flex flex-wrap justify-center gap-8">
+    <section className="container mx-auto px-4 md:px-12 lg:px-20 py-10" data-aos="fade-up">
+      <div className="flex flex-wrap justify-center gap-8" >
         {destinations.map((destination, index) => (
           <DestinationCard key={index} {...destination} />
         ))}
@@ -70,10 +70,10 @@ function DestinationCard({ name, country, price, likes, image, link }) {
 
   return (
     <article
-      className="flex flex-col w-full sm:w-2/3 md:w-2/3 lg:w-2/3 xl:w-1/3 p-4"
+      className="flex flex-col w-full sm:w-2/3 md:w-2/3 lg:w-2/3 xl:w-1/3 p-4" 
       data-aos="fade-up" // AOS animation for the card
     >
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105 duration-300">
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105 duration-300" data-aos="fade-up">
         <img
           src={image}
           alt={`${name} destination`}
@@ -81,18 +81,18 @@ function DestinationCard({ name, country, price, likes, image, link }) {
           loading="lazy"
           data-aos="zoom-in" // AOS animation for the image
         />
-        <div className="p-5" data-aos="fade-in"> {/* AOS animation for the text */}
+        <div className="p-5" data-aos="fade-up"> {/* AOS animation for the text */}
           <h3 className="text-2xl font-semibold mb-2">{name}</h3>
           <div className="flex justify-between items-center text-sm text-gray-500 mt-2">
-            <div className="flex items-center">
+            <div className="flex items-center" data-aos="fade-up">
               <FaGlobe className="w-4 h-4 mr-2" />
               <span>{country}</span>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center" data-aos="fade-up">
               <FaDollarSign className="w-4 h-4 mr-2" />
               <span>{price}$</span>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center" data-aos="fade-up">
               <FaHeart
                 className={`w-5 h-5 mr-1 cursor-pointer ${isLiked ? "text-red-500" : "text-gray-500"}`}
                 onClick={handleLikeClick}
@@ -102,17 +102,17 @@ function DestinationCard({ name, country, price, likes, image, link }) {
             </div>
           </div>
 
-          <div className="text-xs flex justify-between items-center gap-2 text-gray-500 mt-2">
+          <div className="text-xs flex justify-between items-center gap-2 text-gray-500 mt-2" data-aos="fade-up">
             <div className="flex items-center">
               <FaComment className="w-4 h-4 mr-2" />
               <span className="text-sm mr-6">View all 9 Comments</span>
             </div>
 
-            <div className="flex justify-center items-center text-sky-500 font-semibold">
+            <div className="flex justify-center items-center text-sky-500 font-semibold" data-aos="fade-up">
               <span className="text-xl">{price}$</span>
             </div>
 
-            <div className="flex justify-end">
+            <div className="flex justify-end" data-aos="fade-up">
               <Link to={link}>
                 <button
                   className="ml-5 px-1 py-2 text-xs text-sky-500 border border-sky-500 rounded-full hover:bg-sky-500 hover:text-white transition-colors"

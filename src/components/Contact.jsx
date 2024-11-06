@@ -27,7 +27,7 @@ export default function Contact() {
   };
 
   useEffect(() => {
-    AOS.init({ duration: 1000, easing: 'ease-out' });
+    AOS.init({ duration: 1500, easing: 'ease-out' });
   }, []);
 
   return (
@@ -114,7 +114,7 @@ export default function Contact() {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="flex justify-center items-center px-6 py-3 w-full sm:w-auto text-sm font-medium text-sky-500 bg-white border-2 border-sky-500 transition-all duration-300 ease-in-out hover:bg-sky-500 hover:text-white transform hover:scale-105"
+              className="flex justify-center items-center px-6 py-3 w-full sm:w-auto text-sm font-medium text-sky-500 bg-white border-2 border-sky-500 transition-all duration-300 ease-in-out hover:bg-sky-500 hover:text-white transform hover:scale-105 focus:border"
             >
               SEND MESSAGE
             </button>
