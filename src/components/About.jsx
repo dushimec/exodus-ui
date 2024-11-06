@@ -7,7 +7,7 @@ import { useEffect } from 'react';
  
 function About( ) {
   useEffect(() => {
-    AOS.init({ duration: 2000, easing: 'ease-out' });
+    AOS.init({ duration: 1500, easing: 'ease-out' });
   }, []);
 
   return (

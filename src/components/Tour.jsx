@@ -2,18 +2,15 @@ import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-
-
 function Tour() {
-
   useEffect(() => {
     AOS.init({
       duration: 1200, // duration of animations
       easing: 'ease-in-out', // animation easing
-      once: true, // whether animation should happen only once
+      once: false, // whether animation should happen only once
     });
+    AOS.refresh(); // Refresh AOS after initialization
   }, []);
-
 
   return (
     <div className='bg-white'>
@@ -71,5 +68,3 @@ function Tour() {
 }
 
 export default Tour;
-
-

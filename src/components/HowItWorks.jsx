@@ -1,9 +1,17 @@
 import React from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 function HowItWorks() {
+
+  useEffect(() => {
+    AOS.init({ duration: 1000, easing: 'ease-out' });
+  }, []);
+
   return (
 
-    <section className="flex flex-col lg:flex-row items-center justify-center w-full mt-12 mx-auto mb-12 px-4">
+    <section className="flex flex-col lg:flex-row items-center justify-center w-full mt-12 mx-auto mb-12 px-4" data-aos="fade-up">
 
   
       {/* Header section */}

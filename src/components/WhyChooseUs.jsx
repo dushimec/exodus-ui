@@ -1,8 +1,16 @@
 import React from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 function WhyChooseUs() {
+
+  useEffect(() => {
+    AOS.init({ duration: 1100, easing: 'ease-out' });
+  }, []);
+
   return (
-    <section className="relative flex flex-col justify-center  w-full min-h-[440px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] md:mt-10 md:max-w-full">
+    <section className="relative flex flex-col justify-center  w-full min-h-[440px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] md:mt-10 md:max-w-full" data-aos="fade-up">
       <img
         loading="lazy"
         src="https://cdn.builder.io/api/v1/image/assets/TEMP/579e0fca0fbcad8ef447b930ed61becd98b780beb6780f379f68fdabd66e44ad?placeholderIfAbsent=true&apiKey=6e51f2aa35694a21b29ab869757ebe28"
@@ -10,8 +18,8 @@ function WhyChooseUs() {
         className="object-cover absolute inset-0 w-full h-full"
       />
 
-      <div className="relative flex flex-col items-center pt-40 pb-20 w-full bg-neutral-900 bg-opacity-50 sm:px-5 md:px-5 md:max-w-full">
-        <div className="flex flex-col w-full max-w-5xl">
+      <div className="relative flex flex-col items-center pt-40 pb-20 w-full bg-neutral-900 bg-opacity-50 sm:px-5 md:px-5 md:max-w-full"   >
+        <div className="flex flex-col w-full max-w-5xl" data-aos="fade-up">
           <h2 className="self-center text-2xl md:text-3xl font-bold text-white text-center">
             WHY CHOOSE US?
           </h2>

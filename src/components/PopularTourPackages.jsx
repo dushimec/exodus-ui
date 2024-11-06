@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 function PopularTourPackages() {
   const images = [
@@ -49,14 +52,19 @@ function PopularTourPackages() {
     return () => clearInterval(intervalId);
   }, [currentIndex, displayCount]);
 
+  
+  useEffect(() => {
+    AOS.init({ duration: 1000, easing: 'ease-out' });
+  }, []);
+
   return (
-    <section className="flex flex-col px-10 mt-12 w-full max-md:px-5 max-md:mt-8">
-      <h2 className="self-start ml-24 text-3xl text-black font-[inria-serif] max-md:ml-2.5 max-md:text-2xl">
+    <section className="flex flex-col px-10 mt-12 w-full max-md:px-5 max-md:mt-8" data-aos= "fade-up ">
+      <h2 className="self-start ml-24 text-3xl text-black font-[inria-serif] max-md:ml-2.5 max-md:text-2xl" data-aos="fade-up" >
         Popular tour packages
       </h2>
 
-      <div className="relative mt-14 w-full max-md:mt-8">
-        <div className="flex justify-center items-center">
+      <div className="relative mt-14 w-full max-md:mt-8" data-aos="fade-up">
+        <div className="flex justify-center items-center"  data-aos="fade-up" >
           {/* Left Arrow */}
           <button
             onClick={prevSlide}
@@ -67,7 +75,7 @@ function PopularTourPackages() {
           </button>
 
           {/* Image Container */}
-          <div className="w-full flex justify-center items-center">
+          <div className="w-full flex justify-center items-center"  data-aos="fade-up">
             <div className="grid grid-cols-1 gap-4 max-md:w-[90%] md:grid-cols-2 lg:grid-cols-3">
               {/* Show the required number of images based on displayCount */}
               {images.slice(currentIndex, currentIndex + displayCount).map((image, index) => (
@@ -76,7 +84,7 @@ function PopularTourPackages() {
                   loading="lazy"
                   src={image}
                   alt={`Popular tour package ${currentIndex + index + 1}`}
-                  className="object-cover w-full h-[350px] max-md:h-[250px]"
+                  className="object-cover w-full h-[350px] max-md:h-[250px]"  data-aos="fade-up"
                 />
               ))}
             </div>
