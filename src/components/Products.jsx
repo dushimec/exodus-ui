@@ -2,9 +2,12 @@ import React, { useEffect } from 'react';
 import product from '../IMAGE/product.png';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useTranslation } from 'react-i18next'; // Import useTranslation
+
 
 
 function Products() {
+  const { t } = useTranslation(); // Initialize translation
   useEffect(() => {
     AOS.init({ duration: 1000, easing: 'ease-out' });
   }, []);
@@ -47,10 +50,10 @@ function Products() {
         <div className="absolute inset-0 bg-black opacity-60"></div>
         <div className="flex relative flex-col justify-start items-center px-2 w-full sm:px-2 sm:pt-10 md:px-20 md:pt-24">
           <div className="px-2 py-4 text-2xl mt-10 sm:px-8 sm:py-6 md:px-12 md:py-9 mb-0 text-center bg-transparent border-white border-solid bg-opacity-0 border-4 sm:border-8 md:border-[10px] w-[80%] max-w-[496px]">
-            Product
+          {t('products.title')}
           </div>
           <div className="mt-12 sm:mt-15 flex flex-row justify-center">
-             Historical Products
+          {t('products.subtitle')}
           </div>
         </div>
       </div>
@@ -58,7 +61,7 @@ function Products() {
  
 
       <div className='bg-sky-500 text-white py-4 px-8 rounded-full text-center mx-auto max-w-xs mt-10' >
-  "Visit our office to buy high-quality religious products in person"
+      {t('products.discription')}
 </div>
 
       <div className="p-2 grid mt-10  gap-2 grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
