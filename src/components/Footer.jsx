@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import {
   FaFacebookF,
   FaTwitter,
@@ -30,6 +31,7 @@ const destinations = [
 ];
 
 function Footer() {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear(); // Get the current year
 
   return (
@@ -48,9 +50,9 @@ function Footer() {
                   className="object-contain rounded-full w-[100px] md:w-[80px]"
                 />
                 <p className="mt-5 text-sm leading-5 md:mt-5">
-                  Discover the world with Exodus: Your trusted travel
+                {t("footer.description")}
                   <br className="hidden md:block" />
-                  adventure partner!
+                  {t("footer.decriptionn")}
                 </p>
                 <div className="map-container relative w-full  ">
               <iframe
@@ -71,7 +73,7 @@ function Footer() {
 
             {/* Top Destinations */}
             <div className="flex flex-col w-full md:w-[50%] lg:ml-5 mt-8 md:mt-0">
-              <h3 className="text-xl font-extrabold">Top destinations</h3>
+              <h3 className="text-xl font-extrabold">{t("footer.topDestinations")}</h3>
               <div className="flex gap-4 flex-wrap mt-6">
                 {destinations.map((destination, index) => (
                   <div
@@ -114,11 +116,11 @@ function Footer() {
 
         {/* Contact Info Section */}
         <div className="flex flex-col w-full lg:w-auto text-white mt-8 lg:mt-0">
-          <h3 className="text-xl font-extrabold">Contact info</h3>
+          <h3 className="text-xl font-extrabold">{t("footer.contactInfo")}</h3>
           <div className="flex flex-col mt-6 text-sm font-semibold">
-            <p>Address: Remera Gisimenti(Ikaze House)</p>
-            <p className="mt-5">Phone: 0788726181</p>
-            <p className="mt-5">Email: Oldfoxcoltd@gmail.com</p>
+            <p>{t("footer.address")}</p>
+            <p className="mt-5">{t("footer.phone")}</p>
+            <p className="mt-5">{t("footer.email")}</p>
           </div>
         </div>
       </div>

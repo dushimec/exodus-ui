@@ -7,6 +7,7 @@ import Havan from '../IMAGE/havana.jpg';
 import Turkey from '../IMAGE/tukey.jpg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useTranslation } from "react-i18next"; // Import useTranslation
 
 const upcomingTrips = [
   { id: 1, title: "Trip to Bali", image: KigaliImage },
@@ -15,6 +16,7 @@ const upcomingTrips = [
 ];
 
 export default function TravelHero() {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [currentTripIndex, setCurrentTripIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
@@ -88,7 +90,7 @@ export default function TravelHero() {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            Your global gateway to unforgettable adventures!
+            {t('hero.title')}
           </h1>
 
           <button
@@ -97,7 +99,7 @@ export default function TravelHero() {
             data-aos="fade-up"
           >
             <span className="bg-sky-500 text-white rounded-full w-full h-full flex items-center justify-center py-2 sm:py-3 hover:bg-white hover:text-sky-500 transition duration-300 ease-in-out">
-              Explore here
+            {t('hero.explore')}
             </span>
           </button>
         </div>
@@ -108,7 +110,7 @@ export default function TravelHero() {
           <form onSubmit={handleSearch} className="relative">
             <input
               type="text"
-              placeholder="Search Trip here ..."
+              placeholder={t('hero.searchPlaceholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full bg-white bg-opacity-90 rounded-full py-2 sm:py-3 px-6 pl-12 text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-sky-300 shadow-lg"
@@ -124,7 +126,7 @@ export default function TravelHero() {
           {/* Upcoming Trips Carousel */}
           <div className="bg-white bg-opacity-90 rounded-lg p-4 shadow-lg relative overflow-hidden" data-aos="fade-up">
             <h2 className="text-lg sm:text-xl font-semibold text-sky-500 mb-2" data-aos="fade-up">
-              Upcoming Trip
+            {t('hero.upcomingTrip')}
             </h2>
             <div className="relative h-48 sm:h-56">
               {upcomingTrips.map((trip, index) => (

@@ -1,0 +1,187 @@
+{
+    "navigation": {
+      "home": "Home",
+      "about": "About Us",
+      "destination": "Destinations",
+      "service": "Services",
+      "products": "Products",
+      "contact": "Contact Us",
+      "login": "Login",
+      "signup": "Sign Up",
+      "profile": "Profile",
+      "myBooking": "My Booking",
+      "logout": "Logout"
+    },
+    "language": {
+      "english": "Eng",
+      "kinyarwanda": "Kiny"
+    },
+    "hero": {
+    "title": "Your global gateway to unforgettable adventures!",
+    "explore": "Explore here",
+    "searchPlaceholder": "Search Trip here ...",
+    "upcomingTrip": "Upcoming Trip"
+  },
+  "trips": {
+    "tripToBali": "Trip to Bali",
+    "exploreIceland": "Explore Iceland",
+    "adventureInMorocco": "Adventure in Morocco"
+  },
+  "whyChooseUs": {
+    "title": "WHY CHOOSE US?",
+    "description": "A brand name you can trust and rely on",
+    "benefits": {
+      "affordablePrice": "Affordable price Guarantee",
+      "varietyOfDestinations": "Wide variety of destinations",
+      "highQualityService": "High qualified service"
+    }
+  },
+  "popularTourPackages": {
+    "title": "Popular Tour Packages",
+    "altText": "Image of the popular tour package number {{index}}"
+  },
+  "howItWorks": {
+    "title": "How it works?",
+    "subtitle": "Search, select, book",
+    "steps": {
+      "search": {
+        "title": "Search",
+        "description": "Find your Dream trip"
+      },
+      "select": {
+        "title": "Select",
+        "description": "Select trip packages"
+      },
+      "book": {
+        "title": "Book",
+        "description": "Booking and pay"
+      }
+    }
+  },
+  "footer": {
+    "description": "Discover the world with Exodus: Your trusted travel",
+    "decriptionn":"adventure partner!",
+    "topDestinations": "Top destinations",
+    "contactInfo": "Contact info",
+    "address": "Address: Remera Gisimenti(Ikaze House)",
+    "phone": "Phone: 0788726181",
+    "email": "Email: Oldfoxcoltd@gmail.com",
+    "copyright": "©{{year}} Exodus. All rights reserved."
+  },
+  "destinations": {
+    "rwanda": "Rwanda",
+    "israel": "Israel",
+    "turkey": "Turkey",
+    "egypt": "Egypt"
+  },
+  "about": {
+    "header": "About Us",
+    "subheader":"What we do",
+    "quote1": "OLD Fox Company offers expertly planned religious trips, guiding individuals and groups to some of the most sacred destinations worldwide. Our pilgrimages are designed to inspire spiritual growth, combining prayer, reflection, and cultural exploration. Whether visiting ancient temples or holy cities, each trip provides a meaningful opportunity for travelers to connect deeply with their faith and traditions. We ensure every journey is thoughtfully organized for a seamless and enriching experience.",
+    "quote2": "Our itineraries create transformative experiences, blending spiritual enrichment with cultural immersion. Travelers explore significant religious landmarks, engage with local traditions, and connect with fellow believers. These journeys inspire renewal and reflection, offering a deeper understanding of faith and lasting memories in some of the world's most revered spiritual places.",
+    "team": "Our Team",
+    "boss":"CEO of Oldfox"
+  },
+  "destiny": {
+    "backgroundAlt": "A beautiful scenic background",
+    "title": "DESTINATIONS",
+    "explore": "Our Destination",
+    "discover": "Discover",
+    "destinations": {
+      "rwanda": "Rwanda",
+      "rwandaDescription": "Experience the romance and charm of the City of Light.",
+      "israel": "Israel",
+      "israelDescription": "Discover the vibrant culture and beautiful beaches of this Mediterranean gem.",
+      "turkey": "Turkey",
+      "turkeyDescription": "Explore the bustling streets and iconic landmarks of the Big Apple.",
+      "egypt": "Egypt",
+      "egyptDescription": "Immerse yourself in the unique blend of tradition and modernity in Japan's capital."
+    }
+  },
+  "service": {
+    "title": "Service",
+    "subtitle": "Our Services We Provide",
+    "our_services": "Our services",
+    "join_adventures": "Join the adventures",
+    "with_stories": "with stories",
+    "description": "Explore diverse religious landmarks and spiritual experiences, showcasing rich cultural heritage and traditions. Visit sacred temples, historic churches, and peaceful monasteries, each holding stories of ancient rituals and deep devotion. Experience local festivals and spiritual practices that bring communities together, offering a unique glimpse into humanity's shared journey of faith and connection.",
+    "custom_destinations": "Custom destinations",
+    "unforgettable_moments": "Unforgettable Moments",
+    "competitive_pricing": "Competitive pricing",
+    "self_guide": "Self guide",
+    "available": "24/7 Available",
+    "transportations": "Transportations",
+    "Whychooseus": "Why choose us",
+    "whyDecription":"A brand name you can trust and rely on",
+    "benefits": {
+      "affordablePrice": "Affordable price Guarantee",
+      "varietyOfDestinations": "Wide variety of destinations",
+      "highQualityService": "High qualified service"
+    }
+  },
+  "products":{
+    "title":"Product",
+    "subtitle":"Historical Products",
+    "discription":"Visit our office to buy high-quality religious products in person",
+    "accountinfo":"ACCOUNT INFORMATION",
+    "account":"ACCOUNT NUMBER",
+    "phone":"PHONE NUMBER"
+
+  },
+  "contact": {
+    "header": "Contact",
+    "contactus":"Contact Us",
+    "get_in_touch": "Get in touch with us",
+    "phone": "Phone",
+    "address": "Address",
+    "email": "Email",
+    "phone_number": "+250788726181",
+    "address_content": "Remera Gisimenti(Ikaze House)",
+    "email_content": "Oldfoxcoltd@gmail.com",
+    "question_message": "IF YOU GOT ANY QUESTION PLEASE DO NOT HESITATE TO SEND US MESSAGE.",
+    "your_names": "Your names",
+    "your_email": "Your email",
+    "subject": "Subject",
+    "message": "Message",
+    "send_message": "SEND MESSAGE"
+  },
+  "login": {
+    "title": "LOGIN",
+    "subtitle": "Log into your account",
+    "email": "Email",
+    "password": "Password",
+    "button": "Login",
+    "loading": "Logging in...",
+    "success": "Login successful!",
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign Up"
+  },
+  "signup": {
+    "register": "REGISTER",
+    "createAccount": "Create your account",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "uploadPhoto": "Upload Photo",
+    "registering": "Registering...",
+    "alreadyHaveAccount": "Already have an account?",
+    "login": "Login",
+    "signupSuccessful": "Signup successful!"
+  },
+  "tour":{
+    "title":"Find a tour by destination"
+  },
+  "forgotPassword": {
+    "title": "Forgot Password?",
+    "intro": "Don't worry. We can help.",
+    "instruction": "Please fill in your email address",
+    "placeholder": "Enter your email",
+    "continueButton": "Continue",
+    "loading": "Sending...",
+    "statusSuccess": "Password reset link sent!",
+    "errorMessage": "An error occurred. Please try again."
+  }
+  
+  }
+  

@@ -1,0 +1,186 @@
+{
+  "navigation": {
+    "home": "Ahabanza",
+    "about": "Twebwe",
+    "destination": "Ahantu",
+    "service": "Serivisi",
+    "products": "Ibicuruzwa",
+    "contact": "Twandikire",
+    "login": "Injira",
+    "signup": "Iyandikishe",
+    "profile": "Umwirondoro",
+    "myBooking": "Ibyo Nakoze",
+    "logout": "Sohoka"
+  },
+  "language": {
+    "english": "Eng",
+    "kinyarwanda": "Kiny"
+  },
+  "hero": {
+  "title": "Irembo  ry’ibihe bitazibagirana  n'ubushakashatsi!",
+  "explore": "kanda hano",
+  "searchPlaceholder": "Shakisha Ingendo hano ...",
+  "upcomingTrip": "Ingendo ziri imbere"
+},
+"trips": {
+  "tripToBali": "Ingendo zo muri Bali",
+  "exploreIceland": "Gusura Iceland",
+  "adventureInMorocco": "Ibikorwa muri Maroko"
+},
+"whyChooseUs": {
+  "title": "KUKI WADUHITAMO?",
+  "description": "Ikigo cyo kwizerwa no gushingiraho",
+  "benefits": {
+    "affordablePrice": "Ikiguzi kinogeye buri wese",
+    "varietyOfDestinations": "Ibyerekezo byinshi byo gusura",
+    "highQualityService": "Serivisi nziza niyo ntego yacu"
+  }
+},
+"popularTourPackages": {
+  "title": "Ingendo Zikunzwe",
+  "altText": "Ingendo Zikunzwe {{index}}"
+},
+"howItWorks": {
+  "title": "Uko bikorwa?",
+  "subtitle": "Shakisha, hitamo, igura",
+  "steps": {
+    "search": {
+      "title": "Shakisha",
+      "description": "Shakisha urugendo rw'inzozi zawe"
+    },
+    "select": {
+      "title": "Hitamo",
+      "description": "Hitamo urugendo"
+    },
+    "book": {
+      "title": "Kwandikisha",
+      "description": "Gufata Umwanya no kwishyura"
+    }
+  }
+},
+"footer": {
+  "description": "Sura isi na Exodus: Umufatanya bikorwa ",
+  "decriptionn":"wizewe mu rugendo!",
+  "topDestinations": "Aho kujya heza",
+  "contactInfo": "Uko watugeraho",
+  "address": "Aderesi: Remera Gisimenti(Ikaze House)",
+  "phone": "Telefoni: 0788726181",
+  "email": "Email: Oldfoxcoltd@gmail.com",
+  "copyright": "©{{year}} Exodus. Uburenganzira bwose bur保."
+},
+"destinations": {
+  "rwanda": "Rwanda",
+  "israel": "Isiraheli",
+  "turkey": "Turukiya",
+  "egypt": "Misiri"
+},
+"about": {
+  "header": "Ibyerekeye Twebwe",
+  "subheader":"Ibyo Dukora",
+  "quote1": "Ikigo OLD Fox gitegura ingendo nyobokamana, kigafasha abantu ku giti cyabo n’amatsinda gusura ahantu hatagatifu ku isi hose. Ingendo zacu zigamije gufasha abantu gukura mu mwuka,Gusenga, kwiyumvamo no gusobanukirwa umuco. Dufasha gusura insengero za kera cyangwa imijyi mitagatifu, buri rugendo ruhuza  ruhuza abagenzi n’ukwemera kwabo n’imico yabo. Twitondera gutegura buri rugendo kugira ngo ubuzima bw’abagenzi bugende neza kandi bubashimishe.",
+  "quote2": "Ibyerekezo byacu bitanga uburambe bwo guhindura, buhuza iterambere ry'umwuka n'ubusabane bw'umuco. Abagenzi basura ibice by'ingenzi by'iyobokamana, bagahura n'imigenzo y'aho, kandi bakahuza n'abandi bemera. Izi ngendo zishyigikira gusubira mu mwuka no kwibuka, zitanga ubushobozi bwo gusobanukirwa cyane n'iyobokamana no kubika ibihe bitazibagirana mu bice bimwe mu byaha by'ingenzi ku isi.",
+  "team": "Itsinda Ryacu",
+  "boss":"Umuyobozi mukuru"
+},
+"destiny": {
+  "backgroundAlt": "Ikarita nziza yo mu kirere",
+  "title": "IBYEREKEZO",
+  "explore": "Ibyerekezo Byacu",
+  "discover": "Menya",
+  "destinations": {
+    "rwanda": "Rwanda",
+    "rwandaDescription": "Izwi nk'igihugu cy'imisozi igihumbi.",
+    "israel": "Isiraheli",
+    "israelDescription": "Izwi ku bijyanye n'ahantu h'amateka n'iyobokamana.",
+    "turkey": "Tukiyi",
+    "turkeyDescription": "Umuhanda uhuza Uburayi n'Aziya.",
+    "egypt": "Egiputa",
+    "egyptDescription": "Icyicaro cy'ibibaya bya kera."
+  }
+},
+"service": {
+  "title": "Serivisi",
+  "subtitle": "Serivisi Dutanga",
+  "our_services": "Serivisi zacu",
+  "join_adventures": "Jya mu bikorwa",
+  "with_stories": "n'inkuru",
+  "description": "Subiza amaso ku bimenyetso bitandukanye by’amadini no ku mibereho y’umwuka, bigaragaza umuco ukungahaye n’imigenzo gakondo. Suzuma insengero zera, za kiliziya za kera, n’amahema y’itorero arangwa n’amahoro, buri kimwe gifite inkuru z’imihango ya kera n’ukwizera gukomeye. Ujye mu minsi mikuru n’imigenzo y’umwuka ihuza abantu, ikwereke neza urugendo rw’ubumwe n’ukwemera abatuye isi bose bahuriyeho.",
+  "custom_destinations": "Aho kwerekeza hihariye",
+  "unforgettable_moments": "Igihe kidashobora kwibagirana",
+  "competitive_pricing": "Ibiciro byiza",
+  "self_guide": "Kwigira",
+  "available": "24/7 Iriho",
+  "transportations": "Ubwikorezi",
+  "Whychooseus":"kuki waduhitamo",
+  "whyDecription":"Ikigo cyo kwizerwa no gushingiraho",
+  "benefits": {
+    "affordablePrice": "Ikiguzi kinogeye buri wese",
+    "varietyOfDestinations": "Ibyerekezo byinshi byo gusura",
+    "highQualityService": "Serivisi nziza niyo ntego yacu"
+  }
+},
+"products":{
+  "title":"Ibicyuruzwa",
+  "subtitle":"Ibicuruzwa by'Amateka",
+  "discription":"Sura biro yacu kugirango ugure ibicuruzwa by'idini bifite ireme mu buryo bwa hafi.",
+  "accountinfo":"AMAKURU AJYANYE NA KONTI",
+  "account":"NUMERO YA KONTI",
+  "phone":"NUMERO YA TELEFONI"
+
+},
+"contact": {
+  "header": "Twandikire",
+  "contactus":"Tuvugishe",
+  "get_in_touch": "Twandikire",
+  "phone": "Telefoni",
+  "address": "Aderesi",
+  "email": "Imeyili",
+  "phone_number": "+250788726181",
+  "address_content": "Remera Gisimenti(Ikaze House)",
+  "email_content": "Oldfoxcoltd@gmail.com",
+  "question_message": "NIBA ufite ikibazo icyo ari cyo cyose ntuzatinye kutwandikira.",
+  "your_names": "Amazina yawe",
+  "your_email": "Imeyili yawe",
+  "subject": "Icyo usaba",
+  "message": "Ubutumwa",
+  "send_message": "OHEREZA UBUTUMWA"
+},
+"login": {
+  "title": "INJIRA",
+  "subtitle": "Injira muri konte yawe",
+  "email": "Imeyili",
+  "password": "Ijambo ry'ibanga",
+  "button": "Injira",
+  "loading": "Birinjira...",
+  "success": "Injira byagenze neza!",
+  "forgotPassword": "Wibagiwe Ijambo ry'Ibanga?",
+  "noAccount": "Ntakonte ufite?",
+  "signUp": "Iyandikishe"
+},
+"signup": {
+  "register": "Iyandikishe",
+  "createAccount": "Fungura konti yawe",
+  "name": "Amazina",
+  "email": "Imeli",
+  "password": "Ijambo ry'ibanga",
+  "uploadPhoto": "Ongeraho ifoto",
+  "registering": "Birimo kwiyandikisha...",
+  "alreadyHaveAccount": "Ufite konti?",
+  "login": "Injira",
+  "signupSuccessful": "Kwiyandikisha byagenze neza!"
+},
+"tour":{
+  "title":"Shakisha urugendo hakurikijwe aho rugana."
+},
+"forgotPassword": {
+  "title": "Wibagiwe Ijambo ry'Ibanga?",
+  "intro": "Ntugire ikibazo. Turagufasha.",
+  "instruction": "Shyiramo aderesi ya email yawe",
+  "placeholder": "Injizamo email yawe",
+  "continueButton": "Komeza",
+  "loading": "Kohereza...",
+  "statusSuccess": "Ubutumwa bwo kubyutsa ijambo ry'ibanga bwoherejwe!",
+  "errorMessage": "Habaye ikibazo. Ongera ugerageze."
+}
+
+}

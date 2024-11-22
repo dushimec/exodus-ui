@@ -2,8 +2,11 @@ import React from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+
 
 function WhyChooseUs() {
+  const { t } = useTranslation();
 
   useEffect(() => {
     AOS.init({ duration: 1100, easing: 'ease-out' });
@@ -21,10 +24,10 @@ function WhyChooseUs() {
       <div className="relative flex flex-col items-center pt-40 pb-20 w-full bg-neutral-900 bg-opacity-50 sm:px-5 md:px-5 md:max-w-full"   >
         <div className="flex flex-col w-full max-w-5xl" data-aos="fade-up">
           <h2 className="self-center text-2xl md:text-3xl font-bold text-white text-center">
-            WHY CHOOSE US?
+          {t('whyChooseUs.title')}
           </h2>
           <p className="self-center mt-6 mb-5 text-lg md:text-2xl text-white font-[inria-serif] text-center">
-            A brand name you can trust and rely on
+             {t('whyChooseUs.description')}
           </p>
           
           {/* Image section */}
@@ -51,9 +54,9 @@ function WhyChooseUs() {
 
           {/* Text section */}
           <div className="flex justify-between gap-2 sm:gap-5 mt-3 text-xs md:text-sm font-medium text-white text-center max-w-sm md:max-w-lg mx-auto">
-            <div className="mx-1">Affordable price Guarantee</div>
-            <div className="mx-1">Wide variety of destinations</div>
-            <div className="mx-1">High qualified service</div>
+            <div className="mx-1">{t('whyChooseUs.benefits.affordablePrice')}</div>
+            <div className="mx-1">{t('whyChooseUs.benefits.varietyOfDestinations')}</div>
+            <div className="mx-1">{t('whyChooseUs.benefits.highQualityService')}</div>
           </div>
         </div>
       </div>

@@ -4,8 +4,10 @@ import * as React from "react";
 import { MapPin } from "lucide-react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';  // Import AOS CSS
+import { useTranslation } from 'react-i18next';  // Import useTranslation
 
 export default function Destiny() {
+  const { t } = useTranslation(); // Initialize translation
   const [hasVisited, setHasVisited] = React.useState(false);
 
   React.useEffect(() => {
@@ -38,10 +40,10 @@ export default function Destiny() {
          <div className="absolute inset-0 bg-black opacity-30"></div>
          <div className="flex relative flex-col justify-start items-center px-2 w-full sm:px-2 sm:pt-5 md:px-20 ">
           <div className="px-2 py-4  text-2xl  sm:px-8 sm:py-6 md:px-12 md:py-9 mb-0 text-center bg-transparent border-white border-solid bg-opacity-0 border-4 sm:border-8 md:border-[10px] w-[80%] max-w-[496px]">
-          DESTINATION
+            {t("destiny.title")}
           </div>
           <div className="mt-12  sm:mt-15 flex flex-row justify-center">
-            Our Destination
+          {t("destiny.explore")}
           </div>
 
         </div>
@@ -53,15 +55,15 @@ export default function Destiny() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-28">
           <DestinationCard
             imageSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/33fae0df8bf179790c2123d2aba2911ebe9447d3273945edf5a1e32b89677d6a"
-            location="  Rwanda"
-            description="Experience the romance and charm of the City of Light."
+            location={t("destiny.destinations.rwanda")}
+            description={t("destiny.destinations.rwandaDescription")}
             showTutor={!hasVisited}
             aosAnimation="zoom-in"
           />
           <DestinationCard
             imageSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/a6f3480c81274d3fc5b27e53fa8ba11235679978c2d207afcb03ef43152f0183"
-            location="Israel"
-            description="Discover the vibrant culture and beautiful beaches of this Mediterranean gem."
+            location={t("destiny.destinations.israel")}
+            description={t("destiny.destinations.israelDescription")}
             aosAnimation="zoom-in"
           />
         </div>
@@ -71,14 +73,14 @@ export default function Destiny() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-28">
           <DestinationCard
             imageSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/1313d8b1bfaed5a882ed7c53af9b1ab46acdb10791f71d2039f72bba19ff2180"
-            location="Turkey"
-            description="Explore the bustling streets and iconic landmarks of the Big Apple."
+            location={t("destiny.destinations.turkey")}
+            description={t("destiny.destinations.turkeyDescription")}
             aosAnimation="zoom-in"
           />
           <DestinationCard
             imageSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/2ce0e3cedfb6319b662aa74d29e7ddb053f294b6be2ce29fc5d7fcbf9b45e233"
-            location="Egypt"
-            description="Immerse yourself in the unique blend of tradition and modernity in Japan's capital."
+            location={t("destiny.destinations.egypt")}
+            description={t("destiny.destinations.egyptDescription")}
             aosAnimation="zoom-in"
           />
         </div>
