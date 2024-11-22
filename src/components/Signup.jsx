@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { Link, useNavigate } from "react-router-dom";
 import { signup } from "../slices/authSlice"; // Import signup action
-
+import { useTranslation } from 'react-i18next';
 function Signup() {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -48,11 +49,11 @@ function Signup() {
           onSubmit={handleSubmit}
         >
           <div className="self-center text-2xl font-bold text-white">
-            REGISTER
+           {t('signup.register')}
           </div>
           <div className="shrink-0 self-center mt-1 border-sky-500 border-solid border-[1px] h-[2px] w-[120px]" />
           <div className="self-center mt-5 text-sm font-semibold text-white max-md:mt-5">
-            Create your account
+           {t('signup.createAccount')}
           </div>
           {/* Display Notification */}
           {notification && (
@@ -69,7 +70,7 @@ function Signup() {
               required
             />
             <label className="absolute text-gray-300 text-sm transition-all duration-200 origin-left">
-              Name
+             {t('signup.name')}
             </label>
           </div>
 
@@ -84,7 +85,7 @@ function Signup() {
               required
             />
             <label className="absolute text-gray-300 text-sm transition-all duration-200 origin-left">
-              Email
+             {t('signup.email')}
             </label>
           </div>
 
@@ -99,7 +100,7 @@ function Signup() {
               required
             />
             <label className="absolute text-gray-300 text-sm transition-all duration-200 origin-left">
-              Password
+             {t('signup.password')}
             </label>
             <div
               className="absolute right-0 transform -translate-y-1/2 cursor-pointer"
@@ -122,7 +123,7 @@ function Signup() {
               className="mt-6 text-white bg-transparent border-b-2 border-sky-500 focus:outline-none placeholder-transparent"
             />
             <label className="absolute text-gray-300 text-sm transition-all duration-200 origin-left">
-              Upload Photo
+             {t('signup.uploadPhoto')}
             </label>
           </div>
 
@@ -134,14 +135,14 @@ function Signup() {
             }`}
             disabled={loading}
           >
-            {loading ? "Registering..." : "Register"}
+            {loading ? t('signup.registering') : t('signup.register')}
           </button>
 
           {/* Already have an account? */}
           <div className="flex justify-between items-center ml-10 mt-6 max-w-full w-[200px] max-md:mt-5 text-xs">
-            <div className="text-white">Already have an account?</div>
+            <div className="text-white">{t('signup.alreadyHaveAccount')}</div>
             <Link to="/login" className="text-sky-500 cursor-pointer">
-              Login
+            {t('signup.login')}
             </Link>
           </div>
         </form>

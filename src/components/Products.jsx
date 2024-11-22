@@ -2,8 +2,10 @@ import React, { useEffect } from 'react';
 import product from '../IMAGE/product.png';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 
 function Products() {
+  const { t } = useTranslation(); // Initialize translation
   useEffect(() => {
     AOS.init({ duration: 1000, easing: 'ease-out' });
   }, []);
@@ -45,10 +47,10 @@ function Products() {
           <div className="absolute inset-0 bg-black opacity-60"></div>
           <div className="flex relative flex-col justify-start items-center px-2 w-full sm:px-2 sm:pt-10 md:px-20 md:pt-24">
             <div className="px-2 py-4 text-2xl mt-10 sm:px-8 sm:py-6 md:px-12 md:py-9 mb-0 text-center bg-transparent border-white border-solid bg-opacity-0 border-4 sm:border-8 md:border-[10px] w-[80%] max-w-[496px]">
-              Product
+            {t('products.title')}
             </div>
             <div className="mt-12 sm:mt-15 flex flex-row justify-center">
-               Historical Products
+            {t('products.subtitle')}
             </div>
           </div>
         </div>
@@ -56,18 +58,18 @@ function Products() {
   <div className="flex flex-col items-center space-y-6 mt-10 " data-aos="zoom-out">
   {/* Centered Visit Message */}
   <div className="bg-sky-500 text-white py-6 px-8 rounded-full text-center max-w-xs mx-auto">
-    "Visit our office to buy high-quality religious products in person"
+    "{t('products.discription')}"
   </div>
 
   {/* Account Information Card */}
   <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200 max-w-sm w-full text-center transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl  animate-fadeIn" >
-  <h3 className="text-lg font-semibold text-gray-700 mb-3 transition-colors duration-300 ease-in-out hover:text-sky-500">ACCOUNT INFORMATION</h3>
+  <h3 className="text-lg font-semibold text-gray-700 mb-3 transition-colors duration-300 ease-in-out hover:text-sky-500">{t('products.accountinfo')}</h3>
   <div className="text-sm text-gray-600">
     <p className="mb-1 transition-all duration-300 ease-in-out hover:text-sky-600">
-      <span className="font-medium text-xs">ACCOUNT NUMBER:</span> 12345687654
+      <span className="font-medium text-xs">{t('products.account')}:</span> 12345687654
     </p>
     <p className="transition-all duration-300 ease-in-out hover:text-sky-600">
-      <span className="font-medium text-xs">PHONE NUMBER:</span> +250788726181
+      <span className="font-medium text-xs">{t('products.phone')}:</span> +250788726181
     </p>
   </div>
 </div>

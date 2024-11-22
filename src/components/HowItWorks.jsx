@@ -2,9 +2,10 @@ import React from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function HowItWorks() {
-
+  const { t } = useTranslation();
   useEffect(() => {
     AOS.init({ duration: 1000, easing: 'ease-out' });
   }, []);
@@ -16,8 +17,8 @@ function HowItWorks() {
   
       {/* Header section */}
       <div className="text-center mb-6 lg:mb-0 lg:mr-8">
-        <h2 className="text-2xl md:text-3xl font-bold text-black">How it works?</h2>
-        <p className="text-md md:text-lg text-sky-500">Search, select, book</p>
+        <h2 className="text-2xl md:text-3xl font-bold text-black">{t('howItWorks.title')}</h2>
+        <p className="text-md md:text-lg text-sky-500">{t('howItWorks.subtitle')}</p>
       </div>
 
       {/* Steps Section */}
@@ -32,8 +33,8 @@ function HowItWorks() {
             />
           </div>
           <div className="flex flex-col items-center lg:items-start lg:ml-4 md:ml-2">
-            <h3 className="text-xl md:text-lg font-bold text-black">Search</h3>
-            <p className="text-md md:text-sm text-sky-500 font-[inria-serif]">Find your Dream trip</p>
+            <h3 className="text-xl md:text-lg font-bold text-black">{t('howItWorks.steps.search.title')}</h3>
+            <p className="text-md md:text-sm text-sky-500 font-[inria-serif]">{t('howItWorks.steps.search.description')}</p>
           </div>
         </div>
 
@@ -47,8 +48,8 @@ function HowItWorks() {
             />
           </div>
           <div className="flex flex-col items-center lg:items-start lg:ml-4 md:ml-2">
-            <h3 className="text-xl md:text-lg font-bold text-black">Select</h3>
-            <p className="text-md md:text-sm text-sky-500 font-[inria-serif]">Select trip packages</p>
+            <h3 className="text-xl md:text-lg font-bold text-black">{t('howItWorks.steps.select.title')}</h3>
+            <p className="text-md md:text-sm text-sky-500 font-[inria-serif]">{t('howItWorks.steps.select.description')}</p>
           </div>
         </div>
 
@@ -62,8 +63,8 @@ function HowItWorks() {
             />
           </div>
           <div className="flex flex-col items-center lg:items-start lg:ml-4 md:ml-2">
-            <h3 className="text-xl md:text-lg font-bold text-black">Book</h3>
-            <p className="text-md md:text-sm text-sky-500 font-[inria-serif]">Booking and pay</p>
+            <h3 className="text-xl md:text-lg font-bold text-black">{t('howItWorks.steps.book.title')}</h3>
+            <p className="text-md md:text-sm text-sky-500 font-[inria-serif]">{t('howItWorks.steps.book.description')}</p>
           </div>
         </div>
       </div>

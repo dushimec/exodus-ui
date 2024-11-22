@@ -2,10 +2,13 @@ import React from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import { useTranslation } from "react-i18next";
 
 
  
 function About( ) {
+  const { t } = useTranslation();
+
   useEffect(() => {
     AOS.init({ duration: 1500, easing: 'ease-out' });
   }, []);
@@ -24,10 +27,10 @@ function About( ) {
         <div className="absolute inset-0 bg-black opacity-60"></div>
         <div className="flex relative flex-col justify-start items-center px-4 pt-16 w-full sm:px-8 sm:pt-20 md:px-20 md:pt-24">
         <div className="px-2 py-4  text-2xl  mt-10 sm:px-8 sm:py-6 md:px-12 md:py-9 mb-0 text-center bg-transparent border-white border-solid bg-opacity-0 border-4 sm:border-8 md:border-[10px] w-[80%] max-w-[496px]">
-        About us
+        {t('about.header')}
           </div>
           <div className="mt-12 sm:mt-15 text-xl flex flex-row justify-center">
-            What we do
+          {t('about.subheader')}
             </div>
         </div>
       </div>
@@ -39,7 +42,7 @@ function About( ) {
               <div className="self-start text-lg sm:text-xl md:text-2xl font-semibold" >
                 <span className="text-2xl font-bold text-sky-500">"</span>{" "}
                 <span>
-                  OLD Fox Company offers expertly planned religious trips, guiding individuals and groups to some of the most sacred destinations worldwide. Our pilgrimages are designed to inspire spiritual growth, combining prayer, reflection, and cultural exploration. Whether visiting ancient temples or holy cities, each trip provides a meaningful opportunity for travelers to connect deeply with their faith and traditions. We ensure every journey is thoughtfully organized for a seamless and enriching experience.
+                {t('about.quote1')}
 
                 </span>{" "}
                 <span className="text-2xl font-bold text-sky-500">"</span>
@@ -68,7 +71,7 @@ function About( ) {
               <div className="self-end pt-20 sm:mt-12  md:mt-16"  data-aos="fade-up">
                 <span className="text-2xl font-bold text-sky-500">"</span>
                 <span > 
-                  Our itineraries create transformative experiences, blending spiritual enrichment with cultural immersion. Travelers explore significant religious landmarks, engage with local traditions, and connect with fellow believers. These journeys inspire renewal and reflection, offering a deeper understanding of faith and lasting memories in some of the world's most revered spiritual places.
+                {t('about.quote2')}
                 </span>
                 <span className="font-bold">.</span>{" "}
                 <span className="text-2xl font-bold text-sky-500">"</span>
@@ -82,7 +85,7 @@ function About( ) {
       <div className="flex flex-col items-center mt-12 sm:mt-16 md:mt-20"  data-aos="fade-up">
         <div className="h-1 w-16 border-4 border-sky-500 border-solid mb-4" />
         <div className="text-2xl font-[inria-serif] text-sky-500">
-          Our Team
+        {t('about.team')}
         </div>
         <div className="h-1 w-16 border-4 border-sky-500 border-solid mt-4 mb-8" />
       </div>
@@ -97,7 +100,7 @@ function About( ) {
           alt="CEO of Oldfox"
         />
         <div className="mt-4 text-xl sm:text-2xl font-[inria-serif] text-sky-500">
-          CEO of Oldfox
+        {t('about.boss')}
     
     </div>
     </div>

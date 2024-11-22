@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useTranslation } from 'react-i18next';
 
 
 function PopularTourPackages() {
+  const { t } = useTranslation();
+  
   const images = [
     'https://cdn.builder.io/api/v1/image/assets/TEMP/5725c55f59a8c5f1d2b57296f45f428b87daa2e84f2683985f7657badec80a78?placeholderIfAbsent=true&apiKey=6e51f2aa35694a21b29ab869757ebe28',
     'https://cdn.builder.io/api/v1/image/assets/TEMP/d717a7f9662b0fd3274b0b77e060ff0f067fd72afbdd3cde6c6c986740589ffa?placeholderIfAbsent=true&apiKey=6e51f2aa35694a21b29ab869757ebe28',
@@ -60,7 +63,7 @@ function PopularTourPackages() {
   return (
     <section className="flex flex-col px-10 mt-12 w-full max-md:px-5 max-md:mt-8" data-aos= "fade-up ">
       <h2 className="self-start ml-24 text-3xl text-black font-[inria-serif] max-md:ml-2.5 max-md:text-2xl" data-aos="fade-up" >
-        Popular tour packages
+      {t('popularTourPackages.title')}
       </h2>
 
       <div className="relative mt-14 w-full max-md:mt-8" data-aos="fade-up">

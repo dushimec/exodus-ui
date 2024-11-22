@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useTranslation } from "react-i18next"; // Import useTranslation
 
 function Tour() {
+  const { t } = useTranslation();
   useEffect(() => {
     AOS.init({
       duration: 1200, // duration of animations
@@ -20,7 +22,7 @@ function Tour() {
             data-aos="fade-right" />
           <h2 className="text-4xl font-[jim-nightshade] text-black mx-2 max-md:text-2xl mt-4 sm:mt-0" 
             data-aos="fade-up">
-            Find a tour by destination
+           {t('tour.title')}
           </h2>
           <div className="mt-4 w-48 border-4 border-sky-500 border-solid min-h-[4px] max-md:w-32" 
             data-aos="fade-left" />
