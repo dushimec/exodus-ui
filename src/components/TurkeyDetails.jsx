@@ -1,12 +1,47 @@
-import * as React from "react";
-import { useState } from "react";
+import React, { useState } from 'react';
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import city from "../IMAGE/city.jpg";
 import tukey from "../IMAGE/tukey.jpg";
-// import city3 from "../IMAGE/city3.jpg";
 
 // Array of Recently Visited Images
-const recentlyVisitedImages = [city, tukey ];
+const recentlyVisitedImages = [city, tukey];
+
+function BookingForm({ isOpen, onClose, destination, price }) {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+      <div className="bg-white rounded-lg p-6 w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-4 text-blue-600">Book Your Trip to {destination}</h2>
+        <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+            <input type="text" id="name" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Your Name" />
+          </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" id="email" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Your Email" />
+          </div>
+          <div>
+            <label htmlFor="travelers" className="block text-sm font-medium text-gray-700">Number of Travelers</label>
+            <input type="number" id="travelers" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="1" min="1" />
+          </div>
+          <div>
+            <label htmlFor="date" className="block text-sm font-medium text-gray-700">Date</label>
+            <input type="date" id="date" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+          </div>
+          <div className="text-xl font-bold text-blue-600 mt-4">
+            Price: ${price}
+          </div>
+          <div className="flex gap-4 mt-6">
+            <button type="submit" className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-200">Book Now</button>
+            <button onClick={onClose} className="flex-1 bg-gray-200 text-gray-800 py-2 px-4 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition duration-200">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
 
 // RelatedTours Component
 function RelatedTours() {
@@ -97,9 +132,9 @@ function RelatedTours() {
   );
 }
 
-// Main Details Component with Booking Form
-function TurkeyDetails() {
+function Destinations() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [selectedDestination, setSelectedDestination] = useState(null);
 
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) =>
@@ -113,6 +148,30 @@ function TurkeyDetails() {
     );
   };
 
+  const destinations = [
+    {
+      name: "Kibeho Shrine",
+      location: "Nyaruguru",
+      description: "Kibeho is known for the Marian apparitions reported by three Rwandan schoolgirls in the 1980s. This shrine is one of the most significant pilgrimage sites for Catholics in Rwanda.",
+      price: 500,
+      date: "January 10, 2025"
+    },
+    {
+      name: "Kigali Genocide Memorial",
+      location: "Kigali",
+      description: "A visit to the Kigali Genocide Memorial is essential for understanding Rwanda's recent history. It also reflects on the lives of many Christians who perished in the 1994 genocide.",
+      price: 400,
+      date: "January 12, 2025"
+    },
+    {
+      name: "Nyundo Cathedral Visit",
+      location: "Nyundo",
+      description: "The Nyundo Cathedral is one of Rwanda's largest and most significant Christian sites, offering a place for quiet reflection and a connection to the country's rich Christian history.",
+      price: 300,
+      date: "January 15, 2025"
+    }
+  ];
+
   return (
     <div className="w-full h-auto bg-stone-50 relative">
       {/* Background Image and Title Overlay */}
@@ -124,7 +183,7 @@ function TurkeyDetails() {
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute left-4 md:left-16 top-1/2 transform -translate-y-1/2 text-white text-4xl md:text-5xl font-bold">
-          TURKEY
+          Turkey
         </div>
       </div>
 
@@ -151,6 +210,28 @@ function TurkeyDetails() {
               <br />
               Lastly, visit Pamukkale, famous for its travertine terraces and ancient ruins of Hierapolis, known for its thermal pools.
             </p>
+          </div>
+
+          {/* Destinations Section */}
+          <div className="space-y-6">
+            {destinations.map((destination) => (
+              <div key={destination.name} className="bg-white shadow-lg rounded-lg p-6">
+                <h2 className="text-2xl font-bold mb-2">{destination.name}</h2>
+                <p className="text-gray-600 mb-4">{destination.description}</p>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-semibold">Price: ${destination.price}</p>
+                    <p className="text-sm text-gray-500">Trip Date: {destination.date}</p>
+                  </div>
+                  <button 
+                    onClick={() => setSelectedDestination(destination)}
+                    className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* Recently Visited Trip */}
@@ -190,37 +271,23 @@ function TurkeyDetails() {
         <div className="w-full lg:w-1/3 h-auto mb-12 lg:mb-48 pb-20">
           {/* Price Box */}
           <div className="bg-blue-500 text-white px-6 py-8">
-            <div className="text-4xl font-bold">$120</div>
-            <p className="text-white">Per Person</p>
+            <div className="text-4xl font-bold">$1200</div>
+            <p className="text-white">Total for all destinations</p>
           </div>
-
-          {/* Booking Form */}
-          <div className="bg-white shadow-lg p-6 mt-8 rounded-md">
-            <h2 className="text-2xl font-semibold mb-4 text-blue-500">Book Your Trip</h2>
-            <form>
-              <label className="block mb-2 text-sm font-bold text-gray-700">Name</label>
-              <input type="text" className="w-full p-2 border border-gray-300 rounded-md mb-4" placeholder="Your Name" />
-
-              <label className="block mb-2 text-sm font-bold text-gray-700">Email</label>
-              <input type="email" className="w-full p-2 border border-gray-300 rounded-md mb-4" placeholder="Your Email" />
-
-              <label className="block mb-2 text-sm font-bold text-gray-700">Number of Travelers</label>
-              <input type="number" className="w-full p-2 border border-gray-300 rounded-md mb-4" placeholder="1" min="1" />
-
-              <label className="block mb-2 text-sm font-bold text-gray-700">Date</label>
-              <input type="date" className="w-full p-2 border border-gray-300 rounded-md mb-4" />
-
-              <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded-md font-bold mt-4">
-                Book Now
-              </button>
-            </form>
-          </div>
-
-
         </div>
       </div>
+
+      {selectedDestination && (
+        <BookingForm
+          isOpen={!!selectedDestination}
+          onClose={() => setSelectedDestination(null)}
+          destination={selectedDestination.name}
+          price={selectedDestination.price}
+        />
+      )}
     </div>
   );
 }
 
-export default TurkeyDetails;
+export default Destinations;
+

@@ -32,10 +32,11 @@ function Service() {
 
         </div>
       </div>
-      <div className="flex flex-col px-5 md:px-14 mt-10 md:mt-14 w-full"  data-aos="fade-up" >
-        <div className="self-end w-full max-w-[1329px]">
 
-          <div className="flex flex-col md:flex-row gap-5">
+      <div className="flex flex-col px-5 md:px-14 mt-10 md:mt-14 w-full"  data-aos="fade-up" >
+        <div className="self-end w-full max-w-[1329px] ">
+
+          <div className="flex flex-col md:flex-row gap-5 ">
             <div className="flex flex-col w-full md:w-[58%]">
               <div className="flex flex-col items-start w-full">
                 <div className="flex flex-col ml-2.5 max-w-full w-[372px]">
@@ -50,6 +51,7 @@ function Service() {
                 <div className="mt-4 text-lg md:text-xl  text-black text-opacity-90" data-aos="fade-up">
                 {t('service.description')}
                 </div>
+                
                 <div className="self-stretch mt-10 md:mt-14 ml-0 md:ml-5" data-aos="fade-up">
   <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
     {[
