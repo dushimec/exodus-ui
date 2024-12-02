@@ -1,9 +1,44 @@
-import * as React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import egypt from "../IMAGE/egypt.jpg";
 
-// RelatedTours Component
+function BookingForm({ isOpen, onClose, destination, price }) {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+     <div className="bg-white rounded-lg p-6 w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-4 text-blue-600">Book Your Trip to {destination}</h2>
+        <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+            <input type="text" id="name" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Your Name" />
+          </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" id="email" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Your Email" />
+          </div>
+          <div>
+            <label htmlFor="travelers" className="block text-sm font-medium text-gray-700">Number of Travelers</label>
+            <input type="number" id="travelers" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="1" min="1" />
+          </div>
+          <div>
+            <label htmlFor="date" className="block text-sm font-medium text-gray-700">Date</label>
+            <input type="date" id="date" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+          </div>
+          <div className="text-xl font-bold text-blue-600 mt-4">
+            Price: ${price}
+          </div>
+          <div className="flex gap-4 mt-6">
+            <button type="submit" className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-200">Book Now</button>
+            <button onClick={onClose} className="flex-1 bg-gray-200 text-gray-800 py-2 px-4 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition duration-200">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
 function RelatedTours() {
   const [tours, setTours] = useState([
     { id: 1, name: "Kibeho", location: "Nyaruguru", likes: 35, liked: false, comments: [] },
@@ -89,11 +124,34 @@ function RelatedTours() {
   );
 }
 
-// Main EgyptDetails Component
 function EgyptDetails() {
+  const [selectedDestination, setSelectedDestination] = useState(null);
+
+  const destinations = [
+    {
+      name: "Cairo",
+      description: "Visit the iconic Great Pyramids of Giza, the Sphinx, and explore Islamic Cairo with its stunning mosques.",
+      price: 150
+    },
+    {
+      name: "Luxor",
+      description: "Explore the world's greatest open-air museum, including the magnificent Karnak Temple and Valley of the Kings.",
+      price: 130
+    },
+    {
+      name: "Mount Sinai",
+      description: "Visit the place where Moses is believed to have received the Ten Commandments and explore St. Catherine's Monastery.",
+      price: 100
+    },
+    {
+      name: "Alexandria",
+      description: "Discover the historic Catacombs of Kom el Shoqafa and the Fort of Qaitbay, offering insights into the city's rich past.",
+      price: 110
+    }
+  ];
+
   return (
     <div className="w-full h-auto bg-stone-50 relative">
-      {/* Background Image and Title Overlay */}
       <div className="relative w-full h-[50vh]">
         <img
           className="w-full h-full object-cover"
@@ -107,22 +165,39 @@ function EgyptDetails() {
       </div>
 
       <div className="max-w-7xl mx-4 sm:mx-16 flex flex-col lg:flex-row gap-8 py-8">
-        {/* Left Side: Description, Recently Visited Trip, Related Tours */}
         <div className="w-full lg:w-2/3 space-y-8">
           <div>
             <div className="text-sky-500 text-xl sm:text-2xl font-bold mb-4">
               Egypt (Cairo):
             </div>
             <p className="text-black text-base sm:text-lg mb-6">
-              Explore Egypt’s rich heritage: visit the Great Pyramids, ancient temples, Islamic mosques, Mount Sinai, and vibrant markets for a captivating blend of history and culture.
+              Explore Egypt's rich heritage: visit the Great Pyramids, ancient temples, Islamic mosques, Mount Sinai, and vibrant markets for a captivating blend of history and culture.
             </p>
 
             <div className="text-sky-500 text-xl sm:text-2xl font-bold mb-4">
               Egypt:
             </div>
             <p className="text-black text-base sm:text-lg">
-            Embark on a spiritual journey to Egypt, a land rich in religious history. Start your tour in Cairo, where you can visit the iconic Great Pyramids of Giza and the Sphinx, symbols of ancient Egyptian civilization. Explore Islamic Cairo, home to stunning mosques such as Al-Azhar Mosque and Sultan Hassan Mosque, reflecting the country’s Islamic heritage. Next, travel to Luxor, known as the world's greatest open-air museum. Visit the magnificent Karnak Temple and Valley of the Kings, where many pharaohs were laid to rest. Don’t miss the Mount Sinai, where Moses is believed to have received the Ten Commandments, and the St. Catherine's Monastery, a UNESCO World Heritage site. Conclude your trip in Alexandria, visiting the historic Catacombs of Kom el Shoqafa and the Fort of Qaitbay, which offers insight into the city’s rich Christian and Islamic past. Enjoy the local cuisine and vibrant culture throughout your journey.
+              Embark on a spiritual journey to Egypt, a land rich in religious history. Start your tour in Cairo, where you can visit the iconic Great Pyramids of Giza and the Sphinx, symbols of ancient Egyptian civilization. Explore Islamic Cairo, home to stunning mosques such as Al-Azhar Mosque and Sultan Hassan Mosque, reflecting the country's Islamic heritage. Next, travel to Luxor, known as the world's greatest open-air museum. Visit the magnificent Karnak Temple and Valley of the Kings, where many pharaohs were laid to rest. Don't miss the Mount Sinai, where Moses is believed to have received the Ten Commandments, and the St. Catherine's Monastery, a UNESCO World Heritage site. Conclude your trip in Alexandria, visiting the historic Catacombs of Kom el Shoqafa and the Fort of Qaitbay, which offers insight into the city's rich Christian and Islamic past. Enjoy the local cuisine and vibrant culture throughout your journey.
             </p>
+          </div>
+
+          <div className="space-y-6">
+            {destinations.map((destination) => (
+              <div key={destination.name} className="bg-white shadow-lg rounded-lg p-6">
+                <h2 className="text-2xl font-bold mb-2">{destination.name}</h2>
+                <p className="text-gray-600 mb-4">{destination.description}</p>
+                <div className="flex items-center justify-between">
+                  <p className="font-semibold">Price: ${destination.price}</p>
+                  <button 
+                    onClick={() => setSelectedDestination(destination)}
+                    className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
 
           <div>
@@ -134,56 +209,45 @@ function EgyptDetails() {
           <RelatedTours />
         </div>
 
-        {/* Right Side: Price and Booking Form */}
         <div className="w-full lg:w-1/3 space-y-6">
-          {/* Price Box */}
           <div className="bg-blue-500 text-white flex justify-between items-center px-6 py-4">
-            <div className="text-lg font-semibold">Price</div>
-            <div className="text-3xl font-bold">$120</div>
+            <div className="text-lg font-semibold">Total Price</div>
+            <div className="text-3xl font-bold">$490</div>
           </div>
 
-          {/* Booking Form */}
           <div className="bg-white shadow-lg p-6">
             <div className="bg-sky-500 text-white text-center py-3 mb-6">
-              <span className="text-base font-semibold">Booking Form</span>
+              <span className="text-base font-semibold">Tour Summary</span>
             </div>
-
             <div className="space-y-4">
-              <label className="block text-sm text-gray-500">Booking Date</label>
-              <input type="date" className="w-full h-12 border border-gray-300 px-2" />
-
-              <label className="block text-sm text-gray-500">Guests</label>
-              <select className="w-full h-12 border border-gray-300 px-2">
-                <option>Adults 1</option>
-                <option>Adults 2</option>
-                <option>Adults 3</option>
-              </select>
-
-              <label className="block text-sm text-gray-500">Option for Tour</label>
-              <select className="w-full h-12 border border-gray-300 px-2">
-                <option>Standard Tour</option>
-                <option>Premium Tour</option>
-              </select>
-
-              <label className="block text-sm text-gray-500">Guest Information</label>
-              <input
-                type="text"
-                placeholder="Full Name"
-                className="w-full h-12 border border-gray-300 px-2"
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                className="w-full h-12 border border-gray-300 px-2"
-              />
+              {destinations.map((destination) => (
+                <div key={destination.name} className="flex justify-between">
+                  <span>{destination.name}</span>
+                  <span>${destination.price}</span>
+                </div>
+              ))}
+              <div className="border-t pt-4 font-bold">
+                <div className="flex justify-between">
+                  <span>Total</span>
+                  <span>$490</span>
+                </div>
+              </div>
             </div>
-
-            <button className="w-full bg-sky-500 text-white text-lg py-3 mt-6">Book Now</button>
           </div>
         </div>
       </div>
+
+      {selectedDestination && (
+        <BookingForm
+          isOpen={!!selectedDestination}
+          onClose={() => setSelectedDestination(null)}
+          destination={selectedDestination.name}
+          price={selectedDestination.price}
+        />
+      )}
     </div>
   );
 }
 
 export default EgyptDetails;
+

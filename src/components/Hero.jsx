@@ -1,31 +1,40 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
+import { Link, useNavigate } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+// Assuming these imports work in your project structure
 import video from "../IMAGE/video.mp4";
 import KigaliImage from '../IMAGE/kgl.jpg';
 import Havan from '../IMAGE/havana.jpg';
 import Turkey from '../IMAGE/tukey.jpg';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useTranslation } from "react-i18next"; // Import useTranslation
 
 const upcomingTrips = [
-  { id: 1, title: "Trip to Bali", image: KigaliImage },
-  { id: 2, title: "Explore Iceland", image: Havan },
-  { id: 3, title: "Adventure in Morocco", image: Turkey }
+  { id: 1, title: "Trip to Rwanda", image: KigaliImage },
+  { id: 2, title: "Explore Israel", image: Havan },
+  { id: 3, title: "Adventure in Turkey", image: Turkey }
+];
+
+const allDestinations = [
+  { id: 'rwanda', name: 'Rwanda' },
+  { id: 'israel', name: 'Israel' },
+  { id: 'egypt', name: 'Egypt' },
+  { id: 'turkey', name: 'Turkey' }
 ];
 
 export default function TravelHero() {
-  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
   const [currentTripIndex, setCurrentTripIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const titleRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Initialize AOS after component mounts
     AOS.init({ duration: 1500, easing: 'ease-out' });
-    AOS.refresh(); // Refresh to ensure AOS recalculates positions
+    AOS.refresh();
   }, []);
 
   useEffect(() => {
@@ -55,9 +64,18 @@ export default function TravelHero() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const results = allDestinations.filter(destination =>
+      destination.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(results);
+  }, [searchTerm]);
+
   const handleSearch = (e) => {
     e.preventDefault();
-    alert(`Searching for: ${searchTerm}`);
+    if (searchResults.length > 0) {
+      navigate(`/destination/${searchResults[0].id}`);
+    }
   };
 
   const handleExplore = () => {
@@ -90,17 +108,15 @@ export default function TravelHero() {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            {t('hero.title')}
+            Discover Your Next Adventure
           </h1>
 
           <button
             onClick={handleExplore}
-            className="relative p-2 mt-4 sm:mt-6 lg:mt-10 mx-auto lg:mx-0 text-base font-semibold border-2 border-sky-500 rounded-full w-[180px] sm:w-[200px] hover:bg-white hover:text-sky-500 transition duration-300 ease-in-out"
+            className="relative mt-4 sm:mt-6 lg:mt-10 mx-auto lg:mx-0 w-[180px] sm:w-[200px] bg-sky-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-sky-600 transition duration-300 ease-in-out"
             data-aos="fade-up"
           >
-            <span className="bg-sky-500 text-white rounded-full w-full h-full flex items-center justify-center py-2 sm:py-3 hover:bg-white hover:text-sky-500 transition duration-300 ease-in-out">
-            {t('hero.explore')}
-            </span>
+            Explore Now
           </button>
         </div>
 
@@ -110,7 +126,7 @@ export default function TravelHero() {
           <form onSubmit={handleSearch} className="relative">
             <input
               type="text"
-              placeholder={t('hero.searchPlaceholder')}
+              placeholder="Search for a destination"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full bg-white bg-opacity-90 rounded-full py-2 sm:py-3 px-6 pl-12 text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-sky-300 shadow-lg"
@@ -123,10 +139,33 @@ export default function TravelHero() {
             />
           </form>
 
+          {/* Search Results */}
+          {searchTerm && (
+            <div className="bg-white bg-opacity-90 rounded-lg p-4 shadow-lg max-h-60 overflow-y-auto" data-aos="fade-up">
+              <h3 className="text-lg font-semibold mb-2">Destinations:</h3>
+              {searchResults.length > 0 ? (
+                <ul>
+                  {searchResults.map((result) => (
+                    <li key={result.id} className="mb-1">
+                      <Link
+                        to={`/destination/${result.id}`}
+                        className="block hover:bg-sky-100 p-2 rounded transition duration-300"
+                      >
+                        {result.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p>No destinations found.</p>
+              )}
+            </div>
+          )}
+
           {/* Upcoming Trips Carousel */}
           <div className="bg-white bg-opacity-90 rounded-lg p-4 shadow-lg relative overflow-hidden" data-aos="fade-up">
             <h2 className="text-lg sm:text-xl font-semibold text-sky-500 mb-2" data-aos="fade-up">
-            {t('hero.upcomingTrip')}
+              Upcoming Trip
             </h2>
             <div className="relative h-48 sm:h-56">
               {upcomingTrips.map((trip, index) => (
@@ -182,3 +221,4 @@ export default function TravelHero() {
     </div>
   );
 }
+

@@ -1,10 +1,11 @@
 'use client'
 
 import * as React from "react";
-import { MapPin } from "lucide-react";
+import { MapPin } from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';  // Import AOS CSS
 import { useTranslation } from 'react-i18next';  // Import useTranslation
+import { Link } from "react-router-dom";
 
 export default function Destiny() {
   const { t } = useTranslation(); // Initialize translation
@@ -45,11 +46,8 @@ export default function Destiny() {
           <div className="mt-12  sm:mt-15 flex flex-row justify-center">
           {t("destiny.explore")}
           </div>
-
         </div>
-
       </div>
-
 
       <div className="mt-20 sm:mt-28 lg:mt-40 w-full max-w-[1104px] px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-28">
@@ -59,12 +57,14 @@ export default function Destiny() {
             description={t("destiny.destinations.rwandaDescription")}
             showTutor={!hasVisited}
             aosAnimation="zoom-in"
+            detailLink="/RwandaDetails"
           />
           <DestinationCard
             imageSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/a6f3480c81274d3fc5b27e53fa8ba11235679978c2d207afcb03ef43152f0183"
             location={t("destiny.destinations.israel")}
             description={t("destiny.destinations.israelDescription")}
             aosAnimation="zoom-in"
+            detailLink="/JerusalemDetails"
           />
         </div>
       </div>
@@ -76,21 +76,22 @@ export default function Destiny() {
             location={t("destiny.destinations.turkey")}
             description={t("destiny.destinations.turkeyDescription")}
             aosAnimation="zoom-in"
+            detailLink="/TurkeyDetails"
           />
           <DestinationCard
             imageSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/2ce0e3cedfb6319b662aa74d29e7ddb053f294b6be2ce29fc5d7fcbf9b45e233"
             location={t("destiny.destinations.egypt")}
             description={t("destiny.destinations.egyptDescription")}
             aosAnimation="zoom-in"
+            detailLink="/EgyptDetails"
           />
         </div>
       </div>
     </div>
-
   );
 }
 
-function DestinationCard({ imageSrc, location, description, showTutor = false, aosAnimation }) {
+function DestinationCard({ imageSrc, location, description, showTutor = false, aosAnimation, detailLink }) {
   return (
     <div
       className="relative group w-full h-64 sm:h-80 lg:h-96 overflow-hidden bg-cover bg-center transition-all duration-300"
@@ -108,12 +109,13 @@ function DestinationCard({ imageSrc, location, description, showTutor = false, a
           <p className="text-white text-sm sm:text-base">{description}</p>
         </div>
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <button className="bg-white text-black font-semibold px-6 py-2">
-            Discover
-          </button>
+          <Link to={detailLink}>
+            <button className="bg-white text-black font-semibold px-6 py-2">
+              Discover
+            </button>
+          </Link>
         </div>
       </div>
     </div>
   );
 }
-

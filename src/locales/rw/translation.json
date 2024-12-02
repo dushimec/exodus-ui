@@ -89,13 +89,13 @@
   "discover": "Menya",
   "destinations": {
     "rwanda": "Rwanda",
-    "rwandaDescription": "Izwi nk'igihugu cy'imisozi igihumbi.",
+    "rwandaDescription": "Menya umurage w'idini w'u Rwanda, uhuza umuco n'umwuka.",
     "israel": "Isiraheli",
-    "israelDescription": "Izwi ku bijyanye n'ahantu h'amateka n'iyobokamana.",
-    "turkey": "Tukiyi",
-    "turkeyDescription": "Umuhanda uhuza Uburayi n'Aziya.",
+    "israelDescription": "Menya  umurage ukungahaye wo mu mwuka wa Isiraheli n'ibiranga ahera.",
+    "turkey": "Turikiya",
+    "turkeyDescription": "Menya ahantu hera muri Turukiya, ihuriro ry'amadini ya kera.",
     "egypt": "Egiputa",
-    "egyptDescription": "Icyicaro cy'ibibaya bya kera."
+    "egyptDescription": "Menya ibitangaza byo mu mwuka bya Misiri hamwe n'insengero za kera."
   }
 },
 "service": {
@@ -120,7 +120,7 @@
   }
 },
 "products":{
-  "title":"Ibicyuruzwa",
+  "title":"Ibicuruzwa",
   "subtitle":"Ibicuruzwa by'Amateka",
   "discription":"Sura biro yacu kugirango ugure ibicuruzwa by'idini bifite ireme mu buryo bwa hafi.",
   "accountinfo":"AMAKURU AJYANYE NA KONTI",

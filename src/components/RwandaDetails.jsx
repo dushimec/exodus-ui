@@ -1,17 +1,50 @@
-import * as React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import kigali from "../IMAGE/kigali.jpg";
 
-// RelatedTours Component
+function BookingForm({ isOpen, onClose, destination, price }) {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+    <div className="bg-white rounded-lg p-6 w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-4 text-blue-600">Book Your Trip to {destination}</h2>
+        <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+            <input type="text" id="name" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Your Name" />
+          </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" id="email" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Your Email" />
+          </div>
+          <div>
+            <label htmlFor="travelers" className="block text-sm font-medium text-gray-700">Number of Travelers</label>
+            <input type="number" id="travelers" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="1" min="1" />
+          </div>
+          <div>
+            <label htmlFor="date" className="block text-sm font-medium text-gray-700">Date</label>
+            <input type="date" id="date" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+          </div>
+          <div className="text-xl font-bold text-blue-600 mt-4">
+            Price: ${price}
+          </div>
+          <div className="flex gap-4 mt-6">
+            <button type="submit" className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-200">Book Now</button>
+            <button onClick={onClose} className="flex-1 bg-gray-200 text-gray-800 py-2 px-4 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition duration-200">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
 function RelatedTours() {
-  // State to track likes for each tour
   const [tours, setTours] = useState([
     { id: 1, name: "Jerusalem", location: "Israel", likes: 100, liked: false, comments: [] },
     { id: 2, name: "Cairo", location: "Egypt", likes: 50, liked: false, comments: [] }
   ]);
 
-  // Function to toggle likes
   const toggleLike = (id) => {
     setTours(
       tours.map((tour) =>
@@ -20,7 +53,6 @@ function RelatedTours() {
     );
   };
 
-  // Function to handle adding comments
   const addComment = (id, comment) => {
     setTours(
       tours.map((tour) =>
@@ -48,7 +80,6 @@ function RelatedTours() {
             <div className="text-sm text-gray-500">{tour.location}</div>
             <div className="flex justify-between mt-2 text-sm text-gray-500">
               <div className="flex items-center">
-                {/* Heart Icon with Like functionality */}
                 <button onClick={() => toggleLike(tour.id)} className="mr-2">
                   {tour.liked ? (
                     <FaHeart className="text-red-500" />
@@ -61,7 +92,6 @@ function RelatedTours() {
               <span>120$</span>
             </div>
 
-            {/* Comment Section */}
             <div className="mt-4">
               <h4 className="text-black text-sm font-bold">Comments:</h4>
               {tour.comments.length === 0 ? (
@@ -76,7 +106,6 @@ function RelatedTours() {
                 </ul>
               )}
 
-              {/* Input to add new comments */}
               <div className="mt-2">
                 <input
                   type="text"
@@ -85,7 +114,7 @@ function RelatedTours() {
                   onKeyDown={(e) => {
                     if (e.key === "Enter" && e.target.value.trim()) {
                       addComment(tour.id, e.target.value);
-                      e.target.value = ""; // Clear the input field
+                      e.target.value = "";
                     }
                   }}
                 />
@@ -98,11 +127,34 @@ function RelatedTours() {
   );
 }
 
-// Main Details Component
 function RwandaDetails() {
+  const [selectedDestination, setSelectedDestination] = useState(null);
+
+  const destinations = [
+    {
+      name: "Kibeho",
+      description: "Known for Marian apparitions, attracting pilgrims seeking spiritual renewal.",
+      price: 120
+    },
+    {
+      name: "Musanze",
+      description: "Explore local churches and immerse yourself in the rich history of faith in this area.",
+      price: 100
+    },
+    {
+      name: "Lake Kivu",
+      description: "A beautiful setting for contemplation, where you can enjoy the tranquility of its shores.",
+      price: 90
+    },
+    {
+      name: "Kigali Genocide Memorial",
+      description: "A poignant site that offers insights into Rwanda's history, emphasizing themes of forgiveness and reconciliation.",
+      price: 80
+    }
+  ];
+
   return (
     <div className="w-full h-auto bg-stone-50 relative">
-      {/* Background Image and Title Overlay */}
       <div className="relative w-full h-[50vh]">
         <img
           className="w-full h-full object-cover"
@@ -116,9 +168,7 @@ function RwandaDetails() {
       </div>
 
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 py-8 px-4">
-        {/* Left Side: Description, Recently Visited Trip, and Related Tours */}
         <div className="w-full lg:w-2/3 space-y-8">
-          {/* Description Section */}
           <div>
             <div className="text-sky-500 text-2xl font-bold mb-4">
               Kibeho (Rwanda):
@@ -134,7 +184,7 @@ function RwandaDetails() {
 
               Next, travel to Musanze, where early missionaries laid the groundwork for Christianity in the region. Explore local churches and immerse yourself in the rich history of faith in this area.
 
-              Don’t miss Lake Kivu, a beautiful setting for contemplation, where you can enjoy the tranquility of its shores.
+              Don't miss Lake Kivu, a beautiful setting for contemplation, where you can enjoy the tranquility of its shores.
 
               Lastly, visit the Kigali Genocide Memorial, a poignant site that offers insights into Rwanda's history, emphasizing themes of forgiveness and reconciliation central to Christian teachings.
 
@@ -142,7 +192,24 @@ function RwandaDetails() {
             </p>
           </div>
 
-          {/* Recently Visited Trip */}
+          <div className="space-y-6">
+            {destinations.map((destination) => (
+              <div key={destination.name} className="bg-white shadow-lg rounded-lg p-6">
+                <h2 className="text-2xl font-bold mb-2">{destination.name}</h2>
+                <p className="text-gray-600 mb-4">{destination.description}</p>
+                <div className="flex items-center justify-between">
+                  <p className="font-semibold">Price: ${destination.price}</p>
+                  <button 
+                    onClick={() => setSelectedDestination(destination)}
+                    className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
           <div>
             <div className="text-black text-xl font-bold mb-4">
               Recently Visited Trip
@@ -157,57 +224,48 @@ function RwandaDetails() {
             </div>
           </div>
 
-          {/* Related Tours Section */}
           <RelatedTours />
         </div>
 
-        {/* Right Side: Price and Booking Form */}
         <div className="w-full lg:w-1/3 h-auto mb-12 lg:mb-48 lg:ml-0 pb-20">
-          {/* Price Box */} 
           <div className="bg-blue-500 text-white flex justify-between items-center px-6 py-4">
-            <div className="text-lg font-semibold">Price</div>
-            <div className="text-3xl font-bold">$120</div>
+            <div className="text-lg font-semibold">Total Price</div>
+            <div className="text-3xl font-bold">$390</div>
           </div>
 
-          {/* Booking Form */}
           <div className="bg-white shadow-lg p-6">
-            {/* Booking Form Header */}
             <div className="bg-sky-500 text-white text-center py-3 mb-6">
-              <span className="text-base font-semibold">Booking Form</span>
+              <span className="text-base font-semibold">Tour Summary</span>
             </div>
-
-            {/* Form Fields */}
             <div className="space-y-4">
-              <label className="block text-sm text-gray-500">Booking Date</label>
-              <input
-                type="date"
-                className="w-full h-12 border border-gray-300 px-2"
-              />
-
-              <label className="block text-sm text-gray-500">Number of Adults</label>
-              <select className="w-full h-12 border border-gray-300 px-2">
-                <option>1 Adult</option>
-                <option>2 Adults</option>
-                <option>3 Adults</option>
-              </select>
-
-              <label className="block text-sm text-gray-500">Number of Children</label>
-              <select className="w-full h-12 border border-gray-300 px-2">
-                <option>0 Children</option>
-                <option>1 Child</option>
-                <option>2 Children</option>
-              </select>
-
-              {/* Book Now Button */}
-              <button className="bg-blue-500 w-full py-3 text-white font-semibold">
-                Book Now
-              </button>
+              {destinations.map((destination) => (
+                <div key={destination.name} className="flex justify-between">
+                  <span>{destination.name}</span>
+                  <span>${destination.price}</span>
+                </div>
+              ))}
+              <div className="border-t pt-4 font-bold">
+                <div className="flex justify-between">
+                  <span>Total</span>
+                  <span>$390</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      {selectedDestination && (
+        <BookingForm
+          isOpen={!!selectedDestination}
+          onClose={() => setSelectedDestination(null)}
+          destination={selectedDestination.name}
+          price={selectedDestination.price}
+        />
+      )}
     </div>
   );
 }
 
 export default RwandaDetails;
+

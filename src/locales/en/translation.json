@@ -89,13 +89,13 @@
     "discover": "Discover",
     "destinations": {
       "rwanda": "Rwanda",
-      "rwandaDescription": "Experience the romance and charm of the City of Light.",
+      "rwandaDescription": "Discover Rwanda's religious heritage, blending culture and spirituality.",
       "israel": "Israel",
-      "israelDescription": "Discover the vibrant culture and beautiful beaches of this Mediterranean gem.",
+      "israelDescription": "Experience Israel's rich spiritual heritage and holy landmarks.",
       "turkey": "Turkey",
-      "turkeyDescription": "Explore the bustling streets and iconic landmarks of the Big Apple.",
+      "turkeyDescription": "Experience Turkey's sacred sites, a crossroads of ancient faiths.",
       "egypt": "Egypt",
-      "egyptDescription": "Immerse yourself in the unique blend of tradition and modernity in Japan's capital."
+      "egyptDescription":"Experience Egypt's timeless spiritual wonders and ancient temples."
     }
   },
   "service": {

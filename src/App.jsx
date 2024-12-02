@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Hero from './components/Hero';
@@ -30,7 +29,6 @@ import 'aos/dist/aos.css';
 import Profile from './components/Profile';
 import MyBookings from './components/Mybooking';
 
-
 function App() {
   const location = useLocation();
 
@@ -38,21 +36,16 @@ function App() {
   const isAdminRoute = location.pathname.startsWith("/admin");
   const isLoginAdminPage = location.pathname === "/admin-login";
   const isDashboardPage = location.pathname === "/dashboard";
-  
-
 
   const shouldShowNavbar =
     !isAdminRoute && !isLoginAdminPage && !isDashboardPage;
 
   const shouldShowFooter = !isAdminRoute && !isDashboardPage;
 
-
-
   return (
     <>
       <AuthProvider>
         {shouldShowNavbar && <Navigation />}
-
 
         <Routes>
           {/* Public Routes */}
@@ -69,7 +62,10 @@ function App() {
               </>
             }
           />
-
+          <Route path="/destination/rwanda" element={<RwandaDetails />} />
+          <Route path="/destination/israel" element={<JerusalemDetails />} />
+          <Route path="/destination/egypt" element={<EgyptDetails />} />
+          <Route path="/destination/turkey" element={<TurkeyDetails />} />
           <Route path="/products" element={<Products />} />
           <Route path="/about" element={<About />} />
           <Route path="/service" element={<Service />} />
@@ -80,23 +76,16 @@ function App() {
           <Route path="/TurkeyDetails" element={<TurkeyDetails />} />
           <Route path="/RwandaDetails" element={<RwandaDetails />} />
           <Route path="/EgyptDetails" element={<EgyptDetails />} />
-          <Route path="/my-bookings" element={<MyBookings/>} />
+          <Route path="/my-bookings" element={<MyBookings />} />
           <Route path="/JerusalemDetails" element={<JerusalemDetails />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/admin-login" element={<Admin />} />
-          <Route path="/JerusalemDetails" element={<JerusalemDetails />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
           <Route
             path="/dashboard"
-            element={
-              <PrivateRoute element={<AdminDashboard />} />
-            }
+            element={<PrivateRoute element={<AdminDashboard />} />}
           />
-        
         </Routes>
 
         {shouldShowFooter && <Footer />}
@@ -105,12 +94,11 @@ function App() {
   );
 }
 
-function AppWrapper() {
-  return (
-    <Router>
-      <App />
-    </Router>
-  );
-}
+// Wrap the App component with Router
+const Root = () => (
+  <Router>
+    <App />
+  </Router>
+);
 
-export default AppWrapper;
+export default Root;

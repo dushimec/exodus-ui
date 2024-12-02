@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { Link, useNavigate } from "react-router-dom";
 import { signup } from "../slices/authSlice"; // Import signup action
+import backgroundVideo from "../IMAGE/Back.mp4";
 import { useTranslation } from 'react-i18next';
 function Signup() {
   const { t } = useTranslation();
@@ -42,8 +43,23 @@ function Signup() {
   };
 
   return (
-    <div className="flex overflow-hidden flex-col justify-center items-center px-10  text-sm bg-stone-50 max-md:px-3 max-md:py-12 bg-[url('./IMAGE/back.png')] bg-cover bg-center bg-no-repeat h-screen pt-48 pb-20">
-      <div className="flex flex-col justify-center items-center px-10 py-8 max-w-full bg-black bg-opacity-90 w-[400px] max-md:px-3">
+    <div className="flex overflow-hidden flex-col justify-center items-center px-10  text-sm bg-black max-md:px-3 max-md:py-12  h-screen pt-48 pb-20">
+  {/* Background Video */}
+  <video
+        autoPlay
+        loop
+        muted
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src={backgroundVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Black Overlay */}
+      <div className="absolute inset-0 bg-black opacity-60 z-5" />
+      
+
+      <div className="relative flex flex-col justify-center items-center px-10 py-5 max-w-full bg-black bg-opacity-90 w-[400px] max-md:px-3 z-10 backdrop-blur-sm mt-60 mb-52">
         <form
           className="flex flex-col max-w-full w-[300px]"
           onSubmit={handleSubmit}

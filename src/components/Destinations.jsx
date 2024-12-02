@@ -108,9 +108,9 @@ function DestinationCard({ name, country, price, likes, image, link }) {
               <span className="text-sm mr-6">View all 9 Comments</span>
             </div>
 
-            <div className="flex justify-center items-center text-sky-500 font-semibold" data-aos="fade-up">
+            {/* <div className="flex justify-center items-center text-sky-500 font-semibold" data-aos="fade-up">
               <span className="text-xl">{price}$</span>
-            </div>
+            </div>  */}
 
             <div className="flex justify-end" data-aos="fade-up">
               <Link to={link}>
