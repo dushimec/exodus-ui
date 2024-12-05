@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { Mail, Phone, ArrowLeft, Upload, Heart } from 'lucide-react';
+import { Mail, Phone, Upload } from 'lucide-react';
+import backgroundVideo from "../IMAGE/Back.mp4"; // Importing the background video
+import israel from '../IMAGE/israel.jpg'
+import tukey from '../IMAGE/tukey.jpg'
 
 function DestinationCard({ imageSrc, location, description, showTutor, aosAnimation }) {
   return (
@@ -9,7 +12,7 @@ function DestinationCard({ imageSrc, location, description, showTutor, aosAnimat
         <h3 className="text-xl font-semibold mb-2">{location}</h3>
         <p className="text-gray-600">{description}</p>
         {showTutor && (
-          <div className="mt-4 bg-blue-100 text-blue-800 p-2 rounded-md text-sm">
+          <div className="mt-4 bg-blue-100 text-sky-500 p-2 rounded-md text-sm">
             New! Click to learn more about this destination.
           </div>
         )}
@@ -24,19 +27,19 @@ export default function UserProfileDashboard() {
   const [likedDestinations] = useState([
     {
       imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/33fae0df8bf179790c2123d2aba2911ebe9447d3273945edf5a1e32b89677d6a",
-      location: "Paris",
+      location: "Rwanda",
       description: "Experience the romance and charm of the City of Light.",
       hasVisited: false
     },
     {
-      imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/4998b2f9e2e8f0a3e0b5d8f8d8f8d8f8d8f8d8f8d8f8d8f8d8f8d8f8d8f8d8f",
-      location: "Tokyo",
-      description: "Immerse yourself in the vibrant culture of Japan's capital.",
+      imageSrc: tukey ,
+      location: "turkey",
+      description: "Immerse yourself in the vibrant culture of turkey's capital.",
       hasVisited: true
     },
     {
-      imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/5998b2f9e2e8f0a3e0b5d8f8d8f8d8f8d8f8d8f8d8f8d8f8d8f8d8f8d8f8d8f",
-      location: "New York",
+      imageSrc: israel ,
+      location: "Israel",
       description: "Explore the bustling streets of the Big Apple.",
       hasVisited: false
     }
@@ -52,13 +55,13 @@ export default function UserProfileDashboard() {
   };
 
   const renderPersonalInfo = () => (
-    <div className="bg-primary/10 rounded-lg shadow-md p-6 mb-6 " >
-      <h2 className="text-2xl font-bold text-primary mb-4">Personal Information</h2>
+    <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-6">
+      <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">Personal Information</h2>
       <div className="flex flex-col items-center mb-6">
         <div className="relative group">
-          <img src={profileImage} alt="User avatar" className="w-24 h-24 rounded-full mb-2" />
+          <img src={profileImage} alt="User avatar" className="w-20 h-20 sm:w-24 sm:h-24 rounded-full mb-2" />
           <label htmlFor="avatar-upload" className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white rounded-full opacity-0 group-hover:opacity-100 cursor-pointer transition-opacity">
-            <Upload className="w-8 h-8" />
+            <Upload className="w-6 h-6 sm:w-8 sm:h-8" />
             <span className="sr-only">Upload new avatar</span>
           </label>
           <input
@@ -69,9 +72,9 @@ export default function UserProfileDashboard() {
             className="hidden"
           />
         </div>
-        <p className="text-sm text-primary/60 mt-2">Click on the image to upload a new profile photo</p>
+        <p className="text-xs sm:text-sm text-primary/60 mt-2">Click on the image to upload a new profile photo</p>
       </div>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="fullName" className="block text-primary font-semibold mb-1">Full Name</label>
           <input id="fullName" type="text" placeholder="Full Name" className="w-full p-2 border border-primary/30 rounded-md" />
@@ -85,16 +88,16 @@ export default function UserProfileDashboard() {
           <input id="phone" type="tel" placeholder="Phone Number" className="w-full p-2 border border-primary/30 rounded-md" />
         </div>
       </div>
-      <button className="mt-6 bg-sky-600 text-white px-4 py-2 rounded-md hover:bg-sky-500 transition-colors">
+      <button className="mt-6 bg-sky-600 text-white px-4 py-2 rounded-md hover:bg-sky-500 transition-colors w-full sm:w-auto">
         Save Changes
       </button>
     </div>
   );
 
   const renderPreferences = () => (
-    <div className="bg-primary/10 rounded-lg shadow-md p-6 mb-6">
-      <h2 className="text-2xl font-bold text-primary mb-4">Liked Destinations</h2>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-6">
+      <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">Liked Destinations</h2>
+      <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {likedDestinations.map((destination, index) => (
           <DestinationCard
             key={index}
@@ -106,13 +109,13 @@ export default function UserProfileDashboard() {
           />
         ))}
       </div>
-      <p className="text-sm text-primary/80 mt-4">These are the destinations you've liked. They will be displayed on the home page.</p>
+      <p className="text-xs sm:text-sm text-primary/80 mt-4">These are the destinations you've liked. They will be displayed on the home page.</p>
     </div>
   );
 
   const renderAccountSettings = () => (
-    <div className="bg-primary/10 rounded-lg shadow-md p-6 mb-6">
-      <h2 className="text-2xl font-bold text-primary mb-4">Account Settings</h2>
+    <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-6">
+      <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">Account Settings</h2>
       <div className="space-y-4">
         <div>
           <label htmlFor="currentPassword" className="block text-primary font-semibold mb-1">Current Password</label>
@@ -127,73 +130,78 @@ export default function UserProfileDashboard() {
           <input id="confirmPassword" type="password" placeholder="Confirm New Password" className="w-full p-2 border border-primary/30 rounded-md" />
         </div>
       </div>
-      <button className="mt-6 bg-blue-300 text-white px-4 py-2 rounded-md hover:bg-blue-400 transition-colors">
+      <button className="mt-6 bg-sky-500 text-white px-4 py-2 rounded-md hover:bg-sky-600 transition-colors w-full sm:w-auto">
         Change Password
       </button>
     </div>
   );
 
   const renderSupport = () => (
-    <div className="bg-primary/10 rounded-lg shadow-md p-6 mb-6">
-      <h2 className="text-2xl font-bold text-primary mb-4">Support & Contact</h2>
-      <p className="mb-4">If you're experiencing issues or have questions, please don't hesitate to reach out to our support team.</p>
-      <div className="flex items-center mb-2">
+    <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-6">
+      <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">Support & Contact</h2>
+      <p className="mb-4 text-sm sm:text-base">If you're experiencing issues or have questions, please don't hesitate to reach out to our support team.</p>
+      <div className="flex items-center mb-2 text-sm sm:text-base">
         <Mail className="text-primary mr-2" size={18} />
-        <span>Email: support@example.com</span>
+        <span>Email: Oldfoxcoltd@gmail.com</span>
       </div>
-      <div className="flex items-center mb-4">
+      <div className="flex items-center mb-4 text-sm sm:text-base">
         <Phone className="text-primary mr-2" size={18} />
-        <span>Phone: +1 (555) 123-4567</span>
+        <span>Phone: +250788726181</span>
       </div>
       <div className="mb-4">
         <label htmlFor="supportMessage" className="block text-primary font-semibold mb-1">Message</label>
-        <textarea id="supportMessage" placeholder="Describe your issue or question" rows={4} className="w-full p-2 border border-primary/30 rounded-md"></textarea>
+        <textarea id="supportMessage" placeholder="Describe your issue or question" rows={4} className="w-full p-2 border border-primary/30 rounded-md" />
       </div>
-      <button className="bg-blue-300 text-white px-4 py-2 rounded-md hover:bg-blue-400 transition-colors">
-        Send Message
+      <button className="mt-4 bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-400 transition-colors w-full sm:w-auto">
+        Submit Request
       </button>
-      <h3 className="text-xl font-semibold text-primary mt-8 mb-4">FAQs</h3>
-      <ul className="list-disc list-inside text-primary space-y-2">
-        <li>How do I reset my password?</li>
-        <li>Can I change my username?</li>
-        <li>How do I update my payment information?</li>
-        <li>What should I do if I can't log in?</li>
-      </ul>
     </div>
   );
 
   return (
-    <div className="max-w-4xl mx-auto p-4 mt-16">
-      <header className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-primary">User Profile</h1>
-       
-      </header>
+    <div className="relative min-h-screen">
+      {/* Background Video */}
+      <video autoPlay loop muted className="absolute top-0 left-0 w-full h-full object-cover z-0">
+        <source src={backgroundVideo} type="video/mp4" /> 
+      </video>
+      {/* Content Area */}
+      <div className="relative z-10 p-4 sm:p-8 max-w-screen-xl mx-auto shadow-lg">
+        <h1 className="text-xl sm:text-2xl font-bold text-white my-6 sm:my-10  mt-16 lg:text-center">User Profile Dashboard</h1>
+        <div className=" bg-white p-4 sm:p-8 rounded-lg shadow-lg">
+          <div className="tabs flex flex-wrap mb-4">
+            <button
+              onClick={() => setActiveTab('personal')}
+              className={`tab ${activeTab === 'personal' ? 'text-sky-500' : 'text-gray-600'} px-3 sm:px-6 py-2 text-sm sm:text-base`}
+            >
+              Personal Info
+            </button>
+            <button
+              onClick={() => setActiveTab('preferences')}
+              className={`tab ${activeTab === 'preferences' ? 'text-sky-500' : 'text-gray-600'} px-3 sm:px-6 py-2 text-sm sm:text-base`}
+            >
+              Preferences
+            </button>
+            <button
+              onClick={() => setActiveTab('account')}
+              className={`tab ${activeTab === 'account' ? 'text-sky-500' : 'text-gray-600'} px-3 sm:px-6 py-2 text-sm sm:text-base`}
+            >
+              Account Settings
+            </button>
+            <button
+              onClick={() => setActiveTab('support')}
+              className={`tab ${activeTab === 'support' ? 'text-sky-500' : 'text-gray-600'} px-3 sm:px-6 py-2 text-sm sm:text-base`}
+            >
+              Support
+            </button>
+          </div>
 
-      <nav className="mb-6">
-        <ul className="flex border-b border-primary/30">
-          {['personal', 'preferences', 'settings', 'support'].map((tab) => (
-            <li key={tab}>
-              <button
-                className={`px-4 py-2 font-semibold ${
-                  activeTab === tab
-                    ? 'text-primary border-b-2 border-primary'
-                    : 'text-primary/60 hover:text-primary'
-                }`}
-                onClick={() => setActiveTab(tab)}
-              >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      <main>
-        {activeTab === 'personal' && renderPersonalInfo()}
-        {activeTab === 'preferences' && renderPreferences()}
-        {activeTab === 'settings' && renderAccountSettings()}
-        {activeTab === 'support' && renderSupport()}
-      </main>
+          {activeTab === 'personal' && renderPersonalInfo()}
+          {activeTab === 'preferences' && renderPreferences()}
+          {activeTab === 'account' && renderAccountSettings()}
+          {activeTab === 'support' && renderSupport()}
+        </div>
+      </div>
     </div>
   );
 }
+
