@@ -28,6 +28,7 @@ import Tour from './components/Tour';
 import 'aos/dist/aos.css';
 import Profile from './components/Profile';
 import MyBookings from './components/Mybooking';
+import NotFound from './components/NotFound';
 
 function App() {
   const location = useLocation();
@@ -36,11 +37,36 @@ function App() {
   const isAdminRoute = location.pathname.startsWith("/admin");
   const isLoginAdminPage = location.pathname === "/admin-login";
   const isDashboardPage = location.pathname === "/dashboard";
+  const isNotFoundPage = ![
+    "/",
+    "/destination/rwanda",
+    "/destination/israel",
+    "/destination/egypt",
+    "/destination/turkey",
+    "/products",
+    "/about",
+    "/service",
+    "/contact",
+    "/login",
+    "/signup",
+    "/destiny",
+    "/TurkeyDetails",
+    "/RwandaDetails",
+    "/EgyptDetails",
+    "/my-bookings",
+    "/JerusalemDetails",
+    "/forgot-password",
+    "/reset-password",
+    "/Profile",
+    "/admin-login",
+    "/dashboard",
+  ].includes(location.pathname);
 
   const shouldShowNavbar =
-    !isAdminRoute && !isLoginAdminPage && !isDashboardPage;
+  !isAdminRoute && !isLoginAdminPage && !isDashboardPage && !isNotFoundPage;
 
-  const shouldShowFooter = !isAdminRoute && !isDashboardPage;
+const shouldShowFooter =
+  !isAdminRoute && !isDashboardPage && !isNotFoundPage;
 
   return (
     <>
@@ -62,6 +88,7 @@ function App() {
               </>
             }
           />
+          
           <Route path="/destination/rwanda" element={<RwandaDetails />} />
           <Route path="/destination/israel" element={<JerusalemDetails />} />
           <Route path="/destination/egypt" element={<EgyptDetails />} />
@@ -86,6 +113,7 @@ function App() {
             path="/dashboard"
             element={<PrivateRoute element={<AdminDashboard />} />}
           />
+            <Route path="*" element={<NotFound />} />
         </Routes>
 
         {shouldShowFooter && <Footer />}
