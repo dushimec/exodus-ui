@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
 import { Link, useNavigate } from 'react-router-dom';
@@ -9,7 +9,6 @@ import Turkey from '../IMAGE/tukey.jpg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useTranslation } from "react-i18next";
-
 
 const upcomingTrips = [
   { id: 1, title: "Trip to Bali", image: KigaliImage },
@@ -24,7 +23,7 @@ const allDestinations = [
   { id: 'turkey', name: 'Turkey' }
 ];
 
-export default function TravelHero() {
+export default function TravelHero({ onExploreClick }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
@@ -65,7 +64,6 @@ export default function TravelHero() {
     return () => clearInterval(interval);
   }, []);
 
-  // Filter destinations based on search term
   useEffect(() => {
     const results = allDestinations.filter((destination) =>
       destination.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -80,9 +78,18 @@ export default function TravelHero() {
     }
   };
 
+  const handleExploreClick = (e) => {
+    e.preventDefault();
+    console.log("Explore button clicked"); // Debugging line
+    if (onExploreClick) {
+      onExploreClick();
+    } else {
+      console.log("onExploreClick is not defined"); // Debugging line
+    }
+  };
+
   return (
     <div className="relative pt-24 sm:pt-32 min-h-screen h-[80vh] flex flex-col justify-center items-center px-4 overflow-hidden">
-      {/* Video Background */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <video autoPlay loop muted playsInline className="w-full h-full object-cover">
           <source src={video} type="video/mp4" />
@@ -90,9 +97,7 @@ export default function TravelHero() {
         </video>
       </div>
 
-      {/* Content */}
       <div className="relative container mx-auto px-4 py-8 sm:py-12 flex flex-col lg:flex-row items-center justify-between" data-aos="fade-up">
-        {/* Title Section */}
         <div className="lg:w-1/2 lg:mt-0 lg:mb-0 text-center lg:text-left" data-aos="fade-up">
           <h1
             ref={titleRef}
@@ -104,7 +109,7 @@ export default function TravelHero() {
           </h1>
 
           <button
-            onClick={() => alert('Exploring adventures!')}
+            onClick={handleExploreClick}
             className="relative p-2 mt-4 sm:mt-6 lg:mt-10 mx-auto lg:mx-0 text-base font-semibold border-2 border-sky-500 rounded-full w-[180px] sm:w-[200px] hover:bg-white hover:text-sky-500 transition duration-300 ease-in-out"
             data-aos="fade-up"
           >
@@ -114,9 +119,7 @@ export default function TravelHero() {
           </button>
         </div>
 
-        {/* Search and Upcoming Trips Section */}
         <div className="lg:w-1/2 mt-8 lg:mt-0 lg:text-left space-y-8" data-aos="fade-up">
-          {/* Search Input */}
           <form onSubmit={handleSearch} className="relative">
             <input
               type="text"
@@ -129,7 +132,6 @@ export default function TravelHero() {
             <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-sky-500" aria-hidden="true" />
           </form>
 
-          {/* Search Results */}
           {searchTerm && (
             <div className="bg-white bg-opacity-90 rounded-lg p-4 shadow-lg max-h-60 overflow-y-auto">
               <h3 className="text-lg font-semibold mb-2">Destinations:</h3>
@@ -152,7 +154,6 @@ export default function TravelHero() {
             </div>
           )}
 
-          {/* Upcoming Trips Carousel */}
           <div className="bg-white bg-opacity-90 rounded-lg p-4 shadow-lg relative overflow-hidden" data-aos="fade-up">
             <h2 className="text-lg sm:text-xl font-semibold text-sky-500 mb-2" data-aos="fade-up">
               {t('hero.upcomingTrip')}
@@ -173,17 +174,18 @@ export default function TravelHero() {
               ))}
             </div>
 
-            {/* Carousel Controls */}
             <div className="absolute bottom-5 right-6 flex space-x-2">
               <button
                 onClick={() => setCurrentTripIndex((prevIndex) => (prevIndex - 1 + upcomingTrips.length) % upcomingTrips.length)}
                 className="p-1 bg-sky-500 text-white rounded-full hover:bg-sky-600 transition"
+                aria-label="Previous trip"
               >
                 <IoChevronBack size={20} />
               </button>
               <button
                 onClick={() => setCurrentTripIndex((prevIndex) => (prevIndex + 1) % upcomingTrips.length)}
                 className="p-1 bg-sky-500 text-white rounded-full hover:bg-sky-600 transition"
+                aria-label="Next trip"
               >
                 <IoChevronForward size={20} />
               </button>
@@ -194,3 +196,4 @@ export default function TravelHero() {
     </div>
   );
 }
+

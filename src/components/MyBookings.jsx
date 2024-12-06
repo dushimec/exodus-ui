@@ -4,7 +4,7 @@ import backgroundVideo from "../IMAGE/Back.mp4"; // Import the background video
 
 const BookingCard = ({ booking }) => {
   const statusColors = {
-    approved: 'bg-green-100 text-green-800',
+    approved: ' bg-green-100 text-green-800',
     pending: 'bg-yellow-100 text-yellow-800',
     canceled: 'bg-red-100 text-red-800'
   };
@@ -61,11 +61,10 @@ export default function MyBookings() {
       ></video>
 
       {/* Content wrapper */}
-      <div className='p-11'>
       <div className="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12">
-        <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <div className="max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto bg-white p-4 sm:p-6 rounded-lg shadow-lg mt-14">
           <header className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl sm:text-3xl font-bold text-primary">My Bookings</h1>
+            <h1 className="text-2xl sm:text-3xl   font-bold text-primary">My Bookings</h1>
           </header>
           <nav className="mb-6">
   <ul className="flex flex-wrap justify-center lg:flex-row sm:flex-col sm:items-start sm:border-b sm:border-primary/30">
@@ -73,7 +72,7 @@ export default function MyBookings() {
       <li key={tab} className="w-full sm:w-auto">
         <button
           className={`px-4 py-2 font-semibold w-full text-center sm:text-left ${activeTab === tab
-            ? 'text-primary border-b-2 border-primary'
+            ? 'text-sky-500 border-b-2 border-sky-500'
             : 'text-primary/60 hover:text-primary'}`}
           onClick={() => setActiveTab(tab)}
         >
@@ -83,7 +82,6 @@ export default function MyBookings() {
     ))}
   </ul>
 </nav>
-
 
           <main>
             <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">
@@ -100,7 +98,6 @@ export default function MyBookings() {
             )}
           </main>
         </div>
-      </div>
       </div>
     </div>
   );

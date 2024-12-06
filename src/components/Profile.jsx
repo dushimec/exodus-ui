@@ -166,30 +166,31 @@ export default function UserProfileDashboard() {
       </video>
       {/* Content Area */}
       <div className="relative z-10 p-4 sm:p-8 max-w-screen-xl mx-auto shadow-lg">
-        <h1 className="text-xl sm:text-2xl font-bold text-white my-6 sm:my-10  mt-16 lg:text-center">User Profile Dashboard</h1>
-        <div className=" bg-white p-4 sm:p-8 rounded-lg shadow-lg">
-          <div className="tabs flex flex-wrap mb-4">
+      
+        <div className=" bg-white p-4 mt-14 sm:p-8 rounded-lg shadow-lg">
+        <h1 className="text-xl sm:text-2xl font-bold text-black  my-6">User Profile Dashboard</h1>
+          <div className="tabs flex flex-wrap mb-4 font-bold  lg:flex-row flex-col">
             <button
               onClick={() => setActiveTab('personal')}
-              className={`tab ${activeTab === 'personal' ? 'text-sky-500' : 'text-gray-600'} px-3 sm:px-6 py-2 text-sm sm:text-base`}
+              className={`tab ${activeTab === 'personal' ? 'text-sky-500  border-b-2 border-sky-500' : 'text-black'} px-3 sm:px-6 py-2 text-md sm:text-base `}
             >
               Personal Info
             </button>
             <button
               onClick={() => setActiveTab('preferences')}
-              className={`tab ${activeTab === 'preferences' ? 'text-sky-500' : 'text-gray-600'} px-3 sm:px-6 py-2 text-sm sm:text-base`}
+              className={`tab ${activeTab === 'preferences' ? 'text-sky-500 border-b-2 border-sky-500' : 'text-black'} px-3 sm:px-6 py-2 text-md sm:text-base`}
             >
               Preferences
             </button>
             <button
               onClick={() => setActiveTab('account')}
-              className={`tab ${activeTab === 'account' ? 'text-sky-500' : 'text-gray-600'} px-3 sm:px-6 py-2 text-sm sm:text-base`}
+              className={`tab ${activeTab === 'account' ? 'text-sky-500  border-b-2 border-sky-500' : 'text-black'} px-3 sm:px-6 py-2 text-md sm:text-base`}
             >
               Account Settings
             </button>
             <button
               onClick={() => setActiveTab('support')}
-              className={`tab ${activeTab === 'support' ? 'text-sky-500' : 'text-gray-600'} px-3 sm:px-6 py-2 text-sm sm:text-base`}
+              className={`tab ${activeTab === 'support' ? 'text-sky-500 border-b-2 border-sky-500'  : 'text-black'} px-3 sm:px-6 py-2 text-md sm:text-base`}
             >
               Support
             </button>
