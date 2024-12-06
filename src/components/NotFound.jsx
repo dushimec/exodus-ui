@@ -12,7 +12,7 @@ const NotFound = () => {
         play
         style={{ width: '500px', height: '500px', margin: '0 auto' }}
       />
-      <p >'The page you are looking for does not exist.</p>
+      <p >The page you are looking for does not exist.</p>
       <Link to="/" style={{ color: '#007bff', textDecoration: 'none'}}>
        Click to Go back to Home page
       </Link>

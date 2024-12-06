@@ -28,7 +28,7 @@ import Tour from './components/Tour';
 import 'aos/dist/aos.css';
 import Profile from './components/Profile';
 
-import MyBookings from './components/Mybooking';
+import MyBookings from './components/MyBookings';
 import NotFound from './components/NotFound';
 
 
@@ -55,11 +55,11 @@ function App() {
     "/TurkeyDetails",
     "/RwandaDetails",
     "/EgyptDetails",
-    "/my-bookings",
+    "/MyBookings",
     "/JerusalemDetails",
     "/forgot-password",
     "/reset-password",
-    "/Profile",
+    "/profile",
     "/admin-login",
     "/dashboard",
   ].includes(location.pathname);
@@ -109,7 +109,7 @@ const shouldShowFooter =
           <Route path="/JerusalemDetails" element={<JerusalemDetails />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/Profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/admin-login" element={<Admin />} />
           <Route
             path="/dashboard"
