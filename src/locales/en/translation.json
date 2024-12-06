@@ -17,15 +17,23 @@
       "kinyarwanda": "Kiny"
     },
     "hero": {
-    "title": "Your global gateway to unforgettable adventures!",
-    "explore": "Explore here",
+    "title": "Discover Your Next Adventure!",
+    "explore": "Explore Now",
     "searchPlaceholder": "Search Trip here ...",
     "upcomingTrip": "Upcoming Trip"
   },
   "trips": {
-    "tripToBali": "Trip to Bali",
-    "exploreIceland": "Explore Iceland",
-    "adventureInMorocco": "Adventure in Morocco"
+    "upcoming": [
+      { "id": 1, "title": "Trip to Rwanda" },
+      { "id": 2, "title": "Explore Israel" },
+      { "id": 3, "title": "Adventure in Turkey" }
+    ]
+  },
+  "destination": {
+    "rwanda": "Rwanda",
+    "israel": "Israel",
+    "egypt": "Egypt",
+    "turkey": "Turkey"
   },
   "whyChooseUs": {
     "title": "WHY CHOOSE US?",
@@ -181,7 +189,239 @@
     "loading": "Sending...",
     "statusSuccess": "Password reset link sent!",
     "errorMessage": "An error occurred. Please try again."
+  },
+  
+    "Turkeydetails": {
+      "bookYourTrip": "Book Your Trip to {{destination}}",
+      "name": "Name",
+      "email": "Email",
+      "numberOfTravelers": "Number of Travelers",
+      "date": "Date",
+      "price": "Price: ${{price}}",
+      "bookNow": "Book Now",
+      "cancel": "Cancel",
+      "relatedTours": "Related Tours",
+      "likes": "{{count}} Likes",
+      "comments": "Comments:",
+      "noComments": "No comments yet",
+      "addComment": "Add a comment...",
+      "turkeyTitle": "Turkey",
+      "turkeyIstanbul": "Turkey (Istanbul):",
+      "turkeyDescription": "Experience Turkey's religious heritage: visit Istanbul's Hagia Sophia, the Blue Mosque, Ephesus's Basilica of St. John, and Cappadocia's ancient cave churches for spiritual enrichment.",
+      "turkeyDetailedDescription": "Embark on a captivating journey to Turkey, a land steeped in rich religious history. Start in Istanbul, where East meets West. Visit the majestic Hagia Sophia, a former cathedral and mosque, now a museum, showcasing stunning Byzantine architecture. Explore the Blue Mosque, famous for its striking blue tiles and impressive domes.\n\nNext, head to Cappadocia, known for its unique rock formations and ancient cave churches adorned with beautiful frescoes. Discover the Goreme Open-Air Museum, a UNESCO World Heritage site.\n\nTravel to Ephesus, where you can visit the Basilica of St. John and the ruins of the ancient city, reflecting early Christianity's influence.\n\nLastly, visit Pamukkale, famous for its travertine terraces and ancient ruins of Hierapolis, known for its thermal pools.",
+      "recentlyVisitedTrip": "Recently Visited Trip",
+      "prev": "Prev",
+      "next": "Next",
+      "clickUseMap": "Click Use map to track the place",
+      "totalForAllDestinations": "Total for all destinations"
+    },
+    "rwandaDetails": {
+    "bookingForm": {
+      "title": "Book Your Trip to {{destination}}",
+      "name": "Name",
+      "email": "Email",
+      "travelers": "Number of Travelers",
+      "date": "Date",
+      "price": "Price: ${{price}}",
+      "bookNow": "Book Now",
+      "cancel": "Cancel"
+    },
+    "relatedTours": {
+      "title": "Related Tours",
+      "likes": "{{count}} Likes",
+      "comments": "Comments:",
+      "noComments": "No comments yet",
+      "addComment": "Add a comment..."
+    },
+    "destinations": {
+      "kibeho": {
+        "name": "Kibeho",
+        "description": "Known for Marian apparitions, attracting pilgrims seeking spiritual renewal."
+      },
+      "musanze": {
+        "name": "Musanze",
+        "description": "Explore local churches and immerse yourself in the rich history of faith in this area."
+      },
+      "lakeKivu": {
+        "name": "Lake Kivu",
+        "description": "A beautiful setting for contemplation, where you can enjoy the tranquility of its shores."
+      },
+      "kigaliMemorial": {
+        "name": "Kigali Genocide Memorial",
+        "description": "A poignant site that offers insights into Rwanda's history, emphasizing themes of forgiveness and reconciliation."
+      }
+    },
+    "pageTitle": "RWANDA",
+    "kibehoTitle": "Kibeho (Rwanda):",
+    "kibehoDescription": "Kibeho, located in Nyaruguru District, Rwanda, is a holy land famous for Marian apparitions, attracting pilgrims seeking spiritual renewal amidst beautiful mountainous landscapes and rich culture.",
+    "tourDetailsTitle": "Tour details:",
+    "tourDetails": "Experience a transformative spiritual journey in Rwanda by visiting its significant religious sites. Begin your pilgrimage in Kibeho, known for the reported apparitions of the Virgin Mary, which attract thousands of pilgrims each year. The serene atmosphere and stunning landscapes provide a perfect backdrop for reflection and prayer.\n\nNext, travel to Musanze, where early missionaries laid the groundwork for Christianity in the region. Explore local churches and immerse yourself in the rich history of faith in this area.\n\nDon't miss Lake Kivu, a beautiful setting for contemplation, where you can enjoy the tranquility of its shores.\n\nLastly, visit the Kigali Genocide Memorial, a poignant site that offers insights into Rwanda's history, emphasizing themes of forgiveness and reconciliation central to Christian teachings.\n\nThroughout your journey, engage with the welcoming Rwandan culture, savor traditional dishes, and enjoy breathtaking landscapes, making your religious tour both enriching and unforgettable.",
+    "price": "Price: ${{price}}",
+    "recentlyVisited": "Recently Visited Trip",
+    "clickUseMap": "Click Use map to track the place",
+    "totalPrice": "Total Price",
+    "tourSummary": "Tour Summary",
+    "total": "Total"
+  },
+  "egyptDetails": {
+    "bookingForm": {
+      "title": "Book Your Trip to {{destination}}",
+      "name": "Name",
+      "email": "Email",
+      "travelers": "Number of Travelers",
+      "date": "Date",
+      "price": "Price: ${{price}}",
+      "bookNow": "Book Now",
+      "cancel": "Cancel"
+    },
+    "relatedTours": {
+      "title": "Related Tours",
+      "likes": "{{count}} Likes",
+      "comments": "Comments:",
+      "noComments": "No comments yet",
+      "addComment": "Add a comment..."
+    },
+    "pageTitle": "EGYPT",
+    "cairoTitle": "Egypt (Cairo):",
+    "cairoDescription": "Explore Egypt's rich heritage: visit the Great Pyramids, ancient temples, Islamic mosques, Mount Sinai, and vibrant markets for a captivating blend of history and culture.",
+    "egyptTitle": "Egypt:",
+    "egyptDescription": "Embark on a spiritual journey to Egypt, a land rich in religious history. Start your tour in Cairo, where you can visit the iconic Great Pyramids of Giza and the Sphinx, symbols of ancient Egyptian civilization. Explore Islamic Cairo, home to stunning mosques such as Al-Azhar Mosque and Sultan Hassan Mosque, reflecting the country's Islamic heritage. Next, travel to Luxor, known as the world's greatest open-air museum. Visit the magnificent Karnak Temple and Valley of the Kings, where many pharaohs were laid to rest. Don't miss the Mount Sinai, where Moses is believed to have received the Ten Commandments, and the St. Catherine's Monastery, a UNESCO World Heritage site. Conclude your trip in Alexandria, visiting the historic Catacombs of Kom el Shoqafa and the Fort of Qaitbay, which offers insight into the city's rich Christian and Islamic past. Enjoy the local cuisine and vibrant culture throughout your journey.",
+    "destinations": {
+      "cairo": {
+        "name": "Cairo",
+        "description": "Visit the iconic Great Pyramids of Giza, the Sphinx, and explore Islamic Cairo with its stunning mosques."
+      },
+      "luxor": {
+        "name": "Luxor",
+        "description": "Explore the world's greatest open-air museum, including the magnificent Karnak Temple and Valley of the Kings."
+      },
+      "mountSinai": {
+        "name": "Mount Sinai",
+        "description": "Visit the place where Moses is believed to have received the Ten Commandments and explore St. Catherine's Monastery."
+      },
+      "alexandria": {
+        "name": "Alexandria",
+        "description": "Discover the historic Catacombs of Kom el Shoqafa and the Fort of Qaitbay, offering insights into the city's rich past."
+      }
+    },
+    "recentlyVisited": "Recently Visited Trip",
+    "clickUseMap": "Click Use map to track the place",
+    "totalPrice": "Total Price",
+    "tourSummary": "Tour Summary",
+    "total": "Total"
+  },
+  "jerusalemDetails": {
+    "bookingForm": {
+      "title": "Book Your Trip to {{destination}}",
+      "name": "Name",
+      "email": "Email",
+      "travelers": "Number of Travelers",
+      "date": "Date",
+      "price": "Price: ${{price}}",
+      "bookNow": "Book Now",
+      "cancel": "Cancel"
+    },
+    "relatedTours": {
+      "title": "Related Tours",
+      "likes": "{{count}} Likes",
+      "comments": "Comments:",
+      "noComments": "No comments yet",
+      "addComment": "Add a comment..."
+    },
+    "pageTitle": "ISRAEL",
+    "telAvivTitle": "ISRAEL (Tel Aviv):",
+    "telAvivDescription": "Visit Israel to explore its rich history: Jerusalem's sacred sites, the Dead Sea's unique landscapes, and vibrant cities like Tel Aviv and Haifa await you.",
+    "israelTitle": "Israel:",
+    "israelDescription": "Embark on a spiritual journey to Israel, the heart of three major world religions. Start in Jerusalem, visiting the Western Wall, the last remnant of the Second Temple, and the Dome of the Rock, an iconic Islamic shrine. Explore the Church of the Holy Sepulchre, believed to be the site of Jesus' crucifixion and resurrection.\n\nNext, head to Bethlehem, where you can visit the Church of the Nativity, marking the birthplace of Jesus.\n\nTravel to Nazareth to see the Basilica of the Annunciation, an important Christian pilgrimage site.\n\nDon't miss the serene beauty of the Sea of Galilee, where you can reflect on biblical stories.\n\nLastly, relax at the Dead Sea, the lowest point on Earth, known for its healing properties. Experience local cuisine and vibrant culture, making your spiritual tour of Israel both enriching and unforgettable.",
+    "destinations": {
+      "jerusalem": {
+        "name": "Jerusalem",
+        "description": "Explore sacred sites like the Western Wall, Dome of the Rock, and Church of the Holy Sepulchre."
+      },
+      "bethlehem": {
+        "name": "Bethlehem",
+        "description": "Visit the Church of the Nativity, marking the birthplace of Jesus."
+      },
+      "nazareth": {
+        "name": "Nazareth",
+        "description": "See the Basilica of the Annunciation, an important Christian pilgrimage site."
+      },
+      "seaOfGalilee": {
+        "name": "Sea of Galilee",
+        "description": "Reflect on biblical stories at this serene location."
+      },
+      "deadSea": {
+        "name": "Dead Sea",
+        "description": "Experience the lowest point on Earth, known for its healing properties."
+      }
+    },
+    "recentlyVisited": "Recently Visited Trip",
+    "clickUseMap": "Click Use map to track the place",
+    "totalPrice": "Total Price",
+    "tourSummary": "Tour Summary",
+    "total": "Total"
+  },
+  "userProfile": {
+    "title": "User Profile",
+    "tabs": {
+      "personal": "Personal",
+      "preferences": "Preferences",
+      "settings": "Settings",
+      "support": "Support"
+    },
+    "personalInfo": {
+      "title": "Personal Information",
+      "uploadPhoto": "Click on the image to upload a new profile photo",
+      "fullName": "Full Name",
+      "email": "Email",
+      "phoneNumber": "Phone Number",
+      "saveChanges": "Save Changes"
+    },
+    "preferences": {
+      "title": "Liked Destinations",
+      "newDestination": "New! Click to learn more about this destination.",
+      "description": "These are the destinations you've liked. They will be displayed on the home page."
+    },
+    "accountSettings": {
+      "title": "Account Settings",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm New Password",
+      "changePassword": "Change Password"
+    },
+    "support": {
+      "title": "Support & Contact",
+      "description": "If you're experiencing issues or have questions, please don't hesitate to reach out to our support team.",
+      "email": "Email: support@example.com",
+      "phone": "Phone: +1 (555) 123-4567",
+      "message": "Message",
+      "messagePlaceholder": "Describe your issue or question",
+      "sendMessage": "Send Message",
+      "faqTitle": "FAQs",
+      "faqItems": [
+        "How do I reset my password?",
+        "Can I change my username?",
+        "How do I update my payment information?",
+        "What should I do if I can't log in?"
+      ]
+    }
+  },
+  "destinations": {
+    "paris": {
+      "name": "Paris",
+      "description": "Experience the romance and charm of the City of Light."
+    },
+    "tokyo": {
+      "name": "Tokyo",
+      "description": "Immerse yourself in the vibrant culture of Japan's capital."
+    },
+    "newYork": {
+      "name": "New York",
+      "description": "Explore the bustling streets of the Big Apple."
+    }
+  }
   }
   
-  }
+  
+  
   

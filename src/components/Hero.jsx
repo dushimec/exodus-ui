@@ -4,6 +4,7 @@ import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
 import { Link, useNavigate } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 
 // Assuming these imports work in your project structure
 import video from "../IMAGE/video.mp4";
@@ -25,6 +26,7 @@ const allDestinations = [
 ];
 
 export default function TravelHero() {
+  const { t } = useTranslation(); // Initialize useTranslation
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [currentTripIndex, setCurrentTripIndex] = useState(0);
@@ -108,7 +110,7 @@ export default function TravelHero() {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            Discover Your Next Adventure
+            {t("hero.title")}
           </h1>
 
           <button
@@ -116,7 +118,7 @@ export default function TravelHero() {
             className="relative mt-4 sm:mt-6 lg:mt-10 mx-auto lg:mx-0 w-[180px] sm:w-[200px] bg-sky-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-sky-600 transition duration-300 ease-in-out"
             data-aos="fade-up"
           >
-            Explore Now
+             {t("hero.explore")}
           </button>
         </div>
 
@@ -126,7 +128,7 @@ export default function TravelHero() {
           <form onSubmit={handleSearch} className="relative">
             <input
               type="text"
-              placeholder="Search for a destination"
+              placeholder={t("hero.searchPlaceholder")}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full bg-white bg-opacity-90 rounded-full py-2 sm:py-3 px-6 pl-12 text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-sky-300 shadow-lg"
@@ -165,7 +167,7 @@ export default function TravelHero() {
           {/* Upcoming Trips Carousel */}
           <div className="bg-white bg-opacity-90 rounded-lg p-4 shadow-lg relative overflow-hidden" data-aos="fade-up">
             <h2 className="text-lg sm:text-xl font-semibold text-sky-500 mb-2" data-aos="fade-up">
-              Upcoming Trip
+            {t("hero.upcomingTrip")}
             </h2>
             <div className="relative h-48 sm:h-56">
               {upcomingTrips.map((trip, index) => (
