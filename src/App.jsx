@@ -27,8 +27,10 @@ import PrivateRoute from './components/PrivateRoute';
 import Tour from './components/Tour';
 import 'aos/dist/aos.css';
 import Profile from './components/Profile';
+
 import MyBookings from './components/Mybooking';
 import NotFound from './components/NotFound';
+
 
 function App() {
   const location = useLocation();
@@ -103,7 +105,7 @@ const shouldShowFooter =
           <Route path="/TurkeyDetails" element={<TurkeyDetails />} />
           <Route path="/RwandaDetails" element={<RwandaDetails />} />
           <Route path="/EgyptDetails" element={<EgyptDetails />} />
-          <Route path="/my-bookings" element={<MyBookings />} />
+          <Route path="/MyBookings" element={<MyBookings />} />
           <Route path="/JerusalemDetails" element={<JerusalemDetails />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
