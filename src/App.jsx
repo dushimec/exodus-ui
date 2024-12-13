@@ -24,7 +24,7 @@ import Admin from './components/Admin';
 import AdminDashboard from './components/Dashboard';
 import { AuthProvider } from './context/authContext';
 import PrivateRoute from './components/PrivateRoute';
-import Tour from './components/Tour';
+// import Tour from './components/Tour';
 import 'aos/dist/aos.css';
 import Profile from './components/Profile';
 
@@ -82,7 +82,7 @@ const shouldShowFooter =
             element={
               <>
                 <Hero />
-                <Tour />
+                {/* <Tour /> */}
                 <Destinations />
                 <WhyChooseUs />
                 <PopularTourPackages />

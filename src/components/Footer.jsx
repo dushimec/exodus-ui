@@ -6,6 +6,7 @@ import {
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa";
+import logo from '../IMAGE/logo.jpg'
 
 const destinations = [
   {
@@ -45,7 +46,7 @@ function Footer() {
               <div className="text-sm font-semibold">
                 <img
                   loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/2b78bfdb1cefa709a075d0cab65881f62d080d390c16de0d3e55fe2cee8ba082?placeholderIfAbsent=true&apiKey=6e51f2aa35694a21b29ab869757ebe28"
+                  src={logo}
                   alt="Company logo"
                   className="object-contain rounded-full w-[100px] md:w-[80px]"
                 />
