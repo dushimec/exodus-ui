@@ -24,13 +24,10 @@ import Admin from './components/Admin';
 import AdminDashboard from './components/Dashboard';
 import { AuthProvider } from './context/authContext';
 import PrivateRoute from './components/PrivateRoute';
-// import Tour from './components/Tour';
+import Tour from './components/Tour';
 import 'aos/dist/aos.css';
 import Profile from './components/Profile';
-
-import MyBookings from './components/MyBookings';
-import NotFound from './components/NotFound';
-
+import MyBookings from './components/Mybooking';
 
 function App() {
   const location = useLocation();
@@ -39,36 +36,11 @@ function App() {
   const isAdminRoute = location.pathname.startsWith("/admin");
   const isLoginAdminPage = location.pathname === "/admin-login";
   const isDashboardPage = location.pathname === "/dashboard";
-  const isNotFoundPage = ![
-    "/",
-    "/destination/rwanda",
-    "/destination/israel",
-    "/destination/egypt",
-    "/destination/turkey",
-    "/products",
-    "/about",
-    "/service",
-    "/contact",
-    "/login",
-    "/signup",
-    "/destiny",
-    "/TurkeyDetails",
-    "/RwandaDetails",
-    "/EgyptDetails",
-    "/MyBookings",
-    "/JerusalemDetails",
-    "/forgot-password",
-    "/reset-password",
-    "/profile",
-    "/admin-login",
-    "/dashboard",
-  ].includes(location.pathname);
 
   const shouldShowNavbar =
-  !isAdminRoute && !isLoginAdminPage && !isDashboardPage && !isNotFoundPage;
+    !isAdminRoute && !isLoginAdminPage && !isDashboardPage;
 
-const shouldShowFooter =
-  !isAdminRoute && !isDashboardPage && !isNotFoundPage;
+  const shouldShowFooter = !isAdminRoute && !isDashboardPage;
 
   return (
     <>
@@ -82,7 +54,7 @@ const shouldShowFooter =
             element={
               <>
                 <Hero />
-                {/* <Tour /> */}
+                <Tour />
                 <Destinations />
                 <WhyChooseUs />
                 <PopularTourPackages />
@@ -90,7 +62,6 @@ const shouldShowFooter =
               </>
             }
           />
-          
           <Route path="/destination/rwanda" element={<RwandaDetails />} />
           <Route path="/destination/israel" element={<JerusalemDetails />} />
           <Route path="/destination/egypt" element={<EgyptDetails />} />
@@ -105,17 +76,14 @@ const shouldShowFooter =
           <Route path="/TurkeyDetails" element={<TurkeyDetails />} />
           <Route path="/RwandaDetails" element={<RwandaDetails />} />
           <Route path="/EgyptDetails" element={<EgyptDetails />} />
-          <Route path="/MyBookings" element={<MyBookings />} />
+          <Route path="/my-bookings" element={<MyBookings />} />
           <Route path="/JerusalemDetails" element={<JerusalemDetails />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/Profile" element={<Profile />} />
           <Route path="/admin-login" element={<Admin />} />
           <Route
-            path="/dashboard"
-            element={<PrivateRoute element={<AdminDashboard />} />}
-          />
-            <Route path="*" element={<NotFound />} />
+            path="/dashboard" element={<PrivateRoute element={<AdminDashboard />} />}/>
         </Routes>
 
         {shouldShowFooter && <Footer />}

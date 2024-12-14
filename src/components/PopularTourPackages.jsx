@@ -42,10 +42,11 @@ function PopularTourPackages() {
     );
   };
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex + displayCount >= images.length ? 0 : prevIndex + 1
-    );
+const nextSlide = () => {
+    setCurrentIndex((prevIndex) => {
+      const newIndex = prevIndex + displayCount;
+      return newIndex >= images.length ? 0 : newIndex;
+    });
   };
 
   useEffect(() => {

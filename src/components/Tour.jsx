@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next"; // Import useTranslation
 
 function Tour() {
   const { t } = useTranslation();
   useEffect(() => {
     AOS.init({
-      duration: 1200,
-      easing: 'ease-in-out',
-      once: false,
+      duration: 1200, // duration of animations
+      easing: 'ease-in-out', // animation easing
+      once: false, // whether animation should happen only once
     });
-    AOS.refresh();
+    AOS.refresh(); // Refresh AOS after initialization
   }, []);
 
   return (
@@ -70,4 +70,3 @@ function Tour() {
 }
 
 export default Tour;
-
