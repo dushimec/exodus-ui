@@ -1,31 +1,35 @@
-
-
-// import { Bell, Mail, Search, Settings, ChevronDown, MoreVertical } from 'lucide-react';
-
-import picture from '../IMAGE/profile.jpg'
-
 import React, { useState, useContext, useEffect } from "react";
-import {
-  Bell,
-  Mail,
-  Search,
-  Settings,
-  ChevronDown,
-  MoreVertical,
-} from "lucide-react";
-import AddNewTrip from "./AddNewTrip"; // Ensure to import the AddNewTrip component
+import { Bell, Mail, Search, Settings, ChevronDown, MoreVertical, Users, BookOpen, Calendar, Package, LogOut } from 'lucide-react';
+import AddNewTrip from "./AddNewTrip";
 import { AuthContext } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
-import logo from '../IMAGE/logo.jpg'
+import { UsersList } from './users-list';
+import { ProgressCircle } from './progress-circle';
+import { TripPanel } from './ trip-panel';
+import logo from '../IMAGE/logo.jpg';
 
+import { ProductManagement } from './product-management';
+import { SettingsPanel } from './settings-panel';
+import { NotificationsPanel } from './notifications-panel';
 
 export default function AdminDashboard() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [isAddingTrip, setIsAddingTrip] = useState(false); // State to track if Add New Trip is active
-  const [activeLink, setActiveLink] = useState("dashboard"); // State to track the active link
+  const [isAddingTrip, setIsAddingTrip] = useState(false);
+  const [activeLink, setActiveLink] = useState("dashboard");
+
+  const [notificationCount, setNotificationCount] = useState(3);
   const navigate = useNavigate();
 
   const { user, getProfile, logout } = useContext(AuthContext);
+
+  const [showSettings, setShowSettings] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
+
+  const [recentBookings, setRecentBookings] = useState([
+    { id: 1, name: "New Delhi To Dhaka", type: "Oneway", price: "50$", status: "Pending" },
+    { id: 2, name: "London To Paris", type: "Round Trip", price: "150$", status: "Active" },
+    { id: 3, name: "Tokyo To Seoul", type: "Oneway", price: "80$", status: "Denied" },
+  ]);
 
   useEffect(() => {
     if (!user) {
@@ -45,275 +49,238 @@ export default function AdminDashboard() {
     { title: "Tour Packages", value: "$16,590", change: "+12.08%" },
   ];
 
-  const recentBookings = [
-    {
-      name: "New Delhi To Dhaka",
-      type: "Oneway",
-      price: "50$",
-      status: "Pending",
-    },
-    // ... other bookings
-  ];
-
   const handleAddNewTripClick = () => {
-    setIsAddingTrip(true); // Set the state to true when 'Add New Trip' is clicked
+    setIsAddingTrip(true);
+    setActiveLink("Trips");
   };
 
   const handleLinkClick = (link) => {
-    setActiveLink(link); // Set the clicked link as active
+    setActiveLink(link);
+    setShowSettings(false);
+    setShowNotifications(false);
+    setIsAddingTrip(false);
   };
 
-  return (
-    <div className="min-h-screen bg-gray-100">
-      {/* Top Navigation */}
-      <nav className="bg-gray-800 text-white p-4">
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="flex items-center space-x-4">
-            <img src={logo} alt="TripManager Logo" />
-            <h1 className="text-xl font-bold">Admin DashBoard</h1>
-          </div>
-          <div className="flex space-x-4">
-            <a
-              href="/dashboard"
-              className={`hover:text-blue-300 transition-colors ${
-                activeLink === "dashboard" ? "text-blue-500" : "text-gray-500"
-              }`}
-              onClick={() => handleLinkClick("dashboard")}
-            >
-              dashboard
-            </a>
-            <a
-              href="#"
-              className={`hover:text-blue-300 transition-colors ${
-                activeLink === "Trips" ? "text-blue-500" : "text-gray-500"
-              }`}
-              onClick={() => {
-                handleAddNewTripClick("Trips");
-                handleLinkClick("Trips");
-              }}
-            >
-              Trips
-            </a>
 
-            <a
-              href="#"
-              className={`hover:text-blue-300 transition-colors ${
-                activeLink === "Users" ? "text-blue-500" : "text-gray-500"
-              }`}
-              onClick={() => handleLinkClick("Users")}
-            >
-              Users
-            </a>
+
+  const handleStatusChange = (id, newStatus) => {
+    setRecentBookings(prevBookings =>
+      prevBookings.map(booking =>
+        booking.id === id ? { ...booking, status: newStatus } : booking
+      )
+    );
+  };
+
+  const renderMainContent = () => {
+    if (showSettings) {
+      return <SettingsPanel />;
+    }
+
+    if (showNotifications) {
+      return <NotificationsPanel setNotificationCount={setNotificationCount} />;
+    }
+
+    if (activeLink === "Users") {
+      return <UsersList />;
+    }
+
+    if (activeLink === "Products") {
+      return <ProductManagement />;
+    }
+
+    if (activeLink === "Trips") {
+      return isAddingTrip ? <AddNewTrip /> : <TripPanel onAddNewTrip={handleAddNewTripClick} />;
+    }
+
+    return (
+      <>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="bg-white rounded-xl shadow-md p-6">
+            <h3 className="text-lg font-semibold mb-4">Performance Overview</h3>
+            <div className="flex justify-around">
+              <ProgressCircle percentage={92} label="Algorithms" color="sky" />
+              <ProgressCircle percentage={83} label="Bookings" color="sky" />
+            </div>
           </div>
-          <div className="flex items-center space-x-4">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search ..."
-                className="bg-gray-700 text-white px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-300"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              <Search
-                className="absolute right-3 top-2.5 text-gray-400"
-                size={18}
-              />
-            </div>
-            <button className="hover:text-blue-300 transition-colors">
-              <Settings size={20} />
-            </button>
-            <button className="hover:text-blue-300 transition-colors">
-              <Mail size={20} />
-            </button>
-            <button className="hover:text-blue-300 transition-colors">
-              <Bell size={20} />
-            </button>
-            <div className="flex items-center space-x-2">
-              <img
-                src={user?.profile?.url || ""}
-                alt="User Avatar"
-                className="h-12 w-12 rounded-full"
-              />
-            </div>
-            <button
-              onClick={handleLogout}
-              className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded"
+          {stats.map((stat, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl shadow-md p-6"
             >
-              Logout
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">{stat.title}</h3>
+              <p className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</p>
+              <p className="text-sm text-sky-500">{stat.change}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="bg-white rounded-xl shadow-md p-6">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-xl font-semibold text-gray-800">Recent Bookings</h2>
+            <button className="text-gray-400 hover:text-gray-600">
+              <MoreVertical size={20} />
             </button>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="text-left text-gray-500 border-b">
+                  <th className="pb-4">Package Name</th>
+                  <th className="pb-4">Type</th>
+                  <th className="pb-4">Price</th>
+                  <th className="pb-4">Status</th>
+                  <th className="pb-4">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {recentBookings.map((booking) => (
+                  <tr key={booking.id} className="border-b last:border-b-0">
+                    <td className="py-4 flex items-center space-x-3">
+                      <img
+                        src="/placeholder.svg?height=32&width=32"
+                        alt="User"
+                        className="w-8 h-8 rounded-full"
+                      />
+                      <span>{booking.name}</span>
+                    </td>
+                    <td className="py-4">{booking.type}</td>
+                    <td className="py-4">{booking.price}</td>
+                    <td className="py-4">
+                      <select
+                        value={booking.status}
+                        onChange={(e) => handleStatusChange(booking.id, e.target.value)}
+                        className={`px-3 py-1 rounded-full text-sm ${
+                          booking.status === 'Active' ? 'bg-sky-100 text-sky-800' :
+                          booking.status === 'Pending' ? 'bg-yellow-100 text-yellow-800' :
+                          'bg-red-100 text-red-800'
+                        }`}
+                      >
+                        <option value="Pending">Pending</option>
+                        <option value="Active">Active</option>
+                        <option value="Denied">Denied</option>
+                      </select>
+                    </td>
+                    <td className="py-4">
+                      <button className="text-gray-400 hover:text-gray-600">
+                        <MoreVertical size={20} />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
-      </nav>
+      </>
+    );
+  };
 
-      {/* Main Content */}
-      <div className="container mx-auto mt-8 flex">
-        {/* Sidebar */}
-        <aside className="w-64 bg-white rounded-lg shadow-md p-4 mr-8">
-          <ul className="space-y-2">
-            <li>
-              <a
-                href="Dashbord"
-                onClick={() => handleLinkClick("dashboard")}
-                className={`flex items-center space-x-2 font-semibold ${
-                  activeLink === "dashboard" ? "text-blue-500" : "text-gray-500"
-                }`}
-              >
-                <span
-                  className={`p-2 rounded ${
-                    activeLink === "dashboard"
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-500 text-white"
+  const sidebarItems = [
+    { icon: BookOpen, label: 'Dashboard', value: 'dashboard' },
+    { icon: Calendar, label: 'Trips', value: 'Trips' },
+    { icon: Users, label: 'Users', value: 'Users' },
+    { icon: Package, label: 'Products', value: 'Products' },
+  ];
+
+  return (
+    <div className={`min-h-screen `}>
+      <div className="flex h-screen bg-gray-100 dark:bg-gray-900">
+        <aside className="w-64 bg-[#0da5ea] text-white">
+          <div className="p-4">
+            <div className="flex items-center space-x-2 mb-6">
+              <img src={logo} alt="Logo" className="h-8 w-8" />
+              <span className="text-xl font-bold">Smart Admin</span>
+            </div>
+            
+            <nav className="space-y-2">
+              {sidebarItems.map(item => (
+                <a
+                  key={item.value}
+                  href="#"
+                  onClick={() => handleLinkClick(item.value)}
+                  className={`flex items-center space-x-2 p-2 rounded-lg transition-colors ${
+                    activeLink === item.value ? 'bg-white/10' : 'hover:bg-white/5'
                   }`}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                  </svg>
-                </span>
-
-                <span>dashboard</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={() => {
-                  handleAddNewTripClick("Trips");
-                  handleLinkClick("Trips");
-                }}
-                className={`flex items-center space-x-2 font-semibold ${
-                  activeLink === "Trips" ? "text-blue-500" : "text-gray-500"
-                }`}
-              >
-                <span
-                  className={`p-2 rounded ${
-                    activeLink === "Trips"
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-500 text-white"
-                  }`}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </span>
-
-                <span>Add New Trip</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={() => handleLinkClick("Users")}
-                className={`flex items-center space-x-2 font-semibold ${
-                  activeLink === "Users" ? "text-blue-500" : "text-gray-500"
-                }`}
-              >
-                <span
-                  className={`p-2 rounded ${
-                    activeLink === "Users"
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-500 text-white"
-                  }`}
-                >
-                  {/* Users icon */}
-                </span>
-                <span>Users</span>
-              </a>
-            </li>
-          </ul>
+                  <item.icon size={20} />
+                  <span>{item.label}</span>
+                </a>
+              ))}
+            </nav>
+          </div>
+          
+          <div className="absolute bottom-0 w-64 p-4">
+            <button
+              onClick={handleLogout}
+              className="flex items-center space-x-2 w-full p-2 rounded-lg hover:bg-white/5"
+            >
+              <LogOut size={20} />
+              <span>Log Out</span>
+            </button>
+          </div>
         </aside>
 
-        {/* Main Dashboard Content */}
-        <main className="flex-1">
-          {isAddingTrip ? ( // Conditional rendering based on state
-            <AddNewTrip />
-          ) : (
-            <>
-              {/* Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                {stats.map((stat, index) => (
-                  <div
-                    key={index}
-                    className={`bg-white rounded-lg shadow-md p-6 ${
-                      index === 0 ? "bg-blue-500 text-blue-500" : ""
-                    }`}
-                  >
-                    <h3 className="text-lg font-semibold mb-2">{stat.title}</h3>
-                    <p className="text-3xl font-bold mb-2">{stat.value}</p>
-                    <p
-                      className={`text-sm ${
-                        index === 0 ? "text-blue-200" : "text-green-500"
-                      }`}
-                    >
-                      {stat.change}
-                    </p>
-                  </div>
-                ))}
+        <div className="flex-1 flex flex-col overflow-hidden">
+          <header className="bg-white dark:bg-gray-800 shadow-md">
+            <div className="flex items-center justify-between p-4">
+              <div className="flex items-center space-x-4">
+                <h1 className="text-xl font-bold text-gray-800 dark:text-white">
+                  {activeLink.charAt(0).toUpperCase() + activeLink.slice(1)}
+                </h1>
               </div>
+              
+              <div className="flex items-center space-x-4">
+             
+                
+                <button
+                  onClick={() => {
+                    setShowSettings(true);
+                    setShowNotifications(false);
+                    setActiveLink('');
+                  }}
+                  className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <Settings size={20} />
+                </button>
+                
+                <button
+                  onClick={() => {
+                    setShowNotifications(true);
+                    setShowSettings(false);
+                    setActiveLink('');
+                  }}
+                  className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 relative"
+                >
+                  <Bell size={20} />
+                  {notificationCount > 0 && (
+                    <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                      {notificationCount}
+                    </span>
+                  )}
+                </button>
+                
+          
 
-              {/* Recent Bookings */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <div className="flex justify-between items-center mb-4">
-                  <h2 className="text-xl font-semibold">Recent Booking</h2>
-                  <button className="text-gray-400 hover:text-gray-600">
-                    <MoreVertical size={20} />
-                  </button>
+                <div className="flex items-center space-x-2">
+                  <img
+                    src={user?.profile?.url || "/placeholder.svg?height=32&width=32"}
+                    alt="User Avatar"
+                    className="h-8 w-8 rounded-full"
+                  />
+                  <span className="font-medium dark:text-white">
+                    {user?.name || 'User'}
+                  </span>
                 </div>
-                <table className="w-full">
-                  <thead>
-                    <tr className="text-left text-gray-500 border-b">
-                      <th className="pb-2">Package Name</th>
-                      <th className="pb-2">Type</th>
-                      <th className="pb-2">Price</th>
-                      <th className="pb-2">Status</th>
-                      <th className="pb-2">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {recentBookings.map((booking, index) => (
-                      <tr key={index} className="border-b last:border-b-0">
-                        <td className="py-3 flex items-center space-x-3">
-                          <img
-                            src="/placeholder.svg?height=32&width=32"
-                            alt="User"
-                            className="w-8 h-8 rounded-full"
-                          />
-                          <span>{booking.name}</span>
-                        </td>
-                        <td className="py-3">{booking.type}</td>
-                        <td className="py-3">{booking.price}</td>
-                        <td className="py-3">
-                          <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-sm">
-                            {booking.status}
-                          </span>
-                        </td>
-                        <td className="py-3">
-                          <button className="text-gray-400 hover:text-gray-600">
-                            <MoreVertical size={20} />
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
               </div>
-            </>
-          )}
-        </main>
+            </div>
+          </header>
+
+          <main className="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-gray-900">
+            {renderMainContent()}
+          </main>
+        </div>
       </div>
     </div>
   );
 }
+
