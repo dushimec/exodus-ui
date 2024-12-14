@@ -3,16 +3,15 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import city from "../IMAGE/city.jpg";
 import tukey from "../IMAGE/tukey.jpg";
 
-// Array of Recently Visited Images
 const recentlyVisitedImages = [city, tukey];
 
-function BookingForm({ isOpen, onClose, destination, price }) {
+function BookingForm({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-lg p-6 w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-4 text-blue-600">Book Your Trip to {destination}</h2>
+        <h2 className="text-2xl font-bold mb-4 text-blue-600">Book Your Trip to Turkey</h2>
         <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
@@ -31,7 +30,7 @@ function BookingForm({ isOpen, onClose, destination, price }) {
             <input type="date" id="date" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
           </div>
           <div className="text-xl font-bold text-blue-600 mt-4">
-            Price: ${price}
+            Price: $1200
           </div>
           <div className="flex gap-4 mt-6">
             <button type="submit" className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-200">Book Now</button>
@@ -43,7 +42,6 @@ function BookingForm({ isOpen, onClose, destination, price }) {
   );
 }
 
-// RelatedTours Component
 function RelatedTours() {
   const [tours, setTours] = useState([
     { id: 1, name: "Kibeho", location: "Nyaruguru", likes: 35, liked: false, comments: [] },
@@ -134,7 +132,7 @@ function RelatedTours() {
 
 function Destinations() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [selectedDestination, setSelectedDestination] = useState(null);
+  const [isBookingFormOpen, setIsBookingFormOpen] = useState(false);
 
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) =>
@@ -174,7 +172,6 @@ function Destinations() {
 
   return (
     <div className="w-full h-auto bg-stone-50 relative">
-      {/* Background Image and Title Overlay */}
       <div className="relative w-full h-[50vh]">
         <img
           className="w-full h-full object-cover"
@@ -188,9 +185,7 @@ function Destinations() {
       </div>
 
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 py-8 px-4 md:px-16">
-        {/* Left Side: Description, Recently Visited Trip, and Related Tours */}
         <div className="w-full lg:w-2/3 space-y-8">
-          {/* Description Section */}
           <div>
             <div className="text-sky-500 text-2xl font-bold mb-4">
               Turkey (Istanbul):
@@ -212,7 +207,6 @@ function Destinations() {
             </p>
           </div>
 
-          {/* Destinations Section */}
           <div className="space-y-6">
             {destinations.map((destination) => (
               <div key={destination.name} className="bg-white shadow-lg rounded-lg p-6">
@@ -223,18 +217,11 @@ function Destinations() {
                     <p className="font-semibold">Price: ${destination.price}</p>
                     <p className="text-sm text-gray-500">Trip Date: {destination.date}</p>
                   </div>
-                  <button 
-                    onClick={() => setSelectedDestination(destination)}
-                    className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-                  >
-                    Book Now
-                  </button>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Recently Visited Trip */}
           <div>
             <div className="text-black text-xl font-bold mb-4">
               Recently Visited Trip
@@ -263,31 +250,49 @@ function Destinations() {
             </div>
           </div>
 
-          {/* Related Tours Section */}
           <RelatedTours />
         </div>
 
-        {/* Right Side: Price and Booking Form */}
-        <div className="w-full lg:w-1/3 h-auto mb-12 lg:mb-48 pb-20">
-          {/* Price Box */}
-          <div className="bg-blue-500 text-white px-6 py-8">
-            <div className="text-4xl font-bold">$1200</div>
-            <p className="text-white">Total for all destinations</p>
+        <div className="w-full lg:w-1/3 space-y-6">
+          <div className="bg-blue-500 text-white flex justify-between items-center px-6 py-4">
+            <div className="text-lg font-semibold">Total Price</div>
+            <div className="text-3xl font-bold">$490</div>
+          </div>
+
+          <div className="bg-white shadow-lg p-6">
+            <div className="bg-sky-500 text-white text-center py-3 mb-6">
+              <span className="text-base font-semibold">Tour Summary</span>
+            </div>
+            <div className="space-y-4">
+              {destinations.map((destination) => (
+                <div key={destination.name} className="flex justify-between">
+                  <span>{destination.name}</span>
+                  <span>${destination.price}</span>
+                </div>
+              ))}
+              <div className="border-t pt-4 font-bold">
+                <div className="flex justify-between">
+                  <span>Total</span>
+                  <span>$490</span>
+                </div>
+              </div>
+            </div>
+            <button 
+              onClick={() => setIsBookingFormOpen(true)}
+              className="w-full mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            >
+              Book Now
+            </button>
           </div>
         </div>
       </div>
 
-      {selectedDestination && (
-        <BookingForm
-          isOpen={!!selectedDestination}
-          onClose={() => setSelectedDestination(null)}
-          destination={selectedDestination.name}
-          price={selectedDestination.price}
-        />
-      )}
+      <BookingForm
+        isOpen={isBookingFormOpen}
+        onClose={() => setIsBookingFormOpen(false)}
+      />
     </div>
   );
 }
 
 export default Destinations;
-
