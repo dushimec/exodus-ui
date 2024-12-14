@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import israel from "../IMAGE/israel.jpg";
 
-function BookingForm({ isOpen, onClose, destination, price }) {
+function BookingForm({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-  <div className="bg-white rounded-lg p-6 w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-4 text-blue-600">Book Your Trip to {destination}</h2>
+      <div className="bg-white rounded-lg p-6 w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-4 text-blue-600">Book Your Trip to Israel</h2>
         <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
@@ -27,7 +27,7 @@ function BookingForm({ isOpen, onClose, destination, price }) {
             <input type="date" id="date" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
           </div>
           <div className="text-xl font-bold text-blue-600 mt-4">
-            Price: ${price}
+            Price: $540
           </div>
           <div className="flex gap-4 mt-6">
             <button type="submit" className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-200">Book Now</button>
@@ -128,7 +128,7 @@ function RelatedTours() {
 }
 
 function JerusalemDetails() {
-  const [selectedDestination, setSelectedDestination] = useState(null);
+  const [isBookingFormOpen, setIsBookingFormOpen] = useState(false);
 
   const destinations = [
     {
@@ -141,25 +141,25 @@ function JerusalemDetails() {
       name: "Bethlehem",
       description: "Visit the Church of the Nativity, marking the birthplace of Jesus.",
       price: 100,
-        date: "January 10, 2025"
+      date: "January 10, 2025"
     },
     {
       name: "Nazareth",
       description: "See the Basilica of the Annunciation, an important Christian pilgrimage site.",
       price: 120,
-        date: "January 10, 2025"
+      date: "January 10, 2025"
     },
     {
       name: "Sea of Galilee",
       description: "Reflect on biblical stories at this serene location.",
       price: 90,
-        date: "January 10, 2025"
+      date: "January 10, 2025"
     },
     {
       name: "Dead Sea",
       description: "Experience the lowest point on Earth, known for its healing properties.",
       price: 80,
-        date: "January 10, 2025"
+      date: "January 10, 2025"
     }
   ];
 
@@ -209,12 +209,6 @@ function JerusalemDetails() {
                 <p className="text-gray-600 mb-4">{destination.description}</p>
                 <div className="flex items-center justify-between">
                   <p className="font-semibold">Price: ${destination.price}</p>
-                  <button 
-                    onClick={() => setSelectedDestination(destination)}
-                    className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-                  >
-                    Book Now
-                  </button>
                 </div>
               </div>
             ))}
@@ -261,18 +255,20 @@ function JerusalemDetails() {
                 </div>
               </div>
             </div>
+            <button 
+              onClick={() => setIsBookingFormOpen(true)}
+              className="w-full mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            >
+              Book Now
+            </button>
           </div>
         </div>
       </div>
 
-      {selectedDestination && (
-        <BookingForm
-          isOpen={!!selectedDestination}
-          onClose={() => setSelectedDestination(null)}
-          destination={selectedDestination.name}
-          price={selectedDestination.price}
-        />
-      )}
+      <BookingForm
+        isOpen={isBookingFormOpen}
+        onClose={() => setIsBookingFormOpen(false)}
+      />
     </div>
   );
 }
