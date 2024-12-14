@@ -8,29 +8,29 @@ function BookingForm({ isOpen, onClose }) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
      <div className="bg-white rounded-lg p-6 w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-4 text-blue-600">Book Your Trip to Egypt</h2>
+        <h2 className="text-2xl font-bold mb-4 text-sky-500">Book Your Trip to Egypt</h2>
         <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-            <input type="text" id="name" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Your Name" />
+            <input type="text" id="name" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-300 focus:ring focus:ring-sky-200 focus:ring-opacity-50" placeholder="Your Name" />
           </div>
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-            <input type="email" id="email" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Your Email" />
+            <input type="email" id="email" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-300 focus:ring focus:ring-sky-200 focus:ring-opacity-50" placeholder="Your Email" />
           </div>
           <div>
             <label htmlFor="travelers" className="block text-sm font-medium text-gray-700">Number of Travelers</label>
-            <input type="number" id="travelers" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="1" min="1" />
+            <input type="number" id="travelers" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-300 focus:ring focus:ring-sky-200 focus:ring-opacity-50" placeholder="1" min="1" />
           </div>
           <div>
             <label htmlFor="date" className="block text-sm font-medium text-gray-700">Date</label>
-            <input type="date" id="date" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+            <input type="date" id="date" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-300 focus:ring focus:ring-sky-200 focus:ring-opacity-50" />
           </div>
-          <div className="text-xl font-bold text-blue-600 mt-4">
+          <div className="text-xl font-bold text-sky-500 mt-4">
             Price: $490
           </div>
           <div className="flex gap-4 mt-6">
-            <button type="submit" className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-200">Book Now</button>
+            <button type="submit" className="flex-1 bg-sky-500 text-white py-2 px-4 rounded-md hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-opacity-50 transition duration-200">Book Now</button>
             <button onClick={onClose} className="flex-1 bg-gray-200 text-gray-800 py-2 px-4 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition duration-200">Cancel</button>
           </div>
         </form>
@@ -197,14 +197,14 @@ function EgyptDetails() {
           <div>
             <div className="text-black text-xl font-bold mb-4">Recently Visited Trip</div>
             <img className="w-full h-auto" src={egypt} alt="Recently Visited Trip" />
-            <div className="text-blue-500 text-lg mb-4">Click Use map to track the place</div>
+         
           </div>
 
           <RelatedTours />
         </div>
 
-        <div className="w-full lg:w-1/3 space-y-6">
-          <div className="bg-blue-500 text-white flex justify-between items-center px-6 py-4">
+        <div className="w-full lg:w-1/3 h-auto mb-8 lg:mb-0 pb-20">
+          <div className="bg-sky-500 text-white flex justify-between items-center px-6 py-4">
             <div className="text-lg font-semibold">Total Price</div>
             <div className="text-3xl font-bold">$490</div>
           </div>
@@ -229,7 +229,7 @@ function EgyptDetails() {
             </div>
             <button 
               onClick={() => setIsBookingFormOpen(true)}
-              className="w-full mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+              className="w-full mt-6 bg-sky-500 text-white px-4 py-2 rounded-md hover:bg-sky-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-opacity-50"
             >
               Book Now
             </button>
