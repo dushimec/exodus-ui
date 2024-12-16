@@ -6,6 +6,7 @@ import Flag from "react-flagkit";
 import { useTranslation } from "react-i18next";
 import { UserCircle, Calendar, LogOut, Home, Info, MapPin, Briefcase, ShoppingBag, Mail } from 'lucide-react';
 import logo from '../IMAGE/logo.jpg'
+import ProtectedRoute from '../components/ProtectedRoute';
 
 function Navigation() {
   const { t, i18n } = useTranslation();
@@ -204,14 +205,14 @@ function Navigation() {
                     className="block px-4 py-2  hover:bg-sky-500 hover:text-white"
                     onClick={() => setIsDropdownOpen(false)}
                   >
-                    {t('navigation.profile')}
+                    <ProtectedRoute>{t('navigation.profile')}</ProtectedRoute>
                   </Link>
                   <Link
                     to="/MyBookings"
                     className="block px-4 py-2 hover:bg-sky-500 hover:text-white"
                     onClick={() => setIsDropdownOpen(false)}
                   >
-                    {t('navigation.myBooking')}
+                    <ProtectedRoute>{t('navigation.myBooking')}</ProtectedRoute>
                   </Link>
                   <button
                     onClick={handleLogout}
@@ -317,16 +318,20 @@ function Navigation() {
               <>
                 <div className="mt-8 grid grid-cols-3 gap-4 text-center text-sm md:text-base">
                   <Link to="/profile" className="flex flex-col items-center" onClick={toggleMenu}>
-                    <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
-                      <UserCircle className="h-6 w-6 md:h-8 md:w-8" />
-                    </button>
-                    <span className="text-sm md:text-base">Profile</span>
+                    <ProtectedRoute>
+                      <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
+                        <UserCircle className="h-6 w-6 md:h-8 md:w-8" />
+                      </button>
+                      <span className="text-sm md:text-base">Profile</span>
+                    </ProtectedRoute>
                   </Link>
                   <Link to="/MyBookings" className="flex flex-col items-center" onClick={toggleMenu}>
-                    <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
-                      <Calendar className="h-6 w-6 md:h-8 md:w-8" />
-                    </button>
-                    <span className="text-sm md:text-base">My Bookings</span>
+                    <ProtectedRoute>
+                      <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
+                        <Calendar className="h-6 w-6 md:h-8 md:w-8" />
+                      </button>
+                      <span className="text-sm md:text-base">My Bookings</span>
+                    </ProtectedRoute>
                   </Link>
                   <button onClick={handleLogout} className="flex flex-col items-center">
                     <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
