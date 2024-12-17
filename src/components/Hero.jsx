@@ -1,22 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUpcomingPosts } from '../slices/postSlice';
 import { FaSearch } from 'react-icons/fa';
 import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
 import { Link, useNavigate } from 'react-router-dom';
 import video from "../IMAGE/video.mp4";
-import KigaliImage from '../IMAGE/kgl.jpg';
-import Havan from '../IMAGE/havana.jpg';
-import Turkey from '../IMAGE/tukey.jpg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useTranslation } from "react-i18next";
 
 import Tour from '../components/Tour';
-
-const upcomingTrips = [
-  { id: 1, title: "Trip to Bali", image: KigaliImage },
-  { id: 2, title: "Explore Iceland", image: Havan },
-  { id: 3, title: "Adventure in Morocco", image: Turkey }
-];
 
 const allDestinations = [
   { id: 'rwanda', name: 'Rwanda' },
@@ -28,12 +21,19 @@ const allDestinations = [
 export default function TravelHero() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+const posts = useSelector((state) => state.posts);
+const upcomingTrips = posts.upcomingPosts;
+const { loading } = posts;
+// console.log('Posts State:', posts);
+// console.log('Upcoming Trips:', upcomingTrips);
+// console.log('Loading state:', loading); 
+
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [currentTripIndex, setCurrentTripIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const titleRef = useRef(null);
-  const exploreRef = useRef(null);
   const tourRef = useRef(null);
 
   useEffect(() => {
@@ -62,11 +62,19 @@ export default function TravelHero() {
   }, []);
 
   useEffect(() => {
+    dispatch(fetchUpcomingPosts());
+  }, [dispatch]);
+
+  useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTripIndex((prevIndex) => (prevIndex + 1) % upcomingTrips.length);
+      setCurrentTripIndex((prevIndex) =>
+        upcomingTrips && upcomingTrips.length > 0
+          ? (prevIndex + 1) % upcomingTrips.length
+          : 0
+      );
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [upcomingTrips]);
 
   useEffect(() => {
     const results = allDestinations.filter((destination) =>
@@ -132,47 +140,29 @@ export default function TravelHero() {
               <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-sky-500" aria-hidden="true" />
             </form>
 
-            {searchTerm && (
-              <div className="bg-white bg-opacity-90 rounded-lg p-4 shadow-lg max-h-60 overflow-y-auto">
-                <h3 className="text-lg font-semibold mb-2">Destinations:</h3>
-                {searchResults.length > 0 ? (
-                  <ul>
-                    {searchResults.map((result) => (
-                      <li key={result.id} className="mb-1">
-                        <Link
-                          to={`/destination/${result.id}`}
-                          className="block hover:bg-sky-100 p-2 rounded transition duration-300"
-                        >
-                          {result.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p>No destinations found.</p>
-                )}
-              </div>
-            )}
-
             <div className="bg-white bg-opacity-90 rounded-lg p-4 shadow-lg relative overflow-hidden" data-aos="fade-up">
               <h2 className="text-lg sm:text-xl font-semibold text-sky-500 mb-2" data-aos="fade-up">
                 {t('hero.upcomingTrip')}
               </h2>
-              <div className="relative h-48 sm:h-56">
-                {upcomingTrips.map((trip, index) => (
-                  <div
-                    key={trip.id}
-                    className={`absolute top-0 left-0 w-full h-full transition-all duration-500 ease-in-out ${
-                      index === currentTripIndex ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'
-                    }`}
-                  >
-                    <img src={trip.image} alt={trip.title} className="rounded object-cover w-full h-full" />
-                    <p className="absolute bottom-2 left-2 bg-sky-500 text-white px-2 py-1 rounded text-sm sm:text-base">
-                      {trip.title}
-                    </p>
-                  </div>
-                ))}
-              </div>
+              {loading ? (
+                <p>Loading...</p>
+              ) : (
+                <div className="relative h-48 sm:h-56">
+                  {upcomingTrips && upcomingTrips.length > 0 && upcomingTrips.map((trip, index) => (
+                    <div
+                      key={trip._id}
+                      className={`absolute top-0 left-0 w-full h-full transition-all duration-500 ease-in-out ${
+                        index === currentTripIndex ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'
+                      }`}
+                    >
+<img src={Array.isArray(trip.postImage) && trip.postImage.length > 0 ? trip.postImage[0].url : ''} alt={trip.title} className="rounded object-cover w-full h-full" />
+                      <p className="absolute bottom-2 left-2 bg-sky-500 text-white px-2 py-1 rounded text-sm sm:text-base">
+                        {trip.title}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               <div className="absolute bottom-5 right-6 flex space-x-2">
                 <button
@@ -194,11 +184,10 @@ export default function TravelHero() {
           </div>
         </div>
       </div>
-    
+
       <div ref={tourRef}>
         <Tour />
       </div>
     </>
   );
 }
-

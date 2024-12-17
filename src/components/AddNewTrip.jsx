@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState } from 'react'; 
+import { toast, ToastContainer } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css'; 
 import { useDispatch } from 'react-redux';
 import { CalendarIcon, ChevronDownIcon } from 'lucide-react';
-// import { createPostThunk } from '../slices/postSlice';
+import { addPost } from '../slices/postSlice';
 
 export default function AddNewTrip() {
   const [title, setTitle] = useState('');
@@ -37,8 +39,8 @@ export default function AddNewTrip() {
   };
 
   const handleImageSelect = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      setSelectedImage(e.target.files[0]);
+    if (e.target.file && e.target.file) {
+      setSelectedImage(e.target.file);
     }
   };
 
@@ -49,18 +51,31 @@ export default function AddNewTrip() {
     const formData = new FormData();
     formData.append('title', title);
     formData.append('destination', destination);
-    formData.append('tripCost', tripCost);
+    formData.append('price', tripCost);
     formData.append('currency', currency);
-    formData.append('bookingDate', bookingDate);
-    formData.append('description', description);
+    formData.append('tripDate', bookingDate);
+    formData.append('content', description);
     if (selectedImage) {
-      formData.append('image', selectedImage); // File field
+      formData.append('file', selectedImage); // File field
     }
     formData.append('sites', JSON.stringify(sites));
     formData.append('trips', JSON.stringify(trips));
 
-    // Dispatch the createPostThunk action with FormData
-    dispatch(createPostThunk(formData));
+    
+            dispatch(addPost(formData))
+                .unwrap()
+                .then(() => {
+                    toast.success('Post added successfully!', {
+                        position: toast.POSITION.TOP_RIGHT,
+                        autoClose: 3000,
+                    });
+                })
+                .catch((error) => {
+                    toast.error(`Failed to add post: ${error.message}`, {
+                        position: toast.POSITION.TOP_RIGHT,
+                        autoClose: 3000,
+                    });
+                });
 
     // Clear form fields after submission
     setTitle('');
