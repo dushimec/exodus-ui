@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { CalendarIcon, ChevronDownIcon } from 'lucide-react';
+import { Plus } from 'lucide-react';
 // import { createPostThunk } from '../slices/postSlice';
 
 export default function AddNewTrip() {
@@ -13,6 +13,7 @@ export default function AddNewTrip() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [sites, setSites] = useState([{ name: '', tripDate: '' }]);
   const [trips, setTrips] = useState([{ title: '', content: '', price: '', tripDate: '' }]);
+  const fileInputRef = useRef(null);
 
   const dispatch = useDispatch();
 
@@ -37,8 +38,30 @@ export default function AddNewTrip() {
   };
 
   const handleImageSelect = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      setSelectedImage(e.target.files[0]);
+    const file = e.target.files[0];
+    if (file) {
+      setSelectedImage(file);
+    }
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const file = e.dataTransfer.files[0];
+    if (file) {
+      setSelectedImage(file);
+    }
+  };
+
+  const handleRemoveImage = () => {
+    setSelectedImage(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
     }
   };
 
@@ -54,13 +77,13 @@ export default function AddNewTrip() {
     formData.append('bookingDate', bookingDate);
     formData.append('description', description);
     if (selectedImage) {
-      formData.append('image', selectedImage); // File field
+      formData.append('image', selectedImage);
     }
     formData.append('sites', JSON.stringify(sites));
     formData.append('trips', JSON.stringify(trips));
 
     // Dispatch the createPostThunk action with FormData
-    dispatch(createPostThunk(formData));
+    // dispatch(createPostThunk(formData));
 
     // Clear form fields after submission
     setTitle('');
@@ -121,19 +144,37 @@ export default function AddNewTrip() {
           onChange={(e) => setDescription(e.target.value)}
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 h-24"
         ></textarea>
-        <label htmlFor="image-upload" className="cursor-pointer">
-          <div className="bg-blue-500 text-white py-2 px-4 rounded-md inline-block hover:bg-blue-600 transition duration-300">
-            Select Image
-          </div>
+        
+        <div
+          className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center cursor-pointer"
+          onClick={() => fileInputRef.current.click()}
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+        >
           <input
-            id="image-upload"
+            ref={fileInputRef}
             type="file"
             accept="image/*"
             onChange={handleImageSelect}
             className="hidden"
           />
-        </label>
-        {selectedImage && <p className="mt-2">Selected: {selectedImage.name}</p>}
+          <Plus className="mx-auto mb-2" size={24} />
+          <p>Upload file</p>
+          <p className="text-sm text-gray-500">Drag and drop or click to select</p>
+        </div>
+        
+        {selectedImage && (
+          <div className="mt-2 flex items-center">
+            <p className="mr-2">Selected: {selectedImage.name}</p>
+            <button
+              type="button"
+              onClick={handleRemoveImage}
+              className="text-red-500 hover:text-red-700"
+            >
+              Remove
+            </button>
+          </div>
+        )}
 
         <h2 className="text-xl font-bold mt-8 mb-4">Sites</h2>
         {sites.map((site, index) => (
@@ -152,16 +193,28 @@ export default function AddNewTrip() {
               onChange={(e) => handleSiteChange(index, 'tripDate', e.target.value)}
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            
           </div>
         ))}
-        <button
-          type="button"
-          onClick={handleAddSite}
-          className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition duration-300"
-        >
-          Add More Site
-        </button>
+        <div className="flex items-center">
+          <input
+            type="text"
+            placeholder="Add more site"
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                handleAddSite();
+              }
+            }}
+            className="flex-grow p-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <button
+            type="button"
+            onClick={handleAddSite}
+            className="bg-green-500 text-white p-2 rounded-r-md hover:bg-green-600 transition duration-300"
+          >
+            <Plus size={24} />
+          </button>
+        </div>
 
         <h2 className="text-xl font-bold mt-8 mb-4">Trips</h2>
         {trips.map((trip, index) => (
@@ -195,13 +248,26 @@ export default function AddNewTrip() {
             />
           </div>
         ))}
-        <button
-          type="button"
-          onClick={handleAddTrip}
-          className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition duration-300"
-        >
-          Add More Trip
-        </button>
+        <div className="flex items-center">
+          <input
+            type="text"
+            placeholder="Add more trip"
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                handleAddTrip();
+              }
+            }}
+            className="flex-grow p-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <button
+            type="button"
+            onClick={handleAddTrip}
+            className="bg-green-500 text-white p-2 rounded-r-md hover:bg-green-600 transition duration-300"
+          >
+            <Plus size={24} />
+          </button>
+        </div>
 
         <button
           type="submit"
@@ -213,3 +279,4 @@ export default function AddNewTrip() {
     </div>
   );
 }
+
