@@ -91,12 +91,13 @@ export default function TravelHero() {
     <>
       <div className="relative pt-24 sm:pt-32 min-h-screen h-[80vh] flex flex-col justify-center items-center px-4 overflow-hidden">
         <div className="absolute inset-0 w-full h-full overflow-hidden">
+        <div class="bg-black absolute inset-0 opacity-30"></div>
           <video autoPlay loop muted playsInline className="w-full h-full object-cover">
             <source src={video} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-
+      
         <div className="relative container mx-auto px-4 py-8 sm:py-12 flex flex-col lg:flex-row items-center justify-between" data-aos="fade-up">
           <div className="lg:w-1/2 lg:mt-0 lg:mb-0 text-center lg:text-left" data-aos="fade-up">
             <h1
