@@ -25,7 +25,7 @@ function Signup() {
     formData.append("name", name);
     formData.append("email", email);
     formData.append("password", password);
-    if (photo) formData.append("photo", photo);
+    if (photo) formData.append("file", photo);
 
     try {
       await dispatch(signup(formData)).unwrap(); // Dispatch signup action

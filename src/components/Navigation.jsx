@@ -108,37 +108,37 @@ function Navigation() {
           </button>
         </div>
 
-        <div className="hidden lg:flex text-xs lg:items-center lg:gap-4 xl:gap-8">
-          <Link to="/" className="text-sm lg:text-base xl:text-lg">
+        <div className="hidden lg:flex text-xs lg:items-center lg:gap-4 font-weight: normal xl:gap-8">
+          <Link to="/" className="text-sm lg:text-base xl:text-[16px]">
             {t('navigation.home')}
           </Link>
           <Link
             to="/about"
-            className="text-sm lg:text-base xl:text-lg"
+            className="text-sm lg:text-base xl:text-[16px]"
           >
             {t('navigation.about')}
           </Link>
           <Link
             to="/destiny"
-            className="text-sm lg:text-base xl:text-lg"
+            className="text-sm lg:text-base xl:text-[16px]"
           >
             {t('navigation.destination')}
           </Link>
           <Link
             to="/service"
-            className="text-sm lg:text-base xl:text-lg"
+            className="text-sm lg:text-base xl:text-[16px]"
           >
             {t('navigation.service')}
           </Link>
           <Link
             to="/products"
-            className="text-sm lg:text-base xl:text-lg"
+            className="text-sm lg:text-base xl:text-[16px]"
           >
             {t('navigation.products')}
           </Link>
           <Link
             to="/contact"
-            className="text-sm lg:text-base xl:text-lg"
+            className="text-sm lg:text-base xl:text-[16px]"
           >
             {t('navigation.contact')}
           </Link>
@@ -148,7 +148,7 @@ function Navigation() {
           <div className="relative flex gap-20 mr-6 items-center">
             <button onClick={toggleLanguageDropdown} className="flex items-center m-1">
               <Flag country={selectedLanguage.code} className="mr-1" size={24} />
-              <span className="my-auto text-sm lg:text-base xl:text-lg">
+              <span className="my-auto text-sm lg:text-base xl:text-[16px]">
                 {selectedLanguage.name}
               </span>
             </button>
@@ -174,14 +174,14 @@ function Navigation() {
             <div className="flex gap-1.5 items-center">
               <Link
                 to="/login"
-                className="text-sm lg:text-base xl:text-lg"
+                className="text-sm lg:text-base xl:text-[16px]"
               >
                 {t('navigation.login')}
               </Link>
               <span>|</span>
               <Link
                 to="/signup"
-                className="text-sm lg:text-base xl:text-lg"
+                className="text-sm lg:text-base xl:text-[16px]"
               >
                 {t('navigation.signup')}
               </Link>
@@ -279,7 +279,7 @@ function Navigation() {
                 <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
                   <Home className="h-6 w-6 md:h-8 md:w-8" />
                 </button>
-                <span className="text-sm md:text-base">Home</span>
+                <span className="text-sm md:text-base ">Home</span>
               </Link>
               <Link to="/about" className="flex flex-col items-center" onClick={toggleMenu}>
                 <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
