@@ -108,37 +108,37 @@ function Navigation() {
           </button>
         </div>
 
-        <div className="hidden lg:flex text-xs lg:items-center lg:gap-4 xl:gap-8">
-          <Link to="/" className="text-sm lg:text-base xl:text-lg">
+        <div className="hidden lg:flex text-xs lg:items-center lg:gap-4 font-weight: normal xl:gap-8">
+          <Link to="/" className="text-sm lg:text-base xl:text-[16px]">
             {t('navigation.home')}
           </Link>
           <Link
             to="/about"
-            className="text-sm lg:text-base xl:text-lg"
+            className="text-sm lg:text-base xl:text-[16px]"
           >
             {t('navigation.about')}
           </Link>
           <Link
             to="/destiny"
-            className="text-sm lg:text-base xl:text-lg"
+            className="text-sm lg:text-base xl:text-[16px]"
           >
             {t('navigation.destination')}
           </Link>
           <Link
             to="/service"
-            className="text-sm lg:text-base xl:text-lg"
+            className="text-sm lg:text-base xl:text-[16px]"
           >
             {t('navigation.service')}
           </Link>
           <Link
             to="/products"
-            className="text-sm lg:text-base xl:text-lg"
+            className="text-sm lg:text-base xl:text-[16px]"
           >
             {t('navigation.products')}
           </Link>
           <Link
             to="/contact"
-            className="text-sm lg:text-base xl:text-lg"
+            className="text-sm lg:text-base xl:text-[16px]"
           >
             {t('navigation.contact')}
           </Link>
@@ -148,7 +148,7 @@ function Navigation() {
           <div className="relative flex gap-20 mr-6 items-center">
             <button onClick={toggleLanguageDropdown} className="flex items-center m-1">
               <Flag country={selectedLanguage.code} className="mr-1" size={24} />
-              <span className="my-auto text-sm lg:text-base xl:text-lg">
+              <span className="my-auto text-sm lg:text-base xl:text-[16px]">
                 {selectedLanguage.name}
               </span>
             </button>
@@ -174,14 +174,14 @@ function Navigation() {
             <div className="flex gap-1.5 items-center">
               <Link
                 to="/login"
-                className="text-sm lg:text-base xl:text-lg"
+                className="text-sm lg:text-base xl:text-[16px]"
               >
                 {t('navigation.login')}
               </Link>
               <span>|</span>
               <Link
                 to="/signup"
-                className="text-sm lg:text-base xl:text-lg"
+                className="text-sm lg:text-base xl:text-[16px]"
               >
                 {t('navigation.signup')}
               </Link>
@@ -230,7 +230,7 @@ function Navigation() {
       {isMenuOpen && (
         <div className="lg:hidden fixed inset-0 bg-white z-50 overflow-y-auto">
           <div className="flex justify-between items-center p-4 border-b">
-            <button onClick={toggleMenu} className="text-blue-600">
+            <button onClick={toggleMenu} className="text-sky-500">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
@@ -259,13 +259,13 @@ function Navigation() {
                   <div className="absolute mt-32 left-0 w-24 bg-white text-black rounded-lg shadow-lg py-2 z-10">
                     <button
                       onClick={() => changeLanguage("EN")}
-                      className="flex w-full text-left px-4 py-2 hover:bg-blue-600 hover:text-white"
+                      className="flex w-full text-left px-4 py-2 hover:bg-sky-600 hover:text-white"
                     >
                       <Flag country="GB" size={18} className="m-1" /> {t('language.english')}
                     </button>
                     <button
                       onClick={() => changeLanguage("RW")}
-                      className="flex w-full text-left px-4 py-2 hover:bg-blue-600 hover:text-white"
+                      className="flex w-full text-left px-4 py-2 hover:bg-sky-600 hover:text-white"
                     >
                       <Flag country="RW" size={18} className="m-1" /> {t('language.kinyarwanda')}
                     </button>
@@ -276,37 +276,37 @@ function Navigation() {
 
             <div className="grid grid-cols-3 gap-4 text-center text-sm md:text-base mt-8">
               <Link to="/" className="flex flex-col items-center" onClick={toggleMenu}>
-                <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-blue-600 mb-2">
+                <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
                   <Home className="h-6 w-6 md:h-8 md:w-8" />
                 </button>
-                <span className="text-sm md:text-base">Home</span>
+                <span className="text-sm md:text-base ">Home</span>
               </Link>
               <Link to="/about" className="flex flex-col items-center" onClick={toggleMenu}>
-                <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-blue-600 mb-2">
+                <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
                   <Info className="h-6 w-6 md:h-8 md:w-8" />
                 </button>
                 <span className="text-sm md:text-base">About Us</span>
               </Link>
               <Link to="/destiny" className="flex flex-col items-center" onClick={toggleMenu}>
-                <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-blue-600 mb-2">
+                <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
                   <MapPin className="h-6 w-6 md:h-8 md:w-8" />
                 </button>
                 <span className="text-sm md:text-base">Destination</span>
               </Link>
               <Link to="/service" className="flex flex-col items-center" onClick={toggleMenu}>
-                <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-blue-600 mb-2">
+                <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
                   <Briefcase className="h-6 w-6 md:h-8 md:w-8" />
                 </button>
                 <span className="text-sm md:text-base">Service</span>
               </Link>
               <Link to="/products" className="flex flex-col items-center" onClick={toggleMenu}>
-                <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-blue-600 mb-2">
+                <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
                   <ShoppingBag className="h-6 w-6 md:h-8 md:w-8" />
                 </button>
                 <span className="text-sm md:text-base">Products</span>
               </Link>
               <Link to="/contact" className="flex flex-col items-center" onClick={toggleMenu}>
-                <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-blue-600 mb-2">
+                <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
                   <Mail className="h-6 w-6 md:h-8 md:w-8" />
                 </button>
                 <span className="text-sm md:text-base">Contact</span>
@@ -348,7 +348,7 @@ function Navigation() {
                       alt="User Profile"
                       className="w-10 h-10 rounded-full mr-3"
                     />
-                    <span className="text-blue-600 font-semibold">{user.name}</span>
+                    <span className="text-sky-500 font-semibold">{user.name}</span>
                   </div>
                 </div>
               </>
@@ -357,10 +357,10 @@ function Navigation() {
             {!user && (
               <div className="fixed bottom-0 left-0 right-0 p-4 bg-white border-t">
                 <div className="flex justify-between gap-4">
-                  <Link to="/login" className="flex-1 bg-blue-600 text-white rounded-full py-2 px-4 text-center" onClick={toggleMenu}>
+                  <Link to="/login" className="flex-1 bg-sky-500 text-white rounded-full py-2 px-4 text-center  " onClick={toggleMenu}>
                     {t('navigation.login')}
                   </Link>
-                  <Link to="/signup" className="flex-1 border border-blue-600 text-blue-600 rounded-full py-2 px-4 text-center" onClick={toggleMenu}>
+                  <Link to="/signup" className="flex-1 border border-sky-500 text-sky-500 rounded-full py-2 px-4 text-center" onClick={toggleMenu}>
                     {t('navigation.signup')}
                   </Link>
                 </div>

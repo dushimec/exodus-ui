@@ -4,7 +4,7 @@ import {
   signup as signupService,
   login as loginService,
   getUserById as getUserByIdService,
-  updateUserById as updateUserByIdService,
+  updateUserById as updateUserByIdService, 
   deleteUserById as deleteUserByIdService,
   getAllUsers as getAllUsersService,
   getUserCount as getUserCountService,

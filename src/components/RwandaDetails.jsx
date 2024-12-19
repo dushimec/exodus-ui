@@ -167,7 +167,7 @@ function RwandaDetails() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-12 flex flex-col lg:flex-row gap-8 py-8 px-4">
+      <div className="max-w-7xl mx-4 flex flex-col lg:flex-row gap-8 py-8 px-4 lg:ml-12">
         <div className="w-full lg:w-2/3 space-y-8">
           <div>
             <div className="text-sky-500 text-2xl font-bold mb-4">
