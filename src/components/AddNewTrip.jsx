@@ -39,12 +39,27 @@ export default function AddNewTrip() {
     setTrips(newTrips);
   };
 
-  const handleImageSelect = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      setSelectedImage(e.target.files[0]);
-    }
+  const handleRemoveSite = (index) => {
+    const newSites = sites.filter((_, i) => i !== index);
+    setSites(newSites);
   };
 
+  const handleRemoveTrip = (index) => {
+    const newTrips = trips.filter((_, i) => i !== index);
+    setTrips(newTrips);
+  };
+
+  const handleImageSelect = (e) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (!file.type.startsWith('image/')) {
+        toast.error("Please upload a valid image file");
+        return;
+      }
+      setSelectedImage(file);
+    }
+  };
+  
   const handleDragOver = (e) => {
     e.preventDefault();
   };
@@ -52,14 +67,24 @@ export default function AddNewTrip() {
   const handleDrop = (e) => {
     e.preventDefault();
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      setSelectedImage(e.dataTransfer.files[0]);
+      const file = e.dataTransfer.files[0];
+      if (!file.type.startsWith('image/')) {
+        toast.error("Please upload a valid image file");
+        return;
+      }
+      setSelectedImage(file);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
+    if (!selectedImage) {
+      toast.error("Please upload a photo");
+      return;
+    }
+    
+    const formData = new FormData(); 
     formData.append('title', title);
     formData.append('destination', destination);
     formData.append('price', tripCost);
@@ -156,7 +181,7 @@ export default function AddNewTrip() {
             className="hidden"
           />
           <Plus className="mx-auto mb-2" size={24} />
-          <p>Upload file</p>
+          <p>Upload Trip Image</p>
           <p className="text-sm text-gray-500">Drag and drop or click to select</p>
         </div>
 

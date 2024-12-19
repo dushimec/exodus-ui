@@ -2,20 +2,24 @@ import Cookies from 'js-cookie';
 import axios from '../axios';
 
 export const createPost = async (postData) => {
-  const formData = new FormData();
-  Object.keys(postData).forEach((key) => {
-    formData.append(key, postData[key]);
-  });
-
   const token = Cookies.get("token");
   if (!token) {
     throw new Error("Token not found");
   }
-  const response = await axios.post("/posts/create",formData, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+
+  const response = await axios.post(
+    "/posts/create",
+    postData,
+    {
+      headers: { 
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
   return response.data;
 };
+
 
 export const getPosts = async () => {
   return await axios.get('/posts/');

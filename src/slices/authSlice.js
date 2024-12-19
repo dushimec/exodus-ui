@@ -147,7 +147,7 @@ const authSlice = createSlice({
       })
       .addCase(signup.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload.user; // Handle signup success
+        state.user = action.payload.user;
       })
       .addCase(signup.rejected, (state, action) => {
         state.loading = false;
