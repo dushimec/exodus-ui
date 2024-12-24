@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import cookies from 'js-cookie';
 import {createProduct as createProductService, getAllProducts as getAllProductsService, getProductsByCategoryName as getProductsByCategoryNameService,updateProduct as updateProductService, deleteProduct as deleteProductService, aggregateProductsByCategory as aggregateProductsByCategoryService, getMostOrderedProducts as getMostOrderedProductsService, getRecentProducts as getRecentProductsService} from '../services/productService'
+import { cancelBooking } from './bookingSlice';
 
 
 
@@ -69,8 +70,6 @@ export const aggregateProductsByCategory= createAsyncThunk('product/aggregatePro
 
 //thunk for getMostOrderedProducts
 
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getMostOrderedProductsService } from './services'; // Import your service function
 
 export const getMostOrderedProducts = createAsyncThunk(
   'product/getMostOrderedProducts',
@@ -81,8 +80,9 @@ export const getMostOrderedProducts = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response?.data); // Ensure "error" is defined
     }
-  }
-);
+  });
+
+
 
 
 // export const getMostOrderedProducts =  createAsyncThunk('product/getMostOrderedProducts', async (most-ordered,  {rejectWithValue}) => {
@@ -105,6 +105,40 @@ return response;
         return rejectWithValue(error.response?.data)
     }
 });
+
+
+//thunk for  bookproduct
+export const bookProduct = createAsyncThunk('product/bookProduct' , async(book, {rejectWithValue}) =>{
+    try{
+        const response = await bookProductService(book);
+        return response;
+    }catch{
+        return rejectWithValue(error.response?.data)
+    }
+});
+
+//thunk getBookingsByProductId
+export const getBookingsByProductId = createAsyncThunk('product/getBookingsByProductId' , async(id, {rejectWithValue}) =>{
+try{
+    const response = await getBookingsByProductIdService(id);
+    return response;
+}catch{
+    return rejectWithValue(error.response?.data)
+}
+});
+
+//thunk for cancelbooking
+export const  cancelbooking = createAsyncThunk(
+    'product/getMostOrderedProducts',
+    async (cancelBookingParams, { rejectWithValue }) => { // Use "mostOrderedParams" instead of "most-ordered"
+      try {
+        const response = await  cancelbookingService( cancelBookingParams);
+        return response; // Return the response data
+      } catch (error) {
+        return rejectWithValue(error.response?.data); // Ensure "error" is defined
+      }
+    });
+  
 
 //slice for product
 
@@ -289,8 +323,68 @@ const productSlice = createSlice({
 .addCase(getRecentProducts.rejected, (state,action) =>{
     state.loading = false;
     state.error = action.payload;
-    
+
 })
+
+
+//builder for  bookproduct
+
+.addCase(bookProduct.pending, (state,action)=>{
+    state.loading = true;
+    state.error = null;
+    state.success = false;
+
+})
+.addCase(bookProduct.fulfilled, (state,action) =>{
+    state.loading = false;
+    state.error = null;
+    state.success = true;
+
+})
+
+.addCase(bookProduct.rejected, (state,action)=>{
+    state.loading = false;
+    state.error = action.payload;
+
+})
+
+//builder for getBookingsByProductId
+
+.addCase(getBookingsByProductId.pending, (state,action)=>{
+    state.loading = true;
+    state.error = null;
+    state.success = false;
+
+})
+.addCase(getBookingsByProductId.fulfilled, (state,action)=>{
+    state.loading = false;
+    state.error = null;
+    state.success = true;
+    state.bookings = action.payload.bookings
+})
+.addCase(getBookingsByProductId.rejected, (state,action)=>{
+    state.loading = false;
+    state.error = action.payload;
+
+})
+//buider for cancelbooking
+.addCase(cancelBooking.pending, (state,action)=>{
+    state.loading = true;
+    state.error = null;
+    state.success = false;
+
+})
+.addCase(cancelBooking.fulfilled, (state,action) =>{
+    state.loading = false;
+    state.error = null;
+    state.success = true;
+
+})
+.addCase(cancelBooking.rejected, (state,action)=>{
+    state.loading = false;
+    state.error = action.payload;
+})
+
      }
 
 })
