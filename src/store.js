@@ -3,6 +3,8 @@ import authReducer from "./slices/authSlice";
 import postReducer from "./slices/postSlice"
 import bookingReducer from "./slices/bookingSlice"
 
+
+
 const store = configureStore({
   reducer: {
     auth: authReducer,
