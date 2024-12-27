@@ -42,7 +42,7 @@
 },
 "howItWorks": {
   "title": "Uko bikorwa?",
-  "subtitle": "Shakisha, hitamo, igura",
+  "subtitle": "Shakisha, hitamo, andikisha",
   "steps": {
     "search": {
       "title": "Shakisha",
@@ -77,8 +77,8 @@
 "about": {
   "header": "Ibyerekeye Twebwe",
   "subheader":"Ibyo Dukora",
-  "quote1": "Ikigo OLD Fox gitegura ingendo nyobokamana, kigafasha abantu ku giti cyabo n’amatsinda gusura ahantu hatagatifu ku isi hose. Ingendo zacu zigamije gufasha abantu gukura mu mwuka,Gusenga, kwiyumvamo no gusobanukirwa umuco. Dufasha gusura insengero za kera cyangwa imijyi mitagatifu, buri rugendo ruhuza  ruhuza abagenzi n’ukwemera kwabo n’imico yabo. Twitondera gutegura buri rugendo kugira ngo ubuzima bw’abagenzi bugende neza kandi bubashimishe.",
-  "quote2": "Ibyerekezo byacu bitanga uburambe bwo guhindura, buhuza iterambere ry'umwuka n'ubusabane bw'umuco. Abagenzi basura ibice by'ingenzi by'iyobokamana, bagahura n'imigenzo y'aho, kandi bakahuza n'abandi bemera. Izi ngendo zishyigikira gusubira mu mwuka no kwibuka, zitanga ubushobozi bwo gusobanukirwa cyane n'iyobokamana no kubika ibihe bitazibagirana mu bice bimwe mu byaha by'ingenzi ku isi.",
+  "quote1": "Ikigo OLD Fox gitegura ingendo nyobokamana, kigafasha abantu ku giti cyabo n’amatsinda gusura ahantu hatagatifu ku isi hose. Ingendo zacu zigamije gufasha abantu gukura mu mwuka,Gusenga, kwiyumvamo no gusobanukirwa umuco. Dufasha gusura insengero za kera cyangwa imijyi mitagatifu, buri rugendo ruhuza abagenzi n’ukwemera kwabo n’imico yabo. Twitondera gutegura buri rugendo kugira ngo ubuzima bw’abagenzi bugende neza kandi bubashimishe.",
+  "quote2": "Ingendo zacu zateguwe muburyo zitanga ubuzima bushya, zihuza kunoza umubano n’Imana no kwinjira mu muco gakondo. Abagenzi basura ahantu hafite amateka akomeye mu myemerere, bakagira uruhare mu mihango y’umuco gakondo, kandi bakungurana ibitekerezo n’abemera bagenzi babo. Izi ngendo zitera umuntu kongera gutekereza ku kwemera kwe, gutekereza ku buzima, no gusobanukirwa byimbitse iby’imyemerere, zigasiga n’urwibutso rutazibagirana mu bice by’isi bikomeye mu by’umwuka.",
   "team": "Itsinda Ryacu",
   "boss":"Umuyobozi mukuru"
 },
@@ -108,9 +108,9 @@
   "custom_destinations": "Aho kwerekeza hihariye",
   "unforgettable_moments": "Igihe kidashobora kwibagirana",
   "competitive_pricing": "Ibiciro byiza",
-  "self_guide": "Kwigira",
+  "self_guide": "Kwiyobora",
   "available": "24/7 Iriho",
-  "transportations": "Ubwikorezi",
+  "transportations": "Imigendere",
   "Whychooseus":"kuki waduhitamo",
   "whyDecription":"Ikigo cyo kwizerwa no gushingiraho",
   "benefits": {
@@ -181,6 +181,400 @@
   "loading": "Kohereza...",
   "statusSuccess": "Ubutumwa bwo kubyutsa ijambo ry'ibanga bwoherejwe!",
   "errorMessage": "Habaye ikibazo. Ongera ugerageze."
-}
+},
+"myBookings": {
+  "title": "Imyanya Yabitswe",
+  "date": "Itariki",
+  "guests": "Abashyitsi",
+  "total": "Igiteranyo",
+  "status": {
+    "approved": "Byemejwe",
+    "pending": "Bitegereje",
+    "canceled": "Byanzwe"
+  },
+  "tabs": {
+    "all": "Byose",
+    "approved": "Ibyemejwe",
+    "pending": "Ibitegereje",
+    "canceled": "Ibyanzwe"
+  },
+  "heading": {
+    "all": "Imyanya Yose Yabitswe",
+    "approved": "Ibitabo Byemejwe",
+    "pending": "Ibitabo Bitegereje",
+    "canceled": "Ibitabo Byanzwe"
+  },
+  "noBookings": "Nta bitabo bibonetse."
+},
+"userProfile": {
+    "dashboardTitle": "Dashboard y'Umukoresha",
+    "tabs": {
+      "personalInfo": "Amakuru Y'umuntu",
+      "preferences": "Ibyo ukunda",
+      "accountSettings": "Amakuru y'Akaunti",
+      "support": "Ubufasha"
+    },
+    "personalInfo": {
+      "title": "Amakuru Y'umuntu",
+      "uploadImage": "Kanda ku ishusho kugira ngo ushyireho ifoto nshya",
+      "fullName": "Amazina yose",
+      "email": "Email",
+      "phone": "Numero ya Telefoni",
+      "saveChanges": "Bika Impinduka"
+    },
+    "preferences": {
+      "title": "Aho ushaka kujya",
+      "description": "Aha niho hantu ushaka kujya. Hazerekanwa ku rubuga nyamukuru.",
+      "newTutor": "Gishya! Kanda kugira ngo umenye byinshi kuri ubu butaka."
+    },
+    "accountSettings": {
+      "title": "Amakuru y'Akaunti",
+      "currentPassword": "Ijambo ry'Ibanga Rya Kera",
+      "newPassword": "Ijambo ry'Ibanga Rishya",
+      "confirmPassword": "Emeza Ijambo ry'Ibanga Rishya",
+      "changePassword": "Hindura Ijambo ry'Ibanga"
+    },
+    "support": {
+      "title": "Ubufasha & Kuvugana",
+      "description": "Niba ufite ibibazo cyangwa ufite ibyo ushaka kubaza, ntutindiganye kuvugana n'itsinda ryacu ry'ubufasha.",
+      "email": "Email: Oldfoxcoltd@gmail.com",
+      "phone": "Telefoni: +250788726181",
+      "messageLabel": "Ubutumwa",
+      "messagePlaceholder": "Sobanura ikibazo cyawe cyangwa ikibazo ushaka gusobanura",
+      "submitRequest": "Ohereza Ibisabwa"
+    }
+  },
+  "userProfileDashboard": "Ikibaho cy'Umwirondoro w'Ukoresha",
+  "personalInfo": "Amakuru Bwite",
+  "preferences": "Ibyo Ukunda",
+  "accountSettings": "Igenamiterere ry'Konti",
+  "support": "Ubufasha",
+  "personalInformation": "Amakuru Bwite",
+  "userAvatar": "Ishusho y'ukoresha",
+  "uploadNewAvatar": "Shyiraho ishusho nshya",
+  "clickToUpload": "Kanda kuri iyi shusho kugira ngo ushyireho ifoto nshya y'umwirondoro",
+  "fullName": "Amazina Yombi",
+  "email": "Imeyili",
+  "phoneNumber": "Nimero ya Telefoni",
+  "saveChanges": "Bika Impinduka",
+  "likedDestinations": "Ahantu Wakunze",
+  "likedDestinationsDescription": "Aha ni ahantu wakunze. Bizagaragara ku rupapuro rw'ibanze.",
+  "currentPassword": "Ijambo ry'Ibanga rya Ubu",
+  "newPassword": "Ijambo ry'Ibanga Rishya",
+  "confirmNewPassword": "Emeza Ijambo ry'Ibanga Rishya",
+  "changePassword": "Hindura Ijambo ry'Ibanga",
+  "supportAndContact": "Ubufasha & Aho Watwandikira",
+  "supportDescription": "Niba ufite ibibazo cyangwa se hari icyo ushaka kubaza, ntutinye guhita watwandikira.",
+  "phone": "Telefoni",
+  "message": "Ubutumwa",
+  "describeIssue": "Sobanura ikibazo cyawe cyangwa ikibazo ufite",
+  "submitRequest": "Ohereza Icyifuzo",
+  "newDestinationTutor": "Gishya! Kanda hano kugira ngo umenye byinshi kuri aha hantu.",
+  "destinationr": {
+    "rwanda": "Rwanda",
+    "rwandaDescription": "Menya urukundo n'uburyohe bw'Umujyi w'Urumuri.",
+    "turkey": "Turukiya",
+    "turkeyDescription": "Injira mu muco mwiza w'umurwa mukuru wa Turukiya.",
+    "israel": "Isirayeli",
+    "israelDescription": "Tembera imihanda yuzuye ubuzima n'ubwiza y’Umujyi ."
+  },
+  "bookingForm": {
+    "title": "Kwiyandikisha ku Rugendo rwa Turukiya",
+    "name": "Izina",
+    "namePlaceholder": "Izina ryawe",
+    "email": "Imeyili",
+    "emailPlaceholder": "Imeyili yawe",
+    "travelers": "Umubare w'Abagenzi",
+    "date": "Itariki",
+    "price": "Igiciro: ${{price}}",
+    "bookNow": "Iyandikishe Nonaha",
+    "cancel": "Hagarika"
+  },
+  "relatedTours": {
+    "title": "Ingendo Zijyanye",
+    "tour1": {
+      "name": "Kibeho",
+      "location": "Nyaruguru"
+    },
+    "tour2": {
+      "name": "Cairo",
+      "location": "Misiri"
+    },
+    "likes": "Byakunzwe {{count}}",
+    "price": "${{price}}",
+    "comments": "Ibitekerezo",
+    "noComments": "Nta bitekerezo biriho",
+    "addComment": "Ongeraho igitekerezo..."
+  },
+  "heroImage": {
+    "alt": "Ishusho y'Umujyi",
+    "title": "Turukiya"
+  },
+  "turkeyDescription": {
+    "title": "Turukiya (Istanbul):",
+    "short": "Menya umurage w'idini muri Turukiya: sura Hagia Sophia ya Istanbul, Umusigiti w'Ubururu, Kiliziya ya Mutagatifu Yohani i Efeso, n'amazu y'amasengesho ya kera yo muri Cappadocia kugira ngo ukure mu by'umwuka.",
+    "fullTitle": "Turukiya:",
+    "full": "Tangira urugendo ruhanga amaso muri Turukiya, igihugu gifite amateka menshi y'idini. Tangirira i Istanbul, aho Iburasirazuba n'Iburengerazuba bihurira. Sura Hagia Sophia idasanzwe, yari katedrali n'umusigiti, ubu ni inzu ndangamurage, yerekana ubwubatsi bw'abaroma bw'igitangaza. Rambagira Umusigiti w'Ubururu, uzwi cyane kubera amategura y'ubururu n'ingoro zitangaje.\nNyuma, jya i Cappadocia, hazwi cyane kubera imisozi yihariye n'amazu y'amasengesho ya kera yuzuye amashusho meza. Menya Inzu Ndangamurage ya Goreme, aho UNESCO yita Umurage w'Isi.\nGenda ujya i Efeso, aho ushobora gusura Kiliziya ya Mutagatifu Yohani n'ibyuya by'umujyi wa kera, bigaragaza uruhare rw'Ubukristo bwa mbere.\nUbusoza, sura Pamukkale, izwi cyane kubera imisozi yayo y'amazi n'ibyuya bya kera bya Hierapolis, bizwi cyane kubera amazi yayo ashyushye."
+  },
+  "destination": [
+    {
+      "name": "Ingoro ya Kibeho",
+      "location": "Nyaruguru",
+      "description": "Kibeho izwi cyane kubera ibonekerwa rya Bikira Mariya byatanzwe n'abakobwa batatu b'Abanyarwanda mu myaka ya 1980. Iyi ngoro ni imwe mu ngoro z'ingenzi cyane zo kujya gusengera ku Gatolika mu Rwanda.",
+      "price": 500,
+      "date": "Mutarama 10, 2025"
+    },
+    {
+      "name": "Urwibutso rwa Jenoside rwa Kigali",
+      "location": "Kigali",
+      "description": "Gusura Urwibutso rwa Jenoside rwa Kigali ni ngombwa kugira ngo umuntu asobanukirwe n'amateka y'u Rwanda yo vuba aha. Kandi bigaragaza ubuzima bw'Abakristo benshi bapfuye muri Jenoside yo mu 1994.",
+      "price": 400,
+      "date": "Mutarama 12, 2025"
+    },
+    {
+      "name": "Gusura Katedrali ya Nyundo",
+      "location": "Nyundo",
+      "description": "Katedrali ya Nyundo ni imwe mu nyubako nini kandi z'ingenzi z'Abakristo mu Rwanda, itanga ahantu ho gutekereza no kwibuka amateka y'Ubukristo mu gihugu.",
+      "price": 300,
+      "date": "Mutarama 15, 2025"
+    }
+  ],
+  "destination": {
+    "price": "Igiciro: ${{price}}",
+    "date": "Itariki y'Urugendo: {{date}}"
+  },
+  "recentlyVisited": {
+    "title": "Urugendo rwa Vuba Twasuye",
+    "imageAlt": "Urugendo rwa Vuba Twasuye",
+    "prev": "Inyuma",
+    "next": "Imbere",
+    "mapPrompt": "Kanda kuri Koresha ikarita kugira ngo ukurikirane aho hantu"
+  },
+  "priceSummary": {
+    "title": "Igiciro Cyose",
+    "total": "${{total}}"
+  },
+  "tourSummary": {
+    "title": "Incamake y'Urugendo",
+    "total": "Igiteranyo"
+  },
+  "bookNow": "Iyandikishe Nonaha",
+  
+  "rwandadetails": {
+    "bookingForm": {
+      "title": "Kwiyandikisha ku Rugendo rw'u Rwanda",
+      "name": "Izina",
+      "namePlaceholder": "Izina ryawe",
+      "email": "Imeyili",
+      "emailPlaceholder": "Imeyili yawe",
+      "travelers": "Umubare w'Abagenzi",
+      "date": "Itariki",
+      "price": "Igiciro: ${{price}}",
+      "bookNow": "Iyandikishe Nonaha",
+      "cancel": "Hagarika"
+    },
+    "relatedTours": {
+      "title": "Ingendo Zijyanye",
+      "tour1": {
+        "name": "Yerusalemu",
+        "location": "Isirayeli"
+      },
+      "tour2": {
+        "name": "Kayiro",
+        "location": "Misiri"
+      },
+      "likes": "Byakunzwe {{count}}",
+      "price": "${{price}}",
+      "comments": "Ibitekerezo",
+      "noComments": "Nta bitekerezo biriho",
+      "addComment": "Ongeraho igitekerezo..."
+    },
+    "heroImage": {
+      "alt": "Ishusho y'Umujyi",
+      "title": "U RWANDA"
+    },
+    "rwandaDescription": {
+      "title": "Kibeho (Rwanda):",
+      "short": "Kibeho, iherereye mu Karere ka Nyaruguru, mu Rwanda, ni ahantu hera hazwi cyane kubera ibonekerwa rya Bikira Mariya, hakurura abapilgrims bashaka kuruhuka mu by'umwuka hagati y'imisozi miremire n'umuco mwiza.",
+      "fullTitle": "Ibisobanuro by'Urugendo:",
+      "full": "Menya urugendo ruhindura ubuzima mu Rwanda usura ahantu h'ingenzi mu by'idini. Tangira urugendo rwawe i Kibeho, hazwi cyane kubera ibonekerwa rya Bikira Mariya byatangajwe, bikurura ibihumbi by'abapilgrims buri mwaka. Ahantu hatekanye n'imisozi itatse neza bitanga ahantu heza ho gutekereza no gusenga.\n\nNyuma, jya i Musanze, aho abamisiyoneri ba mbere bashyizeho urufatiro rw'Ubukristo muri ako gace. Rambagira amatorero yo mu gace kandi winjire mu mateka y'ukwemera muri ako gace.\n\nNtuzibagirwe Ikiyaga cya Kivu, ahantu heza ho gutekereza, aho ushobora kunezererwa n'amahoro yo ku nkombe zacyo.\n\nUbusoza, sura Urwibutso rwa Jenoside rwa Kigali, ahantu hahangayikishije hatanga inyigisho ku mateka y'u Rwanda, hagaragaza insanganyamatsiko z'imbabazi n'ubwiyunge biri mu mizi y'inyigisho za Gikristo.\n\nMu rugendo rwawe rwose, ujye ushyikirana n'umuco w'Abanyarwanda wakira neza, wumve uburyohe bw'ibiryo gakondo, kandi wishimire imisozi itatse neza, bituma urugendo rwawe rw'idini ruba rwiza kandi rudashobora kwibagirana."
+    },
+    "destinations": [
+      {
+        "name": "Kibeho",
+        "description": "Hazwi kubera ibonekerwa rya Bikira Mariya, hakurura abapilgrims bashaka kuruhuka mu by'umwuka.",
+        "price": 120
+      },
+      {
+        "name": "Musanze",
+        "description": "Rambagira amatorero yo mu gace kandi winjire mu mateka y'ukwemera muri ako gace.",
+        "price": 100
+      },
+      {
+        "name": "Ikiyaga cya Kivu",
+        "description": "Ahantu heza ho gutekereza, aho ushobora kunezererwa n'amahoro yo ku nkombe zacyo.",
+        "price": 90
+      },
+      {
+        "name": "Urwibutso rwa Jenoside rwa Kigali",
+        "description": "Ahantu hahangayikishije hatanga inyigisho ku mateka y'u Rwanda, hagaragaza insanganyamatsiko z'imbabazi n'ubwiyunge.",
+        "price": 80
+      }
+    ],
+    "destination": {
+      "price": "Igiciro: ${{price}}"
+    },
+    "recentlyVisited": {
+      "title": "Urugendo rwa Vuba Twasuye",
+      "imageAlt": "Urugendo rwa Vuba Twasuye"
+    },
+    "priceSummary": {
+      "title": "Igiciro Cyose",
+      "total": "${{total}}"
+    },
+    "tourSummary": {
+      "title": "Incamake y'Urugendo",
+      "total": "Igiteranyo"
+    },
+    "bookNow": "Iyandikishe Nonaha"
+  },
+
+  "egyptdetails": {
+    "bookingForm": {
+      "title": "Kwiyandikisha ku Rugendo rw'Egiputa",
+      "name": "Izina",
+      "namePlaceholder": "Izina ryawe",
+      "email": "Imeyili",
+      "emailPlaceholder": "Imeyili yawe",
+      "travelers": "Umubare w'Abagenzi",
+      "date": "Itariki",
+      "price": "Igiciro: ${{price}}",
+      "bookNow": "Iyandikishe Nonaha",
+      "cancel": "Hagarika"
+    },
+    "relatedTours": {
+      "title": "Ingendo Zijyanye",
+      "tour1": {
+        "name": "Kibeho",
+        "location": "Nyaruguru"
+      },
+      "tour2": {
+        "name": "Istanbul",
+        "location": "Turukiya"
+      },
+      "likes": "Byakunzwe {{count}}",
+      "price": "${{price}}",
+      "comments": "Ibitekerezo",
+      "noComments": "Nta bitekerezo biriho",
+      "addComment": "Ongeraho igitekerezo..."
+    },
+    "heroImage": {
+      "alt": "Ishusho y'Umujyi",
+      "title": "EGIPUTA"
+    },
+    "egyptDescription": {
+      "title": "Egiputa (Kayiro):",
+      "short": "Menya umurage w'Egiputa: sura Piramide Nini, insengero za kera, imisigiti ya Isilamu, Umusozi Sinayi, n'amasoko arangwa n'ubuzima bwuzuye amateka n'umuco.",
+      "fullTitle": "Egiputa:",
+      "full": "Tangira urugendo rw'umwuka muri Egiputa, igihugu gikungahaye mu mateka y'idini. Tangirira urugendo rwawe muri Kayiro, aho ushobora gusura Piramide Nini za Giza na Sfingi, ibimenyetso by'ubwami bwa Egiputa ya kera. Rambagira Kayiro ya Isilamu, aho hari imisigiti irangwa n'ubwiza nka Umusigiti wa Al-Azhar na Umusigiti wa Sultan Hassan, bigaragaza umurage wa Isilamu w'igihugu. Hanyuma, jya i Luxor, hazwi nk'ahantu hanini cyane ho kureba ibintu bya kera mu karere. Sura Urusengero rwa Karnak n'Ikibaya cy'Abami, aho abami benshi bahambwe. Ntuzibagirwe Umusozi Sinayi, aho bizwi ko Mose yahawe Amategeko Icumi, n'Urusengero rwa Mutagatifu Katerina, ahantu hari ku rutonde rw'Umurage w'Isi wa UNESCO. Soza urugendo rwawe muri Alexandria, usura Imva za Kom el Shoqafa n'Igihome cya Qaitbay, bitanga inyigisho ku mateka y'ubukristo n'ubuyisilamu by'umujyi. Ishimire ibiryo by'ahantu n'umuco urangwa n'ubuzima mu rugendo rwawe rwose."
+    },
+    "destinations": [
+      {
+        "name": "Kayiro",
+        "description": "Sura Piramide Nini za Giza zizwi cyane, Sfingi, kandi urambagire Kayiro ya Isilamu ifite imisigiti irangwa n'ubwiza.",
+        "price": 150
+      },
+      {
+        "name": "Luxor",
+        "description": "Rambagira ahantu hanini cyane ho kureba ibintu bya kera ku isi, harimo Urusengero rwa Karnak n'Ikibaya cy'Abami.",
+        "price": 130
+      },
+      {
+        "name": "Umusozi Sinayi",
+        "description": "Sura ahantu hizwi ko Mose yahawe Amategeko Icumi kandi urambagire Urusengero rwa Mutagatifu Katerina.",
+        "price": 100
+      },
+      {
+        "name": "Alexandria",
+        "description": "Menya Imva za Kom el Shoqafa n'Igihome cya Qaitbay, bitanga inyigisho ku mateka y'umujyi akungahaye.",
+        "price": 110
+      }
+    ],
+    "destination": {
+      "price": "Igiciro: ${{price}}"
+    },
+    "recentlyVisited": {
+      "title": "Urugendo rwa Vuba Twasuye",
+      "imageAlt": "Urugendo rwa Vuba Twasuye"
+    },
+    "priceSummary": {
+      "title": "Igiciro Cyose",
+      "total": "${{total}}"
+    },
+    "tourSummary": {
+      "title": "Incamake y'Urugendo",
+      "total": "Igiteranyo"
+    },
+    "bookNow": "Iyandikishe Nonaha"
+  },
+
+  "israelDetails": {
+    "bookingForm": {
+      "title": "Kwiyandikisha Urugendo rwa Israel",
+      "name": "Izina",
+      "email": "Imeyili",
+      "travelers": "Umubare w'Abgenzi",
+      "date": "Itariki",
+      "price": "Igiciro: $540",
+      "bookNow": "Iyandikishe Nonaha",
+      "cancel": "Kureka"
+    },
+    "relatedTours": {
+      "title": "Ingendo Zijyanye",
+      "likes": "Bakunze",
+      "comments": "Ibitekerezo:",
+      "noComments": "Nta bitekerezo bihari",
+      "addComment": "Ongeraho igitekerezo..."
+    },
+    "mainContent": {
+      "title": "ISRAEL",
+      "subtitle": "ISRAEL (Tel Aviv):",
+      "description": "Sura Israel kugira ngo urebe amateka yayo: ahantu hera ha Yerusalemu, imisozi ya Dead Sea, n'imijyi ikomeye nka Tel Aviv na Haifa irakutegereje.",
+      "israelTitle": "Israel:",
+      "israelDescription": "Tangira urugendo rw'umwuka muri Israel, umutima w'amadini atatu akomeye ku isi. Tangirira i Yerusalemu, usure Inkike y'Iburengerazuba, igisigaye cya Temperi ya Kabiri, na Dome of the Rock, urusengero rw'Abayisilamu rurangwa. Reba Kiliziya y'Imva Ntagatifu, yizerwaho ko ari aho Yesu yabambwe kandi akazuka. Nyuma, jya i Betelehemu, aho ushobora gusura Kiliziya y'Ivuka, yerekana aho Yesu yavukiye. Genda i Nazareti kureba Basilika y'Ivugwa, ahantu h'ingenzi h'urugendo rw'Abakristo. Ntuzibagirwe ubwiza bw'Inyanja ya Galilaya, aho ushobora gutekereza ku nkuru za Bibiliya. Ku iherezo, uryoherwe kuri Dead Sea, ahantu hepfo kurusha ahandi ku isi, hazwi kubera imbaraga zaho zo gukiza. Umve ibiryo by'aho n'umuco ukomeye, bituma urugendo rwawe rw'umwuka muri Israel ruba rw'ubukungu kandi rudashira mu bwenge.",
+      "recentlyVisited": "Urugendo rwa Vuba Twasuye"
+    },
+    "destinations": {
+      "jerusalem": {
+        "name": "Yerusalemu",
+        "description": "Sura ahantu hera nk'Inkike y'Iburengerazuba, Dome of the Rock, na Kiliziya y'Imva Ntagatifu."
+      },
+      "bethlehem": {
+        "name": "Betelehemu",
+        "description": "Sura Kiliziya y'Ivuka, yerekana aho Yesu yavukiye."
+      },
+      "nazareth": {
+        "name": "Nazareti",
+        "description": "Reba Basilika y'Ivugwa, ahantu h'ingenzi h'urugendo rw'Abakristo."
+      },
+      "seaOfGalilee": {
+        "name": "Inyanja ya Galilaya",
+        "description": "Tekereza ku nkuru za Bibiliya kuri iyi nyanja yuje amahoro."
+      },
+      "deadSea": {
+        "name": "Inyanja Ipfuye",
+        "description": "Umve ahantu hepfo kurusha ahandi ku isi, hazwi kubera imbaraga zaho zo gukiza."
+      }
+    },
+    "sidebar": {
+      "totalPrice": "Igiciro Cyose",
+      "tourSummary": "Incamake y'Urugendo",
+      "total": "Igiteranyo"
+    }
+  }
+
+  
+  
+
 
 }

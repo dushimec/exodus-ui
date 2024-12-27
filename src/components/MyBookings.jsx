@@ -1,8 +1,13 @@
+
+
+
 import React, { useState } from 'react';
 import { CheckCircle, Clock, XCircle } from 'lucide-react';
 import backgroundVideo from "../IMAGE/Back.mp4"; // Import the background video
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 
 const BookingCard = ({ booking }) => {
+  const { t } = useTranslation(); // Initialize useTranslation
   const statusColors = {
     approved: ' bg-green-100 text-green-800',
     pending: 'bg-yellow-100 text-yellow-800',
@@ -23,17 +28,18 @@ const BookingCard = ({ booking }) => {
         <h3 className="text-lg sm:text-xl font-semibold">{booking.destination}</h3>
         <span className={`px-2 py-1 rounded-full text-sm ${statusColors[booking.status]}`}>
           <Icon className="inline-block w-4 h-4 mr-1" />
-          {booking.status.charAt(0).toUpperCase() + booking.status.slice(1)}
+          {t(`myBookings.status.${booking.status}`)}
         </span>
       </div>
-      <p className="text-gray-600 mb-2">Date: {booking.date}</p>
-      <p className="text-gray-600 mb-2">Guests: {booking.guests}</p>
-      <p className="font-semibold">Total: ${booking.total}</p>
+      <p className="text-gray-600 mb-2">{t('myBookings.date')}: {booking.date}</p>
+      <p className="text-gray-600 mb-2">{t('myBookings.guests')}: {booking.guests}</p>
+      <p className="font-semibold">{t('myBookings.total')}: ${booking.total}</p>
     </div>
   );
 };
 
 export default function MyBookings() {
+  const { t } = useTranslation(); // Initialize useTranslation
   const [activeTab, setActiveTab] = useState('all');
 
   const bookings = [
@@ -50,7 +56,6 @@ export default function MyBookings() {
 
   return (
     <div className="relative min-h-screen">
-      {/* Video background */}
       <video
         src={backgroundVideo}
         type="video/mp4"
@@ -60,41 +65,38 @@ export default function MyBookings() {
         className="absolute inset-0 w-full h-full object-cover z-[-1]"
       ></video>
 
-      {/* Content wrapper */}
       <div className="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12">
         <div className="max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto bg-white p-4 sm:p-6 rounded-lg shadow-lg mt-14">
           <header className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl sm:text-3xl   font-bold text-primary">My Bookings</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-primary">{t('myBookings.title')}</h1>
           </header>
           <nav className="mb-6">
-  <ul className="flex flex-wrap justify-center lg:flex-row sm:flex-col sm:items-start sm:border-b sm:border-primary/30">
-    {['all', 'approved', 'pending', 'canceled'].map((tab) => (
-      <li key={tab} className="w-full sm:w-auto">
-        <button
-          className={`px-4 py-2 font-semibold w-full text-center sm:text-left ${activeTab === tab
-            ? 'text-sky-500 border-b-2 border-sky-500'
-            : 'text-primary/60 hover:text-primary'}`}
-          onClick={() => setActiveTab(tab)}
-        >
-          {tab.charAt(0).toUpperCase() + tab.slice(1)}
-        </button>
-      </li>
-    ))}
-  </ul>
-</nav>
+            <ul className="flex flex-wrap justify-center lg:flex-row sm:flex-col sm:items-start sm:border-b sm:border-primary/30">
+              {['all', 'approved', 'pending', 'canceled'].map((tab) => (
+                <li key={tab} className="w-full sm:w-auto">
+                  <button
+                    className={`px-4 py-2 font-semibold w-full text-center sm:text-left ${activeTab === tab
+                      ? 'text-sky-500 border-b-2 border-sky-500'
+                      : 'text-primary/60 hover:text-primary'}`}
+                    onClick={() => setActiveTab(tab)}
+                  >
+                    {t(`myBookings.tabs.${tab}`)}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
           <main>
             <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">
-              {activeTab === 'all'
-                ? 'All Bookings'
-                : `${activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Bookings`}
+              {t(`myBookings.heading.${activeTab}`)}
             </h2>
             {filteredBookings.length > 0 ? (
               filteredBookings.map(booking => (
                 <BookingCard key={booking.id} booking={booking} />
               ))
             ) : (
-              <p className="text-gray-600">No bookings found.</p>
+              <p className="text-gray-600">{t('myBookings.noBookings')}</p>
             )}
           </main>
         </div>

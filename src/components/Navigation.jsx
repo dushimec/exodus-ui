@@ -189,12 +189,12 @@ function Navigation() {
           ) : (
             <div className="relative mr-16" >
               <button onClick={toggleDropdown} className="flex items-center">
-                <img
-                  loading="lazy"
-                  src={user.profile.url}
-                  alt="User Profile"
-                  className="object-cover w-10 h-10 rounded-full"
-                />
+<img
+  loading="lazy"
+  src={user?.profile?.url || 'default-profile-url.jpg'} // Provide a default image if user.profile.url is undefined
+  alt="User Profile"
+  className="object-cover w-10 h-10 rounded-full"
+/>
               </button>
 
               {isDropdownOpen && (

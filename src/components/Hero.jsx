@@ -132,7 +132,7 @@ const { loading } = posts;
             <form onSubmit={handleSearch} className="relative">
               <input
                 type="text"
-                placeholder="Search for a destination"
+                placeholder={t('hero.searchPlaceholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full bg-white bg-opacity-90 rounded-full py-2 sm:py-3 px-6 pl-12 text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-sky-300 shadow-lg"
