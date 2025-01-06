@@ -1,43 +1,8 @@
 import React, { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import israel from "../IMAGE/israel.jpg";
-
-function BookingForm({ isOpen, onClose }) {
-  if (!isOpen) return null;
-
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg p-6 w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-4 text-sky-500">Book Your Trip to Israel</h2>
-        <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-            <input type="text" id="name" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Your Name" />
-          </div>
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-            <input type="email" id="email" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Your Email" />
-          </div>
-          <div>
-            <label htmlFor="travelers" className="block text-sm font-medium text-gray-700">Number of Travelers</label>
-            <input type="number" id="travelers" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="1" min="1" />
-          </div>
-          <div>
-            <label htmlFor="date" className="block text-sm font-medium text-gray-700">Date</label>
-            <input type="date" id="date" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
-          </div>
-          <div className="text-xl font-bold text-sky-500 mt-4">
-            Price: $540
-          </div>
-          <div className="flex gap-4 mt-6">
-            <button type="submit" className="flex-1 bg-sky-500 text-white py-2 px-4 rounded-md hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-200">Book Now</button>
-            <button onClick={onClose} className="flex-1 bg-gray-200 text-gray-800 py-2 px-4 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition duration-200">Cancel</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
-}
+import { useDispatch, useSelector } from "react-redux";
+import BookingForm from "./BookingForm";
 
 function RelatedTours() {
   const [tours, setTours] = useState([
@@ -129,6 +94,7 @@ function RelatedTours() {
 
 function JerusalemDetails() {
   const [isBookingFormOpen, setIsBookingFormOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const destinations = [
     {
@@ -162,6 +128,10 @@ function JerusalemDetails() {
       date: "January 10, 2025"
     }
   ];
+
+  const handleBooking = () => {
+    setIsBookingFormOpen(true);
+  };
 
   return (
     <div className="w-full h-auto bg-stone-50 relative">
@@ -253,7 +223,7 @@ function JerusalemDetails() {
               </div>
             </div>
             <button 
-              onClick={() => setIsBookingFormOpen(true)}
+              onClick={handleBooking}
               className="w-full mt-6 bg-sky-500 text-white px-4 py-2 rounded-md hover:bg-sky-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-opacity-50"
             >
               Book Now
@@ -265,6 +235,7 @@ function JerusalemDetails() {
       <BookingForm
         isOpen={isBookingFormOpen}
         onClose={() => setIsBookingFormOpen(false)}
+        postId="israel-tour-2023" // Replace with actual post ID
       />
     </div>
   );

@@ -1,11 +1,18 @@
 import axios from '../axios'
-import cookies from 'js-cookie'
+import Cookies from 'js-cookie'
 
 
 // create endpoint
 
 export const createBooking = async (postId) =>{
-    const response = await axios.post(`/booking/${postId}`)
+
+    const token = Cookies.get("token");
+    if (!token) {
+      throw new Error("Token not found");
+    }
+    const response = await axios.post(`/booking/${postId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     return response.data;
 }
 
