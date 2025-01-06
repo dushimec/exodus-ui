@@ -1,394 +1,355 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import cookies from 'js-cookie';
-import {createProduct as createProductService, getAllProducts as getAllProductsService, getProductsByCategoryName as getProductsByCategoryNameService,updateProduct as updateProductService, deleteProduct as deleteProductService, aggregateProductsByCategory as aggregateProductsByCategoryService, getMostOrderedProducts as getMostOrderedProductsService, getRecentProducts as getRecentProductsService} from '../services/productService'
-import { cancelBooking } from './bookingSlice';
+import {
+    createProduct as createProductService,
+    getAllProducts as getAllProductsService,
+    getProductsByCategoryName as getProductsByCategoryNameService,
+    updateProduct as updateProductService,
+    deleteProduct as deleteProductService,
+    aggregateProductsByCategory as aggregateProductsByCategoryService,
+    getMostOrderedProducts as getMostOrderedProductsService,
+    getRecentProducts as getRecentProductsService,
+    bookProduct as bookProductService,
+    getBookingsByProductId as getBookingsByProductIdService,
+    cancelBooking as cancelBookingService,
+    getAllBookings as getAllBookingsService,
+} from '../services/productService';
 
+// Async thunks
 
-
-// thunk for createproduct
-export const createProduct = createAsyncThunk('product/createProduct', async ({rejectWithValue}) => {
-    try {
-        const response = await createProductService();
-        return response;
-    } catch (error){
-        return rejectWithValue(error.response?.data)
+export const createProduct = createAsyncThunk(
+    'product/createProduct',
+    async (productData, { rejectWithValue }) => {
+        try {
+            const response = await createProductService(productData);
+            return response;
+        } catch (error) {
+            return rejectWithValue(error.response?.data || error.message);
+        }
     }
-});
+);
 
-
-// thunk for getallproducts
-export const getAllProducts = createAsyncThunk('product/getAllProucts' , async({rejectWithValue}) =>{
-    try{
-        const response = await getAllProductsService();
-        return response;
-    }catch{
-        return rejectWithValue(error.response?.data)
+export const getAllProducts = createAsyncThunk(
+    'product/getAllProducts',
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await getAllProductsService();
+            return response;
+        } catch (error) {
+            return rejectWithValue(error.response?.data || error.message);
+        }
     }
-});
+);
 
-//thunk for getProductsByCategoryName
-
-export const getProductsByCategoryName = createAsyncThunk('product/getProductsByCategoryName' , async(category, {rejectWithValue}) =>{
-    try{
-        const response = await getProductsByCategoryNameService(category);
-        return response;
-    }catch{
-        return rejectWithValue(error.response?.data)
+export const getProductsByCategoryName = createAsyncThunk(
+    'product/getProductsByCategoryName',
+    async (categoryName, { rejectWithValue }) => {
+        try {
+            const response = await getProductsByCategoryNameService(categoryName);
+            return response;
+        } catch (error) {
+            return rejectWithValue(error.response?.data || error.message);
+        }
     }
-});
+);
 
-//thunk for updateProduct
-export const updateProduct = createAsyncThunk('product/updateProduct' , async(id, {rejectWithValue}) =>{
-    try{
-        const response = await updateProductService(id);
-        return response;
-    } catch{
-        return rejectWithValue(error.response?.data)
+export const updateProduct = createAsyncThunk(
+    'product/updateProduct',
+    async (productData, { rejectWithValue }) => {
+        try {
+            const response = await updateProductService(productData);
+            return response;
+        } catch (error) {
+            return rejectWithValue(error.response?.data || error.message);
+        }
     }
-});
+);
 
-//thunk for deleteProduct
-export const deleteProduct = createAsyncThunk('product/deleteProduct' , async(id, {rejectWithValue}) =>{
-    try{
-        const response = await deleteProductService(id)
-        return response
-    }catch{
-        return rejectWithValue(error.response?.data)
+export const deleteProduct = createAsyncThunk(
+    'product/deleteProduct',
+    async (productId, { rejectWithValue }) => {
+        try {
+            const response = await deleteProductService(productId);
+            return response;
+        } catch (error) {
+            return rejectWithValue(error.response?.data || error.message);
+        }
     }
-});
+);
 
-
-//thunk for aggregateProductsByCategory
-export const aggregateProductsByCategory= createAsyncThunk('product/aggregateProductsByCategory' , async(aggregate, {rejectWithValue}) =>{
-    try{
-        const response = await aggregateProductsByCategoryService(aggregate);
-        return response;
-    }catch{
-        return rejectWithValue(error.response?.data)
+export const aggregateProductsByCategory = createAsyncThunk(
+    'product/aggregateProductsByCategory',
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await aggregateProductsByCategoryService();
+            return response;
+        } catch (error) {
+            return rejectWithValue(error.response?.data || error.message);
+        }
     }
-});
-
-//thunk for getMostOrderedProducts
-
+);
 
 export const getMostOrderedProducts = createAsyncThunk(
-  'product/getMostOrderedProducts',
-  async (mostOrderedParams, { rejectWithValue }) => { // Use "mostOrderedParams" instead of "most-ordered"
-    try {
-      const response = await getMostOrderedProductsService(mostOrderedParams);
-      return response; // Return the response data
-    } catch (error) {
-      return rejectWithValue(error.response?.data); // Ensure "error" is defined
-    }
-  });
-
-
-
-
-// export const getMostOrderedProducts =  createAsyncThunk('product/getMostOrderedProducts', async (most-ordered,  {rejectWithValue}) => {
-// try{
-//     const response = await getMostOrderedProductsService(most-ordered);
-//     return response;
-// } catch {
-//     return rejectWithValue(error.response?.data)
-// }
-// });
-
-
-
-//thunk for getRecentProducts
-export const getRecentProducts = createAsyncThunk('product/getRecentProducts' , async(recent, {rejectWithValue}) =>{
-    try{
-const response = await getRecentProductsService(recent);
-return response;
-    }catch{
-        return rejectWithValue(error.response?.data)
-    }
-});
-
-
-//thunk for  bookproduct
-export const bookProduct = createAsyncThunk('product/bookProduct' , async(book, {rejectWithValue}) =>{
-    try{
-        const response = await bookProductService(book);
-        return response;
-    }catch{
-        return rejectWithValue(error.response?.data)
-    }
-});
-
-//thunk getBookingsByProductId
-export const getBookingsByProductId = createAsyncThunk('product/getBookingsByProductId' , async(id, {rejectWithValue}) =>{
-try{
-    const response = await getBookingsByProductIdService(id);
-    return response;
-}catch{
-    return rejectWithValue(error.response?.data)
-}
-});
-
-//thunk for cancelbooking
-export const  cancelbooking = createAsyncThunk(
     'product/getMostOrderedProducts',
-    async (cancelBookingParams, { rejectWithValue }) => { // Use "mostOrderedParams" instead of "most-ordered"
-      try {
-        const response = await  cancelbookingService( cancelBookingParams);
-        return response; // Return the response data
-      } catch (error) {
-        return rejectWithValue(error.response?.data); // Ensure "error" is defined
-      }
-    });
-  
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await getMostOrderedProductsService();
+            return response;
+        } catch (error) {
+            return rejectWithValue(error.response?.data || error.message);
+        }
+    }
+);
 
-//slice for product
+export const getRecentProducts = createAsyncThunk(
+    'product/getRecentProducts',
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await getRecentProductsService();
+            return response;
+        } catch (error) {
+            return rejectWithValue(error.response?.data || error.message);
+        }
+    }
+);
+
+export const bookProduct = createAsyncThunk(
+    'product/bookProduct',
+    async (bookingData, { rejectWithValue }) => {
+        try {
+            const response = await bookProductService(bookingData);
+            return response;
+        } catch (error) {
+            return rejectWithValue(error.response?.data || error.message);
+        }
+    }
+);
+
+export const getBookingsByProductId = createAsyncThunk(
+    'product/getBookingsByProductId',
+    async (productId, { rejectWithValue }) => {
+        try {
+            const response = await getBookingsByProductIdService(productId);
+            return response;
+        } catch (error) {
+            return rejectWithValue(error.response?.data || error.message);
+        }
+    }
+);
+
+export const cancelBooking = createAsyncThunk(
+    'product/cancelBooking',
+    async (bookingId, { rejectWithValue }) => {
+        try {
+            const response = await cancelBookingService(bookingId);
+            return response;
+        } catch (error) {
+            return rejectWithValue(error.response?.data || error.message);
+        }
+    }
+);
+
+export const getAllBookings = createAsyncThunk(
+    'product/getAllBookings',
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await getAllBookingsService();
+            return response;
+        } catch (error) {
+            return rejectWithValue(error.response?.data || error.message);
+        }
+    }
+);
+
+// Slice
 
 const productSlice = createSlice({
     name: 'product',
-    initialState:{
-        products:[],
-        loading:false,
-        error:null,
-        product:null,
-        success:false,
+    initialState: {
+        products: [],
+        product: null,
+        bookings: [],
+        mostOrderedProducts: [],
+        recentProducts: [],
+        loading: false,
+        error: null,
+        success: false,
         token: cookies.get('token'),
     },
-    reducers:{
-        resetProduct(state,action){
+    reducers: {
+        resetProduct: (state) => {
             state.product = null;
             state.success = false;
         },
     },
-
-     //builder for createproduct
-     extraReducers:(builder) => {
+    extraReducers: (builder) => {
         builder
+            // Create Product
+            .addCase(createProduct.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(createProduct.fulfilled, (state, action) => {
+                state.loading = false;
+                state.success = true;
+                state.product = action.payload;
+            })
+            .addCase(createProduct.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            // Get All Products
+            .addCase(getAllProducts.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getAllProducts.fulfilled, (state, action) => {
+                state.loading = false;
+                state.products = action.payload;
+            })
+            .addCase(getAllProducts.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            // Get Products By Category Name
+            .addCase(getProductsByCategoryName.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getProductsByCategoryName.fulfilled, (state, action) => {
+                state.loading = false;
+                state.products = action.payload;
+            })
+            .addCase(getProductsByCategoryName.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            // Update Product
+            .addCase(updateProduct.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(updateProduct.fulfilled, (state, action) => {
+                state.loading = false;
+                state.success = true;
+                state.product = action.payload;
+            })
+            .addCase(updateProduct.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            // Delete Product
+            .addCase(deleteProduct.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(deleteProduct.fulfilled, (state, action) => {
+                state.loading = false;
+                state.success = true;
+                state.product = action.payload;
+            })
+            .addCase(deleteProduct.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            // Aggregate Products By Category
+            .addCase(aggregateProductsByCategory.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(aggregateProductsByCategory.fulfilled, (state, action) => {
+                state.loading = false;
+                state.products = action.payload;
+            })
+            .addCase(aggregateProductsByCategory.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            // Get Most Ordered Products
+            .addCase(getMostOrderedProducts.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getMostOrderedProducts.fulfilled, (state, action) => {
+                state.loading = false;
+                state.mostOrderedProducts = action.payload;
+            })
+            .addCase(getMostOrderedProducts.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            // Get Recent Products
+            .addCase(getRecentProducts.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getRecentProducts.fulfilled, (state, action) => {
+                state.loading = false;
+                state.recentProducts = action.payload;
+            })
+            .addCase(getRecentProducts.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            // Book Product
+            .addCase(bookProduct.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(bookProduct.fulfilled, (state, action) => {
+                state.loading = false;
+                state.success = true;
+                state.bookings.push(action.payload);
+            })
+            .addCase(bookProduct.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            // Get Bookings By Product ID
+            .addCase(getBookingsByProductId.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getBookingsByProductId.fulfilled, (state, action) => {
+                state.loading = false;
+                state.bookings = action.payload;
+            })
+            .addCase(getBookingsByProductId.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            // Cancel Booking
+            .addCase(cancelBooking.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(cancelBooking.fulfilled, (state, action) => {
+                state.loading = false;
+                state.success = true;
+                state.bookings = state.bookings.filter(
+                    (booking) => booking.id !== action.payload.id
+                );
+            })
+            .addCase(cancelBooking.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            // Get All Bookings
+            .addCase(getAllBookings.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getAllBookings.fulfilled, (state, action) => {
+                state.loading = false;
+                state.bookings = action.payload;
+            })
+            .addCase(getAllBookings.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            });
+    },
+});
 
-        .addCase(createProduct.pending, (state,action) => {
-        state.loading = true;
-        state.error = null;
-        state.success = false;
-     })
-
-        .addCase(createProduct.fulfilled,(state,action) =>{
-            state.loading = false;
-            state.error = null;
-            state.success = true;
-            state.product = action.payload.product;
-
-        })
-
-        .addCase(createProduct.rejected, (state,action) =>{
-            state.loading = false;
-            state.error = action.payload;
-            state.success = false;
-
-        })
-
-//builder for getAllProduct
-.addCase(getAllProducts.pending, (state,action) => {
-    state.loading = true;
-    state.error = null;
-    state.success = false;
-
-})
-.addCase(getAllProducts.fulfilled, (state,action) =>{
-    state.loading = false;
-    state.error = null;
-    state.success = true;
-    state.product = action.payload.products;
-
-})
-.addCase(getAllProducts.rejected, (state,action) =>{
-    state.loading = false;
-    state.error = action.payload;
-
-})
- 
-//builer for get getProductsByCategoryName
-.addCase(getProductsByCategoryName.pending , (state,action)=>{
-    state.loading = true;
-    state.error = null;
-    state.success = false;
-
-})
-.addCase(getProductsByCategoryName.fulfilled, (state,action) =>{
-    state.loading = false;
-    state.error = null;
-    state.success = true;
-    state.product = action.payload.product;
-})
-.addCase(getProductsByCategoryName.rejected, (state,action) =>{
-    state.loading = false;
-    state.error = action.payload;
-
-})
-        
-
-//builder for updateproduct
-.addCase(updateCard.pending, (state,action) =>{
-    state.loading = true;
-    state.error = null;
-    state.success = false;
-
-})
-.addCase(updateProduct.fulfilled, (state,action) =>{
-    state.loading = false;
-    state.error = null;
-    state.success = true;
-    state.product =  action.payload.product
-
-})
-.addCase(updateProduct.rejected, (state,action) =>{
-    state.loading = false;
-    state.error = action.payload;
-
-})
-
-// builder for deleteproduct
-.addCase(deleteProduct.pending, (state, action) =>{
-    state.loading =  true;
-    state.error = null;
-    state.success = false;
-
-})
-.addCase(deleteProduct.fulfilled , (state,action) =>{
-    state.loading = false;
-    state.error = null;
-    state.success = true;
-
-
-})
-.addCase(deleteProduct.rejected, (state,action) =>{
-    state.loading = false;
-    state.error = action.payload;
-
-})
-
-//builder for aggregateProductsByCategory
-.addCase(aggregateProductsByCategory.pending, (state,action) =>{
-    state.loading = true;
-    state.error = null;
-    state.success = false;
-
-})
-.addCase(aggregateProductsByCategory.fulfilled, (state,action)=>{
-    state.loading = false;
-    state.error = null;
-    state.success = true;
-    state.products = action.payload.products;
-
-})
-.addCase(aggregateProductsByCategory.rejected, (state,action) =>{
-    state.loading = false;
-    state.error = action.payload;
-
-})
-
-//thunk for getMostOrderedProducts
-
-.addCase(getMostOrderedProducts.pending, (state,action) =>{
-    state.loading = true;
-    state.error = null;
-    state.success = false;
-
-})
-.addCase(getMostOrderedProducts.fulfilled, (state,action) =>{
-    state.loading = false;
-    state.error = null;
-    state.success = true;
-    state.mostOrderedProducts= action.payload.products;
-
-})
-.addCase(getMostOrderedProducts.rejected, (state,action) =>{
-    state.loading = false;
-    state.error = action.payload;
-})
-
-
-
-//builder for getRecentProducts
-.addCase(getRecentProducts.pending, (state,action) =>{
-    state.loading  = true;
-    state.error = null;
-    state.success = false;
-
-})
-.addCase(getRecentProducts.fulfilled, (state,action)=>{
-    state.loading = false;
-    state.error = null;
-    state.success = true;
-    state.recentProducts= action.payload.products;
-
-})
-.addCase(getRecentProducts.rejected, (state,action) =>{
-    state.loading = false;
-    state.error = action.payload;
-
-})
-
-
-//builder for  bookproduct
-
-.addCase(bookProduct.pending, (state,action)=>{
-    state.loading = true;
-    state.error = null;
-    state.success = false;
-
-})
-.addCase(bookProduct.fulfilled, (state,action) =>{
-    state.loading = false;
-    state.error = null;
-    state.success = true;
-
-})
-
-.addCase(bookProduct.rejected, (state,action)=>{
-    state.loading = false;
-    state.error = action.payload;
-
-})
-
-//builder for getBookingsByProductId
-
-.addCase(getBookingsByProductId.pending, (state,action)=>{
-    state.loading = true;
-    state.error = null;
-    state.success = false;
-
-})
-.addCase(getBookingsByProductId.fulfilled, (state,action)=>{
-    state.loading = false;
-    state.error = null;
-    state.success = true;
-    state.bookings = action.payload.bookings
-})
-.addCase(getBookingsByProductId.rejected, (state,action)=>{
-    state.loading = false;
-    state.error = action.payload;
-
-})
-//buider for cancelbooking
-.addCase(cancelBooking.pending, (state,action)=>{
-    state.loading = true;
-    state.error = null;
-    state.success = false;
-
-})
-.addCase(cancelBooking.fulfilled, (state,action) =>{
-    state.loading = false;
-    state.error = null;
-    state.success = true;
-
-})
-.addCase(cancelBooking.rejected, (state,action)=>{
-    state.loading = false;
-    state.error = action.payload;
-})
-
-     }
-
-})
+// Export actions and reducer
 export const { resetProduct } = productSlice.actions;
 export default productSlice.reducer;
-
-
