@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { FaHeart, FaDollarSign, FaGlobe, FaComment } from "react-icons/fa";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPostsByDestination } from '../slices/postSlice';
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 function Destinations() {
+
   useEffect(() => {
     AOS.init({ duration: 1000 }); // Initialize AOS animations
     AOS.refresh(); // Refresh animations
