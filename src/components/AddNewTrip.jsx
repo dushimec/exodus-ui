@@ -51,12 +51,15 @@ export default function AddNewTrip() {
 
   const handleImageSelect = (e) => {
     const file = e.target.files?.[0];
+    console.log("Selected file:", file); // Log the selected file
     if (file) {
       if (!file.type.startsWith('image/')) {
         toast.error("Please upload a valid image file");
         return;
       }
       setSelectedImage(file);
+    } else {
+      console.log("No file selected"); // Log if no file is selected
     }
   };
   
@@ -76,47 +79,59 @@ export default function AddNewTrip() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!selectedImage) {
-      toast.error("Please upload a photo");
+  
+    // Basic form validation
+    if (!title.trim() || !destination.trim() || !tripCost || !bookingDate || !description.trim()) {
+      toast.error("Please fill out all required fields.");
       return;
     }
-    
-    const formData = new FormData(); 
+  
+    if (!selectedImage) {
+      toast.error("Please upload a photo.");
+      return;
+    }
+  
+    // Prepare FormData
+    const formData = new FormData();
     formData.append('title', title);
     formData.append('destination', destination);
     formData.append('price', tripCost);
     formData.append('currency', currency);
     formData.append('tripDate', bookingDate);
     formData.append('content', description);
-    if (selectedImage) {
-      formData.append('file', selectedImage);
-    }
+    formData.append('file', selectedImage);
     formData.append('sites', JSON.stringify(sites));
     formData.append('trips', JSON.stringify(trips));
-
-    dispatch(addPost(formData))
-      .unwrap()
-      .then(() => {
-        toast.success('Trip added successfully!');
-        // Clear form fields after submission
-        setTitle('');
-        setDestination('');
-        setTripCost('');
-        setCurrency('USD');
-        setBookingDate('');
-        setDescription('');
-        setSelectedImage(null);
-        setSites([{ name: '', tripDate: '' }]);
-        setTrips([{ title: '', content: '', price: '', tripDate: '' }]);
-      })
-      .catch((error) => {
+  
+    try {
+      // Dispatch action
+      await dispatch(addPost(formData)).unwrap();
+      toast.success('Trip added successfully!');
+  
+      // Clear form fields after successful submission
+      setTitle('');
+      setDestination('');
+      setTripCost('');
+      setCurrency('USD');
+      setBookingDate('');
+      setDescription('');
+      setSelectedImage(null);
+      setSites([{ name: '', tripDate: '' }]);
+      setTrips([{ title: '', content: '', price: '', tripDate: '' }]);
+    } catch (error) {
+      // Enhanced error handling
+      if (error.response?.data?.message) {
+        toast.error(`Error: ${error.response.data.message}`);
+      } else if (error.message) {
         toast.error(`Error: ${error.message}`);
-      });
+      } else {
+        toast.error("An unexpected error occurred. Please try again.");
+      }
+    }
   };
-
+  
   return (
     <div className="bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto">
       <h1 className="text-2xl font-bold mb-6">New Trip Card</h1>
