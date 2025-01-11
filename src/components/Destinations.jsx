@@ -95,19 +95,11 @@ function DestinationCard({ name, country, price, likes, image, link }) {
               <FaGlobe className="w-4 h-4 mr-2" />
               <span>{country}</span>
             </div>
-            <div className="flex items-center">
+            {/* <div className="flex items-center">
               <FaDollarSign className="w-4 h-4 mr-2" />
               <span>{price}$</span>
-            </div>
-            <div className="flex items-center">
-              <FaHeart
-                className={`w-5 h-5 mr-1 cursor-pointer ${
-                  isLiked ? "text-red-500 scale-125 transition-transform duration-200" : "text-gray-500"
-                }`}
-                onClick={handleLikeClick}
-              />
-              <span>{likeCount} Likes</span>
-            </div>
+            </div> */}
+           
           </div>
 
           <div className="text-xs flex justify-between items-center gap-2 text-gray-500 mt-2">
@@ -115,12 +107,21 @@ function DestinationCard({ name, country, price, likes, image, link }) {
               <FaComment className="w-4 h-4 mr-2" />
               <span className="text-sm mr-6">View all 9 Comments</span>
             </div>
-            <div className="flex justify-end">
+            {/* <div className="flex justify-end">
               <Link to={link}>
                 <button className="ml-5 px-1 py-2 text-xs text-sky-500 border border-sky-500 rounded-full hover:bg-sky-500 hover:text-white transition-colors">
                   View Details
                 </button>
               </Link>
+            </div> */}
+             <div className="flex items-center">
+              <FaHeart
+                className={`w-5 h-5 mr-1 cursor-pointer ${
+                  isLiked ? "text-red-500 scale-125 transition-transform duration-200" : "text-gray-500"
+                }`}
+                onClick={handleLikeClick}
+              />
+              <span>{likeCount} Likes</span>
             </div>
           </div>
         </div>
