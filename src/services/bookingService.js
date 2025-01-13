@@ -1,7 +1,6 @@
 import axios from '../axios'
 import Cookies from 'js-cookie'
 
-
 // create endpoint
 
 export const createBooking = async (postId) =>{
