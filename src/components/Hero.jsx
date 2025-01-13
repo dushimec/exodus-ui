@@ -22,12 +22,9 @@ export default function TravelHero() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-const posts = useSelector((state) => state.posts);
-const upcomingTrips = posts.upcomingPosts;
-const { loading } = posts;
-// console.log('Posts State:', posts);
-// console.log('Upcoming Trips:', upcomingTrips);
-// console.log('Loading state:', loading); 
+  const posts = useSelector((state) => state.posts);
+  const upcomingTrips = Array.isArray(posts?.upcomingPosts) ? posts.upcomingPosts : []; // Ensure it's an array
+  const { loading } = posts;
 
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
@@ -66,14 +63,14 @@ const { loading } = posts;
   }, [dispatch]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTripIndex((prevIndex) =>
-        upcomingTrips && upcomingTrips.length > 0
-          ? (prevIndex + 1) % upcomingTrips.length
-          : 0
-      );
-    }, 5000);
-    return () => clearInterval(interval);
+    if (upcomingTrips.length > 0) {
+      const interval = setInterval(() => {
+        setCurrentTripIndex((prevIndex) =>
+          (prevIndex + 1) % upcomingTrips.length
+        );
+      }, 5000);
+      return () => clearInterval(interval);
+    }
   }, [upcomingTrips]);
 
   useEffect(() => {
@@ -99,13 +96,13 @@ const { loading } = posts;
     <>
       <div className="relative pt-24 sm:pt-32 min-h-screen h-[80vh] flex flex-col justify-center items-center px-4 overflow-hidden">
         <div className="absolute inset-0 w-full h-full overflow-hidden">
-        <div class="bg-black absolute inset-0 opacity-30"></div>
+          <div className="bg-black absolute inset-0 opacity-30"></div>
           <video autoPlay loop muted playsInline className="w-full h-full object-cover">
             <source src={video} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-      
+
         <div className="relative container mx-auto px-4 py-8 sm:py-12 flex flex-col lg:flex-row items-center justify-between" data-aos="fade-up">
           <div className="lg:w-1/2 lg:mt-0 lg:mb-0 text-center lg:text-left" data-aos="fade-up">
             <h1
@@ -147,22 +144,28 @@ const { loading } = posts;
               </h2>
               {loading ? (
                 <p>Loading...</p>
-              ) : (
+              ) : upcomingTrips.length > 0 ? (
                 <div className="relative h-48 sm:h-56">
-                  {upcomingTrips && upcomingTrips.length > 0 && upcomingTrips.map((trip, index) => (
+                  {upcomingTrips.map((trip, index) => (
                     <div
                       key={trip._id}
                       className={`absolute top-0 left-0 w-full h-full transition-all duration-500 ease-in-out ${
                         index === currentTripIndex ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'
                       }`}
                     >
-<img src={Array.isArray(trip.postImage) && trip.postImage.length > 0 ? trip.postImage[0].url : ''} alt={trip.title} className="rounded object-cover w-full h-full" />
+                      <img
+                        src={Array.isArray(trip.postImage) && trip.postImage.length > 0 ? trip.postImage[0].url : ''}
+                        alt={trip.title || 'Upcoming trip'}
+                        className="rounded object-cover w-full h-full"
+                      />
                       <p className="absolute bottom-2 left-2 bg-sky-500 text-white px-2 py-1 rounded text-sm sm:text-base">
-                        {trip.title}
+                        {trip.title || 'No Title'}
                       </p>
                     </div>
                   ))}
                 </div>
+              ) : (
+                <p>No upcoming trips available.</p>
               )}
 
               <div className="absolute bottom-5 right-6 flex space-x-2">
