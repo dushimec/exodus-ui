@@ -73,6 +73,7 @@
     "israel": "Israel",
     "turkey": "Turkey",
     "egypt": "Egypt"
+
   },
   "about": {
     "header": "About Us",
@@ -181,7 +182,70 @@
     "loading": "Sending...",
     "statusSuccess": "Password reset link sent!",
     "errorMessage": "An error occurred. Please try again."
-  }
+  },
+  
+    "title": "My Bookings",
+    "tabs": {
+      "all": "All",
+      "approved": "Approved",
+      "pending": "Pending",
+      "canceled": "Canceled"
+    },
+    "headings": {
+      "all_bookings": "All Bookings",
+      "approved_bookings": "Approved Bookings",
+      "pending_bookings": "Pending Bookings",
+      "canceled_bookings": "Canceled Bookings"
+    },
+    "labels": {
+      "date": "Date",
+      "guests": "Guests",
+      "total": "Total",
+      "no_bookings": "No bookings found."
+    },
+    "profile": {
+      "title": "User Profile Dashboard",
+      "personalInfo": "Personal Information",
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "saveChanges": "Save Changes",
+      "uploadNewAvatar": "Upload new avatar",
+      "clickToUpload": "Click on the image to upload a new profile photo",
+      "likedDestinations": "Liked Destinations",
+      "likedDestinationsDescription": "These are the destinations you've liked. They will be displayed on the home page.",
+      "accountSettings": "Account Settings",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm New Password",
+      "changePassword": "Change Password",
+      "supportContact": "Support & Contact",
+      "supportDescription": "If you're experiencing issues or have questions, please don't hesitate to reach out to our support team.",
+      "supportEmail": "Email",
+      "supportPhone": "Phone",
+      "message": "Message",
+      "describeProblem": "Describe your issue or question",
+      "submitRequest": "Submit Request",
+      "preferences": "Preferences",
+      "support": "Support",
+      "newDestinationTutor": "New! Click to learn more about this destination.",
+      "destinations": {
+        "rwanda": {
+          "name": "Rwanda",
+          "description": "Experience the beauty and culture of the Land of a Thousand Hills."
+        },
+        "turkey": {
+          "name": "Turkey",
+          "description": "Immerse yourself in the vibrant culture of Turkey's capital."
+        },
+        "israel": {
+          "name": "Israel",
+          "description": "Explore the rich history and diverse landscapes of the Holy Land."
+        }
+      }
+    }
+  
+
   
   }
   

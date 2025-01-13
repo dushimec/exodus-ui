@@ -73,7 +73,10 @@
   "israel": "Isiraheli",
   "turkey": "Turukiya",
   "egypt": "Misiri"
+  
 },
+
+  "view": "Reba",
 "about": {
   "header": "Ibyerekeye Twebwe",
   "subheader":"Ibyo Dukora",
@@ -181,6 +184,68 @@
   "loading": "Kohereza...",
   "statusSuccess": "Ubutumwa bwo kubyutsa ijambo ry'ibanga bwoherejwe!",
   "errorMessage": "Habaye ikibazo. Ongera ugerageze."
-}
+},
+
+  "title": "Ibyo Wasabye",
+  "tabs": {
+    "all": "Byose",
+    "approved": "Byemejwe",
+    "pending": "Biracyategereje",
+    "canceled": "Byahagaritswe"
+  },
+  "headings": {
+    "all_bookings": "Ibyo Wasabye Byose",
+    "approved_bookings": "Ibyemejwe",
+    "pending_bookings": "Ibyategerejwe",
+    "canceled_bookings": "Ibyahagaritswe"
+  },
+  "labels": {
+    "date": "Itariki",
+    "guests": "Abashyitsi",
+    "total": "Igiteranyo",
+    "no_bookings": "Nta byo wasabye byabonetse."
+  },
+  "profile": {
+    "title": "Ikibaho cy'Umukoresha",
+    "personalInfo": "Amakuru Bwite",
+    "fullName": "Amazina Yombi",
+    "email": "Imeyili",
+    "phone": "Nimero ya Telefone",
+    "saveChanges": "Bika Impinduka",
+    "uploadNewAvatar": "Shyiramo ifoto nshya",
+    "clickToUpload": "Kanda kuri iyi foto kugira ngo ushyiremo ifoto nshya y'umwirondoro",
+    "likedDestinations": "Ahantu Wakunze",
+    "likedDestinationsDescription": "Aha ni ahantu wakunze. Bizagaragara ku rupapuro rw'ahabanza.",
+    "accountSettings": "Igenamiterere rya Konti",
+    "currentPassword": "Ijambo ry'Ibanga rya Ubu",
+    "newPassword": "Ijambo ry'Ibanga Rishya",
+    "confirmPassword": "Emeza Ijambo ry'Ibanga Rishya",
+    "changePassword": "Hindura Ijambo ry'Ibanga",
+    "supportContact": "Ubufasha & Aho Watwandikira",
+    "supportDescription": "Niba ufite ibibazo cyangwa se hari icyo ushaka kubaza, ntutinye guhita utwandikira.",
+    "supportEmail": "Imeyili",
+    "supportPhone": "Telefone",
+    "message": "Ubutumwa",
+    "describeProblem": "Sobanura ikibazo cyawe cyangwa ikibazo ufite",
+    "submitRequest": "Ohereza Ubusabe",
+    "preferences": "Ibyo Ukunda",
+    "support": "Ubufasha",
+    "newDestinationTutor": "Gishya! Kanda hano kugira ngo umenye byinshi kuri aha hantu.",
+    "destinations": {
+      "rwanda": {
+        "name": "U Rwanda",
+        "description": "Menya ubwiza n'umuco w'Igihugu cy'Imisozi Igihumbi."
+      },
+      "turkey": {
+        "name": "Turukiya",
+        "description": "Injira mu muco ukomeye w'umurwa mukuru wa Turukiya."
+      },
+      "israel": {
+        "name": "Isiraheli",
+        "description": "Rambagira amateka n'imisozi itandukanye y'Igihugu Cyera."
+      }
+    }
+  }
+
 
 }
