@@ -7,6 +7,7 @@ import { fetchPostsByDestination } from '../slices/postSlice';
 import { useTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
 
+
 export default function Destiny() {
   const dispatch = useDispatch();
   const { posts, isLoading, error } = useSelector((state) => state.posts);
@@ -43,33 +44,45 @@ export default function Destiny() {
           className="absolute inset-0 object-cover w-full h-full blur-sm"
           alt="Background"
         />
-        <div className="absolute inset-0 bg-black opacity-30"></div>
+        {/* <div className="absolute inset-0 bg-black opacity-30"></div>
         <div className="relative flex flex-col items-center px-4 py-6 text-center">
           <h1 className="text-2xl sm:text-3xl md:text-4xl border-4 border-white bg-opacity-0 w-[80%] max-w-[496px]">
             {t("destiny.title")}
           </h1>
           <p className="mt-8 sm:mt-12 text-lg">{t("destiny.explore")}</p>
+        </div> */}
+        <div className="absolute inset-0 bg-black opacity-60"></div>
+         <div className="flex relative flex-col justify-start items-center px-2 w-full sm:px-2 sm:pt-10 md:px-20 md:pt-24">
+          <div className="px-2 py-4  text-2xl lg:mt-5  mt-10 sm:px-8 sm:py-6 md:px-12 md:py-9 mb-0 text-center bg-transparent border-white border-solid bg-opacity-0 border-4 sm:border-8 md:border-[10px] w-[80%] max-w-[496px]">
+          {t('destiny.title')}
+          </div>
+          <div className="mt-8 sm:mt-15 flex flex-row justify-center">
+          {t('destiny.explore')}
+          </div>
+
         </div>
       </div>
 
       {/* Destination Cards */}
       <div className="mt-20 sm:mt-28 lg:mt-40 w-full max-w-[1104px] px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
-        {destinations.map(destination => (
-          <DestinationCard
-            key={destination.name}
-            imageSrc={destination.imageSrc}
-            location={t(`destiny.destinations.${destination.name.toLowerCase()}`)}
-            description={t(`destiny.destinations.${destination.name.toLowerCase()}Description`)}
-            aosAnimation="zoom-in"
-            detailLink={destination.link}
-          />
-        ))}
-      </div>
+  {destinations.map(destination => (
+    <DestinationCard
+      key={destination.name}
+      imageSrc={destination.imageSrc}
+      location={t(`destiny.destinations.${destination.name.toLowerCase()}`)}
+      description={t(`destiny.destinations.${destination.name.toLowerCase()}Description`)}
+      aosAnimation="zoom-in"
+      detailLink={destination.link}
+      t={t} // Pass t here
+    />
+  ))}
+</div>
+
     </div>
   );
 }
 
-function DestinationCard({ imageSrc, location, description, aosAnimation, detailLink }) {
+function DestinationCard({ imageSrc, location, description, aosAnimation, detailLink, t }) {
   return (
     <div
       className="relative group w-full h-64 sm:h-80 lg:h-96 overflow-hidden bg-cover bg-center transition-all duration-300"
@@ -87,7 +100,7 @@ function DestinationCard({ imageSrc, location, description, aosAnimation, detail
         <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <Link to={detailLink}>
             <button className="px-6 py-2 font-semibold text-black bg-white">
-              Discover
+              {t('destiny.discover')}
             </button>
           </Link>
         </div>
@@ -95,3 +108,5 @@ function DestinationCard({ imageSrc, location, description, aosAnimation, detail
     </div>
   );
 }
+
+

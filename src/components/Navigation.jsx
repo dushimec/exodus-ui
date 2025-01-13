@@ -5,7 +5,7 @@ import { logout, getProfile } from "../slices/authSlice";
 import Flag from "react-flagkit";
 import { useTranslation } from "react-i18next";
 import { UserCircle, Calendar, LogOut, Home, Info, MapPin, Briefcase, ShoppingBag, Mail } from 'lucide-react';
-import logo from '../IMAGE/logo.jpg'
+import logo from '../IMAGE/logo.jpg';
 import ProtectedRoute from '../components/ProtectedRoute';
 
 function Navigation() {
@@ -279,37 +279,37 @@ function Navigation() {
                 <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
                   <Home className="h-6 w-6 md:h-8 md:w-8" />
                 </button>
-                <span className="text-sm md:text-base ">Home</span>
+                <span className="text-sm md:text-base">{t('navigation.home')}</span>
               </Link>
               <Link to="/about" className="flex flex-col items-center" onClick={toggleMenu}>
                 <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
                   <Info className="h-6 w-6 md:h-8 md:w-8" />
                 </button>
-                <span className="text-sm md:text-base">About Us</span>
+                <span className="text-sm md:text-base">{t('navigation.about')}</span>
               </Link>
               <Link to="/destiny" className="flex flex-col items-center" onClick={toggleMenu}>
                 <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
                   <MapPin className="h-6 w-6 md:h-8 md:w-8" />
                 </button>
-                <span className="text-sm md:text-base">Destination</span>
+                <span className="text-sm md:text-base">{t('navigation.destination')}</span>
               </Link>
               <Link to="/service" className="flex flex-col items-center" onClick={toggleMenu}>
                 <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
                   <Briefcase className="h-6 w-6 md:h-8 md:w-8" />
                 </button>
-                <span className="text-sm md:text-base">Service</span>
+                <span className="text-sm md:text-base">{t('navigation.service')}</span>
               </Link>
               <Link to="/products" className="flex flex-col items-center" onClick={toggleMenu}>
                 <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
                   <ShoppingBag className="h-6 w-6 md:h-8 md:w-8" />
                 </button>
-                <span className="text-sm md:text-base">Products</span>
+                <span className="text-sm md:text-base">{t('navigation.products')}</span>
               </Link>
               <Link to="/contact" className="flex flex-col items-center" onClick={toggleMenu}>
                 <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
                   <Mail className="h-6 w-6 md:h-8 md:w-8" />
                 </button>
-                <span className="text-sm md:text-base">Contact</span>
+                <span className="text-sm md:text-base">{t('navigation.contact')}</span>
               </Link>
             </div>
           
@@ -322,7 +322,7 @@ function Navigation() {
                       <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
                         <UserCircle className="h-6 w-6 md:h-8 md:w-8" />
                       </button>
-                      <span className="text-sm md:text-base">Profile</span>
+                      <span className="text-sm md:text-base">{t('navigation.profile')}</span>
                     </ProtectedRoute>
                   </Link>
                   <Link to="/MyBookings" className="flex flex-col items-center" onClick={toggleMenu}>
@@ -330,14 +330,14 @@ function Navigation() {
                       <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
                         <Calendar className="h-6 w-6 md:h-8 md:w-8" />
                       </button>
-                      <span className="text-sm md:text-base">My Bookings</span>
+                      <span className="text-sm md:text-base">{t('navigation.myBooking')}</span>
                     </ProtectedRoute>
                   </Link>
                   <button onClick={handleLogout} className="flex flex-col items-center">
                     <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
                       <LogOut className="h-6 w-6 md:h-8 md:w-8" />
                     </div>
-                    <span className="text-sm md:text-base">Logout</span>
+                    <span className="text-sm md:text-base">{t('navigation.logout')}</span>
                   </button>
                 </div>
 
@@ -357,7 +357,7 @@ function Navigation() {
             {!user && (
               <div className="fixed bottom-0 left-0 right-0 p-4 bg-white border-t">
                 <div className="flex justify-between gap-4">
-                  <Link to="/login" className="flex-1 bg-sky-500 text-white rounded-full py-2 px-4 text-center  " onClick={toggleMenu}>
+                  <Link to="/login" className="flex-1 bg-sky-500 text-white rounded-full py-2 px-4 text-center" onClick={toggleMenu}>
                     {t('navigation.login')}
                   </Link>
                   <Link to="/signup" className="flex-1 border border-sky-500 text-sky-500 rounded-full py-2 px-4 text-center" onClick={toggleMenu}>
