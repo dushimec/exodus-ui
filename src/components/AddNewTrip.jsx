@@ -12,7 +12,7 @@ export default function AddNewTrip() {
   const [currency, setCurrency] = useState('USD');
   const [bookingDate, setBookingDate] = useState('');
   const [description, setDescription] = useState('');
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImages, setSelectedImages] = useState([]);
   const [sites, setSites] = useState([{ name: '', tripDate: '' }]);
   const [trips, setTrips] = useState([{ title: '', content: '', price: '', tripDate: '' }]);
   const fileInputRef = useRef(null);
@@ -50,33 +50,28 @@ export default function AddNewTrip() {
   };
 
   const handleImageSelect = (e) => {
-    const file = e.target.files?.[0];
-    console.log("Selected file:", file); // Log the selected file
-    if (file) {
-      if (!file.type.startsWith('image/')) {
-        toast.error("Please upload a valid image file");
-        return;
-      }
-      setSelectedImage(file);
-    } else {
-      console.log("No file selected"); // Log if no file is selected
+    const files = Array.from(e.target.files);
+    const validFiles = files.filter(file => file.type.startsWith('image/'));
+    if (validFiles.length !== files.length) {
+      toast.error("Please upload valid image files");
+      return;
     }
+    setSelectedImages(validFiles);
   };
-  
+
   const handleDragOver = (e) => {
     e.preventDefault();
   };
 
   const handleDrop = (e) => {
     e.preventDefault();
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      const file = e.dataTransfer.files[0];
-      if (!file.type.startsWith('image/')) {
-        toast.error("Please upload a valid image file");
-        return;
-      }
-      setSelectedImage(file);
+    const files = Array.from(e.dataTransfer.files);
+    const validFiles = files.filter(file => file.type.startsWith('image/'));
+    if (validFiles.length !== files.length) {
+      toast.error("Please upload valid image files");
+      return;
     }
+    setSelectedImages(validFiles);
   };
 
   const handleSubmit = async (e) => {
@@ -88,10 +83,11 @@ export default function AddNewTrip() {
       return;
     }
   
-    if (!selectedImage) {
-      toast.error("Please upload a photo.");
+    if (selectedImages.length === 0) {
+      toast.error("Please upload at least one photo.");
       return;
     }
+  
   
     // Prepare FormData
     const formData = new FormData();
@@ -101,7 +97,11 @@ export default function AddNewTrip() {
     formData.append('currency', currency);
     formData.append('tripDate', bookingDate);
     formData.append('content', description);
-    formData.append('file', selectedImage);
+    
+    selectedImages.forEach((image, index) => {
+      formData.append(`files`, image);
+    });
+  
     formData.append('sites', JSON.stringify(sites));
     formData.append('trips', JSON.stringify(trips));
   
@@ -117,7 +117,7 @@ export default function AddNewTrip() {
       setCurrency('USD');
       setBookingDate('');
       setDescription('');
-      setSelectedImage(null);
+      setSelectedImages([]);
       setSites([{ name: '', tripDate: '' }]);
       setTrips([{ title: '', content: '', price: '', tripDate: '' }]);
     } catch (error) {
@@ -131,6 +131,7 @@ export default function AddNewTrip() {
       }
     }
   };
+  
   
   return (
     <div className="bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto">
@@ -192,25 +193,30 @@ export default function AddNewTrip() {
             ref={fileInputRef}
             type="file"
             accept="image/*"
+            multiple
             onChange={handleImageSelect}
             className="hidden"
           />
           <Plus className="mx-auto mb-2" size={24} />
-          <p>Upload Trip Image</p>
+          <p>Upload Trip Images</p>
           <p className="text-sm text-gray-500">Drag and drop or click to select</p>
         </div>
 
-        {/* Selected image */}
-        {selectedImage && (
-          <div className="mt-2 flex items-center">
-            <p className="mr-2">Selected: {selectedImage.name}</p>
-            <button
-              type="button"
-              onClick={() => setSelectedImage(null)}
-              className="text-red-500 hover:text-red-700"
-            >
-              Remove
-            </button>
+        {/* Selected images */}
+        {selectedImages.length > 0 && (
+          <div className="mt-2">
+            {selectedImages.map((image, index) => (
+              <div key={index} className="flex items-center mb-2">
+                <p className="mr-2">{image.name}</p>
+                <button
+                  type="button"
+                  onClick={() => setSelectedImages(selectedImages.filter((_, i) => i !== index))}
+                  className="text-red-500 hover:text-red-700"
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
           </div>
         )}
 

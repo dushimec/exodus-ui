@@ -8,6 +8,7 @@ import { ProgressCircle } from './progress-circle';
 import { TripPanel } from './ trip-panel';
 import logo from '../IMAGE/logo.jpg';
 
+
 import { ProductManagement } from './product-management';
 import { SettingsPanel } from './settings-panel';
 import { NotificationsPanel } from './notifications-panel';
