@@ -7,6 +7,7 @@ import video from "../IMAGE/video.mp4"
 import AOS from "aos"
 import "aos/dist/aos.css"
 import { useTranslation } from "react-i18next"
+import { useSpring, animated, config } from "react-spring"
 
 import Tour from "../components/Tour"
 
@@ -27,6 +28,7 @@ export default function TravelHero() {
   const [searchTerm, setSearchTerm] = useState("")
   const [searchResults, setSearchResults] = useState([])
   const [isVisible, setIsVisible] = useState(false)
+  const [currentTripIndex, setCurrentTripIndex] = useState(0)
   const titleRef = useRef(null)
   const tourRef = useRef(null)
 
@@ -66,6 +68,16 @@ export default function TravelHero() {
     setSearchResults(results)
   }, [searchTerm])
 
+  useEffect(() => {
+    if (upcomingTrips && upcomingTrips.length > 0) {
+      const timer = setInterval(() => {
+        setCurrentTripIndex((prevIndex) => (prevIndex + 1) % upcomingTrips.length)
+      }, 5000) // Change image every 5 seconds
+
+      return () => clearInterval(timer)
+    }
+  }, [upcomingTrips])
+
   const handleSearch = (e) => {
     e.preventDefault()
     if (searchResults.length > 0) {
@@ -99,15 +111,19 @@ export default function TravelHero() {
             </h1>
 
             <div className="space-y-4 max-w-md mx-auto lg:mx-0">
-              {["internationalTour", "religionTour", "localTour"].map((tour, index) => (
+              {[
+                { id: "internationalTour", desc: "OldFox guides you through global spiritual landmarks" },
+                { id: "religionTour", desc: "Explore sacred sites with OldFox's expert knowledge" },
+                { id: "localTour", desc: "Discover hidden spiritual gems in your area with OldFox" },
+              ].map((tour, index) => (
                 <div
-                  key={tour}
+                  key={tour.id}
                   className="bg-white bg-opacity-20 backdrop-blur-lg rounded-lg p-3 transform transition-all duration-300 hover:scale-105"
                   data-aos="fade-right"
                   data-aos-delay={200 * (index + 1)}
                 >
-                  <h2 className="text-lg sm:text-xl font-semibold text-white mb-1">{t(`hero.${tour}`, tour)}</h2>
-                  <p className="text-xs sm:text-sm text-white">{t(`hero.${tour}Desc`, `Description for ${tour}`)}</p>
+                  <h2 className="text-lg sm:text-xl font-semibold text-white mb-1">{t(`hero.${tour.id}`, tour.id)}</h2>
+                  <p className="text-xs sm:text-sm text-white">{t(`hero.${tour.id}Desc`, tour.desc)}</p>
                 </div>
               ))}
             </div>
@@ -129,23 +145,27 @@ export default function TravelHero() {
                   aria-hidden="true"
                 />
               </form>
-              {searchResults.length > 0 && searchTerm && (
+              {searchTerm && (
                 <div className="absolute z-10 w-full mt-2 bg-white bg-opacity-20 backdrop-blur-lg rounded-lg shadow-lg">
-                  {searchResults.map((result) => (
-                    <div
-                      key={result.id}
-                      className="px-4 py-2 hover:bg-white hover:bg-opacity-30 cursor-pointer text-white"
-                      onClick={() => navigate(`/destination/${result.id}`)}
-                    >
-                      {result.name}
-                    </div>
-                  ))}
+                  {searchResults.length > 0 ? (
+                    searchResults.map((result) => (
+                      <div
+                        key={result.id}
+                        className="px-4 py-2 hover:bg-white hover:bg-opacity-30 cursor-pointer text-white"
+                        onClick={() => navigate(`/destination/${result.id}`)}
+                      >
+                        {result.name}
+                      </div>
+                    ))
+                  ) : (
+                    <div className="px-4 py-2 text-white">No destinations found for "{searchTerm}"</div>
+                  )}
                 </div>
               )}
             </div>
 
             <div
-              className="bg-white bg-opacity-20  backdrop-blur-lg rounded-lg p-4 shadow-lg relative overflow-hidden"
+              className="bg-white bg-opacity-20 backdrop-blur-lg rounded-lg p-4 shadow-lg relative overflow-hidden"
               data-aos="fade-up"
             >
               <h2 className="text-lg sm:text-xl font-semibold text-white mb-4" data-aos="fade-up">
@@ -154,21 +174,37 @@ export default function TravelHero() {
               {loading ? (
                 <p className="text-white">Loading...</p>
               ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                  {upcomingTrips &&
-                    upcomingTrips.slice(0, 3).map((trip) => (
-                      <div key={trip._id} className="relative aspect-square overflow-hidden rounded-lg">
-                        <img
-                          src={Array.isArray(trip.postImage) && trip.postImage.length > 0 ? trip.postImage[0].url : ""}
-                          alt={trip.title}
-                          className="object-cover w-full h-full"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        <p className="absolute bottom-2 left-2 right-2 text-white text-sm font-semibold truncate">
-                          {trip.title}
-                        </p>
-                      </div>
-                    ))}
+                <div className="relative aspect-[16/9] overflow-hidden rounded-lg">
+                  {upcomingTrips && upcomingTrips.length > 0 && (
+                    <div
+                      className="absolute inset-0 flex transition-transform duration-700 ease-in-out"
+                      style={{
+                        transform: `translateX(-${currentTripIndex * 100}%)`,
+                      }}
+                    >
+                      {upcomingTrips.map((trip, index) => (
+                        <div
+                          key={index}
+                          className="w-full h-full flex-shrink-0"
+                          style={{ position: "relative" }}
+                        >
+                          <img
+                            src={
+                              Array.isArray(trip.postImage) && trip.postImage.length > 0
+                                ? trip.postImage[0].url
+                                : ""
+                            }
+                            alt={trip.title}
+                            className="object-cover w-full h-full"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                          <p className="absolute bottom-4 left-4 right-4 text-white text-lg font-semibold">
+                            {trip.title}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -182,4 +218,3 @@ export default function TravelHero() {
     </>
   )
 }
-
