@@ -19,6 +19,7 @@ const allDestinations = [
 ]
 
 export default function TravelHero() {
+
   const { t } = useTranslation()
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -31,6 +32,21 @@ export default function TravelHero() {
   const [currentTripIndex, setCurrentTripIndex] = useState(0)
   const titleRef = useRef(null)
   const tourRef = useRef(null)
+
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const posts = useSelector((state) => state.posts);
+  const upcomingTrips = Array.isArray(posts?.upcomingPosts) ? posts.upcomingPosts : []; // Ensure it's an array
+  const { loading } = posts;
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [currentTripIndex, setCurrentTripIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const titleRef = useRef(null);
+  const tourRef = useRef(null);
+
 
   useEffect(() => {
     AOS.init({ duration: 1500, easing: "ease-out" })
@@ -62,11 +78,23 @@ export default function TravelHero() {
   }, [dispatch])
 
   useEffect(() => {
+
     const results = allDestinations.filter((destination) =>
       destination.name.toLowerCase().includes(searchTerm.toLowerCase()),
     )
     setSearchResults(results)
   }, [searchTerm])
+
+    if (upcomingTrips.length > 0) {
+      const interval = setInterval(() => {
+        setCurrentTripIndex((prevIndex) =>
+          (prevIndex + 1) % upcomingTrips.length
+        );
+      }, 5000);
+      return () => clearInterval(interval);
+    }
+  }, [upcomingTrips]);
+
 
   useEffect(() => {
     if (upcomingTrips && upcomingTrips.length > 0) {
@@ -89,18 +117,27 @@ export default function TravelHero() {
     <>
       <div className="relative pt-16 sm:pt-24 min-h-screen flex flex-col justify-center items-center px-4 overflow-hidden">
         <div className="absolute inset-0 w-full h-full overflow-hidden">
+
           <div className="bg-black absolute inset-0 opacity-55"></div>
+
+          <div className="bg-black absolute inset-0 opacity-30"></div>
+
           <video autoPlay loop muted playsInline className="w-full h-full object-cover">
             <source src={video} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
 
+
         <div
           className="relative container mx-auto px-4 py-8 flex flex-col lg:flex-row items-center justify-between"
           data-aos="fade-up"
         >
           <div className="w-full lg:w-1/2 mb-8 lg:mb-0 text-center lg:text-left" data-aos="fade-up">
+
+        <div className="relative container mx-auto px-4 py-8 sm:py-12 flex flex-col lg:flex-row items-center justify-between" data-aos="fade-up">
+          <div className="lg:w-1/2 lg:mt-0 lg:mb-0 text-center lg:text-left" data-aos="fade-up">
+
             <h1
               ref={titleRef}
               className={`text-2xl sm:text-3xl lg:text-6xl font-bold text-white mb-6 leading-tight transition-opacity duration-1000 ${
@@ -172,16 +209,24 @@ export default function TravelHero() {
                 {t("hero.upcomingTrips", "Upcoming Trips")}
               </h2>
               {loading ? (
+
                 <p className="text-white">Loading...</p>
               ) : (
                 <div className="relative aspect-[16/9] overflow-hidden rounded-lg">
                   {upcomingTrips && upcomingTrips.length > 0 && (
+
+                <p>Loading...</p>
+              ) : upcomingTrips.length > 0 ? (
+                <div className="relative h-48 sm:h-56">
+                  {upcomingTrips.map((trip, index) => (
+
                     <div
                       className="absolute inset-0 flex transition-transform duration-700 ease-in-out"
                       style={{
                         transform: `translateX(-${currentTripIndex * 100}%)`,
                       }}
                     >
+
                       {upcomingTrips.map((trip, index) => (
                         <div
                           key={index}
@@ -203,9 +248,21 @@ export default function TravelHero() {
                           </p>
                         </div>
                       ))}
+
+                      <img
+                        src={Array.isArray(trip.postImage) && trip.postImage.length > 0 ? trip.postImage[0].url : ''}
+                        alt={trip.title || 'Upcoming trip'}
+                        className="rounded object-cover w-full h-full"
+                      />
+                      <p className="absolute bottom-2 left-2 bg-sky-500 text-white px-2 py-1 rounded text-sm sm:text-base">
+                        {trip.title || 'No Title'}
+                      </p>
+
                     </div>
                   )}
                 </div>
+              ) : (
+                <p>No upcoming trips available.</p>
               )}
             </div>
           </div>

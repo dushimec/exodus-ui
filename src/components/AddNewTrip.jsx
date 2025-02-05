@@ -174,8 +174,8 @@ export default function AddNewTrip() {
           </div>
         )}
 
-       {/* Sites Section */}
-       <h2 className="text-lg font-semibold">Sites</h2>
+        {/* Sites Section */}
+        <h2 className="text-lg font-semibold">Sites</h2>
         {sites.map((site, index) => (
           <div key={index} className="flex items-center space-x-2 mb-2">
             <input
