@@ -1,28 +1,28 @@
 import React from "react";
 import { FaArrowLeft } from "react-icons/fa";
 
-import image1 from "../IMAGE/image1.png";
-import image2 from "../IMAGE/image2.png";
-import image3 from "../IMAGE/image3.png";
-import image7 from "../IMAGE/image7.jpeg";
-import image8 from "../IMAGE/image8.jpeg";
-import image9 from "../IMAGE/image9.jpeg";
-import image10 from "../IMAGE/image10.jpeg";
-import image11 from "../IMAGE/image11.jpeg";
+import image50 from "../IMAGE/image50.jpeg";
+import image51 from "../IMAGE/image51.jpeg";
+import image52 from "../IMAGE/image52.jpeg";
+import image55 from "../IMAGE/image55.jpeg";
+import image56 from "../IMAGE/image56.jpeg";
+import image57 from "../IMAGE/image57.jpeg";
+import image58 from "../IMAGE/image58.jpeg";
+import image59 from "../IMAGE/image59.jpeg";
 
 // 🔹 Add your own details here (title & description)
 const imageDetails = [
-  { src: image1, title: "kibeho", description: "urugendo rutagatifu." },
-  { src: image2, title: "inyanza m'urukari", description: "umuco nyarwanda." },
-  { src: image3, title: "inka", description: "umuco nyarwanda." },
-  { src: image7, title: "tembera urwanda", description: "imisozi nibibaya." },
-  { src: image8, title: "kigali", description: "kigali ikeye." },
-  { src: image9, title: "ibirunga", description: "musanze ikeye." },
-  { src: image10, title: "abapadiri", description: "ijambo ry'IMANA hose." },
-  { src: image11, title: "kibeho", description: "ubwami bw'Imana hose." },
+  { src: image50, title: "isreal", description: "." },
+  { src: image51, title: "france", description: "." },
+  { src: image52, title: "turkey", description: "." },
+  { src: image55, title: "turkey", description: "." },
+  { src: image56, title: "egypte", description: "." },
+  { src: image57, title: "italy", description: "." },
+  { src: image58, title: "teraviv", description: "." },
+  { src: image59, title: "sion", description: "." },
 ];
 
-const LocalGallery = () => {
+const InternationalGallery = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       {/* Back Button */}
@@ -35,7 +35,7 @@ const LocalGallery = () => {
       </button>
 
       <h1 className="text-4xl font-bold text-center text-gray-800 mb-8 font-roboto">
-        Local Gallery
+        International Gallery
       </h1>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -62,4 +62,4 @@ const LocalGallery = () => {
   );
 };
 
-export default LocalGallery;
+export default InternationalGallery;

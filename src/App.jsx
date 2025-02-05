@@ -28,6 +28,8 @@ import Profile from './components/Profile';
 import MyBookings from './components/MyBookings';
 import NotFound from './components/NotFound';
 import ProtectedRoute from './components/ProtectedRoute';
+import LocalGallery from './components/LocalGallery';
+import InternationalGallery from './components/InternationalGallery';
 
 function App() {
   const location = useLocation();
@@ -59,6 +61,8 @@ function App() {
     "/profile",
     "/admin-login",
     "/dashboard",
+    "/LocalGallery",
+    "/InternationalGallery",
   ].includes(location.pathname);
 
   const shouldShowNavbar =
@@ -83,6 +87,7 @@ function App() {
                 <WhyChooseUs />
                 <PopularTourPackages />
                 <HowItWorks />
+              
               </>
             }
           />
@@ -105,6 +110,8 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/admin-login" element={<Admin />} />
+          <Route path="/LocalGallery" element={<LocalGallery />} />
+          <Route path="/InternationalGallery" element={<InternationalGallery />} />
 
           {/* Protected Routes */}
           <Route
