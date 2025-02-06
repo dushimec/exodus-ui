@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { FaArrowLeft, FaStar, FaMapMarkerAlt, FaClock, FaImage } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import RwandaLocalTour from "../IMAGE/LocalTour.jpg";
+import AbroadTour from "../IMAGE/InternationalTour.jpg";
 
 function PopularTourPackages() {
   const [selectedTour, setSelectedTour] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [filteredTours, setFilteredTours] = useState([]); // State to hold filtered tours
 
   useEffect(() => {
     if (selectedTour) {
@@ -19,24 +22,30 @@ function PopularTourPackages() {
   const tourPackages = [
     {
       id: 1,
-      name: "Rwanda Heritage Tour",
-      image: "https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
+      name: "Rwanda Local Tour",
+      image: RwandaLocalTour,
       rating: 4.9,
       location: "Rwanda",
-      type: "local tour",
+      type: "Local Tour",
     },
     {
       id: 2,
-      name: "Dubai City Explorer",
-      image: "https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
+      name: "Abroad Tour",
+      image: AbroadTour,
       rating: 4.8,
-      location: "Dubai, UAE",
-      type: "international tour",
+      location: "Israel, Turkey, Italy,....",
+      type: "International Tour",
     },
   ];
 
   const handleBack = () => {
     setSelectedTour(null);
+  };
+
+  const handleGalleryClick = (tourType) => {
+    // Filter tours based on the selected type
+    const filtered = tourPackages.filter((tour) => tour.type === tourType);
+    setFilteredTours(filtered);
   };
 
   if (selectedTour) {
@@ -96,10 +105,10 @@ function PopularTourPackages() {
                   alt={`Scenic view of ${tour.name}`}
                   className="w-full h-[400px] object-cover rounded-t-xl"
                 />
-                <div className="absolute top-4 left-4 bg-[#0584c7] text-white px-4 py-1 rounded-md  flex items-center gap-1 ">
+                <div className="absolute top-4 left-4 bg-[#0584c7] text-white px-4 py-1 rounded-md flex items-center gap-1">
                   {tour.type}
                 </div>
-                <div className="absolute top-4 right-4 bg-[#0584c7] text-white px-4 py-1 rounded-md flex items-center gap-1 ">
+                <div className="absolute top-4 right-4 bg-[#0584c7] text-white px-4 py-1 rounded-md flex items-center gap-1">
                   <FaStar />
                   {tour.rating}
                 </div>
@@ -113,14 +122,13 @@ function PopularTourPackages() {
                   <span className="ml-2">{tour.location}</span>
                 </div>
                 <Link
-                  to={tour.type === "local tour" ? "/localgallery" : "/internationalgallery"}
-                   className="mt-4 w-full bg-[#0584c7] hover:bg-[#5f9fb3] text-white px-4 py-2 rounded-lg transition duration-300 transform hover:scale-105 flex items-center justify-center gap-4"
-                  >
-                   <FaImage />
-                   Gallery Images
-                    </Link>
-
-               
+                  to={tour.type === "Local Tour" ? "/localgallery" : "/internationalgallery"}
+                  onClick={() => handleGalleryClick(tour.type)} // Filter tours on click
+                  className="mt-4 w-full bg-[#0584c7] hover:bg-[#5f9fb3] text-white px-4 py-2 rounded-lg transition duration-300 transform hover:scale-105 flex items-center justify-center gap-4"
+                >
+                  <FaImage />
+                  Gallery Images
+                </Link>
               </div>
             </div>
           ))}
