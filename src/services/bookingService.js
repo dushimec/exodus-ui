@@ -45,3 +45,8 @@ export const approveBooking = async (id) =>{
     const response = await axios.patch(`booking/${id}/approve`)
     return response.data
 }
+
+export const getBookingPerformanceOverview = async(performance) =>{
+    const response = await axios.get("/booking/booking-performance-overview")
+    return response;
+}

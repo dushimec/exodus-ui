@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 import kigali from "../IMAGE/kigali.jpg";
+import { fetchPostsByDestination } from "../slices/postSlice";
 
 function BookingForm({ isOpen, onClose }) {
   if (!isOpen) return null;
@@ -129,26 +131,32 @@ function RelatedTours() {
 
 function RwandaDetails() {
   const [isBookingFormOpen, setIsBookingFormOpen] = useState(false);
+  const dispatch = useDispatch();
+  const { destinationPosts, isLoading, error } = useSelector((state) => state.posts);
+  
+  useEffect(() => {
+    dispatch(fetchPostsByDestination("Rwanda")); // Pass "Rwanda" as the destination
+  }, [dispatch]);
 
-  const destinations = [
+  const Sites = [
     {
       name: "Kibeho",
-      description: "Known for Marian apparitions, attracting pilgrims seeking spiritual renewal.",
+      content: "Known for Marian apparitions, attracting pilgrims seeking spiritual renewal.",
       price: 120
     },
     {
       name: "Musanze",
-      description: "Explore local churches and immerse yourself in the rich history of faith in this area.",
+      content: "Explore local churches and immerse yourself in the rich history of faith in this area.",
       price: 100
     },
     {
       name: "Lake Kivu",
-      description: "A beautiful setting for contemplation, where you can enjoy the tranquility of its shores.",
+      content: "A beautiful setting for contemplation, where you can enjoy the tranquility of its shores.",
       price: 90
     },
     {
       name: "Kigali Genocide Memorial",
-      description: "A poignant site that offers insights into Rwanda's history, emphasizing themes of forgiveness and reconciliation.",
+      content: "A poignant site that offers insights into Rwanda's history, emphasizing themes of forgiveness and reconciliation.",
       price: 80
     }
   ];
@@ -193,13 +201,23 @@ function RwandaDetails() {
           </div>
 
           <div className="space-y-6">
-            {destinations.map((destination) => (
-              <div key={destination.name} className="bg-white shadow-lg rounded-lg p-6">
-                <h2 className="text-2xl font-bold mb-2">{destination.name}</h2>
-                <p className="text-gray-600 mb-4">{destination.description}</p>
+            {destinationPosts.map((post) => (
+              <div key={post._id} className="bg-white shadow-lg rounded-lg p-6">
+                <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
+                <p className="text-gray-600 mb-4">{post.content}</p>
+                {post.postImage.map((image) => (
+                  <img key={image._id} src={image.url} alt={post.title} className="w-full h-auto mb-4" />
+                ))}
                 <div className="flex items-center justify-between">
-                  <p className="font-semibold">Price: ${destination.price}</p>
-              
+                  <p className="font-semibold">Price: ${post.price}</p>
+                </div>
+                <div className="mt-4">
+                  <h4 className="text-black text-lg font-bold">Sites:</h4>
+                  {post.sites.map((site) => (
+                    <div key={site._id} className="text-gray-600">
+                      <p>{site.name} - Trip Date: {new Date(site.tripDate).toLocaleDateString()}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
@@ -214,7 +232,6 @@ function RwandaDetails() {
               src={kigali}
               alt="Recently Visited Trip"
             />
-           
           </div>
 
           <RelatedTours />
@@ -231,7 +248,7 @@ function RwandaDetails() {
               <span className="text-base font-semibold">Tour Summary</span>
             </div>
             <div className="space-y-4">
-              {destinations.map((destination) => (
+              {Sites.map((destination) => (
                 <div key={destination.name} className="flex justify-between">
                   <span>{destination.name}</span>
                   <span>${destination.price}</span>
@@ -246,12 +263,11 @@ function RwandaDetails() {
             </div>
 
             <button 
-            onClick={() => setIsBookingFormOpen(true)}
-            className="w-full mt-6 bg-sky-500 text-white px-4 py-2 rounded-md hover:bg-sky-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-opacity-50"
-          >
-            Book Now
-          </button>
-
+              onClick={() => setIsBookingFormOpen(true)}
+              className="w-full mt-6 bg-sky-500 text-white px-4 py-2 rounded-md hover:bg-sky-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-opacity-50"
+            >
+              Book Now
+            </button>
           </div>
         </div>
       </div>
@@ -265,4 +281,3 @@ function RwandaDetails() {
 }
 
 export default RwandaDetails;
-
