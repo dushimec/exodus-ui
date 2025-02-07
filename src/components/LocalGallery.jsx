@@ -10,7 +10,7 @@ import image9 from "../IMAGE/image9.jpeg";
 import image10 from "../IMAGE/image10.jpeg";
 import image11 from "../IMAGE/image11.jpeg";
 
-// 🔹 Add your own details here (title & description)
+
 const imageDetails = [
   { src: image1, title: "kibeho", description: "urugendo rutagatifu." },
   { src: image2, title: "inyanza m'urukari", description: "umuco nyarwanda." },
@@ -35,8 +35,10 @@ const LocalGallery = () => {
       </button>
 
       <h1 className="text-4xl font-bold text-center text-gray-800 mb-8 font-roboto">
-        Local Gallery
-      </h1>
+  Local <span className="text-[#05b7fe]">Gallery</span>
+</h1>
+
+
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {imageDetails.map((image, index) => (
