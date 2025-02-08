@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css"; // Import CSS
 import { AuthContext } from "../context/authContext"; // Adjust the import path as necessary
 
-function AdminLogin() {
+function Admin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -98,4 +98,4 @@ function AdminLogin() {
   );
 }
 
-export default AdminLogin;
+export default Admin;

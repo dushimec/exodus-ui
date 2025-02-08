@@ -1,112 +1,323 @@
-import React, { useEffect, useState } from "react";
-import { MapPin } from 'lucide-react';
+import { useState , useEffect} from "react"
+import { useSpring, animated, useTrail } from "react-spring"
+import { useDispatch } from "react-redux"
+import { useTranslation } from "react-i18next"
+import { FaBook, FaLandmark } from "react-icons/fa"
+import kibeho from "../IMAGE/kibeho.jpg"
+import chruch from "../IMAGE/chruch.webp"
+import regina from "../IMAGE/regina.webp"
+import mosque from "../IMAGE/mosque.webp"
+import seminary from "../IMAGE/seminary.jpg"
+import wall from "../IMAGE/wall.webp"
+import bahi from "../IMAGE/bahi.jpeg"
+import sea from "../IMAGE/sea.jpeg"
+import gaza from "../IMAGE/gaza.jpeg"
+import temple from "../IMAGE/temple.jpeg"
+import saint from "../IMAGE/saint.jpeg"
+import hagia from "../IMAGE/hagia.jpeg"
+import ephesus from "../IMAGE/ephesus.jpeg"
+import capa from "../IMAGE/capa.jpeg"
 import AOS from 'aos';
-import 'aos/dist/aos.css'; 
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchPostsByDestination } from '../slices/postSlice';
-import { useTranslation } from 'react-i18next';
-import { Link } from "react-router-dom";
+import 'aos/dist/aos.css';
 
 
-export default function Destiny() {
-  const dispatch = useDispatch();
-  const { posts, isLoading, error } = useSelector((state) => state.posts);
-  const { t } = useTranslation();
 
-  const destinations = [
-    { name: 'Rwanda', imageSrc: 'https://cdn.builder.io/api/v1/image/assets/TEMP/33fae0df8bf179790c2123d2aba2911ebe9447d3273945edf5a1e32b89677d6a', link: '/RwandaDetails' },
-    { name: 'Israel', imageSrc: 'https://cdn.builder.io/api/v1/image/assets/TEMP/a6f3480c81274d3fc5b27e53fa8ba11235679978c2d207afcb03ef43152f0183', link: '/JerusalemDetails' },
-    { name: 'Turkey', imageSrc: 'https://cdn.builder.io/api/v1/image/assets/TEMP/1313d8b1bfaed5a882ed7c53af9b1ab46acdb10791f71d2039f72bba19ff2180', link: '/TurkeyDetails' },
-    { name: 'Egypt', imageSrc: 'https://cdn.builder.io/api/v1/image/assets/TEMP/2ce0e3cedfb6319b662aa74d29e7ddb053f294b6be2ce29fc5d7fcbf9b45e233', link: '/EgyptDetails' },
-  ];
 
+const religiousDestinations = {
+  Rwanda: [
+    {
+      name: "Kibeho Holy Land",
+      type: "Catholic Shrine",
+      description:
+        "Known for the Marian apparitions of Our Lady of Kibeho, this is the only Vatican-approved apparition site in Africa.",
+      significance: "Major Catholic pilgrimage site where the Virgin Mary appeared to three young women in the 1980s",
+      activities: ["Daily Mass", "Rosary Processions", "Spiritual Retreats", "Healing Prayers"],
+      imageSrc: kibeho,
+    },
+    {
+      name: "Regina Pacis Cathedral",
+      type: "Catholic Cathedral",
+      description: "The main Catholic cathedral in Kigali, showcasing modern African Christian architecture.",
+      significance: "Center of Catholic worship in Rwanda's capital",
+      activities: ["Sunday Mass", "Cultural Programs", "Religious Education", "Community Services"],
+      imageSrc: regina,
+    },
+    {
+      name: "Nyakibanda Seminary",
+      type: "Religious Institution",
+      description: "One of the oldest and largest seminaries in Rwanda, training priests since 1936.",
+      significance: "Historical center for religious education and formation",
+      activities: ["Guided Tours", "Religious Studies", "Historical Exhibits", "Prayer Sessions"],
+      imageSrc: seminary,
+    },
+ 
+  ],
+  Israel: [
+    {
+      name: "Western Wall",
+      type: "Jewish Holy Site",
+      description: "The most sacred site in Judaism, part of the ancient Temple Mount complex.",
+      significance: "Last remaining wall of the Second Temple of Jerusalem",
+      activities: ["Prayer Services", "Bar Mitzvah Ceremonies", "Tunnel Tours", "Shabbat Experience"],
+      imageSrc: wall
+    },
+    {
+      name: "Church of the Holy Sepulchre",
+      type: "Christian Holy Site",
+      description: "Traditional site of Jesus's crucifixion, burial, and resurrection.",
+      significance: "Most important pilgrimage site for many Christian denominations",
+      activities: ["Daily Mass", "Guided Tours", "Prayer Vigils", "Religious Ceremonies"],
+      imageSrc: chruch,
+    },
+    {
+      name: "Al-Aqsa Mosque",
+      type: "Islamic Holy Site",
+      description: "The third-holiest site in Islam, located on the Temple Mount.",
+      significance: "Major Islamic pilgrimage destination",
+      activities: ["Daily Prayers", "Islamic Studies", "Historical Tours", "Cultural Programs"],
+      imageSrc: mosque,
+    },
+    {
+      name: "Bahá'í Gardens",
+      type: "Bahá'í Holy Site",
+      description: "Terraced gardens surrounding the Shrine of the Báb in Haifa.",
+      significance: "World Center of the Bahá'í Faith",
+      activities: ["Guided Tours", "Meditation", "Photography", "Cultural Learning"],
+      imageSrc: bahi,
+    },
+    {
+      name: "Sea of Galilee",
+      type: "Multi-Faith Site",
+      description: "Freshwater lake associated with many events in Jesus's life.",
+      significance: "Important site for Christian pilgrims and nature lovers",
+      activities: ["Boat Tours", "Biblical Site Visits", "Baptism Ceremonies", "Nature Walks"],
+      imageSrc: sea,
+    },
+  ],
+  Egypt: [
+    {
+      name: "Great Pyramid of Giza",
+      type: "Ancient Wonder",
+      description: "One of the Seven Wonders of the Ancient World, built as a tomb for the Pharaoh Khufu.",
+      significance: "Symbol of ancient Egyptian civilization and engineering marvel",
+      activities: ["Guided Tours", "Camel Rides", "Sunset Viewing", "Archaeological Lectures"],
+      imageSrc: gaza,
+    },
+    {
+      name: "Luxor Temple",
+      type: "Ancient Temple",
+      description: "A large Ancient Egyptian temple complex located on the east bank of the Nile River.",
+      significance: "Important site for ancient Egyptian religion and history",
+      activities: ["Night Tours", "Hieroglyphic Workshops", "Sound and Light Shows", "Nile Cruises"],
+      imageSrc: temple,
+    },
+    {
+      name: "Saint Catherine's Monastery",
+      type: "Christian Monastery",
+      description: "One of the oldest working Christian monasteries in the world.",
+      significance: "Important site for Orthodox Christianity and home to valuable manuscripts",
+      activities: ["Guided Tours", "Icon Viewing", "Sunrise Hikes", "Meditation Sessions"],
+      imageSrc: saint,
+    },
+  ],
+  Turkey: [
+    {
+      name: "Hagia Sophia",
+      type: "Museum/Mosque",
+      description:
+        "Former Greek Orthodox Christian patriarchal cathedral, later an Ottoman imperial mosque, now a museum.",
+      significance: "Architectural marvel and symbol of Istanbul's diverse history",
+      activities: ["Guided Tours", "Art Appreciation", "Historical Lectures", "Photography Sessions"],
+      imageSrc: hagia,
+    },
+    {
+      name: "Ephesus",
+      type: "Ancient City",
+      description: "An ancient Greek city on the coast of Ionia, famous for the Temple of Artemis.",
+      significance: "One of the best-preserved ancient cities in the Mediterranean",
+      activities: ["Archaeological Tours", "Historical Reenactments", "Night Walks", "Photography Workshops"],
+      imageSrc:ephesus,
+    },
+    {
+      name: "Cappadocia",
+      type: "Natural Wonder",
+      description: "A region known for its distinctive 'fairy chimneys,' formed by volcanic rock formations.",
+      significance: "Unique landscape and early Christian history",
+      activities: ["Hot Air Balloon Rides", "Underground City Tours", "Rock Church Visits", "Hiking"],
+      imageSrc: capa,
+    },
+  ],
+}
+
+function CountryTabs({ countries, activeCountry, setActiveCountry }) {
+  const trail = useTrail(countries.length, {
+    from: { opacity: 0, transform: "scale(0.8)" },
+    to: { opacity: 1, transform: "scale(1)" },
+    config: { tension: 300, friction: 10 },
+  })
   useEffect(() => {
-    destinations.forEach(destination => {
-      dispatch(fetchPostsByDestination(destination.name));
-    });
-  }, [dispatch]);
-
-  const [hasVisited, setHasVisited] = useState(false);
-
-  useEffect(() => {
-    AOS.init({ duration: 1200, easing: 'ease-in-out', once: true });
-    const visited = localStorage.getItem('hasVisitedDestiny');
-    if (visited) setHasVisited(true);
-    else localStorage.setItem('hasVisitedDestiny', 'true');
+    AOS.init({ duration: 2000, easing: 'ease-out' });
   }, []);
+ 
 
   return (
-    <div className="flex flex-col items-center pb-4 bg-stone-50 bg-opacity-30">
-      {/* Header Section */}
-      <div className="relative flex flex-col items-center w-full text-white bg-cover bg-center min-h-[400px] pb-12 pt-24" data-aos="zoom-out">
+    <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mt-4 sm:mt-8 px-2 sm:px-4 w-full">
+      {trail.map((props, index) => (
+        <animated.button
+          key={countries[index]}
+          style={props}
+          onClick={() => setActiveCountry(countries[index])}
+          className={`px-3 sm:px-6 py-2 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+            activeCountry === countries[index]
+              ? "bg-sky-600 text-white shadow-lg transform -translate-y-1"
+              : "bg-white text-gray-600 hover:bg-sky-100"
+          }`}
+        >
+          {countries[index]}
+        </animated.button>
+      ))}
+    </div>
+  )
+}
+
+function TypeFilters({ filterTypes, selectedType, setSelectedType }) {
+  const trail = useTrail(filterTypes.length, {
+    from: { opacity: 0, transform: "translateY(20px)" },
+    to: { opacity: 1, transform: "translateY(0)" },
+    config: { tension: 300, friction: 10 },
+  })
+
+  return (
+    <div className="flex flex-wrap justify-center gap-2 mt-4 sm:mt-6 px-2 sm:px-4">
+      {trail.map((props, index) => (
+        <animated.button
+          key={filterTypes[index]}
+          style={props}
+          onClick={() => setSelectedType(filterTypes[index])}
+          className={`px-3 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm transition-all duration-300 ${
+            selectedType === filterTypes[index]
+              ? "bg-sky-600 text-white font-medium"
+              : "bg-gray-100 text-gray-600 hover:bg-sky-100"
+          }`}
+        >
+          {filterTypes[index]}
+        </animated.button>
+      ))}
+    </div>
+  )
+}
+
+function ReligiousDestinationCard({ name, type, description, significance, activities, imageSrc, index }) {
+  const getIcon = (type) => {
+    return FaLandmark
+  }
+
+  const Icon = getIcon(type)
+
+  const cardAnimation = useSpring({
+    from: { opacity: 0, transform: "translateY(50px)" },
+    to: { opacity: 1, transform: "translateY(0)" },
+    delay: index * 100,
+    config: { tension: 300, friction: 10 },
+  })
+
+  return (
+    <animated.div
+      style={cardAnimation}
+      className="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-2"
+    >
+      <div className="h-48 sm:h-56 bg-cover bg-center relative" style={{ backgroundImage: `url(${imageSrc})` }}>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
+          <div className="absolute bottom-4 left-4 text-white">
+            <Icon className="w-5 h-5 sm:w-6 sm:h-6 mb-1 sm:mb-2" />
+            <span className="px-2 sm:px-3 py-1 text-xs font-medium bg-white/20 rounded-full backdrop-blur-sm">
+              {type}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className="p-4 sm:p-6">
+        <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">{name}</h3>
+        <p className="text-gray-600 text-sm mb-4">{description}</p>
+        <div className="bg-sky-100 p-3 sm:p-4 rounded-lg mb-4">
+          <h4 className="font-medium text-sky-500 mb-1 sm:mb-2">Religious Significance:</h4>
+          <p className="text-xs sm:text-sm text-sky-750">{significance}</p>
+        </div>
+        <div className="space-y-2">
+          <h4 className="font-medium text-gray-900">Sacred Activities:</h4>
+          <div className="grid grid-cols-2 gap-2">
+            {activities.map((activity, i) => (
+              <div key={i} className="flex items-center text-xs sm:text-sm text-gray-600">
+                <FaBook className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-sky-600" />
+                {activity}
+              </div>
+            ))}
+          </div>
+        </div>
+        <button className="mt-4 sm:mt-6 w-full bg-sky-600 text-white py-2 rounded-lg hover:bg-sky-500 transition-colors duration-300 text-sm sm:text-base">
+          Plan Pilgrimage
+        </button>
+      </div>
+    </animated.div>
+  )
+}
+
+export default function Destiny() {
+  const dispatch = useDispatch()
+  const { t } = useTranslation()
+  const [activeCountry, setActiveCountry] = useState("Rwanda")
+  const [selectedType, setSelectedType] = useState("All")
+
+  const headerAnimation = useSpring({
+    from: { opacity: 0, transform: "translateY(-50px)" },
+    to: { opacity: 1, transform: "translateY(0)" },
+    config: { tension: 300, friction: 10 },
+  })
+
+  const filterTypes = ["All", "Multi-Faith"]
+
+  const filteredDestinations =
+    selectedType === "All"
+      ? religiousDestinations[activeCountry]
+      : religiousDestinations[activeCountry].filter((dest) => dest.type.includes(selectedType))
+
+  return (
+    <div className="flex flex-col items-center min-h-screen bg-gray-50">
+      <animated.div
+        style={headerAnimation}
+        className="flex relative flex-col items-center self-stretch px-5 sm:px-10 lg:px-20 pt-24 sm:pt-32 lg:pt-10 pb-12 w-full text-white min-h-[400px]" data-aos="zoom-out"
+      >
         <img
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/088997ce7ceb1872cdd23f020fa61a21e9d406941f1c5e79d3e1cb275d67fd00"
           className="absolute inset-0 object-cover w-full h-full blur-sm"
           alt="Background"
         />
-        {/* <div className="absolute inset-0 bg-black opacity-30"></div>
-        <div className="relative flex flex-col items-center px-4 py-6 text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl border-4 border-white bg-opacity-0 w-[80%] max-w-[496px]">
-            {t("destiny.title")}
-          </h1>
-          <p className="mt-8 sm:mt-12 text-lg">{t("destiny.explore")}</p>
-        </div> */}
         <div className="absolute inset-0 bg-black opacity-60"></div>
          <div className="flex relative flex-col justify-start items-center px-2 w-full sm:px-2 sm:pt-10 md:px-20 md:pt-24">
-          <div className="px-2 py-4  text-2xl lg:mt-5  mt-10 sm:px-8 sm:py-6 md:px-12 md:py-9 mb-0 text-center bg-transparent border-white border-solid bg-opacity-0 border-4 sm:border-8 md:border-[10px] w-[80%] max-w-[496px]">
-          {t('destiny.title')}
+          <div className="px-2 py-4  text-2xl  mt-10 sm:px-8 sm:py-6 md:px-12 md:py-9 mb-0 text-center bg-transparent border-white border-solid bg-opacity-0 border-4 sm:border-8 md:border-[10px] w-[80%] max-w-[496px]">
+        Destinations
           </div>
-          <div className="mt-8 sm:mt-15 flex flex-row justify-center">
-          {t('destiny.explore')}
+          <div className="mt-12  sm:mt-15 flex flex-row justify-center">
+         Explore more destinations
           </div>
 
         </div>
-      </div>
+      </animated.div>
 
-      {/* Destination Cards */}
-      <div className="mt-20 sm:mt-28 lg:mt-40 w-full max-w-[1104px] px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
-  {destinations.map(destination => (
-    <DestinationCard
-      key={destination.name}
-      imageSrc={destination.imageSrc}
-      location={t(`destiny.destinations.${destination.name.toLowerCase()}`)}
-      description={t(`destiny.destinations.${destination.name.toLowerCase()}Description`)}
-      aosAnimation="zoom-in"
-      detailLink={destination.link}
-      t={t} // Pass t here
-    />
-  ))}
-</div>
+      <CountryTabs
+        countries={Object.keys(religiousDestinations)}
+        activeCountry={activeCountry} 
+        setActiveCountry={setActiveCountry}
+      />
 
-    </div>
-  );
-}
+      
 
-function DestinationCard({ imageSrc, location, description, aosAnimation, detailLink, t }) {
-  return (
-    <div
-      className="relative group w-full h-64 sm:h-80 lg:h-96 overflow-hidden bg-cover bg-center transition-all duration-300"
-      style={{ backgroundImage: `url('${imageSrc}')` }}
-      data-aos={aosAnimation}
-    >
-      <div className="absolute inset-0 flex flex-col justify-between p-4 transition-all duration-500 bg-black bg-opacity-30 group-hover:bg-opacity-70">
-        <div className="flex items-center text-lg font-semibold text-white transition-opacity duration-300 group-hover:opacity-0">
-          <MapPin className="mr-2" />
-          {location}
-        </div>
-        <div className="text-sm text-white transition-opacity duration-300 group-hover:opacity-0">
-          {description}
-        </div>
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <Link to={detailLink}>
-            <button className="px-6 py-2 font-semibold text-black bg-white">
-              {t('destiny.discover')}
-            </button>
-          </Link>
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+        {filteredDestinations.map((destination, index) => (
+          <ReligiousDestinationCard key={destination.name} {...destination} index={index} />
+        ))}
       </div>
     </div>
-  );
+  )
 }
-
 

@@ -120,7 +120,7 @@ export const fetchUpcomingPosts = createAsyncThunk(
 const postSlice = createSlice({
   name: 'posts',
   initialState: {
-    posts: [],
+    posts: [], // Ensure posts is initialized as an array
     upcomingPosts: [], // Separate state for upcoming posts
     destinationPosts: [], // Separate state for posts by destination
     loading: false,
@@ -132,15 +132,15 @@ const postSlice = createSlice({
       // Fetch Posts
       .addCase(fetchPosts.pending, (state) => {
         state.loading = true;
-        state.error = null;
       })
       .addCase(fetchPosts.fulfilled, (state, action) => {
         state.loading = false;
-        state.posts = action.payload;
+        state.posts = Array.isArray(action.payload.posts) ? action.payload.posts : [];
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
+        state.posts = state.posts ?? [];
       })
       // Add Post
       .addCase(addPost.pending, (state) => {
@@ -148,7 +148,7 @@ const postSlice = createSlice({
       })
       .addCase(addPost.fulfilled, (state, action) => {
         state.loading = false;
-        state.posts.push(action.payload);
+        state.posts = [...(Array.isArray(state.posts) ? state.posts : []), action.payload];
       })
       .addCase(addPost.rejected, (state, action) => {
         state.loading = false;

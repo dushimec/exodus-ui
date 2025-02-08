@@ -223,6 +223,18 @@ const authSlice = createSlice({
       state.user = null;
       state.token = null;
       Cookies.remove('token');
+    })
+    builder
+    .addCase(getAllUsers.pending, (state) => {
+      state.loading = true;
+    })
+    .addCase(getAllUsers.fulfilled, (state, action) => {
+      state.loading = false;
+      state.users = action.payload;
+      console.log("Updated users state:", state.users); // Add this log
+    })
+    .addCase(getAllUsers.rejected, (state) => {
+      state.loading = false;
     });
   },
 });

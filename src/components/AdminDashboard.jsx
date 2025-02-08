@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { Bell, ChevronDown, Home, Menu, Search, Settings, Users, X } from 'lucide-react'
+import React, { useState } from 'react';
+import { Bell, ChevronDown, Home, Menu, Search, Settings, Users, X } from 'lucide-react';
 
 const AdminDashboard = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="flex flex-col h-screen bg-gray-100">
@@ -45,7 +45,7 @@ const AdminDashboard = () => {
             <Home className="h-6 w-6 text-blue-500" />
             <span className="font-semibold text-blue-800">Dashboard</span>
           </div>
-          <a href="/new-trip" className="flex items-center space-x-2 py-2 px-4 rounded hover:bg-blue-200">
+          <a href="/new-trip" className="flex items-center space-x-2 py-1 px-2 rounded hover:bg-blue-200 text-sm sm:text-base sm:py-2 sm:px-4">
             <span className="text-blue-800">Add New Trip</span>
           </a>
           <a href="#" className="flex items-center space-x-2 py-2 px-4 rounded hover:bg-blue-200">
@@ -81,7 +81,7 @@ const AdminDashboard = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 const StatCard = ({ title, value, percentage, color }) => (
@@ -90,7 +90,7 @@ const StatCard = ({ title, value, percentage, color }) => (
     <div className="text-2xl font-bold mt-2">{value}</div>
     <div className="text-sm mt-2">{percentage}</div>
   </div>
-)
+);
 
 const PendingTaskCard = () => (
   <div className="bg-white rounded-lg shadow p-6">
@@ -123,7 +123,7 @@ const PendingTaskCard = () => (
       </div>
     </div>
   </div>
-)
+);
 
 const RecentBookingCard = () => (
   <div className="bg-white rounded-lg shadow p-6 overflow-x-auto">
@@ -159,6 +159,6 @@ const RecentBookingCard = () => (
       </tbody>
     </table>
   </div>
-)
+);
 
-export default AdminDashboard
+export default AdminDashboard;

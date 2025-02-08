@@ -12,68 +12,73 @@ export default function AddNewTrip() {
   const [currency, setCurrency] = useState('USD');
   const [bookingDate, setBookingDate] = useState('');
   const [description, setDescription] = useState('');
-  const [selectedImages, setSelectedImages] = useState([]);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedImages, setSelectedImages] = useState([]); // Define selectedImages state
   const [sites, setSites] = useState([{ name: '', tripDate: '' }]);
   const [trips, setTrips] = useState([{ title: '', content: '', price: '', tripDate: '' }]);
   const fileInputRef = useRef(null);
-
+  
   const dispatch = useDispatch();
-
+  
   const handleAddSite = () => {
     setSites([...sites, { name: '', tripDate: '' }]);
   };
-
+  
   const handleAddTrip = () => {
     setTrips([...trips, { title: '', content: '', price: '', tripDate: '' }]);
   };
-
+  
   const handleSiteChange = (index, field, value) => {
     const newSites = [...sites];
     newSites[index][field] = value;
     setSites(newSites);
   };
-
+  
   const handleTripChange = (index, field, value) => {
     const newTrips = [...trips];
     newTrips[index][field] = value;
     setTrips(newTrips);
   };
-
+  
   const handleRemoveSite = (index) => {
-    const newSites = sites.filter((_, i) => i !== index);
-    setSites(newSites);
+    setSites(sites.filter((_, i) => i !== index));
   };
-
+  
   const handleRemoveTrip = (index) => {
-    const newTrips = trips.filter((_, i) => i !== index);
-    setTrips(newTrips);
+    setTrips(trips.filter((_, i) => i !== index));
   };
-
+  
+  // Handle file selection
   const handleImageSelect = (e) => {
-    const files = Array.from(e.target.files);
-    const validFiles = files.filter(file => file.type.startsWith('image/'));
-    if (validFiles.length !== files.length) {
-      toast.error("Please upload valid image files");
-      return;
+    const file = e.target.files[0];
+  
+    if (file && file.type.startsWith('image/')) {
+      setSelectedFile(file);
+      setSelectedImages([...selectedImages, file]); // Add selected file to selectedImages
+    } else {
+      toast.error("Please upload a valid image file");
     }
-    setSelectedImages(validFiles);
   };
-
+  
+  // Handle drag over event
   const handleDragOver = (e) => {
     e.preventDefault();
   };
-
+  
+  // Handle file drop event
   const handleDrop = (e) => {
     e.preventDefault();
-    const files = Array.from(e.dataTransfer.files);
-    const validFiles = files.filter(file => file.type.startsWith('image/'));
-    if (validFiles.length !== files.length) {
-      toast.error("Please upload valid image files");
-      return;
+    const file = e.dataTransfer.files[0];
+  
+    if (file && file.type.startsWith('image/')) {
+      setSelectedFile(file);
+      setSelectedImages([...selectedImages, file]); // Add dropped file to selectedImages
+    } else {
+      toast.error("Please upload a valid image file");
     }
-    setSelectedImages(validFiles);
   };
-
+  
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -83,11 +88,10 @@ export default function AddNewTrip() {
       return;
     }
   
-    if (selectedImages.length === 0) {
-      toast.error("Please upload at least one photo.");
+    if (!selectedFile) {
+      toast.error("Please upload an image.");
       return;
     }
-  
   
     // Prepare FormData
     const formData = new FormData();
@@ -97,10 +101,7 @@ export default function AddNewTrip() {
     formData.append('currency', currency);
     formData.append('tripDate', bookingDate);
     formData.append('content', description);
-    
-    selectedImages.forEach((image, index) => {
-      formData.append(`files`, image);
-    });
+    formData.append('file', selectedFile); // Append single file
   
     formData.append('sites', JSON.stringify(sites));
     formData.append('trips', JSON.stringify(trips));
@@ -117,20 +118,16 @@ export default function AddNewTrip() {
       setCurrency('USD');
       setBookingDate('');
       setDescription('');
-      setSelectedImages([]);
+      setSelectedFile(null);
+      setSelectedImages([]); // Clear selectedImages
       setSites([{ name: '', tripDate: '' }]);
       setTrips([{ title: '', content: '', price: '', tripDate: '' }]);
     } catch (error) {
       // Enhanced error handling
-      if (error.response?.data?.message) {
-        toast.error(`Error: ${error.response.data.message}`);
-      } else if (error.message) {
-        toast.error(`Error: ${error.message}`);
-      } else {
-        toast.error("An unexpected error occurred. Please try again.");
-      }
+      toast.error(error.response?.data?.message || error.message || "An unexpected error occurred. Please try again.");
     }
   };
+  
   
   
   return (
@@ -220,8 +217,8 @@ export default function AddNewTrip() {
           </div>
         )}
 
-       {/* Sites Section */}
-       <h2 className="text-lg font-semibold">Sites</h2>
+        {/* Sites Section */}
+        <h2 className="text-lg font-semibold">Sites</h2>
         {sites.map((site, index) => (
           <div key={index} className="flex items-center space-x-2 mb-2">
             <input

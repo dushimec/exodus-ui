@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Bell, Mail, Search, Settings, ChevronDown, MoreVertical, Users, BookOpen, Calendar, Package, LogOut } from 'lucide-react';
+import { Bell, Mail, Search, Settings, ChevronDown, MoreVertical, Users, BookOpen, Calendar, Package, LogOut, Menu } from 'lucide-react';
 import AddNewTrip from "./AddNewTrip";
 import { AuthContext } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
@@ -7,8 +7,6 @@ import { UsersList } from './users-list';
 import { ProgressCircle } from './progress-circle';
 import { TripPanel } from './ trip-panel';
 import logo from '../IMAGE/logo.jpg';
-
-
 import { ProductManagement } from './product-management';
 import { SettingsPanel } from './settings-panel';
 import { NotificationsPanel } from './notifications-panel';
@@ -17,12 +15,10 @@ export default function AdminDashboard() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isAddingTrip, setIsAddingTrip] = useState(false);
   const [activeLink, setActiveLink] = useState("dashboard");
-
   const [notificationCount, setNotificationCount] = useState(3);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const navigate = useNavigate();
-
   const { user, getProfile, logout } = useContext(AuthContext);
-
   const [showSettings, setShowSettings] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
 
@@ -60,9 +56,10 @@ export default function AdminDashboard() {
     setShowSettings(false);
     setShowNotifications(false);
     setIsAddingTrip(false);
+    if (window.innerWidth <= 768) {
+      setIsSidebarOpen(false);
+    }
   };
-
-
 
   const handleStatusChange = (id, newStatus) => {
     setRecentBookings(prevBookings =>
@@ -184,9 +181,12 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className={`min-h-screen `}>
+    <div className="min-h-screen">
       <div className="flex h-screen bg-gray-100 dark:bg-gray-900">
-        <aside className="w-64 bg-[#0da5ea] text-white">
+        {/* Sidebar */}
+        <aside className={`w-64 bg-[#0da5ea] text-white transform transition-transform duration-300 ease-in-out ${
+          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        } fixed md:relative z-50 md:translate-x-0`}>
           <div className="p-4">
             <div className="flex items-center space-x-2 mb-6">
               <img src={logo} alt="Logo" className="h-8 w-8" />
@@ -221,9 +221,16 @@ export default function AdminDashboard() {
           </div>
         </aside>
 
+        {/* Main Content */}
         <div className="flex-1 flex flex-col overflow-hidden">
           <header className="bg-white dark:bg-gray-800 shadow-md">
             <div className="flex items-center justify-between p-4">
+              <button
+                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                <Menu size={20} />
+              </button>
               <div className="flex items-center space-x-4">
                 <h1 className="text-xl font-bold text-gray-800 dark:text-white">
                   {activeLink.charAt(0).toUpperCase() + activeLink.slice(1)}
@@ -231,8 +238,6 @@ export default function AdminDashboard() {
               </div>
               
               <div className="flex items-center space-x-4">
-             
-                
                 <button
                   onClick={() => {
                     setShowSettings(true);
@@ -260,8 +265,6 @@ export default function AdminDashboard() {
                   )}
                 </button>
                 
-          
-
                 <div className="flex items-center space-x-2">
                   <img
                     src={user?.profile?.url || "/placeholder.svg?height=32&width=32"}
@@ -284,4 +287,3 @@ export default function AdminDashboard() {
     </div>
   );
 }
-
