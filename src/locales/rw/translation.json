@@ -17,10 +17,21 @@
     "kinyarwanda": "Kiny"
   },
   "hero": {
-  "title": "Irembo  ry’ibihe bitazibagirana  n'ubushakashatsi!",
+  "title": "OldFox:Ingendo Nyobokamana Ziteguwe Neza",
   "explore": "kanda hano",
   "searchPlaceholder": "Shakisha Ingendo hano ...",
-  "upcomingTrip": "Ingendo ziri imbere"
+  "upcomingTrip": "Ingendo ziri imbere",
+  "internationalTour": "Ingendo Mpuzamahanga",
+    "internationalTourDesc": "OldFox ikuyobora ahantu h'umwuka ku isi yose",
+    "religionTour": "Ingendo Nyobokamana",
+    "religionTourDesc": "Sura ahantu hera ufashijwe n'ubumenyi bw'inzobere za OldFox",
+    "localTour": "Ingendo zo mu Gihugu",
+    "localTourDesc": "Menya ahantu hera  mu gace kanyu ufashijwe na OldFox",
+    
+    "searchLabel": "Shakisha urugendo",
+    "noDestinationsFound": "Nta hantu haboneka kuri \"{{searchTerm}}\"",
+    
+    "loading": "Birimo gutunganywa..."
 },
 "trips": {
   "tripToBali": "Ingendo zo muri Bali",
@@ -38,7 +49,17 @@
 },
 "popularTourPackages": {
   "title": "Ingendo Zikunzwe",
-  "altText": "Ingendo Zikunzwe {{index}}"
+  "altText": "Ingendo Zikunzwe {{index}}",
+  "name": " Ingendo zo mu Rwanda",
+  "rwandaLocalTour": "Urugendo rwo mu Rwanda",
+    "abroadTour": "Urugendo rwo Hanze y'Igihugu",
+    "rwandaLocation": "Rwanda",
+    "abroadLocation": "Isiraheli, Turukiya, Ubutaliyani,....",
+    "localTourType": "Urugendo rwo mu Gihugu",
+    "internationalTourType": "Urugendo Mpuzamahanga",
+    "backToTours": "Subira ku Ngendo",
+    "scenicViewOf": "Ishusho nziza ya {{name}}",
+    "galleryImages": "Amafoto y'Urugendo"
 },
 "howItWorks": {
   "title": "Uko bikorwa?",
@@ -80,8 +101,8 @@
 "about": {
   "header": "Ibyerekeye Twebwe",
   "subheader":"Ibyo Dukora",
-  "quote1": "Ikigo OLD Fox gitegura ingendo nyobokamana, kigafasha abantu ku giti cyabo n’amatsinda gusura ahantu hatagatifu ku isi hose. Ingendo zacu zigamije gufasha abantu gukura mu mwuka,Gusenga, kwiyumvamo no gusobanukirwa umuco. Dufasha gusura insengero za kera cyangwa imijyi mitagatifu, buri rugendo ruhuza  ruhuza abagenzi n’ukwemera kwabo n’imico yabo. Twitondera gutegura buri rugendo kugira ngo ubuzima bw’abagenzi bugende neza kandi bubashimishe.",
-  "quote2": "Ibyerekezo byacu bitanga uburambe bwo guhindura, buhuza iterambere ry'umwuka n'ubusabane bw'umuco. Abagenzi basura ibice by'ingenzi by'iyobokamana, bagahura n'imigenzo y'aho, kandi bakahuza n'abandi bemera. Izi ngendo zishyigikira gusubira mu mwuka no kwibuka, zitanga ubushobozi bwo gusobanukirwa cyane n'iyobokamana no kubika ibihe bitazibagirana mu bice bimwe mu byaha by'ingenzi ku isi.",
+  "quote1": "Ikigo OLD Fox gitegura ingendo nyobokamana, kigafasha abantu ku giti cyabo n’amatsinda gusura ahantu hatagatifu ku isi hose. Ingendo zacu zigamije gufasha abantu gukura mu mwuka,Gusenga, kwiyumvamo no gusobanukirwa umuco. Tugufasha gusura insengero za kera cyangwa imijyi mitagatifu, buri rugendo ruhuza  abagenzi n’ukwemera kwabo n’imico yabo. Twitondera gutegura buri rugendo kugira ngo ubuzima bw’abagenzi bugende neza kandi bubashimishe.",
+  "quote2": "Ingendo zacu zitanga ubunararibonye buhindura ubuzima, zihuriza hamwe kunguka ubumenyi bw'iyobokamana no kwinjira mu muco. Abagenzi basura ahantu h’ingenzi h’idini, bakagira uruhare mu migenzo gakondo yaho, kandi bakagira umwanya wo guhura n'abemera bagenzi babo. Izi ngendo ziteza imbere isubiramo n’isesengura, zitanga ubusobanuro bwimbitse ku kwemera ndetse n’urwibutso rurambye ku hantu h’iyobokamana hubahwa cyane ku isi.",
   "team": "Itsinda Ryacu",
   "boss":"Umuyobozi mukuru"
 },
@@ -243,6 +264,197 @@
       "israel": {
         "name": "Isiraheli",
         "description": "Rambagira amateka n'imisozi itandukanye y'Igihugu Cyera."
+      }
+    }
+  },
+  "tours": {
+    "internationalTour": "OldFox igufasha gusura ahantu h'amateka y'iyobokamana ku isi",
+    "religionTour": "Sura ahantu hatagatifu ukoresheje ubunararibonye bwa OldFox",
+    "localTour": "Menya ahantu hihishe h'iyobokamana hafi yawe ukoresheje OldFox"
+  },
+  "destini": {
+    "title": "Ahantu",
+    "subtitle": "Menya ahantu henshi",
+    "backgroundAlt": "Ishusho y'inyuma y'ahantu",
+    "religiousSignificance": "Akamaro ",
+    "sacredActivities": "Ibikorwa Byera",
+    "planPilgrimage": "Tegura Urugendo"
+  },
+  "countries": {
+    "Rwanda": "U Rwanda",
+    "Israel": "Isiraheli",
+    "Egypt": "Misiri",
+    "Turkey": "Turukiya"
+  },
+  "destinationTypes": {
+    "CatholicShrine": "Ubutaka butagatifu bwa bagatorika",
+    "CatholicCathedral": "Katedrali y'Abakatolika",
+    "ReligiousInstitution": "Ikigo cy'Idini",
+    "JewishHolySite": "Ahera h'Abayahudi",
+    "ChristianHolySite": "Ahera h'Abakristo",
+    "IslamicHolySite": "Ahera h'Abayisilamu",
+    "BahaiHolySite": "Ahera ha Bahá'í",
+    "MultiFaithSite": "Ahantu h'Amadini Menshi",
+    "AncientWonder": "Igitangaza cya Kera",
+    "AncientTemple": "Urusengero rwa Kera",
+    "ChristianMonastery": "Monasteri y'Abakristo",
+    "MuseumMosque": "Inzu Ndangamurage/Umusigiti",
+    "AncientCity": "Umujyi wa Kera",
+    "NaturalWonder": "Igitangaza cya Kamere"
+  },
+  "destination": {
+    "KibehoHolyLand": {
+      "name": "Ahera ha Kibeho",
+      "description": "Hazwi kubera Amabonekerwa ya Bikira Mariya i Kibeho, aha ni hamwe gusa hemewe na Vatikani muri Afurika.",
+      "significance": "Ahantu hakomeye h’ubusabaniramana muri Kiliziya Gatolika, aho Umubyeyi Bikira Mariya yabonekeye abakobwa batatu mu myaka ya 1980.",
+      "activities": {
+        "0": "Misa ya buri munsi",
+        "1": "Kuvuga Rozari",
+        "2": "Umwiherero nyobokamana",
+        "3": "Amasengesho yo Gukiza"
+      }
+    },
+    "ReginaPacisCathedral": {
+      "name": "Katedrali Regina Pacis",
+      "description": "Katedrali y'ingenzi y'Abakatolika i Kigali, yerekana ubwubatsi bw'igikristo bwa none bwa Afurika.",
+      "significance": "Ikibuga cy'amasengesho y'Abakatolika mu murwa mukuru w'u Rwanda",
+      "activities": {
+        "0": "Misa yo ku Cyumweru",
+        "1": "Gahunda z'Umuco",
+        "2": "Kwigisha Idini",
+        "3": "Serivisi z'Abaturage"
+      }
+    },
+    "NyakibandaSeminary": {
+      "name": "Seminari ya Nyakibanda",
+      "description": "Imwe mu maseminari akuru kandi ashaje mu Rwanda, yigisha abapadiri kuva mu 1936.",
+      "significance": "Ikigo cy'amateka cyo kwigisha no gutoza idini",
+      "activities": {
+        "0": "Kuyobora Ingendo",
+        "1": "Kwiga Idini",
+        "2": "Kwerekana Amateka",
+        "3": "Ibihe byo Gusenga"
+      }
+    },
+    "WesternWall": {
+      "name": "Inkike y'Iburengerazuba",
+      "description": "Ahantu hera cyane mu idini y'Abayahudi, igice cy'inkike ya kera ya Tempeli.",
+      "significance": "Inkike isigaye ya Tempeli ya Kabiri ya Yerusalemu",
+      "activities": {
+        "0": "Amasengesho",
+        "1": "Imihango ya Bar Mitzvah",
+        "2": "Ingendo mu Mwobo",
+        "3": "Kubaho Shabbat"
+      }
+    },
+    "ChurchOfTheHolySepulchre": {
+      "name": "Kiliziya y'Imva Ntagatifu",
+      "description": "Ahantu gakondo h'aho Yesu yabambwe, ashyingurwa, kandi azuka.",
+      "significance": "Ahantu h'ingenzi h'urugendo rw'amadini menshi y'Abakristo",
+      "activities": {
+        "0": "Misa ya buri munsi",
+        "1": "Kuyobora Ingendo",
+        "2": "Amasengesho yo Kurara",
+        "3": "Imihango y'Idini"
+      }
+    },
+    "AlAqsaMosque": {
+      "name": "Umusigiti wa Al-Aqsa",
+      "description": "Ahantu ha gatatu hera cyane mu Buyisilamu, hari ku Musozi wa Tempeli.",
+      "significance": "Ahantu h'ingenzi h'urugendo rw'Abayisilamu",
+      "activities": {
+        "0": "Amasengesho ya buri munsi",
+        "1": "Kwiga Isilamu",
+        "2": "Ingendo z'Amateka",
+        "3": "Gahunda z'Umuco"
+      }
+    },
+    "BahaiGardens": {
+      "name": "Ubusitani bwa Bahá'í",
+      "description": "Ubusitani bw'intambike bukikije Imva ya Báb i Haifa.",
+      "significance": "Ikibuga Nyobokamana cya Bahá'í ku Isi",
+      "activities": {
+        "0": "Kuyobora Ingendo",
+        "1": "Kwiyumvisha",
+        "2": "Gufotora",
+        "3": "Kwiga Umuco"
+      }
+    },
+    "SeaOfGalilee": {
+      "name": "Inyanja ya Galilaya",
+      "description": "Inyanja y'amazi meza ifitanye isano n'ibikorwa byinshi mu buzima bwa Yesu.",
+      "significance": "Ahantu h'ingenzi ku bahererezi b'Abakristo n'abakunzi ba kamere",
+      "activities": {
+        "0": "Kugenda mu Bwato",
+        "1": "Gusura Ahantu ha Bibiliya",
+        "2": "Imihango yo Kubatiza",
+        "3": "Kugendagenda muri Kamere"
+      }
+    },
+    "GreatPyramidOfGiza": {
+      "name": "Piramide Nini ya Giza",
+      "description": "Imwe mu Bitangaza Birindwi bya Kera by'Isi, yubatswe nk'imva ya Farawo Khufu.",
+      "significance": "Ikimenyetso cy'ubwami bwa Egiputa ya kera n'igitangaza cy'ubwubatsi",
+      "activities": {
+        "0": "Kuyobora Ingendo",
+        "1": "Gutwara Ingamiya",
+        "2": "Kureba Izuba Rirenze",
+        "3": "Inyigisho z'Ubucukuzi bw'Amateka"
+      }
+    },
+    "LuxorTemple": {
+      "name": "Urusengero rwa Luxor",
+      "description": "Urwego runini rw'urusengero rwa Egiputa ya kera ruri ku nkombe y'iburasirazuba bw'umugezi Nili.",
+      "significance": "Ahantu h'ingenzi h'idini rya Egiputa ya kera n'amateka",
+      "activities": {
+        "0": "Ingendo za Nijoro",
+        "1": "Ateliye zo Kwiga Hieroglife",
+        "2": "Ibirori by'Amajwi n'Urumuri",
+        "3": "Kugenda ku Nili"
+      }
+    },
+    "SaintCatherinesMonastery": {
+      "name": "Monasteri ya Mutagatifu Katerina",
+      "description": "Imwe mu monasteri z'Abakristo zikora zikiri nshya cyane ku isi.",
+      "significance": "Ahantu h'ingenzi ku Bakristo b'Abortodogisi kandi hakaba n'inyandiko z'agaciro",
+      "activities": {
+        "0": "Kuyobora Ingendo",
+        "1": "Kureba Ishusho",
+        "2": "Kugenda mu Museso",
+        "3": "Ibihe byo Kwiyumvisha"
+      }
+    },
+    "HagiaSophia": {
+      "name": "Hagia Sophia",
+      "description": "Yari katedrali y'Abakristo b'Abagiriki Ortodogisi, nyuma iba umusigiti w'Abaturuki, ubu ni inzu ndangamurage.",
+      "significance": "Igitangaza cy'ubwubatsi n'ikimenyetso cy'amateka atandukanye ya Istanbul",
+      "activities": {
+        "0": "Kuyobora Ingendo",
+        "1": "Gushima Ubuhanzi",
+        "2": "Inyigisho z'Amateka",
+        "3": "Gufotora"
+      }
+    },
+    "Ephesus": {
+      "name": "Efeso",
+      "description": "Umujyi wa kera w'Abagiriki ku nkombe ya Ionia, uzwi cyane ku rusengero rwa Artemis.",
+      "significance": "Umwe mu mijyi ya kera yabungabunzwe neza cyane mu Mediterane",
+      "activities": {
+        "0": "Ingendo z'Ubucukuzi bw'Amateka",
+        "1": "Kwerekana Amateka",
+        "2": "Kugendagenda Nijoro",
+        "3": "Ateliye zo Gufotora"
+      }
+    },
+    "Cappadocia": {
+      "name": "Kapadokiya",
+      "description": "Akarere kazwi cyane ku 'nkingi z'abazimu', zakozwe n'imyuka ya volukano.",
+      "significance": "Ubutaka budasanzwe n'amateka y'Ubukristo bwa mbere",
+      "activities": {
+        "0": "Kugenda mu Baloniye",
+        "1": "Ingendo mu Mijyi yo Munsi y'Ubutaka",
+        "2": "Gusura Amatorero yo mu Bitare",
+        "3": "Kugendagenda"
       }
     }
   }
