@@ -107,14 +107,14 @@ export default function TravelHero() {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
             >
-              {t("hero.titl", "OldFox: Expertly Planned Spiritual Tour")}
+              {t("hero.title")}
             </h1>
 
-            <div className="space-y-4 max-w-md mx-auto lg:mx-0">
+<div className="space-y-4 max-w-md mx-auto lg:mx-0">
               {[
-                { id: "internationalTour", desc: "OldFox guides you through global spiritual landmarks" },
-                { id: "religionTour", desc: "Explore sacred sites with OldFox's expert knowledge" },
-                { id: "localTour", desc: "Discover hidden spiritual gems in your area with OldFox" },
+                { id: "internationalTour", defaultDesc: "OldFox guides you through global spiritual landmarks" },
+                { id: "religionTour", defaultDesc: "Explore sacred sites with OldFox's expert knowledge" },
+                { id: "localTour", defaultDesc: "Discover hidden spiritual gems in your area with OldFox" },
               ].map((tour, index) => (
                 <div
                   key={tour.id}
@@ -122,8 +122,8 @@ export default function TravelHero() {
                   data-aos="fade-right"
                   data-aos-delay={200 * (index + 1)}
                 >
-                  <h2 className="text-lg sm:text-xl font-semibold text-white mb-1">{t(`hero.${tour.id}`, tour.id)}</h2>
-                  <p className="text-xs sm:text-sm text-white">{t(`hero.${tour.id}Desc`, tour.desc)}</p>
+                  <h2 className="text-lg sm:text-xl font-semibold text-white mb-1">{t(`hero.${tour.id}`)}</h2>
+                  <p className="text-xs sm:text-sm text-white">{t(`hero.${tour.id}Desc`, tour.defaultDesc)}</p>
                 </div>
               ))}
             </div>
@@ -169,7 +169,7 @@ export default function TravelHero() {
               data-aos="fade-up"
             >
               <h2 className="text-lg sm:text-xl font-semibold text-white mb-4" data-aos="fade-up">
-                {t("hero.upcomingTrips", "Upcoming Trips")}
+                {t("hero.upcomingTrip")}
               </h2>
               {loading ? (
                 <p className="text-white">Loading...</p>
@@ -218,3 +218,5 @@ export default function TravelHero() {
     </>
   )
 }
+
+

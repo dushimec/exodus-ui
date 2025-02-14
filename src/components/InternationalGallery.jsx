@@ -10,7 +10,7 @@ import image57 from "../IMAGE/image57.jpeg";
 import image58 from "../IMAGE/image58.jpeg";
 import image59 from "../IMAGE/image59.jpeg";
 
-// 🔹 Add your own details here (title & description)
+
 const imageDetails = [
   { src: image50, title: "isreal", description: "." },
   { src: image51, title: "france", description: "." },
@@ -35,8 +35,8 @@ const InternationalGallery = () => {
       </button>
 
       <h1 className="text-4xl font-bold text-center text-gray-800 mb-8 font-roboto">
-        International Gallery
-      </h1>
+         international <span className="text-[#05b7fe]">Gallery</span>
+         </h1>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {imageDetails.map((image, index) => (

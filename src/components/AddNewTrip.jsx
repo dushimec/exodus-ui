@@ -12,53 +12,88 @@ export default function AddNewTrip() {
   const [currency, setCurrency] = useState('USD');
   const [bookingDate, setBookingDate] = useState('');
   const [description, setDescription] = useState('');
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedImages, setSelectedImages] = useState([]); // Define selectedImages state
   const [sites, setSites] = useState([{ name: '', tripDate: '' }]);
   const [trips, setTrips] = useState([{ title: '', content: '', price: '', tripDate: '' }]);
   const fileInputRef = useRef(null);
-
+  
   const dispatch = useDispatch();
-
+  
   const handleAddSite = () => {
     setSites([...sites, { name: '', tripDate: '' }]);
   };
-
+  
   const handleAddTrip = () => {
     setTrips([...trips, { title: '', content: '', price: '', tripDate: '' }]);
   };
-
+  
   const handleSiteChange = (index, field, value) => {
     const newSites = [...sites];
     newSites[index][field] = value;
     setSites(newSites);
   };
-
+  
   const handleTripChange = (index, field, value) => {
     const newTrips = [...trips];
     newTrips[index][field] = value;
     setTrips(newTrips);
   };
-
+  
+  const handleRemoveSite = (index) => {
+    setSites(sites.filter((_, i) => i !== index));
+  };
+  
+  const handleRemoveTrip = (index) => {
+    setTrips(trips.filter((_, i) => i !== index));
+  };
+  
+  // Handle file selection
   const handleImageSelect = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      setSelectedImage(e.target.files[0]);
+    const file = e.target.files[0];
+  
+    if (file && file.type.startsWith('image/')) {
+      setSelectedFile(file);
+      setSelectedImages([...selectedImages, file]); // Add selected file to selectedImages
+    } else {
+      toast.error("Please upload a valid image file");
     }
   };
-
+  
+  // Handle drag over event
   const handleDragOver = (e) => {
     e.preventDefault();
   };
-
+  
+  // Handle file drop event
   const handleDrop = (e) => {
     e.preventDefault();
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      setSelectedImage(e.dataTransfer.files[0]);
+    const file = e.dataTransfer.files[0];
+  
+    if (file && file.type.startsWith('image/')) {
+      setSelectedFile(file);
+      setSelectedImages([...selectedImages, file]); // Add dropped file to selectedImages
+    } else {
+      toast.error("Please upload a valid image file");
     }
   };
-
-  const handleSubmit = (e) => {
+  
+  // Handle form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
+    // Basic form validation
+    if (!title.trim() || !destination.trim() || !tripCost || !bookingDate || !description.trim()) {
+      toast.error("Please fill out all required fields.");
+      return;
+    }
+  
+    if (!selectedFile) {
+      toast.error("Please upload an image.");
+      return;
+    }
+  
+    // Prepare FormData
     const formData = new FormData();
     formData.append('title', title);
     formData.append('destination', destination);
@@ -66,32 +101,35 @@ export default function AddNewTrip() {
     formData.append('currency', currency);
     formData.append('tripDate', bookingDate);
     formData.append('content', description);
-    if (selectedImage) {
-      formData.append('file', selectedImage);
-    }
+    formData.append('file', selectedFile); // Append single file
+  
     formData.append('sites', JSON.stringify(sites));
     formData.append('trips', JSON.stringify(trips));
-
-    dispatch(addPost(formData))
-      .unwrap()
-      .then(() => {
-        toast.success('Trip added successfully!');
-        // Clear form fields after submission
-        setTitle('');
-        setDestination('');
-        setTripCost('');
-        setCurrency('USD');
-        setBookingDate('');
-        setDescription('');
-        setSelectedImage(null);
-        setSites([{ name: '', tripDate: '' }]);
-        setTrips([{ title: '', content: '', price: '', tripDate: '' }]);
-      })
-      .catch((error) => {
-        toast.error(`Error: ${error.message}`);
-      });
+  
+    try {
+      // Dispatch action
+      await dispatch(addPost(formData)).unwrap();
+      toast.success('Trip added successfully!');
+  
+      // Clear form fields after successful submission
+      setTitle('');
+      setDestination('');
+      setTripCost('');
+      setCurrency('USD');
+      setBookingDate('');
+      setDescription('');
+      setSelectedFile(null);
+      setSelectedImages([]); // Clear selectedImages
+      setSites([{ name: '', tripDate: '' }]);
+      setTrips([{ title: '', content: '', price: '', tripDate: '' }]);
+    } catch (error) {
+      // Enhanced error handling
+      toast.error(error.response?.data?.message || error.message || "An unexpected error occurred. Please try again.");
+    }
   };
-
+  
+  
+  
   return (
     <div className="bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto">
       <h1 className="text-2xl font-bold mb-6">New Trip Card</h1>
@@ -152,25 +190,30 @@ export default function AddNewTrip() {
             ref={fileInputRef}
             type="file"
             accept="image/*"
+            multiple
             onChange={handleImageSelect}
             className="hidden"
           />
           <Plus className="mx-auto mb-2" size={24} />
-          <p>Upload file</p>
+          <p>Upload Trip Images</p>
           <p className="text-sm text-gray-500">Drag and drop or click to select</p>
         </div>
 
-        {/* Selected image */}
-        {selectedImage && (
-          <div className="mt-2 flex items-center">
-            <p className="mr-2">Selected: {selectedImage.name}</p>
-            <button
-              type="button"
-              onClick={() => setSelectedImage(null)}
-              className="text-red-500 hover:text-red-700"
-            >
-              Remove
-            </button>
+        {/* Selected images */}
+        {selectedImages.length > 0 && (
+          <div className="mt-2">
+            {selectedImages.map((image, index) => (
+              <div key={index} className="flex items-center mb-2">
+                <p className="mr-2">{image.name}</p>
+                <button
+                  type="button"
+                  onClick={() => setSelectedImages(selectedImages.filter((_, i) => i !== index))}
+                  className="text-red-500 hover:text-red-700"
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
           </div>
         )}
 
@@ -203,7 +246,7 @@ export default function AddNewTrip() {
         <button
           type="button"
           onClick={handleAddSite}
-          className="bg-green-500 text-white py-1 px-4 rounded-md hover:bg-green-600 transition duration-300"
+          className="bg-blue-500 text-white py-1 px-4 rounded-md hover:bg-blue-600 transition duration-300"
         >
           Add Site
         </button>
@@ -252,7 +295,7 @@ export default function AddNewTrip() {
         <button
           type="button"
           onClick={handleAddTrip}
-          className="bg-green-500 text-white py-1 px-4 rounded-md hover:bg-green-600 transition duration-300"
+          className="bg-blue-500 text-white py-1 px-4 rounded-md hover:bg-blue-600 transition duration-300"
         >
           Add Trip
         </button>

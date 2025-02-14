@@ -1,60 +1,107 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Plus, Edit, Trash } from 'lucide-react';
+import { fetchPosts } from '../slices/postSlice';
 
 export function TripPanel({ onAddNewTrip }) {
-  const [trips, setTrips] = useState([
-    { id: 1, name: 'Paris Getaway', destination: 'Paris', duration: '7 days', price: '$1200' },
-    { id: 2, name: 'Tokyo Adventure', destination: 'Tokyo', duration: '10 days', price: '$2000' },
-    { id: 3, name: 'New York City Tour', destination: 'New York', duration: '5 days', price: '$800' },
-  ]);
+  const dispatch = useDispatch();
+
+  const trips = useSelector((state) => {
+    const posts = state.posts.posts;
+    console.log("Fetched posts:", posts);
+
+    if (Array.isArray(posts)) {
+      return posts.flatMap(post => 
+        (post.trips || []).map(trip => ({
+          ...trip,
+          destination: post.destination, // Attach destination from post
+          sites: post.sites || [] // Include sites from post
+        }))
+      );
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    dispatch(fetchPosts());
+  }, [dispatch]);
 
   const handleDeleteTrip = (id) => {
-    setTrips(trips.filter(trip => trip.id !== id));
+    console.log("Delete trip with ID:", id);
+    // Add delete logic here
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-md p-6">
+    <div className="bg-white rounded-xl shadow-lg p-6">
+      {/* Header Section */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-semibold text-gray-800">Trip Management</h2>
         <button
           onClick={onAddNewTrip}
-          className="bg-sky-500 text-white px-4 py-2 rounded-lg hover:bg-sky-600 transition-colors flex items-center"
+          className="bg-sky-500 text-white px-4 py-2 rounded-lg hover:bg-sky-600 transition flex items-center"
         >
           <Plus size={20} className="mr-2" />
           Add New Trip
         </button>
       </div>
+
+      {/* Responsive Table */}
       <div className="overflow-x-auto">
-        <table className="w-full">
-          <thead>
-            <tr className="text-left text-gray-500 border-b">
-              <th className="pb-4">Trip Name</th>
-              <th className="pb-4">Destination</th>
-              <th className="pb-4">Duration</th>
-              <th className="pb-4">Price</th>
-              <th className="pb-4">Actions</th>
+        <table className="w-full border border-gray-200 rounded-lg shadow-sm">
+          <thead className="bg-gray-100">
+            <tr className="text-left text-gray-700 uppercase text-sm tracking-wider">
+              <th className="p-4 border-b">Trip Title</th>
+              <th className="p-4 border-b">Destination</th>
+              <th className="p-4 border-b">Trip date</th>
+              <th className="p-4 border-b">Price</th>
+              <th className="p-4 border-b">Sites</th>
+              <th className="p-4 border-b">Actions</th>
             </tr>
           </thead>
           <tbody>
             {trips.map((trip) => (
-              <tr key={trip.id} className="border-b last:border-b-0">
-                <td className="py-4">{trip.name}</td>
-                <td className="py-4">{trip.destination}</td>
-                <td className="py-4">{trip.duration}</td>
-                <td className="py-4">{trip.price}</td>
-                <td className="py-4">
-                  <div className="flex space-x-2">
-                    <button className="text-sky-500 hover:text-sky-600">
-                      <Edit size={18} />
-                    </button>
-                    <button 
-                      className="text-red-500 hover:text-red-600"
-                      onClick={() => handleDeleteTrip(trip.id)}
-                    >
-                      <Trash size={18} />
-                    </button>
-                  </div>
+              <tr key={trip._id} className="border-b hover:bg-gray-50 transition">
+                <td className="p-4 font-medium">{trip.title}</td>
+                <td className="p-4">{trip.destination}</td>
+                <td className="p-4">{new Date(trip.tripDate).toLocaleDateString()}</td>
+                <td className="p-4 text-green-600 font-semibold">${trip.price}</td>
+                
+                {/* Sites in a Column */}
+                <td className="p-4">
+                  {trip.sites.length > 0 ? (
+                    <div className="flex flex-col gap-2">
+                      {trip.sites.map((site) => (
+                        <div 
+                          key={site._id} 
+                          className="bg-sky-100 text-sky-900 text-xs px-3 py-1 rounded-lg"
+                        >
+                          {site.name} <br />
+                          <span className="text-gray-500 text-xs">
+                            {new Date(site.tripDate).toLocaleDateString()}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <span className="text-gray-500 text-sm">No sites</span>
+                  )}
                 </td>
+
+                {/* Action Buttons */}
+                <td className="p-4">
+  <div className="flex justify-between gap-3 w-24">
+    <button className="text-sky-500 hover:text-sky-600 transition flex items-center">
+      <Edit size={18} className="mr-1" /> Edit
+    </button>
+    <button 
+      className="text-red-500 hover:text-red-600 transition flex items-center"
+      onClick={() => handleDeleteTrip(trip._id)}
+    >
+      <Trash size={18} className="mr-1" /> Delete
+    </button>
+  </div>
+</td>
+
               </tr>
             ))}
           </tbody>
@@ -63,4 +110,3 @@ export function TripPanel({ onAddNewTrip }) {
     </div>
   );
 }
-
