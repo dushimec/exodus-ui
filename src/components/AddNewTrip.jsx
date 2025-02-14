@@ -246,7 +246,7 @@ export default function AddNewTrip() {
         <button
           type="button"
           onClick={handleAddSite}
-          className="bg-green-500 text-white py-1 px-4 rounded-md hover:bg-green-600 transition duration-300"
+          className="bg-blue-500 text-white py-1 px-4 rounded-md hover:bg-blue-600 transition duration-300"
         >
           Add Site
         </button>
@@ -295,7 +295,7 @@ export default function AddNewTrip() {
         <button
           type="button"
           onClick={handleAddTrip}
-          className="bg-green-500 text-white py-1 px-4 rounded-md hover:bg-green-600 transition duration-300"
+          className="bg-blue-500 text-white py-1 px-4 rounded-md hover:bg-blue-600 transition duration-300"
         >
           Add Trip
         </button>

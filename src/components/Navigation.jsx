@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { logout, getProfile } from "../slices/authSlice"
 import Flag from "react-flagkit"
 import { useTranslation } from "react-i18next"
-import { UserCircle, Calendar, LogOut, Home, Info, MapPin, Briefcase, ShoppingBag, Mail } from "lucide-react"
+import { UserCircle, Calendar, LogOut, Home, Info, MapPin, Briefcase, ShoppingBag, Mail, PhoneCallIcon } from "lucide-react"
 import logo from "../IMAGE/logo.jpg"
 import ProtectedRoute from "../components/ProtectedRoute"
 
@@ -85,8 +85,14 @@ function Navigation() {
               <span className="text-sm">KG 11 Ave Remera Gisimenti, Kigali, Rwanda
               </span>
             </div>
+            <div className="hidden md:flex items-center">
+              <MapPin className="h-4 w-4 mr-2" />
+              <span className="text-sm">Open At: 9:00 AM - 6:00 PM
+              </span>
+            </div>
           </div>
           <div className="flex items-center space-x-4">
+          <PhoneCallIcon className="h-4 w-4 mr-2" />
             <span className="hidden md:inline text-sm">+250788726181
             </span>
           </div>

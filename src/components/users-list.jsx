@@ -67,11 +67,11 @@ export function UsersList() {
                 <tr key={user._id} className="border-b last:border-b-0">
                   <td className="py-4 px-4">
                     <div className="flex items-center gap-3">
-                      {/* <img
+                      <img
                         src={user.profile?.url || "/placeholder.svg?height=40&width=40"}
                         alt={user.name}
                         className="w-10 h-10 rounded-full"
-                      /> */}
+                      />
                       <div className="font-medium">{user.name}</div>
                     </div>
                   </td>
