@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { logout, getProfile } from "../slices/authSlice"
 import Flag from "react-flagkit"
 import { useTranslation } from "react-i18next"
-import { UserCircle, Calendar, LogOut, Home, Info, MapPin, Briefcase, ShoppingBag, Mail, PhoneCallIcon } from "lucide-react"
+import { UserCircle, Calendar, LogOut, Home, Info, MapPin, Briefcase, ShoppingBag, Mail, PhoneCallIcon, Timer } from "lucide-react"
 import logo from "../IMAGE/logo.jpg"
 import ProtectedRoute from "../components/ProtectedRoute"
 
@@ -71,24 +71,24 @@ function Navigation() {
   return (
     <>
       <div
-        className={`fixed top-0 left-0 w-full bg-sky-600 text-white py-2 px-4 md:px-6 lg:px-10 xl:px-12 z-50 transition-all duration-300 ${isScrolled ? "-translate-y-full" : "translate-y-0"}`}
+        className="fixed top-0 left-0 w-full bg-sky-600 text-white py-2 px-4 md:px-6 lg:px-10 xl:px-12 z-50"
       >
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <div className="flex items-center">
               <Mail className="h-4 w-4 mr-2" />
-              <span className="text-sm">Oldfoxcoltd@gmail.com
-              </span>
-            </div>
+              <span className="text-sm">Oldfoxcoltd@gmail.com</span>
+            </div><div>|</div>
             <div className="hidden md:flex items-center">
               <MapPin className="h-4 w-4 mr-2" />
-              <span className="text-sm">KG 11 Ave Remera Gisimenti, Kigali, Rwanda
-              </span>
-            </div>
+              <span className="text-sm">KG 11 Ave Remera Gisimenti, Kigali, Rwanda</span>
+            </div><div>|</div>
             <div className="hidden md:flex items-center">
-              <MapPin className="h-4 w-4 mr-2" />
-              <span className="text-sm">Open At: 9:00 AM - 6:00 PM
-              </span>
+              <Timer className="h-4 w-4 mr-2" />
+              <span className="text-sm">Open At: 9:00 AM - 6:00 PM</span>
+            </div> 
+            <div>|</div><div className="hidden md:flex items-center">
+              <span className="text-sm">OLDFOX - TOUR: <b>Local & International</b></span>
             </div>
           </div>
           <div className="flex items-center space-x-4">
@@ -100,7 +100,7 @@ function Navigation() {
       </div>
 
       <nav
-        className={`fixed ${isScrolled ? "top-0" : "top-[40px]"} left-0 flex flex-wrap items-center w-full z-40 transition-all duration-300 ${
+        className={`fixed top-[40px] left-0 flex flex-wrap items-center w-full z-40 transition-all duration-300 ${
           isScrolled ? "bg-gray-700 opacity-80" : "bg-transparent"
         } p-2`}
       >

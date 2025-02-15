@@ -17,10 +17,23 @@
       "kinyarwanda": "Kiny"
     },
     "hero": {
-    "title": "Your global gateway to unforgettable adventures!",
+    "title": "OldFox: Expertly Planned Spiritual Tour",
     "explore": "Explore here",
     "searchPlaceholder": "Search Trip here ...",
-    "upcomingTrip": "Upcoming Trip"
+    "upcomingTrip": "Upcoming Trips",
+    "internationalTour": "International Tours",
+    "internationalTourDesc": "OldFox guides you through global spiritual landmarks",
+    "religionTour": "Religious Tours",
+    "religionTourDesc": "Explore sacred sites with OldFox's expert knowledge",
+    "localTour": "Local Tours",
+    "localTourDesc": "Discover hidden spiritual gems in your area with OldFox",
+    
+    "searchLabel": "Search for a trip",
+    "noDestinationsFound": "No destinations found for \"{{searchTerm}}\"",
+   
+    "loading": "Loading..."
+    
+
   },
   "trips": {
     "tripToBali": "Trip to Bali",
@@ -38,7 +51,18 @@
   },
   "popularTourPackages": {
     "title": "Popular Tour Packages",
-    "altText": "Image of the popular tour package number {{index}}"
+    "altText": "Image of the popular tour package number {{index}}",
+    "name": " Local Tour",
+    "rwandaLocalTour": "Rwanda Local Tour",
+    "abroadTour": "Abroad Tour",
+    "rwandaLocation": "Rwanda",
+    "abroadLocation": "Israel, Turkey, Italy,....",
+    "localTourType": "Local Tour",
+    "internationalTourType": "International Tour",
+    "backToTours": "Back to Tours",
+    "scenicViewOf": "Scenic view of {{name}}",
+    "galleryImages": "Gallery Images"
+
   },
   "howItWorks": {
     "title": "How it works?",
@@ -243,7 +267,200 @@
           "description": "Explore the rich history and diverse landscapes of the Holy Land."
         }
       }
+    },
+    "tours": {
+    "internationalTour": "OldFox guides you through global spiritual landmarks",
+    "religionTour": "Explore sacred sites with OldFox's expert knowledge",
+    "localTour": "Discover hidden spiritual gems in your area with OldFox"
+  },
+
+  "destini": {
+    "title": "Destinations",
+    "subtitle": "Explore more destinations",
+    "backgroundAlt": "Background image of destinations",
+    "religiousSignificance": "Religious Significance",
+    "sacredActivities": "Sacred Activities",
+    "planPilgrimage": "Plan Pilgrimage"
+  },
+  "countries": {
+    "Rwanda": "Rwanda",
+    "Israel": "Israel",
+    "Egypt": "Egypt",
+    "Turkey": "Turkey"
+  },
+  "destinationTypes": {
+    "CatholicShrine": "Catholic Shrine",
+    "CatholicCathedral": "Catholic Cathedral",
+    "ReligiousInstitution": "Religious Institution",
+    "JewishHolySite": "Jewish Holy Site",
+    "ChristianHolySite": "Christian Holy Site",
+    "IslamicHolySite": "Islamic Holy Site",
+    "BahaiHolySite": "Bahá'í Holy Site",
+    "MultiFaithSite": "Multi-Faith Site",
+    "AncientWonder": "Ancient Wonder",
+    "AncientTemple": "Ancient Temple",
+    "ChristianMonastery": "Christian Monastery",
+    "MuseumMosque": "Museum/Mosque",
+    "AncientCity": "Ancient City",
+    "NaturalWonder": "Natural Wonder"
+  },
+  "destination": {
+    "KibehoHolyLand": {
+      "name": "Kibeho Holy Land",
+      "description": "Known for the Marian apparitions of Our Lady of Kibeho, this is the only Vatican-approved apparition site in Africa.",
+      "significance": "Major Catholic pilgrimage site where the Virgin Mary appeared to three young women in the 1980s",
+      "activities": {
+        "0": "Daily Mass",
+        "1": "Rosary Processions",
+        "2": "Spiritual Retreats",
+        "3": "Healing Prayers"
+      }
+    },
+    "ReginaPacisCathedral": {
+      "name": "Regina Pacis Cathedral",
+      "description": "The main Catholic cathedral in Kigali, showcasing modern African Christian architecture.",
+      "significance": "Center of Catholic worship in Rwanda's capital",
+      "activities": {
+        "0": "Sunday Mass",
+        "1": "Cultural Programs",
+        "2": "Religious Education",
+        "3": "Community Services"
+      }
+    },
+    "NyakibandaSeminary": {
+      "name": "Nyakibanda Seminary",
+      "description": "One of the oldest and largest seminaries in Rwanda, training priests since 1936.",
+      "significance": "Historical center for religious education and formation",
+      "activities": {
+        "0": "Guided Tours",
+        "1": "Religious Studies",
+        "2": "Historical Exhibits",
+        "3": "Prayer Sessions"
+      }
+    },
+    "WesternWall": {
+      "name": "Western Wall",
+      "description": "The most sacred site in Judaism, part of the ancient Temple Mount complex.",
+      "significance": "Last remaining wall of the Second Temple of Jerusalem",
+      "activities": {
+        "0": "Prayer Services",
+        "1": "Bar Mitzvah Ceremonies",
+        "2": "Tunnel Tours",
+        "3": "Shabbat Experience"
+      }
+    },
+    "ChurchOfTheHolySepulchre": {
+      "name": "Church of the Holy Sepulchre",
+      "description": "Traditional site of Jesus's crucifixion, burial, and resurrection.",
+      "significance": "Most important pilgrimage site for many Christian denominations",
+      "activities": {
+        "0": "Daily Mass",
+        "1": "Guided Tours",
+        "2": "Prayer Vigils",
+        "3": "Religious Ceremonies"
+      }
+    },
+    "AlAqsaMosque": {
+      "name": "Al-Aqsa Mosque",
+      "description": "The third-holiest site in Islam, located on the Temple Mount.",
+      "significance": "Major Islamic pilgrimage destination",
+      "activities": {
+        "0": "Daily Prayers",
+        "1": "Islamic Studies",
+        "2": "Historical Tours",
+        "3": "Cultural Programs"
+      }
+    },
+    "BahaiGardens": {
+      "name": "Bahá'í Gardens",
+      "description": "Terraced gardens surrounding the Shrine of the Báb in Haifa.",
+      "significance": "World Center of the Bahá'í Faith",
+      "activities": {
+        "0": "Guided Tours",
+        "1": "Meditation",
+        "2": "Photography",
+        "3": "Cultural Learning"
+      }
+    },
+    "SeaOfGalilee": {
+      "name": "Sea of Galilee",
+      "description": "Freshwater lake associated with many events in Jesus's life.",
+      "significance": "Important site for Christian pilgrims and nature lovers",
+      "activities": {
+        "0": "Boat Tours",
+        "1": "Biblical Site Visits",
+        "2": "Baptism Ceremonies",
+        "3": "Nature Walks"
+      }
+    },
+    "GreatPyramidOfGiza": {
+      "name": "Great Pyramid of Giza",
+      "description": "One of the Seven Wonders of the Ancient World, built as a tomb for the Pharaoh Khufu.",
+      "significance": "Symbol of ancient Egyptian civilization and engineering marvel",
+      "activities": {
+        "0": "Guided Tours",
+        "1": "Camel Rides",
+        "2": "Sunset Viewing",
+        "3": "Archaeological Lectures"
+      }
+    },
+    "LuxorTemple": {
+      "name": "Luxor Temple",
+      "description": "A large Ancient Egyptian temple complex located on the east bank of the Nile River.",
+      "significance": "Important site for ancient Egyptian religion and history",
+      "activities": {
+        "0": "Night Tours",
+        "1": "Hieroglyphic Workshops",
+        "2": "Sound and Light Shows",
+        "3": "Nile Cruises"
+      }
+    },
+    "SaintCatherinesMonastery": {
+      "name": "Saint Catherine's Monastery",
+      "description": "One of the oldest working Christian monasteries in the world.",
+      "significance": "Important site for Orthodox Christianity and home to valuable manuscripts",
+      "activities": {
+        "0": "Guided Tours",
+        "1": "Icon Viewing",
+        "2": "Sunrise Hikes",
+        "3": "Meditation Sessions"
+      }
+    },
+    "HagiaSophia": {
+      "name": "Hagia Sophia",
+      "description": "Former Greek Orthodox Christian patriarchal cathedral, later an Ottoman imperial mosque, now a museum.",
+      "significance": "Architectural marvel and symbol of Istanbul's diverse history",
+      "activities": {
+        "0": "Guided Tours",
+        "1": "Art Appreciation",
+        "2": "Historical Lectures",
+        "3": "Photography Sessions"
+      }
+    },
+    "Ephesus": {
+      "name": "Ephesus",
+      "description": "An ancient Greek city on the coast of Ionia, famous for the Temple of Artemis.",
+      "significance": "One of the best-preserved ancient cities in the Mediterranean",
+      "activities": {
+        "0": "Archaeological Tours",
+        "1": "Historical Reenactments",
+        "2": "Night Walks",
+        "3": "Photography Workshops"
+      }
+    },
+    "Cappadocia": {
+      "name": "Cappadocia",
+      "description": "A region known for its distinctive 'fairy chimneys,' formed by volcanic rock formations.",
+      "significance": "Unique landscape and early Christian history",
+      "activities": {
+        "0": "Hot Air Balloon Rides",
+        "1": "Underground City Tours",
+        "2": "Rock Church Visits",
+        "3": "Hiking"
+      }
     }
+  }
+  
   
 
   
