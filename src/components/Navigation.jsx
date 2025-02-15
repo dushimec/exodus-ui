@@ -73,28 +73,31 @@ function Navigation() {
       <div
         className="fixed top-0 left-0 w-full bg-sky-600 text-white py-2 px-4 md:px-6 lg:px-10 xl:px-12 z-50"
       >
-        <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-4">
+        <div className="flex flex-wrap justify-between items-center">
+          <div className="flex flex-wrap items-center space-x-4">
             <div className="flex items-center">
-              <Mail className="h-4 w-4 mr-2" />
-              <span className="text-sm">Oldfoxcoltd@gmail.com</span>
-            </div><div>|</div>
+            <Timer className="h-4 w-4 mr-2" />
+              <span className="text-sm">Open At: 9:00 AM - 6:00 PM</span>
+            </div>
             <div className="hidden md:flex items-center">
+              <div>|</div>
               <MapPin className="h-4 w-4 mr-2" />
               <span className="text-sm">KG 11 Ave Remera Gisimenti, Kigali, Rwanda</span>
-            </div><div>|</div>
+            </div>
             <div className="hidden md:flex items-center">
-              <Timer className="h-4 w-4 mr-2" />
-              <span className="text-sm">Open At: 9:00 AM - 6:00 PM</span>
-            </div> 
-            <div>|</div><div className="hidden md:flex items-center">
+              <div>|</div>
+              
+              <Mail className="h-4 w-4 mr-2" />
+              <span className="text-sm">Oldfoxcoltd@gmail.com</span>
+            </div>
+            <div className="hidden md:flex items-center">
+              <div>|</div>
               <span className="text-sm">OLDFOX - TOUR: <b>Local & International</b></span>
             </div>
           </div>
           <div className="flex items-center space-x-4">
-          <PhoneCallIcon className="h-4 w-4 mr-2" />
-            <span className="hidden md:inline text-sm">+250788726181
-            </span>
+            <PhoneCallIcon className="h-4 w-4 mr-2" />
+            <span className="hidden md:inline text-sm">+250788726181</span>
           </div>
         </div>
       </div>
@@ -236,7 +239,7 @@ function Navigation() {
 
         {isMenuOpen && (
           <div
-            className={`lg:hidden fixed inset-0 ${isScrolled ? "top-0" : "top-[40px]"} bg-white z-50 overflow-y-auto`}
+            className={`lg:hidden fixed inset-0 top-[40px] bg-white z-50 overflow-y-auto`}
           >
             <div className="flex justify-between items-center p-4 border-b">
               <button onClick={toggleMenu} className="text-sky-500">
