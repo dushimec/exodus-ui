@@ -30,6 +30,7 @@ import NotFound from './components/NotFound';
 import ProtectedRoute from './components/ProtectedRoute';
 import LocalGallery from './components/LocalGallery';
 import InternationalGallery from './components/InternationalGallery';
+import Gallery from './components/Gallery'
 
 function App() {
   const location = useLocation();
@@ -63,6 +64,7 @@ function App() {
     "/dashboard",
     "/LocalGallery",
     "/InternationalGallery",
+    "/Gallery",
   ].includes(location.pathname);
 
   const shouldShowNavbar =
@@ -112,6 +114,7 @@ function App() {
           <Route path="/admin-login" element={<Admin />} />
           <Route path="/LocalGallery" element={<LocalGallery />} />
           <Route path="/InternationalGallery" element={<InternationalGallery />} />
+          <Route path="/Gallery" element={<Gallery />} />
 
           {/* Protected Routes */}
           <Route
