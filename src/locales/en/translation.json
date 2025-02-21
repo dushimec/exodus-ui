@@ -112,6 +112,7 @@
     "title": "DESTINATIONS",
     "explore": "Our Destination",
     "discover": "Discover",
+    "book":"BooK Now",
     "destinations": {
       "rwanda": "Rwanda",
       "rwandaDescription": "Discover Rwanda's religious heritage, blending culture and spirituality.",
@@ -280,7 +281,8 @@
     "backgroundAlt": "Background image of destinations",
     "religiousSignificance": "Religious Significance",
     "sacredActivities": "Sacred Activities",
-    "planPilgrimage": "Plan Pilgrimage"
+    "planPilgrimage": "Plan Pilgrimage",
+    "book":"BooK Now"
   },
   "countries": {
     "Rwanda": "Rwanda",

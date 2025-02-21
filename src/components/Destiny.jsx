@@ -1,5 +1,3 @@
-
-
 "use client"
 
 import { useState, useEffect } from "react"
@@ -26,10 +24,7 @@ import hagia from "../IMAGE/hagia.jpeg"
 import ephesus from "../IMAGE/ephesus.jpeg"
 import capa from "../IMAGE/capa.jpeg"
 
-import AOS from "aos"
-import "aos/dist/aos.css"
 import BookingModal from "./booking-modal"
-
 
 // Define religious destinations
 const religiousDestinations = {
@@ -61,19 +56,11 @@ const religiousDestinations = {
   ],
   Israel: [
     {
-
-      name: "Western Wall",
-      type: "Jewish Holy Site",
-      description: "The most sacred site in Judaism, part of the ancient Temple Mount complex.",
-      significance: "Last remaining wall of the Second Temple of Jerusalem",
-      activities: ["Prayer Services", "Bar Mitzvah Ceremonies", "Tunnel Tours", "Shabbat Experience"],
-
       name: "WesternWall",
       type: "JewishHolySite",
       description: "westernWallDescription",
       significance: "westernWallSignificance",
       activities: ["westernWallActivity1", "westernWallActivity2", "westernWallActivity3", "westernWallActivity4"],
-
       imageSrc: wall,
     },
     {
@@ -156,17 +143,10 @@ const religiousDestinations = {
     },
     {
       name: "Ephesus",
-
-      type: "Ancient City",
-      description: "An ancient Greek city on the coast of Ionia, famous for the Temple of Artemis.",
-      significance: "One of the best-preserved ancient cities in the Mediterranean",
-      activities: ["Archaeological Tours", "Historical Reenactments", "Night Walks", "Photography Workshops"],
-
       type: "AncientCity",
       description: "ephesusDescription",
       significance: "ephesusSignificance",
       activities: ["ephesusActivity1", "ephesusActivity2", "ephesusActivity3", "ephesusActivity4"],
-
       imageSrc: ephesus,
     },
     {
@@ -191,7 +171,6 @@ function CountryTabs({ countries, activeCountry, setActiveCountry }) {
   useEffect(() => {
     AOS.init({ duration: 2000, easing: "ease-out" })
   }, [])
-
 
   return (
     <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mt-4 sm:mt-8 px-2 sm:px-4 w-full">
@@ -240,10 +219,7 @@ function TypeFilters({ filterTypes, selectedType, setSelectedType }) {
   )
 }
 
-
 function ReligiousDestinationCard({ name, type, description, significance, activities, imageSrc, index, onBooking }) {
-
-function ReligiousDestinationCard({ name, type, description, significance, activities, imageSrc, index }) {
   const { t } = useTranslation()
 
   const getIcon = (type) => {
@@ -292,17 +268,13 @@ function ReligiousDestinationCard({ name, type, description, significance, activ
             ))}
           </div>
         </div>
-
         <button
           className="mt-4 sm:mt-6 w-full bg-sky-600 text-white py-2 rounded-lg hover:bg-sky-500 transition-colors duration-300 text-sm sm:text-base"
           onClick={() => onBooking({ name, type, description, significance, activities, imageSrc })}
         >
-          Book
-
-        <button className="mt-4 sm:mt-6 w-full bg-sky-600 text-white py-2 rounded-lg hover:bg-sky-500 transition-colors duration-300 text-sm sm:text-base">
-          {t("destini.planPilgrimage")}
-
+          {t("destini.book")}
         </button>
+        
       </div>
     </animated.div>
   )
@@ -351,29 +323,18 @@ export default function Destiny() {
           alt={t("destini.backgroundAlt")}
         />
         <div className="absolute inset-0 bg-black opacity-60"></div>
-
         <div className="flex relative flex-col justify-start items-center px-2 w-full sm:px-2 sm:pt-10 md:px-20 md:pt-24">
-          <div className="px-2 py-4  text-2xl  mt-10 sm:px-8 sm:py-6 md:px-12 md:py-9 mb-0 text-center bg-transparent border-white border-solid bg-opacity-0 border-4 sm:border-8 md:border-[10px] w-[80%] max-w-[496px]">
-            Destinations
-          </div>
-          <div className="mt-12  sm:mt-15 flex flex-row justify-center">Explore more destinations</div>
-
-        <div className="absolute top-4 right-4 z-10"></div>
-        <div className="flex relative flex-col justify-start items-center px-2 w-full sm:px-2 sm:pt-10 md:px-20 md:pt-24">
-          <div className="px-2 py-4  text-2xl  mt-10 sm:px-8 sm:py-6 md:px-12 md:py-9 mb-0 text-center bg-transparent border-white border-solid bg-opacity-0 border-4 sm:border-8 md:border-[10px] w-[80%] max-w-[496px]">
+          <div className="px-2 py-4 text-2xl mt-10 sm:px-8 sm:py-6 md:px-12 md:py-9 mb-0 text-center bg-transparent border-white border-solid bg-opacity-0 border-4 sm:border-8 md:border-[10px] w-[80%] max-w-[496px]">
             {t("destini.title")}
           </div>
           <div className="mt-12 sm:mt-15 flex flex-row justify-center">{t("destini.subtitle")}</div>
-
         </div>
       </animated.div>
-
       <CountryTabs
         countries={Object.keys(religiousDestinations)}
         activeCountry={activeCountry}
         setActiveCountry={setActiveCountry}
       />
-
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
         {filteredDestinations.map((destination, index) => (
           <ReligiousDestinationCard key={destination.name} {...destination} index={index} onBooking={handleBooking} />
@@ -383,4 +344,3 @@ export default function Destiny() {
     </div>
   )
 }
-
