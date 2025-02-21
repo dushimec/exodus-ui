@@ -6,7 +6,7 @@ import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
-export default function BookingModal({ isOpen, onClose, destination }) {
+export default function BookingModal({ isOpen, onClose, destination, postId, postPrice }) {
   const navigate = useNavigate()
   const [travelers, setTravelers] = useState(1)
   const [travelDate, setTravelDate] = useState("")
@@ -19,25 +19,7 @@ export default function BookingModal({ isOpen, onClose, destination }) {
   // Get the authentication status from Redux store
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
 
-  // Base prices per destination (in FRW)
-  const basePrices = {
-    "Kibeho Holy Land": 599000,
-    "Regina Pacis Cathedral": 299000,
-    "Nyakibanda Seminary": 399000,
-    "Western Wall": 899000,
-    "Church of the Holy Sepulchre": 799000,
-    "Al-Aqsa Mosque": 699000,
-    "Bahá'í Gardens": 499000,
-    "Sea of Galilee": 599000,
-    "Great Pyramid of Giza": 999000,
-    "Luxor Temple": 799000,
-    "Saint Catherine's Monastery": 699000,
-    "Hagia Sophia": 899000,
-    Ephesus: 799000,
-    Cappadocia: 699000,
-  }
-
-  const basePrice = basePrices[destination?.name] || 599000
+  const basePrice = postPrice || 599000
   const total = basePrice * travelers
 
   const handleConfirmBooking = async () => {
@@ -52,6 +34,7 @@ export default function BookingModal({ isOpen, onClose, destination }) {
           email,
           phone,
           totalAmount: total,
+          postId,
         })
 
         if (response.status === 200) {

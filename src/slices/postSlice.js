@@ -212,11 +212,12 @@ const postSlice = createSlice({
       })
       .addCase(fetchPostsByDestination.fulfilled, (state, action) => {
         state.loading = false;
-        state.destinationPosts = action.payload;
+        state.destinationPosts = Array.isArray(action.payload) ? action.payload : [];
       })
       .addCase(fetchPostsByDestination.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
+        state.destinationPosts = state.destinationPosts ?? [];
       })
       // Fetch Upcoming Posts
       .addCase(fetchUpcomingPosts.pending, (state) => {
