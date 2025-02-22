@@ -108,6 +108,7 @@ function Navigation() {
               </div>
               <div> | </div>
               <div className="flex items-center space-x-4">
+
                 <PhoneCallIcon className="h-4 w-4 mr-2" />
                 <span className="text-sm">+250788726181</span>
               </div>
@@ -121,6 +122,8 @@ function Navigation() {
                   </b>
                 </span>
               </div>
+
+
             </div>
           </div>
         </div>
@@ -200,6 +203,9 @@ function Navigation() {
             </Link>
             <Link to="/contact" className="text-sm lg:text-base xl:text-[16px]">
               {t("navigation.contact")}
+            </Link>
+            <Link to="/Gallery" className="text-sm lg:text-base xl:text-[16px]">
+              {t("Gallery")}
             </Link>
           </div>
 
@@ -438,6 +444,12 @@ function Navigation() {
                   <span className="text-sm md:text-base">
                     {t("navigation.contact")}
                   </span>
+                </Link>
+                <Link to="/Gallery" className="flex flex-col items-center" onClick={toggleMenu}>
+                  <button className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-sky-500 mb-2">
+                    <Mail className="h-6 w-6 md:h-8 md:w-8" />
+                  </button>
+                  <span className="text-sm md:text-base">{t("Gallery")}</span>
                 </Link>
               </div>
 
