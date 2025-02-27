@@ -23,7 +23,8 @@ function PostCard({ post, onBooking }) {
     config: { tension: 300, friction: 10 },
   })
 
-  const formattedDate = new Date(post.tripDate).toLocaleDateString()
+  const selectedPost = post; // Define selectedPost here
+  const formattedDate = new Date(selectedPost?.tripDate).toLocaleDateString() // Use tripDate from main post object
 
   return (
     <animated.div
@@ -103,6 +104,8 @@ function TypeFilters({ filterTypes, selectedType, setSelectedType }) {
     to: { opacity: 1, transform: "translateY(0)" },
     config: { tension: 300, friction: 10 },
   })
+
+
 }
 
 export default function Destiny() {
@@ -164,6 +167,7 @@ export default function Destiny() {
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/088997ce7ceb1872cdd23f020fa61a21e9d406941f1c5e79d3e1cb275d67fd00"
           className="absolute inset-0 object-cover w-full h-full blur-sm"
           alt={t("destini.backgroundAlt")}
+          jsx="true" // Fix jsx attribute warning
         />
         <div className="absolute inset-0 bg-black opacity-60"></div>
         <div className="flex relative flex-col justify-start items-center px-2 w-full sm:px-2 sm:pt-10 md:px-20 md:pt-24">
@@ -207,6 +211,7 @@ export default function Destiny() {
         destination={selectedPost}
         postId={selectedPost?._id}
         postPrice={selectedPost?.price}
+        postDate={selectedPost?.tripDate}
       />
     </div>
   )

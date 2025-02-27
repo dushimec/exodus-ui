@@ -125,6 +125,7 @@ const postSlice = createSlice({
     destinationPosts: [], // Separate state for posts by destination
     loading: false,
     error: null,
+    selectedPost: null, // Add selectedPost to the initial state
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -234,6 +235,10 @@ const postSlice = createSlice({
         console.error('Error fetching upcoming posts:', action.error); // Log the error object
         state.loading = false;
         state.error = action.error.message;
+      })
+      // Fetch Post by ID
+      .addCase(fetchPostById.fulfilled, (state, action) => {
+        state.selectedPost = action.payload;
       });
   },
 });
