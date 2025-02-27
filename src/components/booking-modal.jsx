@@ -51,6 +51,12 @@ export default function BookingModal({ isOpen, onClose, destination, postId, pos
     }
   }, [bookingStatus, onClose]);
 
+  useEffect(() => {
+    if (bookingStatus === "success") {
+      navigate("/booking-success");
+    }
+  }, [bookingStatus, navigate]);
+
   const basePrice = postPrice || 599000
   const total = basePrice * travelers
 
@@ -76,6 +82,9 @@ export default function BookingModal({ isOpen, onClose, destination, postId, pos
       } catch (error) {
         console.error("Booking failed:", error.response ? error.response.data : error.message); // Log the error response
         setBookingStatus("idle")
+        toast.error("Booking failed. Please try again.", {
+          position: "top-right"
+        });
       }
     } else {
       // Redirect to login page

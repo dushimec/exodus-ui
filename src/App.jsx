@@ -30,7 +30,9 @@ import NotFound from './components/NotFound';
 import ProtectedRoute from './components/ProtectedRoute';
 import LocalGallery from './components/LocalGallery';
 import InternationalGallery from './components/InternationalGallery';
-import Gallery from './components/Gallery'
+import Gallery from './components/Gallery';
+import BookingModal from './components/booking-modal';
+import SuccessModal from './components/success-modal';
 
 function App() {
   const location = useLocation();
@@ -115,6 +117,7 @@ function App() {
           <Route path="/LocalGallery" element={<LocalGallery />} />
           <Route path="/InternationalGallery" element={<InternationalGallery />} />
           <Route path="/Gallery" element={<Gallery />} />
+          <Route path="/booking-success" element={<SuccessModal />} />
 
           {/* Protected Routes */}
           <Route
