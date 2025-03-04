@@ -24,7 +24,7 @@ function PostCard({ post, onBooking }) {
   })
 
   const selectedPost = post; // Define selectedPost here
-  const formattedDate = new Date(selectedPost?.tripDate).toLocaleDateString() // Use tripDate from main post object
+  const formattedDate = new Date(selectedPost?.postDate).toLocaleDateString() // Use tripDate from main post object
 
   return (
     <animated.div
@@ -211,7 +211,7 @@ export default function Destiny() {
         destination={selectedPost}
         postId={selectedPost?._id}
         postPrice={selectedPost?.price}
-        postDate={selectedPost?.tripDate}
+        postDate={selectedPost?.postDate}
       />
     </div>
   )

@@ -7,7 +7,9 @@ import video from "../IMAGE/video.mp4"
 import AOS from "aos"
 import "aos/dist/aos.css"
 import { useTranslation } from "react-i18next"
+import {Link} from "react-router-dom"
 import { useSpring, animated, config } from "react-spring"
+import { format } from "date-fns"
 
 import Tour from "../components/Tour"
 
@@ -31,6 +33,17 @@ export default function TravelHero() {
   const [currentTripIndex, setCurrentTripIndex] = useState(0)
   const titleRef = useRef(null)
   const tourRef = useRef(null)
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString)
+    return new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(date)
+  }
+
+  const titleAnimation = useSpring({
+    opacity: isVisible ? 1 : 0,
+    transform: isVisible ? "translateY(0)" : "translateY(10px)",
+    config: config.molasses,
+  })
 
   useEffect(() => {
     AOS.init({ duration: 1500, easing: "ease-out" })
@@ -101,16 +114,15 @@ export default function TravelHero() {
           data-aos="fade-up"
         >
           <div className="w-full lg:w-1/2 mb-8 lg:mb-0 text-center lg:text-left" data-aos="fade-up">
-            <h1
+            <animated.h1
               ref={titleRef}
-              className={`text-2xl sm:text-3xl lg:text-6xl font-bold text-white mb-6 leading-tight transition-opacity duration-1000 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
+              style={titleAnimation}
+              className="text-2xl sm:text-3xl lg:text-6xl font-bold text-white mb-6 leading-tight"
             >
               {t("hero.title")}
-            </h1>
+            </animated.h1>
 
-<div className="space-y-4 max-w-md mx-auto lg:mx-0">
+<div className="space-y-2 max-w-md mx-auto lg:mx-0">
               {[
                 { id: "internationalTour", defaultDesc: "OldFox guides you through global spiritual landmarks" },
                 { id: "religionTour", defaultDesc: "Explore sacred sites with OldFox's expert knowledge" },
@@ -129,7 +141,7 @@ export default function TravelHero() {
             </div>
           </div>
 
-          <div className="w-full lg:w-1/2 space-y-20 " data-aos="fade-up">
+          <div className="w-full lg:w-1/2 space-y-4 sm:space-y-10" data-aos="fade-up">
             <div className="relative">
               <form onSubmit={handleSearch} className="relative">
                 <input
@@ -198,9 +210,18 @@ export default function TravelHero() {
                             className="object-cover w-full h-full"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                          <p className="absolute bottom-4 left-4 right-4 text-white text-lg font-semibold">
+                          <div className="absolute bottom-4 left-4 right-4 text-white text-lg font-semibold sm:gap-9">
                             {trip.title}
-                          </p>
+                            <div className="flex flex-col sm:flex-row justify-between items-center">
+                              <Link 
+                                to="/destiny" 
+                                className="bg-blue-500 text-white py-1 px-2 sm:py-2 sm:px-4 rounded-full inline-block hover:bg-blue-600 transition"
+                              >
+                                Book your trip
+                              </Link>
+                              <h4 className="text-blue-500 mt-2 sm:mt-0">TOUR DATE: <span className="text-white">{format(new Date(trip.postDate), 'MMMM dd, yyyy')}</span></h4>
+                            </div>
+                          </div>
                         </div>
                       ))}
                     </div>

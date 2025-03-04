@@ -10,18 +10,17 @@ export default function AddNewTrip() {
   const [destination, setDestination] = useState('');
   const [tripCost, setTripCost] = useState('');
   const [currency, setCurrency] = useState('USD');
-  const [bookingDate, setBookingDate] = useState('');
+  const [postDate, setPostDate] = useState('');
   const [description, setDescription] = useState('');
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [selectedImages, setSelectedImages] = useState([]); // Define selectedImages state
-  const [sites, setSites] = useState([{ name: '', tripDate: '' }]);
+  const [photo, setPhoto] = useState(null);
+  const [sites, setSites] = useState([{ name: '', siteDate: '' }]);
   const [trips, setTrips] = useState([{ title: '', content: '', price: '', tripDate: '' }]);
   const fileInputRef = useRef(null);
   
   const dispatch = useDispatch();
   
   const handleAddSite = () => {
-    setSites([...sites, { name: '', tripDate: '' }]);
+    setSites([...sites, { name: '', siteDate: '' }]);
   };
   
   const handleAddTrip = () => {
@@ -53,8 +52,7 @@ export default function AddNewTrip() {
     const file = e.target.files[0];
   
     if (file && file.type.startsWith('image/')) {
-      setSelectedFile(file);
-      setSelectedImages([...selectedImages, file]); // Add selected file to selectedImages
+      setPhoto(file);
     } else {
       toast.error("Please upload a valid image file");
     }
@@ -71,8 +69,7 @@ export default function AddNewTrip() {
     const file = e.dataTransfer.files[0];
   
     if (file && file.type.startsWith('image/')) {
-      setSelectedFile(file);
-      setSelectedImages([...selectedImages, file]); // Add dropped file to selectedImages
+      setPhoto(file);
     } else {
       toast.error("Please upload a valid image file");
     }
@@ -83,12 +80,12 @@ export default function AddNewTrip() {
     e.preventDefault();
   
     // Basic form validation
-    if (!title.trim() || !destination.trim() || !tripCost || !bookingDate || !description.trim()) {
+    if (!title.trim() || !destination.trim() || !tripCost || !postDate || !description.trim()) {
       toast.error("Please fill out all required fields.");
       return;
     }
   
-    if (!selectedFile) {
+    if (!photo) {
       toast.error("Please upload an image.");
       return;
     }
@@ -99,9 +96,9 @@ export default function AddNewTrip() {
     formData.append('destination', destination);
     formData.append('price', tripCost);
     formData.append('currency', currency);
-    formData.append('tripDate', bookingDate);
+    formData.append('postDate', postDate);
     formData.append('content', description);
-    formData.append('file', selectedFile); // Append single file
+    formData.append('file', photo); // Append single file
   
     formData.append('sites', JSON.stringify(sites));
     formData.append('trips', JSON.stringify(trips));
@@ -116,19 +113,16 @@ export default function AddNewTrip() {
       setDestination('');
       setTripCost('');
       setCurrency('USD');
-      setBookingDate('');
+      setPostDate('');
       setDescription('');
-      setSelectedFile(null);
-      setSelectedImages([]); // Clear selectedImages
-      setSites([{ name: '', tripDate: '' }]);
+      setPhoto(null);
+      setSites([{ name: '', siteDate: '' }]);
       setTrips([{ title: '', content: '', price: '', tripDate: '' }]);
     } catch (error) {
       // Enhanced error handling
       toast.error(error.response?.data?.message || error.message || "An unexpected error occurred. Please try again.");
     }
   };
-  
-  
   
   return (
     <div className="bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto">
@@ -168,8 +162,8 @@ export default function AddNewTrip() {
         </div>
         <input
           type="date"
-          value={bookingDate}
-          onChange={(e) => setBookingDate(e.target.value)}
+          value={postDate}
+          onChange={(e) => setPostDate(e.target.value)}
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <textarea
@@ -190,30 +184,27 @@ export default function AddNewTrip() {
             ref={fileInputRef}
             type="file"
             accept="image/*"
-            multiple
             onChange={handleImageSelect}
             className="hidden"
           />
           <Plus className="mx-auto mb-2" size={24} />
-          <p>Upload Trip Images</p>
+          <p>Upload Trip Image</p>
           <p className="text-sm text-gray-500">Drag and drop or click to select</p>
         </div>
 
-        {/* Selected images */}
-        {selectedImages.length > 0 && (
+        {/* Selected image */}
+        {photo && (
           <div className="mt-2">
-            {selectedImages.map((image, index) => (
-              <div key={index} className="flex items-center mb-2">
-                <p className="mr-2">{image.name}</p>
-                <button
-                  type="button"
-                  onClick={() => setSelectedImages(selectedImages.filter((_, i) => i !== index))}
-                  className="text-red-500 hover:text-red-700"
-                >
-                  Remove
-                </button>
-              </div>
-            ))}
+            <div className="flex items-center mb-2">
+              <p className="mr-2">{photo.name}</p>
+              <button
+                type="button"
+                onClick={() => setPhoto(null)}
+                className="text-red-500 hover:text-red-700"
+              >
+                Remove
+              </button>
+            </div>
           </div>
         )}
 
@@ -230,8 +221,8 @@ export default function AddNewTrip() {
             />
             <input
               type="date"
-              value={site.tripDate}
-              onChange={(e) => handleSiteChange(index, 'tripDate', e.target.value)}
+              value={site.siteDate}
+              onChange={(e) => handleSiteChange(index, 'siteDate', e.target.value)}
               className="w-1/2 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <button
