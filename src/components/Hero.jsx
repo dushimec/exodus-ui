@@ -219,7 +219,12 @@ export default function TravelHero() {
                               >
                                 Book your trip
                               </Link>
-                              <h4 className="text-blue-500 mt-2 sm:mt-0">TOUR DATE: <span className="text-white">{format(new Date(trip.postDate), 'MMMM dd, yyyy')}</span></h4>
+                              <h4 className="text-blue-500 mt-2 sm:mt-0">
+                                TOUR DATE: 
+                                <span className="text-white">
+                                  {trip.postDate ? format(new Date(trip.postDate), 'MMMM dd, yyyy') : "Date not available"}
+                                </span>
+                              </h4>
                             </div>
                           </div>
                         </div>
