@@ -95,7 +95,7 @@ export function TripPanel({ onAddNewTrip }) {
                           >
                             {site.name} <br />
                             <span className="text-gray-500 text-xs">
-                              {new Date(site.tripDate).toLocaleDateString()}
+                              {new Date(site.siteDate).toLocaleDateString()}
                             </span>
                           </div>
                         ))}

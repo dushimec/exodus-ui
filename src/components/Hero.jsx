@@ -4,8 +4,6 @@ import { fetchUpcomingPosts } from "../slices/postSlice"
 import { FaSearch } from "react-icons/fa"
 import { useNavigate } from "react-router-dom"
 import video from "../IMAGE/video.mp4"
-import AOS from "aos"
-import "aos/dist/aos.css"
 import { useTranslation } from "react-i18next"
 import {Link} from "react-router-dom"
 import { useSpring, animated, config } from "react-spring"
@@ -44,11 +42,6 @@ export default function TravelHero() {
     transform: isVisible ? "translateY(0)" : "translateY(10px)",
     config: config.molasses,
   })
-
-  useEffect(() => {
-    AOS.init({ duration: 1500, easing: "ease-out" })
-    AOS.refresh()
-  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -111,9 +104,8 @@ export default function TravelHero() {
 
         <div
           className="relative container mx-auto px-4 py-8 flex flex-col lg:flex-row items-center justify-between"
-          data-aos="fade-up"
         >
-          <div className="w-full lg:w-1/2 mb-8 lg:mb-0 text-center lg:text-left" data-aos="fade-up">
+          <div className="w-full lg:w-1/2 mb-8 lg:mb-0 text-center lg:text-left">
             <animated.h1
               ref={titleRef}
               style={titleAnimation}
@@ -131,8 +123,6 @@ export default function TravelHero() {
                 <div
                   key={tour.id}
                   className="bg-white bg-opacity-20 backdrop-blur-lg rounded-lg p-3 transform transition-all duration-300 hover:scale-105"
-                  data-aos="fade-right"
-                  data-aos-delay={200 * (index + 1)}
                 >
                   <h2 className="text-lg sm:text-xl font-semibold text-white mb-1">{t(`hero.${tour.id}`)}</h2>
                   <p className="text-xs sm:text-sm text-white">{t(`hero.${tour.id}Desc`, tour.defaultDesc)}</p>
@@ -141,7 +131,7 @@ export default function TravelHero() {
             </div>
           </div>
 
-          <div className="w-full lg:w-1/2 space-y-4 sm:space-y-10" data-aos="fade-up">
+          <div className="w-full lg:w-1/2 space-y-4 sm:space-y-10">
             <div className="relative">
               <form onSubmit={handleSearch} className="relative">
                 <input
@@ -178,16 +168,15 @@ export default function TravelHero() {
 
             <div
               className="bg-white bg-opacity-20 backdrop-blur-lg rounded-lg p-4 shadow-lg relative overflow-hidden"
-              data-aos="fade-up"
             >
-              <h2 className="text-lg sm:text-xl font-semibold text-white mb-4" data-aos="fade-up">
+              <h2 className="text-lg sm:text-xl font-semibold text-white mb-4">
                 {t("hero.upcomingTrip")}
               </h2>
               {loading ? (
                 <p className="text-white">Loading...</p>
               ) : (
                 <div className="relative aspect-[16/9] overflow-hidden rounded-lg">
-                  {upcomingTrips && upcomingTrips.length > 0 && (
+                  {upcomingTrips && upcomingTrips.length > 0 ? (
                     <div
                       className="absolute inset-0 flex transition-transform duration-700 ease-in-out"
                       style={{
@@ -230,6 +219,8 @@ export default function TravelHero() {
                         </div>
                       ))}
                     </div>
+                  ) : (
+                    <p className="text-white">No upcoming trips available.</p>
                   )}
                 </div>
               )}

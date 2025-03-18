@@ -4,6 +4,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Plus } from 'lucide-react';
 import { addPost } from '../slices/postSlice';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 export default function AddNewTrip() {
   const [title, setTitle] = useState('');
@@ -18,79 +20,11 @@ export default function AddNewTrip() {
   const fileInputRef = useRef(null);
   
   const dispatch = useDispatch();
-  
-  const handleAddSite = () => {
-    setSites([...sites, { name: '', siteDate: '' }]);
-  };
-  
-  const handleAddTrip = () => {
-    setTrips([...trips, { title: '', content: '', price: '', tripDate: '' }]);
-  };
-  
-  const handleSiteChange = (index, field, value) => {
-    const newSites = [...sites];
-    newSites[index][field] = value;
-    setSites(newSites);
-  };
-  
-  const handleTripChange = (index, field, value) => {
-    const newTrips = [...trips];
-    newTrips[index][field] = value;
-    setTrips(newTrips);
-  };
-  
-  const handleRemoveSite = (index) => {
-    setSites(sites.filter((_, i) => i !== index));
-  };
-  
-  const handleRemoveTrip = (index) => {
-    setTrips(trips.filter((_, i) => i !== index));
-  };
-  
-  // Handle file selection
-  const handleImageSelect = (e) => {
-    const file = e.target.files[0];
-  
-    if (file && file.type.startsWith('image/')) {
-      setPhoto(file);
-    } else {
-      toast.error("Please upload a valid image file");
-    }
-  };
-  
-  // Handle drag over event
-  const handleDragOver = (e) => {
-    e.preventDefault();
-  };
-  
-  // Handle file drop event
-  const handleDrop = (e) => {
-    e.preventDefault();
-    const file = e.dataTransfer.files[0];
-  
-    if (file && file.type.startsWith('image/')) {
-      setPhoto(file);
-    } else {
-      toast.error("Please upload a valid image file");
-    }
-  };
-  
-  // Handle form submission
+  const navigate = useNavigate(); // Initialize useNavigate
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    // Basic form validation
-    if (!title.trim() || !destination.trim() || !tripCost || !postDate || !description.trim()) {
-      toast.error("Please fill out all required fields.");
-      return;
-    }
-  
-    if (!photo) {
-      toast.error("Please upload an image.");
-      return;
-    }
-  
-    // Prepare FormData
+
     const formData = new FormData();
     formData.append('title', title);
     formData.append('destination', destination);
@@ -98,17 +32,16 @@ export default function AddNewTrip() {
     formData.append('currency', currency);
     formData.append('postDate', postDate);
     formData.append('content', description);
-    formData.append('file', photo); // Append single file
-  
     formData.append('sites', JSON.stringify(sites));
     formData.append('trips', JSON.stringify(trips));
-  
+    if (fileInputRef.current?.files[0]) {
+      formData.append('file', fileInputRef.current.files[0]);
+    }
+
     try {
-      // Dispatch action
-      await dispatch(addPost(formData)).unwrap();
-      toast.success('Trip added successfully!');
-  
-      // Clear form fields after successful submission
+      const response = await dispatch(addPost(formData)).unwrap(); // Await and unwrap the response
+      toast.success(response.message || 'Trip added successfully!'); // Use success message from response
+      // Reset form fields
       setTitle('');
       setDestination('');
       setTripCost('');
@@ -118,12 +51,49 @@ export default function AddNewTrip() {
       setPhoto(null);
       setSites([{ name: '', siteDate: '' }]);
       setTrips([{ title: '', content: '', price: '', tripDate: '' }]);
+      // Refresh and navigate to TripPanel
+      navigate('/dashboard/trip-panel');
     } catch (error) {
-      // Enhanced error handling
-      toast.error(error.response?.data?.message || error.message || "An unexpected error occurred. Please try again.");
+      toast.error(error.response?.data?.message || 'Failed to add trip');
     }
   };
-  
+
+  // Handler for adding a new site
+  const handleAddSite = () => {
+    setSites([...sites, { name: '', siteDate: '' }]);
+  };
+
+  // Handler for changing site details
+  const handleSiteChange = (index, field, value) => {
+    const updatedSites = [...sites];
+    updatedSites[index][field] = value;
+    setSites(updatedSites);
+  };
+
+  // Handler for removing a site
+  const handleRemoveSite = (index) => {
+    const updatedSites = sites.filter((_, i) => i !== index);
+    setSites(updatedSites);
+  };
+
+  // Handler for adding a new trip
+  const handleAddTrip = () => {
+    setTrips([...trips, { title: '', content: '', price: '', tripDate: '' }]);
+  };
+
+  // Handler for changing trip details
+  const handleTripChange = (index, field, value) => {
+    const updatedTrips = [...trips];
+    updatedTrips[index][field] = value;
+    setTrips(updatedTrips);
+  };
+
+  // Handler for removing a trip
+  const handleRemoveTrip = (index) => {
+    const updatedTrips = trips.filter((_, i) => i !== index);
+    setTrips(updatedTrips);
+  };
+
   return (
     <div className="bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto">
       <h1 className="text-2xl font-bold mb-6">New Trip Card</h1>
@@ -174,22 +144,13 @@ export default function AddNewTrip() {
         ></textarea>
 
         {/* File upload */}
-        <div
-          className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center cursor-pointer"
-          onClick={() => fileInputRef.current.click()}
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
-        >
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700 mb-2">Choose Trip Image</label>
           <input
             ref={fileInputRef}
             type="file"
-            accept="image/*"
-            onChange={handleImageSelect}
-            className="hidden"
+            className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border file:border-gray-300 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
           />
-          <Plus className="mx-auto mb-2" size={24} />
-          <p>Upload Trip Image</p>
-          <p className="text-sm text-gray-500">Drag and drop or click to select</p>
         </div>
 
         {/* Selected image */}

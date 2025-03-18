@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Bell, Mail, Search, Settings, ChevronDown, MoreVertical, Users, BookOpen, Calendar, Package, LogOut, Menu } from 'lucide-react';
 import AddNewTrip from "./AddNewTrip";
-import { AuthContext } from "../context/authContext";
+import { AuthContext } from "../context/authContext.jsx";
 import { useNavigate } from "react-router-dom";
 import { UsersList } from './users-list';
 import { ProgressCircle } from './progress-circle';
-import { TripPanel } from './ trip-panel';
+import { TripPanel } from './trip-panel';
 import logo from '../IMAGE/logo.jpg';
 import { ProductManagement } from './product-management';
 import { SettingsPanel } from './settings-panel';
@@ -34,9 +34,16 @@ export default function AdminDashboard() {
     }
   }, [user, getProfile]);
 
-  const handleLogout = () => {
-    logout();
-    navigate("/admin-login");
+  const handleLogout = async () => {
+    try {
+      if (!logout || typeof logout !== "function") {
+        console.error("Logout function is not defined or not a function");
+        return; // Exit early if logout is invalid
+      }
+      await logout(); // Call the logout function from AuthContext
+    } catch (error) {
+      console.error("Logout failed:", error.message); // Log any errors for debugging
+    }
   };
 
   const stats = [
